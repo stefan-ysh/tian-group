@@ -14,7 +14,7 @@ const Footer = () => {
                 {title}
               </a>
             </div>
-            <div className="text-muted text-sm">
+            {/* <div className="text-muted text-sm">
               <ul className="mb-4 flex pr-2 rtl:pr-0 rtl:pl-2 md:order-1 md:mb-0">
                 {links &&
                   links.map(({ label, href }, index) => (
@@ -30,9 +30,9 @@ const Footer = () => {
                     </li>
                   ))}
               </ul>
-            </div>
+            </div> */}
           </div>
-          {columns.map(({ title, links }, index) => (
+          {/* {columns.map(({ title, links }, index) => (
             <div key={`item-column-${index}`} className="col-span-6 md:col-span-3 lg:col-span-2">
               <div className="mb-2 font-medium dark:text-gray-300">{title}</div>
               <ul className="text-sm">
@@ -50,7 +50,7 @@ const Footer = () => {
                   ))}
               </ul>
             </div>
-          ))}
+          ))} */}
         </div>
         {/* <div className="py-6 md:flex md:items-center md:justify-between md:py-8">
           <ul className="mb-4 flex md:order-1 md:ml-4 rtl:md:ml-0 rtl:md:mr-4 md:mb-0">

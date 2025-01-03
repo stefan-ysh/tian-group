@@ -78,14 +78,42 @@ export const headerData: HeaderProps = {
 export const footerData: FooterProps = {
   title: 'T lab',
   links: [
+    {
+      label: 'Index',
+      href: '/',
+    },
+    {
+      label: 'Research',
+      href: '/research',
+    },
+    {
+      label: 'Publications',
+      href: '/publications',
+    },
+    {
+      label: 'Member Introduction',
+      href: '/members',
+    },
+    {
+      label: 'News',
+      href: '/news',
+    },
     // {
     //   label: 'Terms & Conditions',
     //   href: '/terms',
     // },
-    // {
-    //   label: 'Privacy Policy',
-    //   href: '/privacy',
-    // },
+    {
+      label: 'Activities',
+      href: '/activities',
+    },
+    {
+      label: 'Join Us',
+      href: '/joinus',
+    },
+    {
+      label: 'Contact',
+      href: '/contact',
+    },
   ],
   columns: [
     // {
@@ -198,11 +226,10 @@ export const footerData: FooterProps = {
     { label: 'Instagram', icon: IconBrandInstagram, href: '#' },
     { label: 'Facebook', icon: IconBrandFacebook, href: '#' },
     { label: 'RSS', icon: IconRss, href: '#' },
-    { label: 'Github', icon: IconBrandGithub, href: 'https://github.com/onwidget/tailnext' },
   ],
   footNote: (
     <div className="mr-4 rtl:mr-0 rtl:ml-4 text-sm">
-      Copyright © 
+      Copyright © {new Date().getFullYear()}
     </div>
   ),
 };
