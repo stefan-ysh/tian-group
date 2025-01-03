@@ -32,9 +32,11 @@ export default function RootLayout({ children }: LayoutProps) {
       <body className="tracking-tight antialiased ">
         <Providers>
           {/* <Announcement /> */}
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <main >
+            <Header />
+            {children}
+            <Footer />
+          </main>
         </Providers>
       </body>
     </html>

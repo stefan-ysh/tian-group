@@ -1,17 +1,11 @@
 import type { Metadata } from 'next';
-import Contact from '~/components/widgets/Contact';
-import { contactAbout } from '~/shared/data/pages/about.data';
 
 export const metadata: Metadata = {
-  title: `About us`,
+  title: 'contact',
 };
 
-const Page = () => {
-  return (
-    <>
-      <Contact {...contactAbout} />
-    </>
-  );
+const Contact = () => {
+  return <>contact</>;
 };
 
-export default Page;
+export default Contact;
