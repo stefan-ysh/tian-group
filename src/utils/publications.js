@@ -32,7 +32,7 @@ export const fetchPublications = async () => {
 
 /** */
 export const findLatestPublications = async ({ count } = {}) => {
-  const _count = count || 10;
+  const _count = count || 100;
   const publications = await fetchPublications();
 
   return publications ? publications.slice(_count * -1) : [];
