@@ -1,30 +1,31 @@
 import type { Metadata } from 'next';
 import { Card, CardHeader, CardBody, Image, Button } from '@nextui-org/react';
-
-import Link from 'next/link';
+// import Link from 'next/link';
 import { findLatestPublications } from '~/utils/publications';
-
+import { Calendar, ExternalLink } from 'lucide-react';
+import { Link } from '@nextui-org/react';
+import { Chip } from '@nextui-org/react';
 export const metadata: Metadata = {
   title: 'Publications',
 };
 
 export default async function Home({}) {
   const publications = await findLatestPublications();
-  // console.log('[ publications ] >', publications)
   return (
-    <section className="mx-auto px-20 py-12 sm:px-20 sm:py-16 lg:py-20">
+    <section className="mx-auto px-20 py-12 ">
       <header>
         <h1 className="leading-tighter font-heading mb-8 text-center text-4xl font-bold tracking-tighter md:mb-16 md:text-5xl">
           Publications
         </h1>
       </header>
-      <div className="grid grid-cols-1 gap-6  p-4 lg:grid-cols-2">
+      <div className="grid grid-cols-1 gap-6 p-4 lg:grid-cols-2">
         {publications.map(
           ({
             slug,
             title,
             image,
             link,
+            publishDate,
             author,
             description,
           }: {
@@ -32,23 +33,43 @@ export default async function Home({}) {
             title: string;
             image: string;
             link: string;
+            publishDate: string;
             description: string;
             author: string[];
           }) => (
             <div
               key={slug}
-              className="flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-lg hover:shadow-none transition-all duration-500"
+              className="flex flex-col md:flex-row overflow-hidden rounded-xl border border-gray-200 shadow-lg hover:shadow-none transition-all duration-500 p-5 md:p-2"
             >
-              <Link href={link} target="_blank" className="pt-0 flex flex-col md:flex-row">
+              <Link
+                href={link}
+                target="_blank"
+                className="w-full flex flex-col md:flex-row mx-auto md:m-auto items-center justify-center"
+              >
                 <Image
-                  isBlurred
                   isZoomed
                   alt={title}
                   src={`${image}`}
-                  // className='!w-[200px] !h-[200px] mx-auto'
+                  className="w-full h-full md:w-[300px] md:h-[300px] p-10 md:p-1"
                 />
-                <h2 className="p-4 font-bold">{title}</h2>
               </Link>
+              <div className="w-full md:w-11/12 flex flex-col justify-between">
+                <h2 className="text-md font-semibold ">{title}</h2>
+                <div className='flex items-center'>
+                  <Chip color="secondary" startContent={<Calendar size={16} />} size="sm">
+                    <span className="text-xs">{publishDate}</span>
+                  </Chip>
+                  <Link
+                    isExternal
+                    showAnchorIcon
+                    anchorIcon={<ExternalLink size={16} />}
+                    href={link}
+                    className='ml-1 text-xs'
+                  >
+                    View
+                  </Link>
+                </div>
+              </div>
             </div>
           ),
         )}
