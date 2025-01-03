@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default async function Home({}) {
   const publications = await findLatestPublications();
   return (
-    <section className="mx-auto px-20 py-12 ">
+    <section className="mx-auto px-0 md:px-20 py-12 ">
       <header>
         <h1 className="leading-tighter font-heading mb-8 text-center text-4xl font-bold tracking-tighter md:mb-16 md:text-5xl">
           Publications
