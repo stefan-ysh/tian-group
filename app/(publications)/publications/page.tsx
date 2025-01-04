@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 // import Link from 'next/link';
 import { findLatestPublications } from '~/utils/publications';
 import { Calendar, ExternalLink } from 'lucide-react';
-import { Link, Chip } from '@nextui-org/react';
+import { Link, Chip, Image } from '@nextui-org/react';
 import NextImage from "next/image";
 export const metadata: Metadata = {
   title: 'Publications',
@@ -45,11 +45,12 @@ export default async function Home({}) {
                 target="_blank"
                 className="w-full flex flex-col md:flex-row mx-auto md:m-auto items-center justify-center"
               >
-                <NextImage
+                <Image
                   alt={title}
                   height={300}
+                  isZoomed
                   width={300}
-                  src={require('/src/assets/images/' + image)}
+                  src={`https://s2.loli.net/2025/01/04/Bb9rf2KDxUMsXYa.jpg`}
                   className="w-full h-full md:w-[300px] md:h-[300px] p-10 md:p-1 !object-contain"
                 />
               </Link>
