@@ -1,17 +1,17 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import { IconRss } from '@tabler/icons-react';
+// import { IconRss } from '@tabler/icons-react';
 import { useOnClickOutside } from '~/hooks/useOnClickOutside';
-import ToggleDarkMode from '~/components/atoms/ToggleDarkMode';
+import ToggleThemeMode from '~/components/atoms/ToggleDarkMode';
 import Link from 'next/link';
 import Logo from '~/components/atoms/Logo';
 import ToggleMenu from '../atoms/ToggleMenu';
 import { headerData } from '~/shared/data/global.data';
-import CTA from '../common/CTA';
-import { CallToActionType } from '~/shared/types';
+// import CTA from '../common/CTA';
+// import { CallToActionType } from '~/shared/types';
 
-const Header = () => {
+const Header = ({toggleTheme}: any) => {
   const { links, actions, isSticky, showToggleTheme, showRssFeed, position } = headerData;
 
   const ref = useRef(null);
@@ -63,6 +63,7 @@ const Header = () => {
       id="header"
     >
       <div className="mx-auto w-full max-w-7xl md:flex md:justify-between md:py-1 md:px-4">
+        {/* left */}
         <div
           className={`flex justify-between py-3 px-3 md:py-0 md:px-0 ${
             isToggleMenuOpen ? 'md:bg-transparent md:dark:bg-transparent md:border-none  border-b ' : ''
@@ -81,6 +82,7 @@ const Header = () => {
             <ToggleMenu handleToggleMenuOnClick={handleToggleMenuOnClick} isToggleMenuOpen={isToggleMenuOpen} />
           </div>
         </div>
+        {/* nav menu */}
         <nav
           className={`${isToggleMenuOpen ? 'block px-3' : 'hidden'} h-screen md:w-full ${
             position === 'right' ? 'justify-end' : position === 'left' ? 'justify-start' : 'justify-center'
@@ -142,14 +144,15 @@ const Header = () => {
               ))}
           </ul>
         </nav>
+        {/* theme toggle */}
         <div
           className={`${
             isToggleMenuOpen ? 'block' : 'hidden'
           } fixed bottom-0 left-0 w-full justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 md:bg-transparent md:dark:bg-transparent md:border-none  dark:bg-slate-900 border-t border-gray-200 dark:border-slate-600`}
         >
           <div className="flex w-full items-center justify-between md:w-auto">
-            {showToggleTheme && <ToggleDarkMode />}
-            {showRssFeed && (
+            {showToggleTheme && <ToggleThemeMode toggleTheme={toggleTheme} />}
+            {/* {showRssFeed && (
               <Link
                 className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
                 aria-label="RSS Feed"
@@ -157,8 +160,8 @@ const Header = () => {
               >
                 <IconRss className="h-5 w-5" />
               </Link>
-            )}
-            {actions && actions.length > 0 && (
+            )} */}
+            {/* {actions && actions.length > 0 && (
               <div className="ml-4 rtl:ml-0 rtl:mr-4 flex w-max flex-wrap justify-end">
                 {actions.map((callToAction, index) => (
                   <CTA
@@ -168,7 +171,7 @@ const Header = () => {
                   />
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

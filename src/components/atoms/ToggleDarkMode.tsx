@@ -1,38 +1,50 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTheme } from 'next-themes';
 import { IconSun, IconMoon } from '@tabler/icons-react';
-
-const ToggleDarkMode = () => {
+import { Switch } from '@nextui-org/react';
+interface DarkModeProps {
+  toggleTheme: Function;
+}
+const ToggleThemeMode = ({ toggleTheme }: DarkModeProps) => {
   const [mounted, setMounted] = useState<boolean>(false);
-  const { systemTheme, theme, setTheme } = useTheme();
 
-  const currentTheme = theme === 'system' ? systemTheme : theme;
-
-  const handleOnClick = () => setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+  const [theme, setTheme] = useState('light');
 
   useEffect(() => {
+    const storedTheme = localStorage.getItem('theme');
     setMounted(true);
-  }, []);
+    if (storedTheme) {
+      setTheme(storedTheme);
+
+      toggleTheme(storedTheme === 'dark');
+    }
+  }, [setTheme]);
+
+  const handleOnClick = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    toggleTheme(newTheme === 'dark');
+    localStorage.setItem('theme', newTheme);
+  };
 
   return (
-    <button
-      onClick={handleOnClick}
-      className="inline-block rounded-lg p-2.5 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-      aria-label="Toggle Dark Mode"
-    >
+    <>
       {mounted ? (
-        currentTheme === 'dark' ? (
-          <IconMoon className="h-5 w-5" />
-        ) : (
-          <IconSun className="h-5 w-5" />
-        )
+        <Switch
+          onChange={handleOnClick}
+          defaultSelected={theme === 'light'}
+          color="success"
+          size="lg"
+          thumbIcon={({ isSelected, className }) =>
+            isSelected ? <IconSun size={16} className={className} /> : <IconMoon size={16} className={className} />
+          }
+        />
       ) : (
         <div className="h-5 w-5"></div>
       )}
-    </button>
+    </>
   );
 };
 
-export default ToggleDarkMode;
+export default ToggleThemeMode;
