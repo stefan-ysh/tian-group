@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { Card, CardHeader, CardBody, Image, Button } from '@nextui-org/react';
 // import Link from 'next/link';
 import { findLatestPublications } from '~/utils/publications';
 import { Calendar, ExternalLink } from 'lucide-react';
-import { Link } from '@nextui-org/react';
-import { Chip } from '@nextui-org/react';
+import { Link, Chip } from '@nextui-org/react';
+import NextImage from "next/image";
 export const metadata: Metadata = {
   title: 'Publications',
 };
@@ -46,11 +45,12 @@ export default async function Home({}) {
                 target="_blank"
                 className="w-full flex flex-col md:flex-row mx-auto md:m-auto items-center justify-center"
               >
-                <Image
-                  isZoomed
+                <NextImage
                   alt={title}
-                  src={`${image}`}
-                  className="w-full h-full md:w-[300px] md:h-[300px] p-10 md:p-1"
+                  height={300}
+                  width={300}
+                  src={require('/src/assets/images/' + image)}
+                  className="w-full h-full md:w-[300px] md:h-[300px] p-10 md:p-1 !object-contain"
                 />
               </Link>
               <div className="w-full md:w-11/12 flex flex-col justify-between">
