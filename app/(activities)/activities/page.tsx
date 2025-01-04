@@ -3,14 +3,14 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { findLatestPosts } from '~/utils/posts';
+import { findLatestMembers } from '~/utils/posts';
 
 export const metadata: Metadata = {
   title: 'Activities',
 };
 
 export default async function Home({}) {
-  const posts = await findLatestPosts();
+  const posts = await findLatestMembers();
   return (
     <section className="mx-auto max-w-3xl px-6 py-12 sm:px-6 sm:py-16 lg:py-20">
       <header>
