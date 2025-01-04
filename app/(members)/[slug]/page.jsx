@@ -2,48 +2,44 @@ import md from 'markdown-it';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-import { findPostBySlug, findLatestPosts } from '~/utils/posts';
+import { findMembersByName, findLatestMembers } from '~/utils/members';
 
 export const dynamicParams = false;
 
 const getFormattedDate = (date) => date;
 
 export async function generateMetadata({ params}) {
-  const post = await findPostBySlug(params.slug);
-  if (!post) {
+  const member = await findMembersByName(params.slug);
+  if (!member) {
     return notFound();
   }
-  return { title: post.title, description: post.description };
+  return { title: member.title, description: member.description };
 }
 
 export async function generateStaticParams() {
-  return (await findLatestPosts()).map(({ slug }) => ({ slug }));
+  return (await findLatestMembers()).map(({ slug }) => ({ slug }));
 }
 
 export default async function Page({ params }) {
-  const post = await findPostBySlug(params.slug);
+  const member = await findMembersByName(params.slug);
 
-  if (!post) {
+  if (!member) {
     return notFound();
   }
 
   return (
     <section className="mx-auto py-8 sm:py-16 lg:py-20">
       <article>
-        <header className={post.image ? 'text-center' : ''}>
-          <p className="mx-auto max-w-3xl px-4 sm:px-6">
-            <time dateTime={post.publishDate}>{getFormattedDate(post.publishDate)}</time> ~{' '}
-            {/* {Math.ceil(post.readingTime)} min read */}
-          </p>
+        <header className={member.image ? 'text-center' : ''}>
           <h1 className="leading-tighter font-heading mx-auto mb-8 max-w-3xl px-4 text-4xl font-bold tracking-tighter sm:px-6 md:text-5xl">
-            {post.title}
+            {member.name}
           </h1>
-          {post.image ? (
+          {member.image ? (
             <Image
-              src={post.image}
+              src={member.image}
               className="mx-auto mt-4 mb-6 max-w-full bg-gray-400 dark:bg-slate-700 sm:rounded-md lg:max-w-6xl"
               sizes="(max-width: 900px) 400px, 900px"
-              alt={post.description}
+              alt={member.description}
               loading="eager"
               priority
               width={900}
@@ -60,7 +56,7 @@ export default async function Page({ params }) {
           dangerouslySetInnerHTML={{
             __html: md({
               html: true,
-            }).render(post.content),
+            }).render(member.content),
           }}
         />
       </article>
