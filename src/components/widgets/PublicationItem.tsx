@@ -60,7 +60,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
         <div className="flex items-center gap-3 flex-wrap my-1">
           {author.map((author, index) =>
             isMobile ? (
-              <span className="text-xs">{author}</span>
+              <span className="text-xs" key={index}>{author}</span>
             ) : (
               <Tooltip content={author} key={index}>
                 <div
