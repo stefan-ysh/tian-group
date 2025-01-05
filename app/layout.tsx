@@ -18,7 +18,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html
       lang="en"
-      className={`${isDark ? 'dark text-foreground bg-background' : 'light text-foreground bg-background'} motion-safe:scroll-smooth 2xl:text-[24px] ${customFont.variable} font-sans`}
+      className={`${isDark ? 'dark text-foreground bg-background' : 'light text-foreground bg-background'} motion-safe:scroll-smooth 2xl:text-[20px] ${customFont.variable} font-sans`}
     >
       <head>
         <meta charSet="utf-8" />

@@ -26,6 +26,7 @@ export default async function Home({}) {
             link,
             publishDate,
             author,
+            tags,
             description,
           }: {
             slug: string;
@@ -35,8 +36,9 @@ export default async function Home({}) {
             publishDate: string;
             description: string;
             author: string[];
+            tags: string[];
           }) => (
-            <PublicationItem title={title} image={image} slug={slug} publishDate={publishDate} link={link} key={slug} />
+            <PublicationItem title={title} image={image} slug={slug} publishDate={publishDate} link={link} key={slug} author={author} />
           ),
         )}
       </div>

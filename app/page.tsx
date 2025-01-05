@@ -5,7 +5,7 @@ import { Mail, School } from 'lucide-react';
 
 export default function App() {
   return (
-    <div className="min-h-full">
+    <div className="h-[calc(100vh-70px)] flex flex-1 justify-center items-center">
       <Card
         isBlurred
         className="border-none bg-background/60 dark:bg-default-100/50 max-w-[610px] mx-auto my-10"

@@ -37,7 +37,7 @@ export const headerData: HeaderProps = {
       href: '/publications',
     },
     {
-      label: 'Member Introduction',
+      label: 'Members',
       href: '/members',
     },
     {
@@ -91,7 +91,7 @@ export const footerData: FooterProps = {
       href: '/publications',
     },
     {
-      label: 'Member Introduction',
+      label: 'Members',
       href: '/members',
     },
     {

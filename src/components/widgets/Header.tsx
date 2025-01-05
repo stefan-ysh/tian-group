@@ -66,7 +66,7 @@ const Header = ({toggleTheme}: any) => {
         {/* left */}
         <div
           className={`flex justify-between py-3 px-3 md:py-0 md:px-0 ${
-            isToggleMenuOpen ? 'md:bg-transparent md:dark:bg-transparent md:border-none  border-b ' : ''
+            isToggleMenuOpen ? 'md:bg-transparent md:dark:bg-transparent md:border-none backdrop-blur-sm border-b ' : ''
           }`}
         >
           <Link
