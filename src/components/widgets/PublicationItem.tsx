@@ -60,7 +60,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link }: Publi
                 {!isLoaded && <Spinner label="Loading..." />}
                 <iframe
                   // todo : add pdf viewer url file
-                  src="/publications/p15.pdf#view=FitH,top&scrollbars=10&toolbar=0&statusbar=0"
+                  src={`/publications/${slug}.pdf#view=FitH,top&scrollbars=10&toolbar=0&statusbar=0`}
                   className="w-full h-[100vh]"
                   style={{
                     display: !isLoaded ? 'none' : 'block',
