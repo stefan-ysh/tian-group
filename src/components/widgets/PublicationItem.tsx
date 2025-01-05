@@ -7,12 +7,10 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDi
 import { Tooltip } from '@nextui-org/tooltip';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { Progress } from '@nextui-org/react';
-import { pdfjs } from 'react-pdf';
-import "~/lib/pdfWorkerPolyfill"
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
 interface PublicationItemProps {
