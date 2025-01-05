@@ -38,7 +38,7 @@ export default function App() {
               <div className="w-full mt-2 text-xs">
                 <div className="flex items-center gap-2 mt-4">
                   <Mail size={16} />
-                  <a href="mailto:aa@aa.com">tiantian211991@@163.com</a>
+                  <a href="mailto:aa@aa.com">tiant91@yzu.edu.cn</a>
                 </div>
                 <div className="flex items-center gap-2 mt-2">
                   <School size={16} />
