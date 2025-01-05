@@ -6,7 +6,6 @@ const BLOG_DIR = join(process.cwd(), 'src/content/publications');
 
 const load = () => {
   const files = fs.readdirSync(BLOG_DIR);
-  console.log('[ files ] >', files)
 
   const publications = Promise.all(
     files

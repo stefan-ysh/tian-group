@@ -1,12 +1,12 @@
 'use client';
-import { Calendar, ZoomIn, ZoomOut, User } from 'lucide-react';
-import { Card, Image } from '@nextui-org/react';
+import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Card, Image, Spinner } from '@nextui-org/react';
 import { Slider } from '@nextui-org/slider';
 import React from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
 import { Tooltip } from '@nextui-org/tooltip';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+// react-pdf
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -24,8 +24,6 @@ interface PublicationItemProps {
 
 export const PublicationItem = ({ title, image, slug, publishDate, link, author }: PublicationItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isLoaded, setIsLoaded] = React.useState(false);
-  const router = useRouter();
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   const [value, setValue] = React.useState(0);
@@ -34,7 +32,10 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
     setNumPages(numPages);
   }
+
+  // total page num of pdf
   const [numPages, setNumPages] = useState<number>(1);
+  // page num of pdf
   const [pageNumber, setPageNumber] = useState<number>(1);
   return (
     <Card
@@ -59,7 +60,9 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
         <div className="flex items-center gap-3 flex-wrap my-1">
           {author.map((author, index) =>
             isMobile ? (
-              <span className="text-xs" key={index}>{author}</span>
+              <span className="text-xs" key={index}>
+                {author}
+              </span>
             ) : (
               <Tooltip content={author} key={index}>
                 <div
@@ -75,6 +78,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
             ),
           )}
         </div>
+        {/* publish date */}
         <div className="flex items-center">
           <div className="flex items-center gap-1">
             <Calendar size={16} />
@@ -82,28 +86,24 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
           </div>
         </div>
       </div>
+      {/* modal of preview pdf of publication */}
       <Modal isOpen={isOpen} size={'5xl'} onClose={onClose} scrollBehavior="inside" backdrop="blur" placement="center">
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1 text-sm">{value >= 100 ? title : ''}</ModalHeader>
               <ModalBody className="py-0 px-5 overflow-auto mb-10">
-                {value < 100 && (
-                  <Progress
-                    aria-label="Downloading..."
-                    className="max-w-md"
-                    color="success"
-                    showValueLabel={true}
-                    size="md"
-                    value={value}
-                  />
-                )}
                 <Document
                   file={`/publications/${slug}.pdf`}
                   onLoadSuccess={onDocumentLoadSuccess}
                   onLoadProgress={({ loaded, total }) => {
                     setValue((loaded / total) * 100);
                   }}
+                  loading={
+                    <p className="w-full h-[300px] text-center leading-[300px]">
+                      <Spinner color="warning" label="Loading..." />
+                    </p>
+                  }
                 >
                   <Page
                     scale={scale}
@@ -111,38 +111,54 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
                     className="flex justify-center"
                     renderTextLayer={false}
                     renderAnnotationLayer={false}
-                    loading={<p className="w-full h-full bg-red-500 text-center">Please wait!</p>}
+                    loading={
+                      <p className="w-full h-[800px] text-center leading-[800px]">
+                        <Spinner color="warning" label="Loading..." />
+                      </p>
+                    }
                   />
                 </Document>
-                <ModalFooter className="absolute bottom-1 w-full flex justify-center items-center p-0">
-                  <div className="flex justify-center items-center gap-2">
-                    <Button onPress={() => setPageNumber(pageNumber - 1)} size="sm" isDisabled={pageNumber === 1}>
-                      Prev
-                    </Button>
-                    <p className="whitespace-nowrap text-sm">
-                      {pageNumber} of {numPages}
-                    </p>
-                    <Button
-                      onPress={() => setPageNumber(pageNumber + 1)}
-                      size="sm"
-                      isDisabled={pageNumber === numPages}
-                    >
-                      Next
-                    </Button>
-                    <Slider
-                      className="min-w-32"
-                      // color="foreground"
-                      defaultValue={scale}
-                      onChange={(value) => setScale(Number(value))}
-                      maxValue={2}
-                      minValue={isMobile ? 0.5 : 1}
-                      endContent={<ZoomIn />}
-                      startContent={<ZoomOut />}
-                      size="sm"
-                      step={0.1}
-                    />
-                  </div>
-                </ModalFooter>
+                {value < 100 && (
+                  <Progress
+                    className="max-w-full"
+                    color="success"
+                    isStriped
+                    showValueLabel={true}
+                    size="md"
+                    value={value}
+                  />
+                )}
+                {value >= 100 && (
+                  <ModalFooter className="absolute bottom-1 w-full flex justify-center items-center p-0">
+                    <div className="flex justify-center items-center gap-2">
+                      <Button onPress={() => setPageNumber(pageNumber - 1)} size="sm" isDisabled={pageNumber === 1}>
+                        <ChevronLeft />
+                      </Button>
+                      <p className="whitespace-nowrap text-sm">
+                        {pageNumber} of {numPages}
+                      </p>
+                      <Button
+                        onPress={() => setPageNumber(pageNumber + 1)}
+                        size="sm"
+                        isDisabled={pageNumber === numPages}
+                      >
+                        <ChevronRight />
+                      </Button>
+                      <Slider
+                        className="min-w-32"
+                        // color="foreground"
+                        defaultValue={scale}
+                        onChange={(value) => setScale(Number(value))}
+                        maxValue={2}
+                        minValue={isMobile ? 0.5 : 1}
+                        endContent={<ZoomIn />}
+                        startContent={<ZoomOut />}
+                        size="sm"
+                        step={0.1}
+                      />
+                    </div>
+                  </ModalFooter>
+                )}
               </ModalBody>
             </>
           )}
