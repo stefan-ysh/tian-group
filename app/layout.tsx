@@ -28,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps) {
         <Providers>
           <Header toggleTheme={(isDark: boolean) => setIsDark(isDark)} />
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </Providers>
       </body>
     </html>
