@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 import Image from 'next/image';
 import Link from 'next/link';
-
+import { Card, Skeleton } from '@nextui-org/react';
 import { findLatestMembers } from '~/utils/posts';
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ export default async function Home({}) {
           Activities
         </h1>
       </header>
-      <div className="grid grid-cols-1 gap-6  p-4 md:p-0 lg:grid-cols-2">
+      {/* <div className="grid grid-cols-1 gap-6  p-4 md:p-0 lg:grid-cols-2">
         {posts.map(({ slug, title, image }: { slug: string; title: string; image: string }) => (
           <div key={slug} className="flex flex-col overflow-hidden rounded-xl border border-gray-200 shadow-lg">
             <Link href={`/${slug}`}>
@@ -27,7 +27,24 @@ export default async function Home({}) {
             </Link>
           </div>
         ))}
-      </div>
+ 
+      </div> */}
+      <Card className="w-full mx-auto space-y-5 p-4" radius="lg">
+        <Skeleton className="rounded-lg">
+          <div className="h-24 rounded-lg bg-default-300" />
+        </Skeleton>
+        <div className="space-y-3">
+          <Skeleton className="w-3/5 rounded-lg">
+            <div className="h-3 w-3/5 rounded-lg bg-default-200" />
+          </Skeleton>
+          <Skeleton className="w-4/5 rounded-lg">
+            <div className="h-3 w-4/5 rounded-lg bg-default-200" />
+          </Skeleton>
+          <Skeleton className="w-2/5 rounded-lg">
+            <div className="h-3 w-2/5 rounded-lg bg-default-300" />
+          </Skeleton>
+        </div>
+      </Card>
     </section>
   );
 }
