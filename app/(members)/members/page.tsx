@@ -7,9 +7,11 @@ import { findLatestMembers } from '~/utils/members';
 export const metadata: Metadata = {
   title: 'Members',
 };
+const options = ['Graduate', 'Doctoral', 'Postdoctoral', 'Lecturer', 'Professor'];
 
 export default async function Home({}) {
   const members = await findLatestMembers();
+
   return (
     <section className="mx-auto px-0 md:px-20 py-12 ">
       <header>
@@ -29,7 +31,9 @@ export default async function Home({}) {
                 className="w-full h-full md:w-[300px] md:h-[300px] p-0 sm:p-1 md:p-2 !object-contain"
               />
               <div className="w-full flex justify-around items-center">
-                <Chip color="warning" variant="light">研究生</Chip>
+                <Chip color="warning" variant="light">
+                  {options[Math.floor(Math.random() * options.length)]}
+                </Chip>
                 <h2 className="p-4 font-bold">{name}</h2>
               </div>
             </Link>
