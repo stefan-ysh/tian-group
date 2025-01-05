@@ -57,7 +57,7 @@ const Header = ({toggleTheme}: any) => {
 
   return (
     <header
-      className={`top-0 z-40 mx-auto w-full flex-none  transition-all duration-100 ease-in md:backdrop-blur-sm  ${
+      className={`top-0 z-40 mx-auto w-full flex-none transition-all duration-100 ease-in backdrop-blur-sm  ${
         isSticky ? 'sticky' : 'relative'
       } ${isToggleMenuOpen ? 'h-screen md:h-auto' : 'h-auto'}`}
       id="header"
