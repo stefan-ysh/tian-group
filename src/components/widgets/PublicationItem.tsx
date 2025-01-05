@@ -1,10 +1,19 @@
 'use client';
-import { Calendar, ExternalLink, User } from 'lucide-react';
-import { Link, Card, Image, Spinner } from '@nextui-org/react';
+import { Calendar, ZoomIn, ZoomOut, User } from 'lucide-react';
+import { Card, Image } from '@nextui-org/react';
+import { Slider } from '@nextui-org/slider';
 import React from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
 import { Tooltip } from '@nextui-org/tooltip';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { Document, Page } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
+import { Progress } from '@nextui-org/react';
+import { pdfjs } from 'react-pdf';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/build/pdf.worker.min.mjs', import.meta.url).toString();
 interface PublicationItemProps {
   title: string;
   image: string;
@@ -18,6 +27,16 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoaded, setIsLoaded] = React.useState(false);
   const router = useRouter();
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+  const [value, setValue] = React.useState(0);
+  const [scale, setScale] = React.useState(isMobile ? 0.5 : 1);
+
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+    setNumPages(numPages);
+  }
+  const [numPages, setNumPages] = useState<number>(1);
+  const [pageNumber, setPageNumber] = useState<number>(1);
   return (
     <Card
       key={slug}
@@ -25,13 +44,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
     >
       <div
         onClick={() => {
-          const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-          if (isMobile) {
-            // todo: add mobile support pdf viewer
-            router.push(link);
-          } else {
-            onOpen();
-          }
+          onOpen();
         }}
         className="w-4/5 md:w-3/5 flex flex-col md:flex-row mx-auto md:m-auto items-center justify-center cursor-pointer"
       >
@@ -44,47 +57,93 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
       </div>
       <div className="w-full md:w-11/12 flex flex-col justify-between">
         <h2 className="text-md font-semibold ">{title}</h2>
-        <div className="flex items-center gap-3 flex-wrap">
-          {author.map((author, index) => (
-            // <span className="text-xs mr-1 opacity-70">{author}</span>
-            <Tooltip content={author} key={index}>
-              <div className="w-5 h-5 border leading-5 text-center border-gray-200 rounded-full text-[10px] opacity-70 hover:bg-slate-600 hover:text-white" key={index}>
-                {author
-                  .split(' ')
-                  .map((name) => name[0])
-                  .join('')}
-              </div>
-            </Tooltip>
-          ))}
+        <div className="flex items-center gap-3 flex-wrap my-1">
+          {author.map((author, index) =>
+            isMobile ? (
+              <span className="text-xs">{author}</span>
+            ) : (
+              <Tooltip content={author} key={index}>
+                <div
+                  className="w-5 h-5 border leading-5 text-center border-gray-200 rounded-full text-[10px] opacity-70 hover:bg-slate-600 hover:text-white"
+                  key={index}
+                >
+                  {author
+                    .split(' ')
+                    .map((name) => name[0])
+                    .join('')}
+                </div>
+              </Tooltip>
+            ),
+          )}
         </div>
         <div className="flex items-center">
           <div className="flex items-center gap-1">
             <Calendar size={16} />
             <span className="text-xs">{publishDate}</span>
           </div>
-
-          {/* <Link isExternal showAnchorIcon anchorIcon={<ExternalLink size={16} />} href={link} className="ml-1 text-xs">
-            View
-          </Link> */}
         </div>
       </div>
-      <Modal isOpen={isOpen} size={'5xl'} onClose={onClose} scrollBehavior="inside" backdrop="blur">
+      <Modal isOpen={isOpen} size={'5xl'} onClose={onClose} scrollBehavior="inside" backdrop="blur" placement="center">
         <ModalContent>
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">{title}</ModalHeader>
-              <ModalBody>
-                {!isLoaded && <Spinner label="Loading..." />}
-                <iframe
-                  src={`/publications/${slug}.pdf#view=FitH,top&scrollbars=10&toolbar=0&statusbar=0`}
-                  className="w-full h-[100vh]"
-                  style={{
-                    display: !isLoaded ? 'none' : 'block',
+              <ModalBody className="py-0 px-5 overflow-auto mb-10">
+                {value < 100 && (
+                  <Progress
+                    aria-label="Downloading..."
+                    className="max-w-md"
+                    color="success"
+                    showValueLabel={true}
+                    size="md"
+                    value={value}
+                  />
+                )}
+                <Document
+                  file={`/publications/${slug}.pdf`}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                  onLoadProgress={({ loaded, total }) => {
+                    setValue((loaded / total) * 100);
                   }}
-                  onLoad={() => {
-                    setIsLoaded(true);
-                  }}
-                ></iframe>
+                >
+                  <Page
+                    scale={scale}
+                    pageNumber={pageNumber}
+                    className="flex justify-center"
+                    renderTextLayer={false}
+                    renderAnnotationLayer={false}
+                    loading={<p className="w-full h-full bg-red-500 text-center">Please wait!</p>}
+                  />
+                </Document>
+                <ModalFooter className="absolute bottom-1 w-full flex justify-center items-center p-0">
+                  <div className="flex justify-center items-center gap-2">
+                    <Button onPress={() => setPageNumber(pageNumber - 1)} size="sm" isDisabled={pageNumber === 1}>
+                      Prev
+                    </Button>
+                    <p className="whitespace-nowrap text-sm">
+                      {pageNumber} of {numPages}
+                    </p>
+                    <Button
+                      onPress={() => setPageNumber(pageNumber + 1)}
+                      size="sm"
+                      isDisabled={pageNumber === numPages}
+                    >
+                      Next
+                    </Button>
+                    <Slider
+                      className="min-w-32"
+                      // color="foreground"
+                      defaultValue={scale}
+                      onChange={(value) => setScale(Number(value))}
+                      maxValue={2}
+                      minValue={isMobile ? 0.5 : 1}
+                      endContent={<ZoomIn />}
+                      startContent={<ZoomOut />}
+                      size="sm"
+                      step={0.1}
+                    />
+                  </div>
+                </ModalFooter>
               </ModalBody>
             </>
           )}

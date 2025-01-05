@@ -9,6 +9,19 @@ module.exports = {
 
   swcMinify: true,
   poweredByHeader: false,
+  webpack: (config) => {
+    config.resolve.alias.canvas = false;
+
+    return config;
+  },
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        canvas: './empty-module.ts',
+      },
+    },
+  },
+  swcMinify: false,
   images: {
     remotePatterns: [
       {
