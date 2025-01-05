@@ -47,8 +47,8 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
         <div className="flex items-center gap-3 flex-wrap">
           {author.map((author, index) => (
             // <span className="text-xs mr-1 opacity-70">{author}</span>
-            <Tooltip content={author}>
-              <div className="w-5 h-5 border leading-5 text-center border-gray-200 rounded-full text-[10px] opacity-70 hover:bg-slate-600 hover:text-white">
+            <Tooltip content={author} key={index}>
+              <div className="w-5 h-5 border leading-5 text-center border-gray-200 rounded-full text-[10px] opacity-70 hover:bg-slate-600 hover:text-white" key={index}>
                 {author
                   .split(' ')
                   .map((name) => name[0])
@@ -76,7 +76,6 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
               <ModalBody>
                 {!isLoaded && <Spinner label="Loading..." />}
                 <iframe
-                  // todo : add pdf viewer url file
                   src={`/publications/${slug}.pdf#view=FitH,top&scrollbars=10&toolbar=0&statusbar=0`}
                   className="w-full h-[100vh]"
                   style={{
