@@ -76,7 +76,7 @@ export const headerData: HeaderProps = {
 
 // Footer data
 export const footerData: FooterProps = {
-  title: 'T lab',
+  title: 'Tian group',
   links: [
     {
       label: 'Index',

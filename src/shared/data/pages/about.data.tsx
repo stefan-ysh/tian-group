@@ -53,7 +53,7 @@ export const hero2About: HeroProps = {
   },
   image: {
     src: hero2Img,
-    alt: 'Hero T lab',
+    alt: 'Hero Tian group',
   },
 };
 
@@ -145,7 +145,7 @@ export const stepsAbout: StepsProps = {
   hasBackground: true,
   isImageDisplayed: false,
   header: {
-    title: 'History of T lab',
+    title: 'History of Tian group',
     subtitle:
       'Duis sit amet magna et sapien cursus fermentum. Curabitur ac mauris non magna condimentum scelerisque. Aliquam nunc ipsum, semper ac scelerisque sit amet, pulvinar vitae libero.',
     tagline: 'Company History',

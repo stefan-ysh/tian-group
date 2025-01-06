@@ -26,9 +26,9 @@ const Header = ({ toggleTheme }: any) => {
       <NavbarContent>
         <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="sm:hidden" />
         {isMenuOpen}
-        <NavbarBrand>
+        {/* <NavbarBrand>
           <Logo />
-        </NavbarBrand>
+        </NavbarBrand> */}
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
