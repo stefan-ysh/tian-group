@@ -100,9 +100,9 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
                     setValue((loaded / total) * 100);
                   }}
                   loading={
-                    <p className="w-full h-[300px] text-center leading-[300px]">
+                    <div className="w-full h-[300px] text-center leading-[300px]">
                       <Spinner color="warning" label="Loading..." />
-                    </p>
+                    </div>
                   }
                 >
                   <Page
@@ -112,9 +112,9 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
                     renderTextLayer={false}
                     renderAnnotationLayer={false}
                     loading={
-                      <p className="w-full h-[800px] text-center leading-[800px]">
+                      <div className="w-full h-[800px] text-center leading-[800px]">
                         <Spinner color="warning" label="Loading..." />
-                      </p>
+                      </div>
                     }
                   />
                 </Document>
@@ -122,6 +122,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
                   <Progress
                     className="max-w-full"
                     color="success"
+                    aria-label="Loading..."
                     isStriped
                     showValueLabel={true}
                     size="md"
@@ -147,6 +148,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
                       <Slider
                         className="min-w-32"
                         // color="foreground"
+                        aria-label="Loading..."
                         defaultValue={scale}
                         onChange={(value) => setScale(Number(value))}
                         maxValue={2}
