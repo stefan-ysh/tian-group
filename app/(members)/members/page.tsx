@@ -14,9 +14,6 @@ export default async function Home({}) {
 
   return (
     <section className="mx-auto px-0 md:px-20 py-12 ">
-      <header>
-        <h1 className="leading-tighter font-heading mb-8 text-center text-4xl font-bold tracking-tighter">Members</h1>
-      </header>
       <div className="grid grid-cols-1 gap-6 p-4 md:p-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {members.map(({ slug, name, avatar }: { slug: string; name: string; avatar: string }) => (
           <Card key={slug} className="mx-auto w-4/5 sm:w-full flex flex-col overflow-hidden rounded-xl shadow-lg p-2">

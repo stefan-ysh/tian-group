@@ -40,7 +40,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
   return (
     <Card
       key={slug}
-      className="flex flex-col md:flex-row overflow-hidden rounded-xl shadow-lg hover:shadow-none transition-all duration-500 p-5 md:p-2"
+      className="flex flex-col md:flex-row overflow-hidden rounded-xl shadow-lg hover:shadow-none transition-all duration-500 p-5 md:p-2 gap-5"
     >
       <div
         onClick={() => {

@@ -25,7 +25,7 @@ export const announcementData: AnnouncementProps = {
 export const headerData: HeaderProps = {
   links: [
     {
-      label: 'Index',
+      label: 'Home',
       href: '/',
     },
     {
