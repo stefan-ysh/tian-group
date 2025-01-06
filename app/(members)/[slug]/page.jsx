@@ -8,7 +8,7 @@ export const dynamicParams = false;
 
 const getFormattedDate = (date) => date;
 
-export async function generateMetadata({ params}) {
+export async function generateMetadata({ params }) {
   const member = await findMembersByName(params.slug);
   if (!member) {
     return notFound();
@@ -31,8 +31,8 @@ export default async function Page({ params }) {
     <section className="mx-auto py-8 sm:py-16 lg:py-20">
       <article>
         <header className={member.image ? 'text-center' : ''}>
-          <h1 className="leading-tighter font-heading mx-auto mb-8 max-w-3xl px-4 text-4xl font-bold tracking-tighter sm:px-6 md:text-5xl">
-            {member.name}
+          <h1 className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 text-2xl font-bold tracking-tighter sm:px-6 md:text-3xl">
+            👋 Hi there, I'm {member.name}
           </h1>
           {member.image ? (
             <Image
