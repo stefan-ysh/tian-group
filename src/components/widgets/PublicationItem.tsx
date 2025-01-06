@@ -24,6 +24,7 @@ interface PublicationItemProps {
 const ForwardedModalBody = forwardRef<HTMLDivElement, any>((props, ref) => (
   <ModalBody {...props} ref={ref} />
 ));
+ForwardedModalBody.displayName = 'ForwardedModalBody';
 
 export const PublicationItem = ({ title, image, slug, publishDate, link, author }: PublicationItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
