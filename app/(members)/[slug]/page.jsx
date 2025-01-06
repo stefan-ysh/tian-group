@@ -31,8 +31,8 @@ export default async function Page({ params }) {
     <section className="mx-auto py-8 sm:py-16 lg:py-20">
       <article>
         <header className={member.image ? 'text-center' : ''}>
-          <h1 className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 text-2xl font-bold tracking-tighter sm:px-6 md:text-3xl">
-            👋 Hi there, I'm {member.name}
+          <h1 className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 text-1xl font-bold tracking-tighter sm:px-6 md:text-2xl">
+            👋 Hi there, I&apos;m {member.name}
           </h1>
           {member.image ? (
             <Image
