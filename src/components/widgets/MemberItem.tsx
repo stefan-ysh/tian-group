@@ -7,11 +7,10 @@ interface MemberItemProps {
   name: string;
   slug: string;
   avatar: string;
+  position: string;
 }
 
-const options = ['Graduate', 'Doctoral', 'Postdoctoral', 'Lecturer', 'Professor'];
-
-export const MemberItem = ({ name, slug, avatar }: MemberItemProps) => {
+export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) => {
   const router = useRouter();
 
   return (
@@ -33,7 +32,7 @@ export const MemberItem = ({ name, slug, avatar }: MemberItemProps) => {
         />
         <div className="w-full flex justify-around items-center">
           <Chip color="warning" variant="light">
-            {options[Math.floor(Math.random() * options.length)]}
+            {position}
           </Chip>
           <h2 className="font-bold">{name}</h2>
         </div>
