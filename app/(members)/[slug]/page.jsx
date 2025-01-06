@@ -13,7 +13,8 @@ export async function generateMetadata({ params }) {
   if (!member) {
     return notFound();
   }
-  return { title: member.title, description: member.description };
+  const title = `${member.name} - ${member.position}`;
+  return { title, description: member.description };
 }
 
 export async function generateStaticParams() {
