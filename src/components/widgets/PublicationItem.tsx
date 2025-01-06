@@ -5,7 +5,7 @@ import { Slider } from '@nextui-org/slider';
 import React from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
 import { Tooltip } from '@nextui-org/tooltip';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 // react-pdf
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -28,6 +28,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
 
   const [value, setValue] = React.useState(0);
   const [scale, setScale] = React.useState(isMobile ? 0.5 : 1);
+  const ref = useRef<HTMLDivElement>(null);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
     setNumPages(numPages);
@@ -92,7 +93,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1 text-sm">{value >= 100 ? title : ''}</ModalHeader>
-              <ModalBody className="py-0 px-5 overflow-auto mb-10">
+              <ModalBody className="py-0 px-5 overflow-auto mb-10" ref={ref}>
                 <Document
                   file={`/publications/${slug}.pdf`}
                   onLoadSuccess={onDocumentLoadSuccess}
@@ -111,6 +112,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
                     className="flex justify-center"
                     renderTextLayer={false}
                     renderAnnotationLayer={false}
+                    height={ref.current?.offsetHeight}
                     loading={
                       <div className="w-full h-[800px] text-center leading-[800px]">
                         <Spinner color="warning" label="Loading..." />
