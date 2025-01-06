@@ -9,11 +9,11 @@ module.exports = {
 
   swcMinify: true,
   poweredByHeader: false,
-  webpack: (config) => {
-    config.resolve.alias.canvas = false;
-    config.optimization.minimize = false;
-    return config;
-  },
+  // webpack: (config) => {
+  //   config.resolve.alias.canvas = false;
+  //   config.optimization.minimize = false;
+  //   return config;
+  // },
   experimental: {
     turbo: {
       resolveAlias: {
@@ -21,7 +21,7 @@ module.exports = {
       },
     },
   },
-  swcMinify: false,
+  // swcMinify: false,
   images: {
     remotePatterns: [
       {
