@@ -4,6 +4,7 @@ import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
 import { Inter as CustomFont } from 'next/font/google';
 import { useState } from 'react';
+import PageAnimatePresence from '~/components/atoms/PageAnimatePresence';
 
 import '~/assets/styles/base.css';
 
@@ -27,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps) {
       <body className="tracking-tight antialiased ">
         <Providers>
           <Header toggleTheme={(isDark: boolean) => setIsDark(isDark)} />
-          {children}
+          <PageAnimatePresence>{children}</PageAnimatePresence>
           {/* <Footer /> */}
         </Providers>
       </body>

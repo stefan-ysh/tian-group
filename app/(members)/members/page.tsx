@@ -15,8 +15,8 @@ export default async function Home({}) {
   return (
     <section className="mx-auto px-0 md:px-20 py-12 ">
       <div className="grid grid-cols-1 gap-6 p-4 md:p-0 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        {members.map(({ slug, name, avatar }: { slug: string; name: string; avatar: string }) => (
-          <MemberItem key={slug} name={name} avatar={avatar} slug={slug} />
+        {members.map(({ slug, name, avatar, position }: { slug: string; name: string; avatar: string, position: string }) => (
+          <MemberItem key={slug} name={name} avatar={avatar} slug={slug} position={position} />
         ))}
       </div>
     </section>
