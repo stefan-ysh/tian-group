@@ -1,5 +1,5 @@
 'use client';
-import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, SquareArrowOutUpRight } from 'lucide-react';
 import { Card, Image, Spinner } from '@nextui-org/react';
 import { Slider } from '@nextui-org/slider';
 import React, { forwardRef } from 'react';
@@ -21,9 +21,7 @@ interface PublicationItemProps {
   author: string[];
 }
 
-const ForwardedModalBody = forwardRef<HTMLDivElement, any>((props, ref) => (
-  <ModalBody {...props} ref={ref} />
-));
+const ForwardedModalBody = forwardRef<HTMLDivElement, any>((props, ref) => <ModalBody {...props} ref={ref} />);
 ForwardedModalBody.displayName = 'ForwardedModalBody';
 
 export const PublicationItem = ({ title, image, slug, publishDate, link, author }: PublicationItemProps) => {
@@ -96,7 +94,22 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1 text-sm">{value >= 100 ? title : ''}</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1 text-sm">
+                {value >= 100 ? (
+                  <div className="flex items-center gap-1">
+                    {/* title */}
+                    <span>{title}</span>
+                    {/* open link in new tab */}
+                    <SquareArrowOutUpRight
+                      onClick={() => window.open(link, '_blank')}
+                      className="cursor-pointer"
+                      size={16}
+                    />
+                  </div>
+                ) : (
+                  ''
+                )}
+              </ModalHeader>
               <ForwardedModalBody className="py-0 px-5 overflow-auto mb-10" ref={ref}>
                 <Document
                   file={`/publications/${slug}.pdf`}
