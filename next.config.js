@@ -11,7 +11,7 @@ module.exports = {
   poweredByHeader: false,
   webpack: (config) => {
     config.resolve.alias.canvas = false;
-
+    config.optimization.minimize = false;
     return config;
   },
   experimental: {
@@ -21,7 +21,7 @@ module.exports = {
       },
     },
   },
-  // swcMinify: false,
+  swcMinify: false,
   images: {
     remotePatterns: [
       {
