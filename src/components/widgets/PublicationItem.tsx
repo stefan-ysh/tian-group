@@ -2,7 +2,7 @@
 import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, Image, Spinner } from '@nextui-org/react';
 import { Slider } from '@nextui-org/slider';
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
 import { Tooltip } from '@nextui-org/tooltip';
 import { useState, useRef } from 'react';
@@ -21,6 +21,10 @@ interface PublicationItemProps {
   link: string;
   author: string[];
 }
+
+const ForwardedModalBody = forwardRef<HTMLDivElement, any>((props, ref) => (
+  <ModalBody {...props} ref={ref} />
+));
 
 export const PublicationItem = ({ title, image, slug, publishDate, link, author }: PublicationItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -93,7 +97,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1 text-sm">{value >= 100 ? title : ''}</ModalHeader>
-              <ModalBody className="py-0 px-5 overflow-auto mb-10" ref={ref}>
+              <ForwardedModalBody className="py-0 px-5 overflow-auto mb-10" ref={ref}>
                 <Document
                   file={`/publications/${slug}.pdf`}
                   onLoadSuccess={onDocumentLoadSuccess}
@@ -163,7 +167,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
                     </div>
                   </ModalFooter>
                 )}
-              </ModalBody>
+              </ForwardedModalBody>
             </>
           )}
         </ModalContent>
