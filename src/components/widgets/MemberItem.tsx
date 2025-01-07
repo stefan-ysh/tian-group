@@ -30,11 +30,11 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
           src={`${avatar}`}
           className="w-full h-full md:w-[300px] md:h-[300px] p-0 sm:p-1 md:p-2 !object-cover"
         />
-        <div className="w-full flex justify-around items-center">
-          <Chip color="warning" variant="light">
+        <div className="w-full flex justify-around items-center text-xs">
+          <Chip color="warning" variant="flat" size='sm'>
             {position}
           </Chip>
-          <h2 className="font-bold">{name}</h2>
+          <h2 className="font-bold whitespace-nowrap">{name}</h2>
         </div>
       </div>
     </Card>
