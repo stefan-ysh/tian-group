@@ -1,5 +1,5 @@
 'use client';
-import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, SquareArrowOutUpRight } from 'lucide-react';
+import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, SquareArrowOutUpRight, Book } from 'lucide-react';
 import { Card, Image, Spinner } from '@nextui-org/react';
 import { Slider } from '@nextui-org/slider';
 import React, { forwardRef } from 'react';
@@ -19,12 +19,13 @@ interface PublicationItemProps {
   publishDate: string;
   link: string;
   author: string[];
+  journal: string;
 }
 
 const ForwardedModalBody = forwardRef<HTMLDivElement, any>((props, ref) => <ModalBody {...props} ref={ref} />);
 ForwardedModalBody.displayName = 'ForwardedModalBody';
 
-export const PublicationItem = ({ title, image, slug, publishDate, link, author }: PublicationItemProps) => {
+export const PublicationItem = ({ title, image, slug, publishDate, link, author, journal }: PublicationItemProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
@@ -82,7 +83,11 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author 
           )}
         </div>
         {/* publish date */}
-        <div className="flex items-center">
+        <div className="flex items-center justify-between pr-1">
+          <div className="flex items-center gap-1">
+            <Book size={16} />
+            <span className="text-xs">{journal}</span>
+          </div>
           <div className="flex items-center gap-1">
             <Calendar size={16} />
             <span className="text-xs">{publishDate}</span>

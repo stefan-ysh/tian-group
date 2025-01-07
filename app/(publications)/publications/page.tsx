@@ -8,6 +8,18 @@ export const metadata: Metadata = {
   title: 'Publications',
 };
 
+interface Publication {
+  slug: string;
+  title: string;
+  image: string;
+  link: string;
+  publishDate: string;
+  description: string;
+  author: string[];
+  journal: string;
+  tags: string[];
+}
+
 export default async function Home({}) {
   const publications = await findLatestPublications();
   return (
@@ -21,19 +33,20 @@ export default async function Home({}) {
             link,
             publishDate,
             author,
+            journal,
             tags,
             description,
-          }: {
-            slug: string;
-            title: string;
-            image: string;
-            link: string;
-            publishDate: string;
-            description: string;
-            author: string[];
-            tags: string[];
-          }) => (
-            <PublicationItem title={title} image={image} slug={slug} publishDate={publishDate} link={link} key={slug} author={author} />
+          }: Publication) => (
+            <PublicationItem
+              title={title}
+              image={image}
+              slug={slug}
+              publishDate={publishDate}
+              link={link}
+              key={slug}
+              journal={journal}
+              author={author}
+            />
           ),
         )}
       </div>
