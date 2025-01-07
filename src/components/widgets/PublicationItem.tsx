@@ -70,8 +70,8 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author,
               </span>
             ) : (
               <Tooltip content={author} key={index}>
-                <div className="leading-4 text-center opacity-60 hover:text-gray-900 hover:opacity-100" key={index}>
-                  <Avatar color="primary" className="w-4 h-4 border border-primary p-1">
+                <div className="leading-4 text-center opacity-60 hover:opacity-100" key={index}>
+                  <Avatar color="primary" className="w-4 h-4 border border-primary p-1 hover:border-2">
                     <AvatarImage src="link" alt={author} />
                     <AvatarFallback>
                       <span className="text-[8px]">
