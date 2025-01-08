@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card, CardBody, Image, Button, Slider } from '@nextui-org/react';
 import { Mail, School } from 'lucide-react';
+import DirectionAwareHover from '~/components/ui/direction-aware-hover';
 
 export default function App() {
   return (
@@ -14,17 +15,15 @@ export default function App() {
         <CardBody>
           <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
             <div className="relative col-span-6 md:col-span-4">
-              <Image
-                alt="Album cover"
-                className="object-cover"
-                height={200}
-                shadow="md"
-                src="https://nextui.org/images/album-cover.png"
-                width="100%"
-              />
+              <DirectionAwareHover
+                imageUrl="https://nextui.org/images/album-cover.png"
+                className="w-full h-full md:w-[200px] md:h-[200px]"
+                imageClassName="h-full w-full rounded-md object-cover shadow-sm"
+              >
+                Tian Tian
+              </DirectionAwareHover>
             </div>
-
-            <div className="flex flex-col col-span-6 md:col-span-8">
+            <div className="flex flex-col col-span-6 md:col-span-8 ml-4">
               <div className="flex justify-between items-start">
                 <div className="flex flex-col gap-0">
                   <div className="flex items-end gap-2">
