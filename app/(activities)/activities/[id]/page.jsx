@@ -2,14 +2,14 @@ import md from 'markdown-it';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-import { findMembersByName, findLatestMembers } from '~/utils/activities';
+import { findActivitiesByName, findLatestActivities } from '~/utils/activities';
 
 export const dynamicParams = false;
 
 const getFormattedDate = (date) => date;
 
 export async function generateMetadata({ params }) {
-  const activity = await findMembersByName(params.id);
+  const activity = await findActivitiesByName(params.id);
   if (!activity) {
     return notFound();
   }
@@ -18,11 +18,11 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  return (await findLatestMembers()).map(({ id }) => ({ id }));
+  return (await findLatestActivities()).map(({ id }) => ({ id }));
 }
 
 export default async function Page({ params }) {
-  const activity = await findMembersByName(params.id);
+  const activity = await findActivitiesByName(params.id);
 
   if (!activity) {
     return notFound();

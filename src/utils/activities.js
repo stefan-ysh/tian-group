@@ -12,7 +12,7 @@ const load = () => {
       .filter((filename) => filename.endsWith('.md'))
       .map(async (filename) => {
         const id = filename.replace('.md', '');
-        return await findMembersByName(id);
+        return await findActivitiesByName(id);
       }),
   );
 
@@ -22,22 +22,22 @@ const load = () => {
 let _memberss;
 
 /** */
-export const fetchMembers = async () => {
+export const fetchActivities = async () => {
   _memberss = _memberss || load();
 
   return await _memberss;
 };
 
 /** */
-export const findLatestMembers = async ({ count } = {}) => {
+export const findLatestActivities = async ({ count } = {}) => {
   const _count = count || 40;
-  const activities = await fetchMembers();
+  const activities = await fetchActivities();
 
   return activities ? activities.slice(_count * -1) : [];
 };
 
 /** */
-export const findMembersByName = async (id) => {
+export const findActivitiesByName = async (id) => {
   if (!id) return null;
 
   try {
@@ -57,7 +57,7 @@ export const findMembersByName = async (id) => {
 export const findPostsByIds = async (ids) => {
   if (!Array.isArray(ids)) return [];
 
-  const activities = await fetchMembers();
+  const activities = await fetchActivities();
 
   return ids.reduce(function (r, id) {
     activities.some(function (post) {

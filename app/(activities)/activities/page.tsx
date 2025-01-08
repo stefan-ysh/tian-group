@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 
-import { findLatestMembers } from '~/utils/activities';
+import { findLatestActivities } from '~/utils/activities';
 
 import { ActivityItem } from '~/components/widgets/ActivityItem';
 
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home({}) {
-  const members = await findLatestMembers();
+  const members = await findLatestActivities();
 
   return (
     <section className="mx-auto px-0 md:px-20 py-12 ">
