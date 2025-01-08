@@ -57,7 +57,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author,
           alt={title}
           isZoomed
           src={image}
-          className="w-11/12 h-11/12 mx-auto md:w-[200px] md:h-[200px] p-10 md:p-1 !object-contain"
+          className="w-11/12 h-11/12 mx-auto md:w-[200px] md:h-[200px] p-2 md:p-1 !object-contain"
         />
       </div>
       <div className="w-full md:w-11/12 flex flex-col justify-between">
