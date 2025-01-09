@@ -12,29 +12,19 @@ const ToggleThemeMode = () => {
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
     if (storedTheme) {
-      if (storedTheme === 'dark' || storedTheme === 'light') {
-        setTheme(storedTheme);
-        document.documentElement.classList?.add(storedTheme);
-      } else {
-        const darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const newTheme = darkMode ? 'dark' : 'light';
-        document.documentElement.classList?.add(newTheme);
-      }
+      setTheme(storedTheme);
     }
     setMounted(true);
   }, [setTheme]);
 
   const handleOnClick = useCallback(() => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(newTheme);
-    const classList = document.documentElement.classList;
-    // 切换 html 的 class,如果存在dark 则删除 dark
-    if (classList.contains('dark')) {
-      classList.remove('dark');
+    let newTheme;
+    if(theme !== 'system') {
+      newTheme = theme === 'dark' ? 'light' : 'dark';
     } else {
-      classList.add(newTheme);
+      newTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
     }
-    localStorage.setItem('theme', newTheme);
+    setTheme(newTheme);
   }, [theme, setTheme]);
 
   return (
