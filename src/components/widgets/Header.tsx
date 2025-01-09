@@ -15,7 +15,7 @@ import {
   NavbarMenuItem,
 } from '@nextui-org/react';
 
-const Header = ({ toggleTheme }: any) => {
+const Header = () => {
   const { links, actions, isSticky, showToggleTheme, showRssFeed, position } = headerData;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
@@ -53,7 +53,7 @@ const Header = ({ toggleTheme }: any) => {
         <NavbarItem>
           <div className="hidden fixed bottom-0 left-0 w-full justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 md:bg-transparent md:dark:bg-transparent md:border-none  dark:bg-slate-900 border-t border-gray-200 dark:border-slate-600">
             <div className="flex w-full items-center justify-between md:w-auto">
-              {showToggleTheme && <ToggleThemeMode toggleTheme={toggleTheme} />}
+              {showToggleTheme && <ToggleThemeMode />}
             </div>
           </div>
         </NavbarItem>
@@ -77,7 +77,7 @@ const Header = ({ toggleTheme }: any) => {
           ))}
         <div className="fixed bottom-0 left-0 w-full justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 md:bg-transparent md:dark:bg-transparent md:border-none  dark:bg-transparent border-t border-gray-200 dark:border-slate-600">
           <div className="flex w-full items-center justify-between md:w-auto">
-            {showToggleTheme && <ToggleThemeMode toggleTheme={toggleTheme} />}
+            {showToggleTheme && <ToggleThemeMode />}
           </div>
         </div>
       </NavbarMenu>
