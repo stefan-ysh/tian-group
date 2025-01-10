@@ -346,7 +346,6 @@ type ContactProps = Widget & {
 type FooterProps = {
   title?: string;
   links?: Array<Link>;
-  code: string;
   socials: Array<Link>;
   footNote?: string | ReactElement;
   theme?: string;
