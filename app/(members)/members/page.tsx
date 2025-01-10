@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+export const runtime = 'edge';
 
 import { findLatestMembers } from '~/utils/members';
 

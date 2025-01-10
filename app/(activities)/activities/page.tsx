@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   title: 'Activities',
 };
 
+export const runtime = 'edge';
+
 export default async function Home({}) {
   const members = await findLatestActivities();
 

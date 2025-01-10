@@ -14,6 +14,8 @@ export interface LayoutProps {
   children: React.ReactNode;
 }
 
+export const runtime = 'edge';
+
 export default async function RootLayout({
   children,
   params: { locale },

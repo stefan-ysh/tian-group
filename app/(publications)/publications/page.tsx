@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: 'Publications',
 };
 
+export const runtime = 'edge';
+
 interface Publication {
   slug: string;
   title: string;
