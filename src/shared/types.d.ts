@@ -350,6 +350,7 @@ type FooterProps = {
   socials: Array<Link>;
   footNote?: string | ReactElement;
   theme?: string;
+  columns: Array<Column>;
 };
 
 type HeaderProps = {

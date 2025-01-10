@@ -89,22 +89,27 @@ export const footerData: FooterProps = {
     {
       label: 'Index',
       href: '/',
+      code: 'home',
     },
     {
       label: 'Research',
       href: '/research',
+      code: 'research',
     },
     {
       label: 'Publications',
       href: '/publications',
+      code: 'publications',
     },
     {
       label: 'Members',
       href: '/members',
+      code: 'members',
     },
     {
       label: 'News',
       href: '/news',
+      code: 'news',
     },
     // {
     //   label: 'Terms & Conditions',
@@ -113,14 +118,17 @@ export const footerData: FooterProps = {
     {
       label: 'Activities',
       href: '/activities',
+      code: 'activities',
     },
     {
       label: 'Join Us',
       href: '/joinus',
+      code: 'joinus',
     },
     {
       label: 'Contact',
       href: '/contact',
+      code: 'contact',
     },
   ],
   columns: [
