@@ -25,7 +25,7 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
           isZoomed
           width={200}
           height={200}
-          isBlurred
+          // isBlurred
           alt={name}
           src={`${avatar}`}
           className="w-full h-full md:w-[300px] md:h-[300px] p-0 sm:p-1 md:p-2 !object-cover"
