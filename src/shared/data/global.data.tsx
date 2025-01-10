@@ -238,10 +238,10 @@ export const footerData: FooterProps = {
     // },
   ],
   socials: [
-    { label: 'Twitter', icon: IconBrandTwitter, href: '#' },
-    { label: 'Instagram', icon: IconBrandInstagram, href: '#' },
-    { label: 'Facebook', icon: IconBrandFacebook, href: '#' },
-    { label: 'RSS', icon: IconRss, href: '#' },
+    { label: 'Twitter', icon: IconBrandTwitter, href: '#', code: 'twitter' },
+    { label: 'Instagram', icon: IconBrandInstagram, href: '#', code: 'instagram' },
+    { label: 'Facebook', icon: IconBrandFacebook, href: '#', code: 'facebook' },
+    { label: 'RSS', icon: IconRss, href: '#', code: 'rss' },
   ],
   footNote: (
     <div className="mr-4 rtl:mr-0 rtl:ml-4 text-sm">
