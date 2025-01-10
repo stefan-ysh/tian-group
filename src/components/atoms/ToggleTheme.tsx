@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { IconSun, IconMoon } from '@tabler/icons-react';
-import { Switch } from '@nextui-org/react';
+import { Button } from '@nextui-org/react';
 import { useTheme } from 'next-themes';
 
-const ToggleThemeMode = () => {
+const ToggleTheme = () => {
   const [mounted, setMounted] = useState<boolean>(false);
 
   const { theme, setTheme } = useTheme();
@@ -30,15 +30,9 @@ const ToggleThemeMode = () => {
   return (
     <>
       {mounted ? (
-        <Switch
-          onChange={handleOnClick}
-          defaultSelected={document.documentElement.classList.contains('light')}
-          color="success"
-          size="md"
-          thumbIcon={({ isSelected, className }) =>
-            isSelected ? <IconSun size={16} className={className} /> : <IconMoon size={16} className={className} />
-          }
-        />
+        <Button onPress={handleOnClick} size="sm" isIconOnly aria-label="Toggle dark mode" variant="light">
+          {document.documentElement.classList.contains('light') ? <IconSun size={16} /> : <IconMoon size={16} />}
+        </Button>
       ) : (
         null
       )}
@@ -46,4 +40,4 @@ const ToggleThemeMode = () => {
   );
 };
 
-export default ToggleThemeMode;
+export default ToggleTheme;

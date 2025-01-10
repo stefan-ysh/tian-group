@@ -178,6 +178,7 @@ type Testimonial = {
 type Link = {
   label?: string;
   href?: string;
+  code: string;
   ariaLabel?: string;
   icon?: Icon;
 };
@@ -345,7 +346,7 @@ type ContactProps = Widget & {
 type FooterProps = {
   title?: string;
   links?: Array<Link>;
-  columns: Array<Links>;
+  code: string;
   socials: Array<Link>;
   footNote?: string | ReactElement;
   theme?: string;

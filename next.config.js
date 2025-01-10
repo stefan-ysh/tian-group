@@ -1,7 +1,10 @@
 const SITE = require('./src/config.js').SITE;
+const createNextIntlPlugin = require('next-intl/plugin');
+
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
-module.exports = {
+const nextConfig = {
   reactStrictMode: true,
 
   trailingSlash: SITE.trailingSlash,
@@ -37,5 +40,7 @@ module.exports = {
         hostname: 'source.unsplash.com',
       },
     ],
-  }
+  },
 };
+
+module.exports = withNextIntl(nextConfig);

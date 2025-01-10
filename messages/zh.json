@@ -1,0 +1,18 @@
+{
+    "HomePage": {
+      "title": "你好世界",
+      "about": "前往关于我界面"
+    },
+    "Header":{
+        "NavMenu": {
+            "home": "主页",
+            "research": "研究方向",
+            "publications": "成果及论文",
+            "members": "组员介绍",
+            "news": "课题组新闻",
+            "activities": "组内活动",
+            "joinus": "加入我们",
+            "contact": "联系我们"
+        }
+    }
+  }

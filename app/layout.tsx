@@ -1,3 +1,5 @@
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import Providers from '~/components/atoms/Providers';
 // import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
@@ -12,10 +14,20 @@ export interface LayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+
   return (
     <html
-      lang="en"
+      lang={locale}
       className={`text-foreground bg-background motion-safe:scroll-smooth 2xl:text-[20px] ${customFont.variable} font-sans`}
     >
       <head>
@@ -24,9 +36,11 @@ export default function RootLayout({ children }: LayoutProps) {
       </head>
       <body className="tracking-tight antialiased">
         <Providers>
-          <Header />
-          <PageAnimatePresence>{children}</PageAnimatePresence>
-          {/* <Footer /> */}
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            <PageAnimatePresence>{children}</PageAnimatePresence>
+            {/* <Footer /> */}
+          </NextIntlClientProvider>
         </Providers>
       </body>
     </html>

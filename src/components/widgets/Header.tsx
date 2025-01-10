@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import ToggleThemeMode from '~/components/atoms/ToggleDarkMode';
+import ToggleTheme from '~/components/atoms/ToggleTheme';
+import ToggleLanguage from '~/components/atoms/ToggleLanguage';
 import Logo from '~/components/atoms/Logo';
 import { headerData } from '~/shared/data/global.data';
 import { useRouter, usePathname } from 'next/navigation';
@@ -14,12 +15,16 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from '@nextui-org/react';
+import { useTranslations, useLocale } from 'next-intl';
+import { useTransition } from 'react';
 
 const Header = () => {
   const { links, actions, isSticky, showToggleTheme, showRssFeed, position } = headerData;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const locale = useLocale();
+  const t = useTranslations('Header.NavMenu');
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} className="max-w-full">
@@ -33,8 +38,8 @@ const Header = () => {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {links &&
-          links.map(({ label, href, icon: Icon, links }, index) => (
-            <NavbarItem key={`item-link-${index}`} isActive={pathname === href}>
+          links.map(({ label, href, icon: Icon, links, code }, index) => (
+            <NavbarItem key={`item-link-${index}`} isActive={pathname === `/${locale}${href}`}>
               <span
                 onClick={() => {
                   router.push(href as string);
@@ -44,7 +49,7 @@ const Header = () => {
                   borderBottom: pathname === href ? '2px solid #333' : '',
                 }}
               >
-                {label}
+                {t(code)}
               </span>
             </NavbarItem>
           ))}
@@ -52,15 +57,20 @@ const Header = () => {
       <NavbarContent justify="end">
         <NavbarItem>
           <div className="hidden fixed bottom-0 left-0 w-full justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 md:bg-transparent md:dark:bg-transparent md:border-none  dark:bg-slate-900 border-t border-gray-200 dark:border-slate-600">
+            {/* switch theme */}
             <div className="flex w-full items-center justify-between md:w-auto">
-              {showToggleTheme && <ToggleThemeMode />}
+              {showToggleTheme && <ToggleTheme />}
+            </div>
+            {/* switch language */}
+            <div className="flex w-full items-center justify-between md:w-auto">
+              <ToggleLanguage />
             </div>
           </div>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
         {links &&
-          links.map(({ label, href, icon: Icon, links: subLinks }, index) => (
+          links.map(({ label, href, icon: Icon, links: subLinks, code }, index) => (
             <NavbarMenuItem key={`${label}-${index}`}>
               <span
                 onClick={() => {
@@ -71,13 +81,18 @@ const Header = () => {
                   borderBottom: pathname === href ? '2px solid #333' : '',
                 }}
               >
-                {label}
+                {t(code)}
               </span>
             </NavbarMenuItem>
           ))}
-        <div className="fixed bottom-0 left-0 w-full justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 md:bg-transparent md:dark:bg-transparent md:border-none  dark:bg-transparent border-t border-gray-200 dark:border-slate-600">
-          <div className="flex w-full items-center justify-between md:w-auto">
-            {showToggleTheme && <ToggleThemeMode />}
+        <div className="fixed bottom-0 left-0 w-full flex justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 md:bg-transparent md:dark:bg-transparent md:border-none  dark:bg-transparent border-t border-gray-200 dark:border-slate-600">
+          {/* switch theme when mobile */}
+          <div className="flex w-1/2 items-center justify-between md:w-auto">
+            {showToggleTheme && <ToggleTheme />}
+          </div>
+          {/* switch language when mobile */}
+          <div className="flex w-1/2 items-center justify-between md:w-auto">
+            <ToggleLanguage />
           </div>
         </div>
       </NavbarMenu>

@@ -26,22 +26,27 @@ export const headerData: HeaderProps = {
   links: [
     {
       label: 'Home',
+      code: 'home',
       href: '/',
     },
     {
       label: 'Research',
+      code: 'research',
       href: '/research',
     },
     {
       label: 'Publications',
+      code: 'publications',
       href: '/publications',
     },
     {
       label: 'Members',
+      code: 'members',
       href: '/members',
     },
     {
       label: 'News',
+      code: 'news',
       href: '/news',
     },
     // {
@@ -50,14 +55,17 @@ export const headerData: HeaderProps = {
     // },
     {
       label: 'Activities',
+      code: 'activities',
       href: '/activities',
     },
     {
       label: 'Join Us',
+      code: 'joinus',
       href: '/joinus',
     },
     {
       label: 'Contact',
+      code: 'contact',
       href: '/contact',
     },
   ],

@@ -1,0 +1,18 @@
+{
+    "HomePage": {
+      "title": "Hello world!",
+      "about": "Go to the about page"
+    },
+    "Header":{
+        "NavMenu": {
+            "home": "Home",
+            "research": "Research",
+            "publications": "Publications",
+            "members": "Members",
+            "news": "News",
+            "activities": "Activities",
+            "joinus": "JoinUs",
+            "contact": "Contact"
+        }
+    }
+  }
