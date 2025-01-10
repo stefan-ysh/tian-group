@@ -16,7 +16,6 @@ import {
   NavbarMenuItem,
 } from '@nextui-org/react';
 import { useTranslations, useLocale } from 'next-intl';
-import { useTransition } from 'react';
 
 const Header = () => {
   const { links, actions, isSticky, showToggleTheme, showRssFeed, position } = headerData;
