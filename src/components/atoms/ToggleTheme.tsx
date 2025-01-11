@@ -31,7 +31,7 @@ const ToggleTheme = () => {
     <>
       {mounted ? (
         <Button onPress={handleOnClick} size="sm" isIconOnly aria-label="Toggle dark mode" variant="light">
-          {document.documentElement.classList.contains('light') ? <IconSun size={16} /> : <IconMoon size={16} />}
+          {theme === 'light' ? <IconSun size={16} /> : <IconMoon size={16} />}
         </Button>
       ) : (
         null
