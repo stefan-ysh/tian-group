@@ -23,7 +23,7 @@ const Header = () => {
     <>
       {mounted ? (
         <Button onPress={handleOnClick} size="sm" isIconOnly aria-label="Toggle dark mode" variant="light">
-          {locale === 'en' ? ' EN' : 'ZH'}
+          {locale === 'en' ? ' EN' : '中'}
         </Button>
       ) : null}
     </>
