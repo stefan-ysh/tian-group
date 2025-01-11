@@ -1,6 +1,6 @@
 import { Card, Skeleton } from '@nextui-org/react';
 
-export const runtime = 'edge';
+
 
 export default async function ContactWrapper({}) {
   return (

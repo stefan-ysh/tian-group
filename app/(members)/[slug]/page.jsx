@@ -6,7 +6,7 @@ import { findMembersByName, findLatestMembers } from '~/utils/members';
 
 export const dynamicParams = false;
 
-export const runtime = 'edge';
+
 
 const getFormattedDate = (date) => date;
 

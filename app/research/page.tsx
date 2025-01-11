@@ -1,5 +1,5 @@
 import { Card, Skeleton } from '@nextui-org/react';
-export const runtime = 'edge';
+
 export default async function ResearchWrapper({}) {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12 sm:px-6 sm:py-16 lg:py-20">

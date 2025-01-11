@@ -8,7 +8,7 @@ export const dynamicParams = false;
 
 const getFormattedDate = (date) => date;
 
-export const runtime = 'edge';
+
 
 export async function generateMetadata({ params }) {
   const activity = await findActivitiesByName(params.id);
