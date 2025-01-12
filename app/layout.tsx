@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { Analytics } from '@vercel/analytics/next';
 import Providers from '~/components/atoms/Providers';
 // import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
@@ -40,7 +41,10 @@ export default async function RootLayout({
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <Header />
-            <PageAnimatePresence>{children}</PageAnimatePresence>
+            <PageAnimatePresence>
+              {children}
+              <Analytics />
+            </PageAnimatePresence>
             {/* <Footer /> */}
           </NextIntlClientProvider>
         </Providers>
