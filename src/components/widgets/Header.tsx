@@ -14,6 +14,7 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  Link,
 } from '@nextui-org/react';
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -67,21 +68,19 @@ const Header = () => {
           </div>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
+      <NavbarMenu className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
         {links &&
           links.map(({ label, href, icon: Icon, links: subLinks, code }, index) => (
             <NavbarMenuItem key={`${label}-${index}`}>
-              <span
-                onClick={() => {
-                  router.push(href as string);
-                }}
-                className="w-full cursor-pointer"
+              <Link
+                href={href}
+                className="cursor-pointer hover:border-b-2 hover:border-primary-500 text-primary-400"
                 style={{
                   borderBottom: pathname === href ? '2px solid #333' : '',
                 }}
               >
                 {t(code)}
-              </span>
+              </Link>
             </NavbarMenuItem>
           ))}
         <div className="fixed bottom-0 left-0 w-full flex justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:p-0 md:bg-transparent md:dark:bg-transparent md:border-none  dark:bg-transparent border-t border-gray-200 dark:border-slate-600">
