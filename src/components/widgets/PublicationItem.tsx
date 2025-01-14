@@ -1,12 +1,13 @@
 'use client';
 import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, SquareArrowOutUpRight, Book } from 'lucide-react';
-import { Card, Image, Spinner } from '@nextui-org/react';
+import { Card, Spinner } from '@nextui-org/react';
 import { Slider } from '@nextui-org/slider';
 import React, { forwardRef } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { Tooltip } from '@nextui-org/tooltip';
 import { useState, useRef } from 'react';
+import NextImage from 'next/image';
 // react-pdf
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -31,7 +32,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author,
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   const [value, setValue] = React.useState(0);
-  const [scale, setScale] = React.useState(isMobile ? 0.5 : 1);
+  const [scale, setScale] = React.useState( 1);
   const ref = useRef<HTMLDivElement>(null);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
@@ -53,10 +54,11 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author,
         }}
         className="w-4/5 md:w-3/5 flex flex-col md:flex-row mx-auto md:m-auto items-center justify-center cursor-pointer"
       >
-        <Image
+        <NextImage
           alt={title}
-          isZoomed
           src={image}
+          width={200}
+          height={200}
           className="w-11/12 h-11/12 mx-auto md:w-[200px] md:h-[200px] p-2 md:p-1 !object-contain"
         />
       </div>
@@ -181,7 +183,7 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author,
                         defaultValue={scale}
                         onChange={(value) => setScale(Number(value))}
                         maxValue={2}
-                        minValue={isMobile ? 0.5 : 1}
+                        minValue={1}
                         endContent={<ZoomIn />}
                         startContent={<ZoomOut />}
                         size="sm"
