@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import { Chip, Image, Card } from '@nextui-org/react';
+import { Chip, Card } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
-
+import NextImage from 'next/image';
 interface MemberItemProps {
   name: string;
   slug: string;
@@ -21,16 +21,15 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
         }}
         className="flex flex-col items-center justify-center"
       >
-        <Image
-          isZoomed
+        <NextImage
           width={200}
           height={200}
-          // isBlurred
           alt={name}
           src={`${avatar}`}
-          className="w-full h-full md:w-[300px] md:h-[300px] p-0 sm:p-1 md:p-2 !object-cover"
+          loading='lazy'
+          className="w-full h-full md:w-[300px] md:h-[300px] p-0 sm:p-1 md:p-2 !object-cover rounded-full"
         />
-        <div className="w-full flex justify-around items-center text-xs">
+        <div className="w-full flex justify-around items-center text-xs mt-2">
           <Chip color="warning" variant="flat" size='sm'>
             {position}
           </Chip>

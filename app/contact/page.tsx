@@ -1,8 +1,3 @@
-import { Card, Skeleton } from '@nextui-org/react';
-import { Image } from '@nextui-org/react';
-
-
-
 export default async function ContactWrapper({}) {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12 sm:px-6 sm:py-16 lg:py-20">

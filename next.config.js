@@ -29,15 +29,11 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
+        hostname: 's2.loli.net',
       },
       {
         protocol: 'https',
-        hostname: 'pubs.acs.org',
-      },
-      {
-        protocol: 'https',
-        hostname: 'source.unsplash.com',
+        hostname: 'teacher.yzu.edu.cn',
       },
     ],
   },
