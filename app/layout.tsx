@@ -6,7 +6,7 @@ import Providers from '~/components/atoms/Providers';
 // import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
 import { Inter as CustomFont } from 'next/font/google';
-import PageAnimatePresence from '~/components/atoms/PageAnimatePresence';
+// import PageAnimatePresence from '~/components/atoms/PageAnimatePresence';
 
 import '~/assets/styles/base.css';
 
@@ -42,11 +42,11 @@ export default async function RootLayout({
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <Header />
-            <PageAnimatePresence>
+            {/* <PageAnimatePresence> */}
               {children}
               <Analytics />
               <SpeedInsights />
-            </PageAnimatePresence>
+            {/* </PageAnimatePresence> */}
             {/* <Footer /> */}
           </NextIntlClientProvider>
         </Providers>
