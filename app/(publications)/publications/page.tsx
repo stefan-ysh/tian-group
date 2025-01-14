@@ -65,9 +65,9 @@ export default async function Home({}) {
     };
   });
   return (
-    <section className="mx-auto px-0 md:px-20 py-12 ">
+    <section className="mx-auto px-0 md:px-20 py-12 pt-0">
       {showMode === 'grid' ? (
-        <div className="grid grid-cols-1 gap-6 p-4 lg:grid-cols-2">
+        <div className="grid grid-cols-1 gap-6 p-4 lg:grid-cols-2 pt-0">
           {sortResult.map(
             ({ slug, title, image, link, publishDate, author, journal, journalShort, tags, description }: Publication) => (
               <PublicationItem
