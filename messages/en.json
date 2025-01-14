@@ -14,5 +14,14 @@
             "joinus": "JoinUs",
             "contact": "Contact"
         }
+    },
+    "Member": {
+      "Position": {
+        "Professor": "Professor",
+        "Graduate": "Graduate",
+        "Lecturer": "Lecturer",
+        "Postdoctoral": "Postdoctoral",
+        "Doctoral": "Doctoral"
+      }
     }
   }

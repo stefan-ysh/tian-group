@@ -14,5 +14,14 @@
             "joinus": "加入我们",
             "contact": "联系我们"
         }
+    },
+    "Member": {
+      "Position": {
+        "Professor": "教授",
+        "Graduate": "研究生",
+        "Lecturer": "讲师",
+        "Postdoctoral": "博士后",
+        "Doctoral": "博士"
+      }
     }
   }

@@ -3,6 +3,7 @@ import React from 'react';
 import { Chip, Card } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import NextImage from 'next/image';
+import { useTranslations } from 'next-intl';
 interface MemberItemProps {
   name: string;
   slug: string;
@@ -14,6 +15,7 @@ const placeholderImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAdAAAAHQ
 
 export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) => {
   const router = useRouter();
+  const t = useTranslations('Member.Position');
 
   return (
     <Card key={slug} className="mx-auto w-4/5 sm:w-full flex flex-col overflow-hidden rounded-xl drop-shadow-sm hover:drop-shadow-none p-5 aspect-square cursor-pointer">
@@ -35,7 +37,7 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
         />
         <div className="w-full flex justify-between items-center 2xl:text-[12px] mt-2 gap-1">
           <Chip color="warning" variant="flat" size='sm'>
-            {position}
+            {t(position)}
           </Chip>
           <h2 className="font-bold whitespace-nowrap">{name}</h2>
         </div>
