@@ -6,9 +6,15 @@ import { Card, CardBody, Switch } from '@nextui-org/react';
 import { PublicationItem } from '~/components/widgets/PublicationItem';
 
 import NextImage from 'next/image';
+
 export const metadata: Metadata = {
-  title: 'Publications',
-};
+  title: '成果及论文 | 田甜课题组',
+  description: '扬州大学化学学院，田甜课题组',
+  openGraph: {
+    title: '成果及论文 | 田甜课题组',
+    description: '扬州大学化学学院，田甜课题组'
+  }
+}
 
 interface Publication {
   slug: string;

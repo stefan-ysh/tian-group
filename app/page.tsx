@@ -1,8 +1,17 @@
-'use client';
 import React from 'react';
 import { Card, CardBody, Image, Button, Slider } from '@nextui-org/react';
 import { Mail, School } from 'lucide-react';
 import DirectionAwareHover from '~/components/ui/direction-aware-hover';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '田甜课题组 | 扬州大学',
+  description: '扬州大学化学学院，田甜课题组',
+  openGraph: {
+    title: '田甜课题组 | 扬州大学',
+    description: '扬州大学化学学院，田甜课题组'
+  }
+}
 
 export default function App() {
   return (

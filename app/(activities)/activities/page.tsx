@@ -6,10 +6,13 @@ import { findLatestActivities } from '~/utils/activities';
 import { ActivityItem } from '~/components/widgets/ActivityItem';
 
 export const metadata: Metadata = {
-  title: 'Activities',
-};
-
-
+  title: '最新活动 | 田甜课题组',
+  description: '扬州大学化学学院，田甜课题组',
+  openGraph: {
+    title: '最新活动 | 田甜课题组',
+    description: '扬州大学化学学院，田甜课题组'
+  }
+}
 
 export default async function Home({}) {
   const members = await findLatestActivities();

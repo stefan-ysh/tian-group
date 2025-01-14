@@ -1,4 +1,13 @@
-import { Card, Skeleton } from '@nextui-org/react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '新闻动态 | 田甜课题组',
+  description: '扬州大学化学学院，田甜课题组',
+  openGraph: {
+    title: '新闻动态 | 田甜课题组',
+    description: '扬州大学化学学院，田甜课题组'
+  }
+}
 
 export default async function NewsWrapper({}) {
   return (

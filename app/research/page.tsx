@@ -1,5 +1,13 @@
-import { Card, Skeleton } from '@nextui-org/react';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+  title: '研究方向 | 田甜课题组',
+  description: '扬州大学化学学院，田甜课题组',
+  openGraph: {
+    title: '研究方向 | 田甜课题组',
+    description: '扬州大学化学学院，田甜课题组'
+  }
+}
 export default async function ResearchWrapper({}) {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12 sm:px-6 sm:py-16 lg:py-20 pt-0">

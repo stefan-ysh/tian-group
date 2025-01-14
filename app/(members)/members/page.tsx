@@ -1,14 +1,17 @@
 import type { Metadata } from 'next';
 
-
-
 import { findLatestMembers } from '~/utils/members';
 
 import { MemberItem } from '~/components/widgets/MemberItem';
 
 export const metadata: Metadata = {
-  title: 'Members',
-};
+  title: '组内成员 | 田甜课题组',
+  description: '扬州大学化学学院，田甜课题组',
+  openGraph: {
+    title: '组内成员 | 田甜课题组',
+    description: '扬州大学化学学院，田甜课题组'
+  }
+}
 
 export default async function Home({}) {
   const members = await findLatestMembers();

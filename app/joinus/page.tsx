@@ -1,5 +1,13 @@
-'use client';
-import { Card, Skeleton } from '@nextui-org/react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '加入我们 | 田甜课题组',
+  description: '扬州大学化学学院，田甜课题组',
+  openGraph: {
+    title: '加入我们 | 田甜课题组',
+    description: '扬州大学化学学院，田甜课题组'
+  }
+}
 
 export default function JoinUsWrapper({}) {
   return (
