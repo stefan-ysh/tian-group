@@ -16,12 +16,12 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
   const router = useRouter();
 
   return (
-    <Card key={slug} className="mx-auto w-4/5 sm:w-full flex flex-col overflow-hidden rounded-xl drop-shadow-sm hover:drop-shadow-none p-2">
+    <Card key={slug} className="mx-auto w-4/5 sm:w-full flex flex-col overflow-hidden rounded-xl drop-shadow-sm hover:drop-shadow-none p-5 aspect-square cursor-pointer">
       <div
         onClick={() => {
           router.push(`${slug}`);
         }}
-        className="flex flex-col items-center justify-center"
+        className="flex flex-col items-center justify-center w-full h-full"
       >
         <NextImage
           width={200}
@@ -31,9 +31,9 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
           placeholder='blur'
           blurDataURL={placeholderImage}
           loading='lazy'
-          className="w-full h-full md:w-[300px] md:h-[300px] p-0 sm:p-1 md:p-2 !object-cover rounded-full"
+          className="w-5/6 h-5/6 md:w-[300px] md:h-[300px] p-0 sm:p-1 md:p-2 !object-cover rounded-full bg-transparent transition-all hover:bg-secondary-100 hover:scale-90"
         />
-        <div className="w-full flex justify-around items-center text-xs mt-2">
+        <div className="w-full flex justify-between items-center 2xl:text-[12px] mt-2 gap-1">
           <Chip color="warning" variant="flat" size='sm'>
             {position}
           </Chip>
