@@ -19,6 +19,7 @@ interface Publication {
   description: string;
   author: string[];
   journal: string;
+  journalShort: string;
   tags: string[];
 }
 
@@ -68,7 +69,7 @@ export default async function Home({}) {
       {showMode === 'grid' ? (
         <div className="grid grid-cols-1 gap-6 p-4 lg:grid-cols-2">
           {sortResult.map(
-            ({ slug, title, image, link, publishDate, author, journal, tags, description }: Publication) => (
+            ({ slug, title, image, link, publishDate, author, journal, journalShort, tags, description }: Publication) => (
               <PublicationItem
                 title={title}
                 image={image}
@@ -78,6 +79,7 @@ export default async function Home({}) {
                 key={slug}
                 journal={journal}
                 author={author}
+                journalShort={journalShort}
               />
             ),
           )}
