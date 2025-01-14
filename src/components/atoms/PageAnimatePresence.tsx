@@ -24,8 +24,8 @@ const PageAnimatePresence = ({ children }: { children: React.ReactNode }) => {
         animate="animateState"
         exit="exitState"
         transition={{
-          duration: 0.5,
-          ease: 'easeOut',
+          duration: 0.2,
+          ease: 'easeIn',
         }}
         variants={{
           exitState: { opacity: 0, y: 100 },
