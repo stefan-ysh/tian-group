@@ -16,7 +16,7 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
   const router = useRouter();
 
   return (
-    <Card key={slug} className="mx-auto w-4/5 sm:w-full flex flex-col overflow-hidden rounded-xl shadow-lg p-2">
+    <Card key={slug} className="mx-auto w-4/5 sm:w-full flex flex-col overflow-hidden rounded-xl drop-shadow-sm hover:drop-shadow-none p-2">
       <div
         onClick={() => {
           router.push(`${slug}`);
