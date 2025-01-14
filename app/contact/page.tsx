@@ -11,26 +11,6 @@ export default async function ContactWrapper({}) {
           Contact
         </h1>
       </header>
-      {/* <Image src="/images/2.png" alt="Contact" width={500} height={500} className="mx-auto" /> */}
-      <Image src="/images/2.net.png" alt="Contact" width={500} height={500} className="mx-auto" />
-      <Image src="https://s2.loli.net/2025/01/13/nkZLiSwl3h8Esox.png" alt="Contact" width={500} height={500} className="mx-auto" />
-
-      <Card className="w-full mx-auto space-y-5 p-4" radius="lg">
-        <Skeleton className="rounded-lg">
-          <div className="h-24 rounded-lg bg-default-300" />
-        </Skeleton>
-        <div className="space-y-3">
-          <Skeleton className="w-3/5 rounded-lg">
-            <div className="h-3 w-3/5 rounded-lg bg-default-200" />
-          </Skeleton>
-          <Skeleton className="w-4/5 rounded-lg">
-            <div className="h-3 w-4/5 rounded-lg bg-default-200" />
-          </Skeleton>
-          <Skeleton className="w-2/5 rounded-lg">
-            <div className="h-3 w-2/5 rounded-lg bg-default-300" />
-          </Skeleton>
-        </div>
-      </Card>
     </section>
   );
 }
