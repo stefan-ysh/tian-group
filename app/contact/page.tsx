@@ -1,4 +1,5 @@
 import { Card, Skeleton } from '@nextui-org/react';
+import { Image } from '@nextui-org/react';
 
 
 
@@ -10,6 +11,9 @@ export default async function ContactWrapper({}) {
           Contact
         </h1>
       </header>
+      {/* <Image src="/images/2.png" alt="Contact" width={500} height={500} className="mx-auto" /> */}
+      <Image src="/images/2.net.png" alt="Contact" width={500} height={500} className="mx-auto" />
+      <Image src="https://s2.loli.net/2025/01/13/nkZLiSwl3h8Esox.png" alt="Contact" width={500} height={500} className="mx-auto" />
 
       <Card className="w-full mx-auto space-y-5 p-4" radius="lg">
         <Skeleton className="rounded-lg">
