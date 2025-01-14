@@ -46,11 +46,11 @@ export default function App() {
               <div className="w-full mt-2 text-xs">
                 <div className="flex items-center gap-2 mt-4">
                   <Mail size={16} />
-                  <a href="mailto:aa@aa.com">tiant91@yzu.edu.cn</a>
+                  <a href="mailto:tiant91@yzu.edu.cn">tiant91@yzu.edu.cn</a>
                 </div>
                 <div className="flex items-center gap-2 mt-2">
                   <School size={16} />
-                  <a href="mailto:aa@aa.com">Jiangsu Province Yangzhou City Hanjiang District</a>
+                  <span>Jiangsu Province Yangzhou City Hanjiang District</span>
                 </div>
               </div>
             </div>
