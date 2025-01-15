@@ -6,6 +6,7 @@ import Providers from '~/components/atoms/Providers';
 // import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
 import { Inter as CustomFont } from 'next/font/google';
+import Script from 'next/script'
 // import PageAnimatePresence from '~/components/atoms/PageAnimatePresence';
 
 import '~/assets/styles/base.css';
@@ -50,6 +51,17 @@ export default async function RootLayout({
             {/* <Footer /> */}
           </NextIntlClientProvider>
         </Providers>
+        <a
+          href="#top"
+          title="Back to top"
+          id="backToTop"
+          className="fixed bottom-6 right-6 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full p-3 shadow-lg transition-all duration-300 opacity-0 invisible"
+        >
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </a>
+        <Script src="/js/backTop.js" />
       </body>
     </html>
   );
