@@ -1,10 +1,10 @@
 module.exports.SITE = {
-  name: 'Tian group',
+  name: 'TianTian group',
 
-  origin: 'https://tailnext.vercel.app',
+  origin: 'https://tiantian.group',
   basePathname: '/',
   trailingSlash: false,
 
-  title: 'Tian group — Your website with Next.js + Tailwind CSS',
-  description: 'Tian group is a free and ready to start template to make your website using Next.js and Tailwind CSS.',
+  title: '田甜课题组',
+  description: '田甜课题组是位于扬州大学化学学院的科研实验室.',
 };
