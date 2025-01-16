@@ -37,6 +37,7 @@ export default async function RootLayout({
     >
       <head>
         <meta charSet="utf-8" />
+        <meta name="baidu-site-verification" content="codeva-F7V5G1GMNu" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="tracking-tight antialiased">
