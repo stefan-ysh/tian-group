@@ -1,12 +1,13 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from '~/components/atoms/Providers';
 // import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { Inter as CustomFont } from 'next/font/google';
 import Script from 'next/script'
+
 // import PageAnimatePresence from '~/components/atoms/PageAnimatePresence';
 
 import '~/assets/styles/base.css';
@@ -37,7 +38,6 @@ export default async function RootLayout({
     >
       <head>
         <meta charSet="utf-8" />
-        <meta name="baidu-site-verification" content="codeva-F7V5G1GMNu" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="tracking-tight antialiased">
