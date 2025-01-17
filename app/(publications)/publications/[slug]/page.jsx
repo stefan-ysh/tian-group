@@ -8,7 +8,7 @@ import { findPublicationsByName, findLatestPublications } from '~/utils/publicat
 export const dynamicParams = false;
 
 export async function generateMetadata({ params }) {
-  const publication = await findPublicationsByName(params.slug);
+  const publication = await findPublicationsByName(decodeURIComponent(params.slug));
 
   if (!publication) {
     return notFound();
@@ -18,11 +18,19 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  return (await findLatestPublications()).map(({ slug }) => ({ slug }));
+  try {
+    const publications = await findLatestPublications();
+    return publications.map(({ slug }) => ({
+      slug: encodeURIComponent(slug),
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
 export default async function Page({ params }) {
-  const publication = await findPublicationsByName(params.slug);
+  const publication = await findPublicationsByName(decodeURIComponent(params.slug));
 
   if (!publication) {
     return <div>Publication not found</div>;
