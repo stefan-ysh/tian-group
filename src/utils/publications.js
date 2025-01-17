@@ -13,7 +13,7 @@ const load = () => {
       .map(async (filename) => {
         const s = filename.replace('.md', '')
         const slug = s
-        return await findPostBySlug(slug);
+        return await findPublicationsByName(slug);
       }),
   );
 
@@ -38,7 +38,7 @@ export const findLatestPublications = async ({ count } = {}) => {
 };
 
 /** */
-export const findPostBySlug = async (slug) => {
+export const findPublicationsByName = async (slug) => {
   if (!slug) return null;
 
   try {

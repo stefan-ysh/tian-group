@@ -13,6 +13,7 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { Progress } from '@nextui-org/react';
+import { useRouter } from 'next/navigation';
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 interface PublicationItemProps {
   title: string;
@@ -46,6 +47,8 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author,
   const [numPages, setNumPages] = useState<number>(1);
   // page num of pdf
   const [pageNumber, setPageNumber] = useState<number>(1);
+
+  const router = useRouter();
   return (
     <Card
       key={slug}
@@ -53,7 +56,10 @@ export const PublicationItem = ({ title, image, slug, publishDate, link, author,
     >
       <div
         onClick={() => {
-          onOpen();
+          // 弹窗预览
+          // onOpen();
+          // 跳转预览
+          router.push(`/publications/${slug}`);
         }}
         className="w-4/5 md:w-3/5 flex flex-col md:flex-row mx-auto md:m-auto items-center justify-center cursor-pointer"
       >
