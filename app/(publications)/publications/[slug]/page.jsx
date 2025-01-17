@@ -33,7 +33,11 @@ export default async function Page({ params }) {
   const publication = await findPublicationsByName(decodeURIComponent(params.slug));
 
   if (!publication) {
-    return <div>Publication not found</div>;
+    return <div className="text-center">Publication not found</div>;
+  }
+
+  if (!publication.content) {
+    return <div className="text-center">Publication content not found</div>;
   }
 
   return (
