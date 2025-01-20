@@ -256,6 +256,7 @@ The source data generated in this study are provided in the ‘Source Data’ fi
 
 ### References
 
+<div class="text-sm">
 <a id="ref1"></a>
 
 1. Ferguson, B. & Zhang, X. Materials for terahertz science and technology. _Nat. Mater._ **1**, 26–33 (2002).
@@ -507,6 +508,8 @@ The source data generated in this study are provided in the ‘Source Data’ fi
 <a id="ref63"></a>
 
 63. Ke, L. et al. A biodegradable Iridium(III) coordination polymer for enhanced two-photon photodynamic therapy using an apoptosis-ferroptosis hybrid pathway. _Angew. Chem. Int. Ed._ **134**, e202205429 (2022).
+
+</div>
 
 ### Acknowledgements
 
