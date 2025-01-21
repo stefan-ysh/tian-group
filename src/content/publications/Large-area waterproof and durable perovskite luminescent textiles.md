@@ -17,7 +17,7 @@ tags: [markdown, blog]
 
 ## Large-area waterproof and durable perovskite luminescent textiles
 
-Published at <i>**Nature Communications**</i>
+Published in <i>**[Nature Communications](http://dx.doi.org/10.1038/s41467-023-35830-8)**</i>
 
 Tian Tian, Meifang Yang, Yuxuan Fang, Shuo Zhang, Yuxin Chen, Lianzhou Wang*, WuQiang Wu*
 
@@ -45,15 +45,15 @@ CsPbBr<sub>3</sub>@hydroxypropyl-β-cyclodextrin (HPBCD) composites were first s
 <div class="text-xs">
 <b>Fig. 1 | Schematic illustration of the fabrication process of PLTs and morphological characterization. </b>
 <br>
-<b>a</b> Schematic illustration of the fabrication process of PLTs and the as-prepared fibrous membrane under UV light irradiation. 
+<b>a</b> Schematic illustration of the fabrication process of PLTs and the as-prepared fibrous membrane under UV light irradiation.
 <br>
-<b>b</b> Application of CsPbBr<sub>3</sub>@HPβCD@PFOS composites in patterned display, white light-emitting diodes (WLEDs) and wearable optoelectronics. 
+<b>b</b> Application of CsPbBr<sub>3</sub>@HPβCD@PFOS composites in patterned display, white light-emitting diodes (WLEDs) and wearable optoelectronics.
 <br>
-<b>c</b> SEM (YAG back-scattered electron detector) images of the (c) control fiber and (d) CsPbBr<sub>3</sub>@HPβCD fiber. 
+<b>c</b> SEM (YAG back-scattered electron detector) images of the (c) control fiber and (d) CsPbBr<sub>3</sub>@HPβCD fiber.
 <br>
-<b>e</b> TEM image showing the CsPbBr<sub>3</sub>@HPβCD fiber without or with PFOS coating as indicated. 
+<b>e</b> TEM image showing the CsPbBr<sub>3</sub>@HPβCD fiber without or with PFOS coating as indicated.
 <br>
-<b>f</b> Close-up TEM image of the CsPbBr<sub>3</sub>@HPβCD@PFOS fiber. 
+<b>f</b> Close-up TEM image of the CsPbBr<sub>3</sub>@HPβCD@PFOS fiber.
 <br>
 <b>Inset</b>: HRTEM image of the CsPbBr<sub>3</sub> crystal.
 </div>
@@ -71,12 +71,12 @@ To elucidate the specific role of the PS polymer, cyclodextrin and silane, we in
 <div class="text-xs">
 <b>Fig. 2 | Chemical interaction, bonding formation and multifaceted functions of CsPbBr<sub>3</sub>@HPβCD@PFOS fibers. Raman confocal fluorescence mapping of PLTs. </b>
 <br>
-<b>a</b> XRD patterns of HPβCD power, CsPbBr<sub>3</sub> fibers and CsPbBr<sub>3</sub>@HPβCD@PFOS (e) CsPbBr<sub>3</sub> fibers and (f) CsPbBr<sub>3</sub>@HPβCD@PFOS fibers. 
+<b>a</b> XRD patterns of HPβCD power, CsPbBr<sub>3</sub> fibers and CsPbBr<sub>3</sub>@HPβCD@PFOS (e) CsPbBr<sub>3</sub> fibers and (f) CsPbBr<sub>3</sub>@HPβCD@PFOS fibers.
 <br>
-<b>g</b> Schematic illustration of fibers. 
+<b>g</b> Schematic illustration of fibers.
 <br>
-<b>b</b> The <sup>1</sup>H NMR spectra of HPβCD, CsBr@ HPβCD, PbBr<sub>2</sub>@HPβCD and CsPbBr<sub>3</sub>@HPβCD. 
-<b>c</b> XPS spectra of the Pb signal of the CsPbBr<sub>3</sub> fibers and CsPbBr<sub>3</sub>@HPβCD@PFOS fibers. 
+<b>b</b> The <sup>1</sup>H NMR spectra of HPβCD, CsBr@ HPβCD, PbBr<sub>2</sub>@HPβCD and CsPbBr<sub>3</sub>@HPβCD.
+<b>c</b> XPS spectra of the Pb signal of the CsPbBr<sub>3</sub> fibers and CsPbBr<sub>3</sub>@HPβCD@PFOS fibers.
 <br>
 <b>d</b> Raman spectrum of PS, CsPbBr<sub>3</sub>, CsPbBr<sub>3</sub>@HPβCD
 </div>
@@ -98,7 +98,7 @@ HPβCD interaction and PFOS encapsulation did not alter the chemical identity of
 <br>
 <b>e</b> Time-resolved PL decay of CsPbBr<sub>3</sub>, CsPbBr<sub>3</sub>@HPβCD and CsPbBr<sub>3</sub>@HPβCD@PFOS fibers measured at 300 K.
 <br>
-<b>f</b> Arrhenius plot of integrated PL intensity as a function of the reciprocal temperature (1/T) of CsPbBr<sub>3</sub> and CsPbBr<sub>3</sub>@HPβCD@PFOS fibers. 
+<b>f</b> Arrhenius plot of integrated PL intensity as a function of the reciprocal temperature (1/T) of CsPbBr<sub>3</sub> and CsPbBr<sub>3</sub>@HPβCD@PFOS fibers.
 </div>
 
 'H nuclear magnetic resonance (<sup>1</sup>H-NMR) spectroscopy provided insights into possible chemical interactions between HPCD and different species, CsBr, PbBr<sub>2</sub> or CsPbBr<sub>3</sub>. The chemical identity of H-3 in the HPβCD molecule is 3.341 ppm, which represents the H atoms located at the hydrophobic inner cavity of HPβCD. After grinding and interaction with CsBr, PbBr<sub>2</sub> or CsPbBr<sub>3</sub> species, the <sup>1</sup>H spectra all shifted, but to different extents. A greater chemical shift was observed for CsBr@HPβCD sample ([Fig. 2b](#fig2)), owing to the shorter molecular length of CsBr (-0.35 nm) relative to PbBr<sub>2</sub> (-0.52 nm) (Supplementary [Fig. 20](#fig20)), making it much easier to be captured within the HPβCD inner cavity. We also performed XPS to reveal the additional protection efficacy that PFOS has on the CsPbBr<sub>3</sub>@HPβCD fibrous film. The control CsPbBr<sub>3</sub> nanofibers exhibited notable signals for the three main elements, Cs, Pb and Br, suggesting that CsPbBr<sub>3</sub> was not fully encapsulated by the polymer matrices ([Fig. 2c](#fig2) and Supplementary [Fig. 21](#fig21)), which is consistent with the SEM observation ([Fig. 1c](#fig1)). In contrast, these elemental signals were all diminished in the CsPbBr<sub>3</sub>@HPβCD@PFOS fibrous films, hinting at the full coverage and omnibearing protection of the PFOS layer. Similar characteristic signals have been observed in the Raman spectra of PS, CsPbBr<sub>3</sub> and CsPbBr<sub>3</sub>@HPβCD fibrous films, which mostly stem from the Raman shift signals of PS polymer matrices. Again, these PS-related signals disappeared in our CsPbBr<sub>3</sub>@HPβCD@PFOS sample ([Fig. 2d](#fig2)). The omnibearing protection of the PFOS layer. Similar characteristic signals have been observed in the Raman spectra of PS, CsPbBr<sub>3</sub> and with numerous -OH groups in HPβCD and expose the super-hydrophobic moieties. The hydrogen bonding formation between the PFOS and HPβCD was characterized and analyzed by FTIR (Supplementary [Fig. 22](#fig22)) and <sup>1</sup>H NMR (Supplementary [Fig. 23](#fig23) and Supplementary [Table 5](#table5)). Specifically, the FTIR result showed the broadened signals of -OH, C-F and CF<sub>2</sub>/CF<sub>3</sub> groups in the HPβCD@PFOS sample, relative to pristine HPβCD or PFOS sample, which implied the alteration of bonding environment owing to the formation of hydrogen bonds.The <sup>1</sup>H NMR spectroscopy further verified the chemical interaction between HPβCD and PFOS. The positions of protons in HPβCD are illustrated in Supplementary [Fig. 23](#fig23), in which the H<sub>2</sub>, H<sub>4</sub> and H<sub>6</sub> protons located at the outer surface of HPβCD, and the H<sub>3</sub> and H<sub>5</sub> protons located at the inner cavity of HPβCD. Upon interacting with PFOS, the resonances of H<sub>2</sub>, H<sub>3</sub>, H<sub>4</sub>, H<sub>5</sub> and H<sub>6</sub> protons in HPβCD molecule all shifted towards high-field positions owing to the formation of hydrogen bonds (Supplementary [Table 5](#table5)). Typically, the chemical shift of H<sub>2</sub>,H<sub>4</sub> and H<sub>6</sub> protons is comparatively larger than that of the H<sub>3</sub> and H<sub>5</sub> protons, indicating that the hydrogen bonds were mainly formed between the F atoms of PFOS molecules and the -OH groups of HPβCD outer surface.This result is in good consistency with our demonstrated chemical interaction modes in [Fig. 2g](#fig2) (left).With the PFOS protection, a robust water-repelling barrier was established on the surface of PLTs, as is evidenced by the >130° water contact angle (Supplementary Figs. [24](#fig24) and [25](#fig25)).An optimal content of PFOS (i.e. 150 μL in 1mL electrospinning ink) ensured the best luminescent property and hydrophobic performance (Supplementary [Fig. 26](#fig26)). Raman confocal fluorescence mapping revealed stretching of the -CH=CH<sub>2</sub> (991-1010 cm<sup>-1</sup>) of PS in the CsPbBr<sub>3</sub> fiber ([Fig. 2e](#fig2)), while the CsPbBr<sub>3</sub>@HPβCD@PFOS fiber showed only stretching and bending of the -C-F (820-833 cm<sup>-1</sup>) of PFOS, and without detectable PS-related signals ([Fig. 2f](#fig2))<sup>[50](#ref50)</sup>. The host-guest interaction between the CsPbBr<sub>3</sub> nanocrystal and HPβCD clusters, hydrogen bonding formation between HPCD and PFOS, as well as the multifaceted functions CsPbBr<sub>3</sub>@HPβCD@PFOS fiber showed only stretching and bending of water-repellent effect are schematically illustrated in [Fig. 2g](#fig2).

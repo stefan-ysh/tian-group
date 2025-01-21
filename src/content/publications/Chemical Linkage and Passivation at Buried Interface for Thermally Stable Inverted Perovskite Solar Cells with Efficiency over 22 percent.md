@@ -17,7 +17,7 @@ tags: [markdown, blog]
 
 ## Chemical Linkage and Passivation at Buried Interface for Thermally Stable Inverted Perovskite Solar Cells with Efficiency over 22%
 
-Published at <i>**Chinese Chemical Society**</i>
+Published in <i>**[Chinese Chemical Society](http://dx.doi.org/10.31635/ccschem.022.202202154)**</i>
 
 Ying Tan, Xueqing Chang, JunXing Zhong, Wenhuai Feng, Meifang Yang, Tian Tian, Li Gong*, Wu-Qiang Wu*
 
@@ -130,7 +130,7 @@ We employed femtosecond transient absorption (fs-TA) spectroscopy to analyze the
 <Image src="https://s2.loli.net/2025/01/20/gMQneWLzDkXUCw6.png" alt="Figure 3" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
 
 <div class="w-full text-sm">
-    <b>Figure 3</b> | 
+    <b>Figure 3</b> |
     <br />
     (a) Schematics of energy level diagram of ITO, PTAA, 2PACz, and Cs<sub>0.05</sub>(FA<sub>0.83</sub>MA<sub>0.17</sub>)<sub>0.95</sub>Pb(I<sub>0.83</sub>Br<sub>0.17</sub>)<sub>3</sub> perovskites.
     <br />
@@ -148,7 +148,7 @@ We employed femtosecond transient absorption (fs-TA) spectroscopy to analyze the
 <div class="w-full text-sm">
     <b>Figure 4</b> |
     <br />
-    (a) Schematic illustration of the device architecture for TA measurement. 
+    (a) Schematic illustration of the device architecture for TA measurement.
     <br />
     Contour delay time-dependent TA spectra of the (b, d) ITO/PTAA/perovskite and (c, e) ITO/PTAA/2PACz/perovskite films.
     <br />

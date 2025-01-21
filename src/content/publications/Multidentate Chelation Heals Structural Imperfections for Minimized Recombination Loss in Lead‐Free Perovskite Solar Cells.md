@@ -33,7 +33,7 @@ tags: [markdown, blog]
 
 ## Multidentate Chelation Heals Structural Imperfections for Minimized Recombination Loss in Lead‐Free Perovskite Solar Cells
 
-Published at: _[**Wiley**](http://dx.doi.org/10.1002/anie.202209464)_
+Published in: _[**Wiley**](http://dx.doi.org/10.1002/anie.202209464)_
 
 Gengling Liu, Yang Zhong, Wenhuai Feng, Meifang Yang, Guo Yang, JunXing Zhong, Tian Tian, JianBin Luo, Junlei Tao, Shaopeng Yang, XuDong Wang, Licheng Tan, Yiwang Chen*, WuQiang Wu*
 
