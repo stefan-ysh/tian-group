@@ -19,7 +19,7 @@ Published in [_**Journal of Semiconductors**_](http://dx.doi.org/10.1088/1674-49
 
 Tian Tian, Meifang Yang, Jianyu Yang, Wuqiang Wu*, Liming Ding*
 
-<Image src="https://s2.loli.net/2025/01/21/yAZa1YIgPuTfBmG.png" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/yAZa1YIgPuTfBmG.png" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 **Citation**: T Tian, M F Yang, J Y Yang, W Q Wu, and L M Ding, Stabilizing black-phase CsPbI3 under over 70% humidity[J]. _J. Semicond_., 2022, 43(3), 030501. [https://doi.org/10.1088/1674-4926/43/3/030501](https://doi.org/10.1088/1674-4926/43/3/030501)
 
@@ -41,7 +41,7 @@ Supplementary materials to this article can be found online at [https://doi.org/
 
 <a id="fig1"></a>
 
-<Image src="https://s2.loli.net/2025/01/21/yAZa1YIgPuTfBmG.png" alt="" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/yAZa1YIgPuTfBmG.png" alt="" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
   <b>Fig. 1</b> |

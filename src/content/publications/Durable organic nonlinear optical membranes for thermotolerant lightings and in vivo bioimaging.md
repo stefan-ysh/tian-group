@@ -35,7 +35,7 @@ Published in <i>**Nature Communications**</i>
 Tian Tian, Yuxuan Fang, Wenhui Wang, Meifang Yang, Ying Tan, Chuan Xu, Shuo Zhang, Yuxin Chen, Mingyi Xu*, Bin Cai*, Wu-Qiang Wu\*
 
 <div class="publication-container">
-    <Image src="https://s2.loli.net/2025/01/13/yefgXJvNj8qbGdY.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+    <Image src="https://s2.loli.net/2025/01/13/yefgXJvNj8qbGdY.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
     <div class="abstract">
         <h3>ABSTRACT</h3>
         Organic nonlinear optical materials have potential in applications such as lightings and bioimaging, but tend to have low photoluminescent quantum yields and are prone to lose the nonlinear optical activity. Herein, we demonstrate to weave large-area, flexible organic nonlinear optical membranes composed of 4-N,N-dimethylamino-4ʹ-Nʹ-methyl-stilbazolium tosylate@cyclodextrin host-guest supramolecular complex. These membranes exhibited a record high photoluminescence quantum yield of 73.5%, and could continuously emit orange luminescence even being heated at 300 °C, thus enabling the fabrication of thermotolerant light-emitting diodes. The nonlinear optical property of these membranes can be well-preserved even in polar environment. The supramolecular assemblies with multiphoton absorption characteristics were used for in vivo real-time imaging of Escherichia coli at 1000 nm excitation. These findings demonstrate to achieve scalable fabrication of organic nonlinear optical materials with high photoluminescence quantum yields, and good stability against thermal stress and polar environment for high-performance, durable optoelectronic devices and humanized multiphoton bio-probes.
@@ -59,7 +59,7 @@ The electrospinning ink was prepared in N₂-filled glovebox (with H₂O < 0.01 
 
 <a id="fig1"></a>
 
-<Image src="https://s2.loli.net/2025/01/19/Nz9t4HDqXZIxkLR.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/19/Nz9t4HDqXZIxkLR.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
   <b>Fig. 1</b> | Schematic illustration of the fabrication process of DAST@HPβCD fibrous membranes and NMR characterization.
@@ -80,18 +80,18 @@ DAST, a kind of stilbazolium derivative, is a typical ICT molecule containing a 
 
 <a id="fig2"></a>
 
-<Image src="https://s2.loli.net/2025/01/19/INbULpFGOrHEqnm.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/19/INbULpFGOrHEqnm.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
-  <b>Fig. 2</b> | The morphological characterization and NTO simulation. 
+  <b>Fig. 2</b> | The morphological characterization and NTO simulation.
   <br>
-  <b>a</b> SEM image and <b>b</b> fluorescence image of DAST@HPβCD fibers. 
+  <b>a</b> SEM image and <b>b</b> fluorescence image of DAST@HPβCD fibers.
   <br>
-  <b>c</b> SEM image and <b>d</b> fluorescence image of DAST@HPβCD thin film after humidity-triggered copolymerization. 
+  <b>c</b> SEM image and <b>d</b> fluorescence image of DAST@HPβCD thin film after humidity-triggered copolymerization.
   <br>
-  <b>e</b> The photograph of a large-area (10 cm × 10 cm), transparent DAST@HPβCD thin film on a flexible PI substrate with and without UV light irradiation. 
+  <b>e</b> The photograph of a large-area (10 cm × 10 cm), transparent DAST@HPβCD thin film on a flexible PI substrate with and without UV light irradiation.
   <br>
-  <b>f</b> TEM image of crystalline DAST@HPβCD composited nanocrystals with their corresponding lattice fringes. 
+  <b>f</b> TEM image of crystalline DAST@HPβCD composited nanocrystals with their corresponding lattice fringes.
   <br>
   <b>g</b> NTO simulation of DAST@HPβCD. Note, the calculation is based on the model of using a single molecule.
 </div>
@@ -117,7 +117,7 @@ The luminescent performance and mechanism of DAST and DAST@HPBCD samples can be 
 
 <a id="fig3"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/N39VvKWMg5Xmtik.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/N39VvKWMg5Xmtik.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
   <b>Fig. 3</b> | <b>Characterizations of temperature-dependent PL intensity and TA spectra of DAST and DAST@HPβCD samples.</b> Temperature-dependent PL intensity mappings of <b>a</b> DAST crystals and <b>b</b> DAST@HPβCD fibers. The contour plots and delay time-dependent TA spectra of <b>c</b>, <b>e</b> DAST and <b>d</b>, <b>f</b> DAST@HPβCD samples.
@@ -127,10 +127,10 @@ The femtosecond transient absorption (fs-TA) spectroscopy characterizations were
 
 <a id="fig4"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/nFj9WR8hsXBZigp.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/nFj9WR8hsXBZigp.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
-  <b>Fig. 4 | Luminescent stability and applications.</b>The fluorescence images of DAST@HPβCD thin film (5 cm × 5 cm) heated at a 100 °C, b 200 °C, and c 300 °C.  <b>d</b> The 1931CIE chromaticity coordinates of orange LED driven by 0.003 W.   <b>e</b> An orange LED device driven by 5 W, 10 W, 15 W, and 20 W, respectively.  <b>f</b> Demonstration of large-area patterned displays fabricated with DAST@HPβCD materials. 
+  <b>Fig. 4 | Luminescent stability and applications.</b>The fluorescence images of DAST@HPβCD thin film (5 cm × 5 cm) heated at a 100 °C, b 200 °C, and c 300 °C.  <b>d</b> The 1931CIE chromaticity coordinates of orange LED driven by 0.003 W.   <b>e</b> An orange LED device driven by 5 W, 10 W, 15 W, and 20 W, respectively.  <b>f</b> Demonstration of large-area patterned displays fabricated with DAST@HPβCD materials.
   <b>g</b> Demonstration of stereo handcrafts made of DAST@HPβCD thin films
 </div>
 
@@ -141,7 +141,7 @@ Notably, even when the temperature reaches 300℃, the PLQY of DAST@HPBCD thin f
 
 <a id="fig5"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/sp2khJjoBmXgy7N.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/sp2khJjoBmXgy7N.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
   <b>Fig. 5</b> | The NLO property of DAST@HPβCD fibers.
@@ -163,7 +163,7 @@ We expected fascinating NLO property for DAST@HPBCD host-guest supramolecular co
 
 <a id="fig6"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/lIx7z8TpPO3wtLR.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/lIx7z8TpPO3wtLR.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
   <b>Fig. 6</b> | Demonstration of in vivo bioimaging of E. Coli via DAST@HPBCD fibers labeling and corresponding CLSM images.

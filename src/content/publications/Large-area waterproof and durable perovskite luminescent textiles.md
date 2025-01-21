@@ -40,7 +40,7 @@ CsPbBr<sub>3</sub>@hydroxypropyl-β-cyclodextrin (HPBCD) composites were first s
 
 <a id="fig1"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/1jgHYMBnVIcmSti.png" alt="Schematic illustration of the fabrication process of PLTs and morphological characterization." class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/1jgHYMBnVIcmSti.png" alt="Schematic illustration of the fabrication process of PLTs and morphological characterization." class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Fig. 1 | Schematic illustration of the fabrication process of PLTs and morphological characterization. </b>
@@ -66,7 +66,7 @@ To elucidate the specific role of the PS polymer, cyclodextrin and silane, we in
 
 <a id="fig2"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/OyNsSJ3w5rj6bpv.png" alt="Chemical interaction, bonding formation and multifaceted functions of PLTs. " class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/OyNsSJ3w5rj6bpv.png" alt="Chemical interaction, bonding formation and multifaceted functions of PLTs. " class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Fig. 2 | Chemical interaction, bonding formation and multifaceted functions of CsPbBr<sub>3</sub>@HPβCD@PFOS fibers. Raman confocal fluorescence mapping of PLTs. </b>
@@ -87,7 +87,7 @@ HPβCD interaction and PFOS encapsulation did not alter the chemical identity of
 
 <a id="fig3"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/8RSowFiEM6ALgqd.png" alt="Chemical interaction, bonding formation and multifaceted functions of PLTs. " class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/8RSowFiEM6ALgqd.png" alt="Chemical interaction, bonding formation and multifaceted functions of PLTs. " class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Fig. 3 | The characterization of optical property, temperature-dependent photoluminescence and exciton binding energy of different PLTs. </b>
@@ -131,7 +131,7 @@ Considering that the marine environment and real circumstances are complex and d
 
 <a id="fig4"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/L2MDNrag1kciQvU.png" alt="The characterization of optical property, temperature-dependent photoluminescence and exciton binding energy of different PLTs " class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/L2MDNrag1kciQvU.png" alt="The characterization of optical property, temperature-dependent photoluminescence and exciton binding energy of different PLTs " class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Fig. 4 | Applications of PLTs in patterned display, WLEDs and wearable luminescent clothes.</b>
@@ -149,7 +149,7 @@ Our demonstrated CsPbBr<sub>3</sub>@HPβCD@PFOS-based PLT showed strong water re
 
 We present a new type of large-area, functional luminescent textiles fabricated by electrospinning of polymer@perovskite@cyclodextrin@silane composites. The PLTs are waterproof and durable in a variety of harsh conditions, offering substantial advantages (i.e. high PLQY, high color purity and good stability) over other LHP composites reported to date. Our demonstrated approach rationally combined the strategies of host-guest chemical interaction, inclusion-like encapsulation and physical blocking, and smartly integrated them into a single fabrication process, which remarkably advances the fabrication of perovskite materials and devices with high throughput and high scalability in a cost-effective manner. We show that such a flexible, stable, durable and safe luminescent textile can be used in a variety of optoelectronic applications, such as high-resolution patterned displays, white LEDs and wearable fluorescence products for marine rescue. This work provides a new perspective for fabricating high-performance perovskite luminescent materials with low-cost advantage and safety warranty. We anticipate that this finding will promote the large-scale production and practical applications of luminescent textiles for next-generation smart and wearable optoelectronics.
 
-<Image src="https://s2.loli.net/2025/01/20/JDqYbZgWQ4B8256.png" alt="Demonstration of PLT in marine rescue" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/JDqYbZgWQ4B8256.png" alt="Demonstration of PLT in marine rescue" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Fig. 5 | Demonstration of PLT in marine rescue.</b>

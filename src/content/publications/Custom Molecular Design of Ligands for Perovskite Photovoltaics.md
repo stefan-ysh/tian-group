@@ -21,7 +21,7 @@ Published in: _[**ACS**](http://dx.doi.org/10.1021/accountsmr.1c00099)_
 
 Meifang Yang, Tian Tian, Wenhuai Feng, Lianzhou Wang*, Wu-Qiang Wu*
 
-<Image src="https://s2.loli.net/2025/01/13/FbDdwuXO6yHVtq4.png" alt="Custom Molecular Design of Ligands for Perovskite Photovoltaics" width={1000} height={1000} class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/13/FbDdwuXO6yHVtq4.png" alt="Custom Molecular Design of Ligands for Perovskite Photovoltaics" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="conspectus">
   <h3>Conspectus</h3>
@@ -36,7 +36,7 @@ Over the past decade, the emerging perovskite photovoltaics (PVs) have attracted
 Owing to the ionic nature of perovskite semiconductors, solution-processed polycrystalline perovskite films inevitably contain a high density of crystallographic defects, such as uncoordinated ions and dangling bonds at the surfaces and grain boundaries (GBs), which incur charge recombination and limit further performance enhancement (Supporting Information Note 1).<sup>[9-11](#ref9)</sup> Moreover, notorious issues including the volatility of the organic cations, migration of charged ions and/or moisture sensitivity impose great challenges to further improve the life-span of perovskite PVs.<sup>[12,13](#ref12)</sup> Fortunately, the intrinsic imperfections can be remedied, while the inherent stability puzzle can be facilely tackled through robust ligands modulation and passivation. It is the molecular design of the ligands, namely, the organic moieties of the core and the functional tail groups, which plays critical roles in simultaneously improving the efficiency and stability of PSCs, thus bringing prosperity for perovskite PVs.
 
 <a id="fig1"></a>
-<Image src="https://s2.loli.net/2025/01/21/mX1BFkRGPMniqTh.png" alt=" Chemical structure of (a) PTAA and (b) 2PACz" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/mX1BFkRGPMniqTh.png" alt=" Chemical structure of (a) PTAA and (b) 2PACz" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Figure 1</b> |
@@ -59,7 +59,7 @@ Specifically, we will focus on tailoring the molecular structures (e.g., alkyl c
 The length of the linear alkyl chain core can determine the anchoring sites of amine ligands on perovskites, which is crucial in modulating the crystal growth, interfacial carrier transport, and defect passivation efficacy of perovskite films and devices. Recently, a versatile concept of “primary amine passivation” with molecules of “R-NH<sub>2</sub>” or “NH<sub>2</sub>-R-NH<sub>2</sub>” strongly bonding on various perovskite compositions was introduced for constructing efficient and stable PSCs.<sup>[30](#ref30)</sup> On one hand, the amines could universally passivate the surface crystallographic defects and/or A-site vacancies through strong chemical interaction between perovskite and -NH<sub>2</sub> tails. On the other hand, the surface anchoring of amine ligands enabled exposure of the hydrophobic core chain, which functionalized the perovskite film surface with improved optoelectronic properties and stability. Starting from the simplest primary amines with a structure of "R-NH<sub>2</sub>", we correlated the alkyl chain length (varying from one carbon to eight carbons) of unilateral alkylamine (UAA) molecules, namely, methylamine (MA), n-butylamine (BA), hexylamine (HA), and octylamine (OA), to the defect passivation efficacy on the surface and/or at GBs of perovskite films (Figure [2a](#fig2) and [2b](#fig2)). Interestingly, short-chain amines with alkyl chains of less than six carbons tended to anchor surrounding GBs and so passivate shallow defects, while some portion of long-chain amines of six or more carbons preferred to be spontaneously repelled to the film surface, thus capable of passivating both the shallower traps at GBs and the deep-level defects on the film surface. The PSC modified with OA achieved a champion power conversion efficiency (PCE) of 21.5%, accompanied by a \_V<sub>oc</sub> of 1.16 V, which corresponded to a low \_V<sub>oc</sub> deficit of 0.35 V.<sup>[30](#ref30)</sup> Yang et al. modulated the different lengths of alkyl chain in conjugated pyrenes containing ammonium groups, 2-(pyren-1-yl)ethan-1-aminium iodide and found that organic ammonium cations with longer alkyl chains bind well with the inorganic moieties in perovskites, which released the steric hindrance and significantly increased the interaction distance between the conjugated ligands and perovskites lattice (Figure [2c](#fig2)). The 2-(pyren-1-yl)ethan-1-aminium iodide (PREA) enhanced hole mobility and elevated the PCEs up to 23.0%, relative to that of a reference perovskite, and improved the device operational stability.<sup>[3](#ref3)</sup>
 
 <a id="fig2"></a>
-<Image src="https://s2.loli.net/2025/01/21/dMRyx5WStzAbrTu.png" alt="fig2" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/dMRyx5WStzAbrTu.png" alt="fig2" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Figure 2</b> |
@@ -72,7 +72,7 @@ The length of the linear alkyl chain core can determine the anchoring sites of a
 </div>
 
 <a id="fig3"></a>
-<Image src="https://s2.loli.net/2025/01/21/Y9d1RpAkb2IDMoE.png" alt="fig3" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/Y9d1RpAkb2IDMoE.png" alt="fig3" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Figure 3</b> |
@@ -89,7 +89,7 @@ Not just limited to organic-inorganic perovskites, Tang and co-workers modulated
 Apart from alkyl chain length, the passivation efficacy of ligands on perovskites is also largely affected by the molecular structure of the “R” core. The charge distribution between the R core and the functional group tail should be carefully considered.<sup>[20](#ref20)</sup> <sup>[36](#ref36)</sup> Taking the amines as examples, the amino group can form both hydrogen bonds and coordination bonds with perovskite components. The competition between these two chemical interactions will influence the defect passivation efficacy. The rational molecular design of a series of primary amines, e.g., 2,2′-[oxybis(ethylenoxy)]diethylamine (ODEA) and 4,9-dioxa-1,12-dodecanediamine (DDDA), by introducing O atoms with strong electron-withdrawing properties in the alkyl chain core has been proposed (Figure [3a](#fig3)). It is generally believed that the strength of coordination bond is stronger than that of hydrogen bond. Hence, for achieving robust defect passivation, forming coordination bonds between ligand molecules and perovskites is more desirable. Considering the competition between these two chemical interactions in the same amino group, it is favorable to weaken the electron-donating capability of N atoms via introducing another O atoms with strong electron-withdrawing properties in the alkyl chain core, thus lowering the chance of forming hydrogen bonds between amine molecules and organic cations in FAPbI<sub>3</sub> perovskite. For comparison, the inductive effect in DDDA is not that effective, because its N and O atoms are almost isolated from each other, resulting in the strongest hydrogen-bonding ability of the amino groups with perovskites (Figure [3b](#fig3) and [3c](#fig3)). In contrast, the ODEA effectively strengthens the coordination bonds formed with the defective perovskite surface for more robust defect passivation, which remarkably suppressed the nonradiative recombination (Supporting Information Note 4)<sup>[37](#ref37)</sup>.
 
 <a id="fig4"></a>
-<Image src="https://s2.loli.net/2025/01/21/DxSnf2ApZyM8bPF.png" alt="fig4" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/DxSnf2ApZyM8bPF.png" alt="fig4" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Figure 4</b> |
@@ -98,7 +98,7 @@ Apart from alkyl chain length, the passivation efficacy of ligands on perovskite
 </div>
 
 <a id="fig5"></a>
-<Image src="https://s2.loli.net/2025/01/21/DxSnf2ApZyM8bPF.png" alt="fig5" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/DxSnf2ApZyM8bPF.png" alt="fig5" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Figure 5</b> |
@@ -109,7 +109,7 @@ Apart from alkyl chain length, the passivation efficacy of ligands on perovskite
 For primarily amines with an insulating linear alkyl chain core, there is a substantial impact on the trade-off between defect passivation and charge transport property in ligand-modified perovskite films, especially when the length of linear alkyl chain is considerably long and the packing density of ligands is not suitably controlled. From a chemical point of view, one can consider to design and employ the secondary amine group centered between two alkyl chains. Once the amino groups interact with perovskites, secondary amines prefer to be packed in a plane, which would not significantly affect the charge transport property (Supporting Information Note 5).<sup>[38,39](#ref38)</sup> Another effective way is to utilize the amine analogues containing conjugated aromatic rings (e.g., benzene and their derivatives), which show better charge transport characteristics and higher conductivity, owing to the delocalization effect of the π-electronic orbitals (Supporting Information Note 6).<sup>[40](#ref40)</sup> We deliberately substituted the linear alkyl chain connecting amine ligands with conjugated benzene rings, phenylethylammonium chloride (PEACl), which not only passivated negative charged defects at the surface and/or formed hydrogen bonds between PEA<sup>+</sup> cations and/or undercoordinated I<sup>-</sup> ions but also facilitated charge transport from grains and at related interfaces (Figure [3d–g](#fig3)). As a result, a high PCE of 22% for blade-coated PSCs under one sun illumination was attained (Figure [3h](#fig3)).<sup>[41](#ref41)</sup> As a bonus, the conjugated amines show great potential to stabilize black-phase FAPbI<sub>3</sub> perovskites with an optimal bandgap of ~1.51 eV, possibly benefiting from the hydrophobicity of the conjugated cations, as well as strain management induced by π–π stacking interactions, and favorable steric arrangement on the perovskite surface.<sup>[42](#ref42)</sup> The interaction between perovskites and conjugated ligands can form favorable dipole moments at interfaces, which modifies the interfacial carrier dynamics and improve the device stability (Supporting Information Note 7).<sup>[43,44](#ref43)</sup> Li et al. demonstrated that employing F-PEA (fluorophenethylammonium) ligands, in which the electron-deficient F atoms form supramolecular electrostatic interaction with neighboring benzene rings, can induce dipole interaction and enhance the π–π stacking between benzene rings by aligning the benzene rings in the same direction (Figure [3i](#fig3)). In this case, the intermolecular and cross-linking between the bulky organic spacers was significantly strengthened, which benefited blocking ion migration paths and improved the intrinsic stability of perovskites. In addition, the carrier mobility of (F-PEA)<sub>2</sub>PbI<sub>4</sub> single crystal is significantly enhanced to 31.3 cm<sup>2</sup> V<sup>−1</sup> s<sup>−1</sup>, which is much larger than that of (PEA)<sub>2</sub>PbI<sub>4</sub> single crystal (Figure [3j](#fig3))<sup>[45](#ref45)</sup>.
 
 <a id="fig6"></a>
-<Image src="https://s2.loli.net/2025/01/21/FhYH3SguyizZAnw.png" alt="fig6" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/FhYH3SguyizZAnw.png" alt="fig6" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Figure 6</b> |
@@ -133,7 +133,7 @@ To take full advantage of ligand molecules featuring multiple unitary functional
 The flexible structure of ligands permits infinite possibilities of evolving to more advanced molecules. Besides coordination bonding, hydrogen bonding and ionic interaction, the surface chelation of perovskite via the formation of multiple, strong chelate bonds between undercoordinated Pb sites and multidentate ligands (e.g., amino acids, zwitterions, amphi-philic surfactants, resin, etc.) is one of the most effective strategies to realize a robust defect passivation effect and strengthen the intrinsic stability of perovskite materials.<sup>[52](#ref52)</sup> <sup>[53](#ref53)</sup> Figure [6a](#fig6) illustrates several representative “all-in-one” ligands used in fabricating high-performance PSCs. Wang et al. found that different functional groups in theophylline, caffeine, and theobromine can affect the interaction between passivation molecules and lead-iodine antisite defects in perovskite. When N–H and C=O were designed to be an optimal configuration in a molecule like theophylline, the hydrogen bond formation between N–H and iodine could strengthen the bonding of primary C=O with the Pb–I antisite defect (i.e., an interaction energy as strong as ~1.7 eV), which could maximize the surface defect passivation effect (Figure [6b](#fig6)). Obviously, the N–H functional group indeed works efficiently to stabilize the iodine, while simultaneously changes the surrounding electron density and promote the defect passivation efficacy of C=O functional groups. A device with theophylline treatment exhibited higher electron-beam-induced current (EBIC) and minimal decay from the hole transport layer to the SnO<sub>2</sub>-perovskite interface compared with the reference device, suggesting facilitated charge transfer and suppressed nonradiative recombination for the former (Figure [6c](#fig6)). After theophylline treatment, a stabilized PCE of 22.6% was achieved ([Supporting Information Note 9](https://pubs.acs.org/doi/suppl/10.1021/accountsmr.1c00099/suppl_file/mr1c00099_si_001.pdf)).<sup>[27](#ref27)</sup>
 
 <a id="fig7"></a>
-<Image src="https://s2.loli.net/2025/01/21/6TJujIa3lRrwkot.png" alt="fig7" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/6TJujIa3lRrwkot.png" alt="fig7" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Figure 7</b> |
@@ -146,7 +146,7 @@ Amino acids consisting of an amine group and carboxyl group can exert a dual-pas
 Different molecular structures can modulate the molecular interaction between the passivation agent and the crystal defect of perovskites (Supporting Information Note 10)<sup>[55](#ref55)</sup>. Han and colleagues incorporated the bifunctional 5-ammoniumvaleric acid (5-AVAI) into perovskites, which stabilized the GBs and interfaces via a strong molecular interaction between 5AVAI and MAPbI<sub>3</sub> perovskite. The 5-AVAI could attach on the surface of MAPbI<sub>3</sub> grains with their ammonium groups and tailor the grain sizes of MAPbI<sub>3</sub>. The carboxyl groups then interact via the strong hydrogen bond with either another 5-AVAI on an adjacent grain or the metal oxide substrates, enabling tight connection between grains, or grains and the metal oxide substrate. Moreover, 5-AVAI inhibits the loss of MAI and restricts ion migration at MAPbI<sub>3</sub> GBs and the interfaces between MAPbI<sub>3</sub> and the mesoscopic layer (Figure [7a–c](#fig7)). No performance attenuation was observed when the devices were tracked under MPP condition for more than 9,000 h (Figure [7d](#fig7))<sup>[7](#ref7)</sup>. In addition, the effects of ligand molecule hydrophilicity and hydrophobicity on perovskite film formation have been investigated (Supporting Information Note 11)<sup>[17](#ref17)</sup> <sup>[26](#ref26)</sup>
 
 <a id="fig8"></a>
-<Image src="https://s2.loli.net/2025/01/21/tcxow87SrXP5V2C.png" alt="fig8" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/tcxow87SrXP5V2C.png" alt="fig8" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs">
 <b>Figure 8</b> |
@@ -167,7 +167,7 @@ While much fruitful achievement has been achieved with custom ligands and perovs
 foreseen, further research efforts are needed to design more advanced and perfect ligand molecules to tap the omnibearing potential of magic perovskites. Accordingly, we propose three major research implications and provide some insightful perspectives (Figure [9](#fig9)).
 
 <a id="fig9"></a>
-<Image src="https://s2.loli.net/2025/01/21/c3VHyE5uPCxZQJz.png" alt="fig9" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/21/c3VHyE5uPCxZQJz.png" alt="fig9" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-xs text-center">
 <b>Figure 9</b> | Future research implications of optimizing the molecular design strategy.

@@ -22,7 +22,7 @@ Published as part of **_The Journal of Physical Chemistry C_** special issue "Sp
 Zongxuan Yuan, Meifang Yang, Lei Zhang, Wen-Guang Li, Tian Tian*, and Huan Pang*
 
 <div class="publication-container">
-        <Image src="https://s2.loli.net/2025/01/13/DIUNyFfRi354gQP.png" alt="Spectroscopic techniques diagram for PSCs"  class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+        <Image src="https://s2.loli.net/2025/01/13/DIUNyFfRi354gQP.png" alt="Spectroscopic techniques diagram for PSCs"  class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
     <div class="abstract">
         <h3>ABSTRACT</h3>
     In the research of perovskite solar cells (PSCs), a fundamental understanding of the photoelectric conversion process is crucial for exploring mechanisms and optimizing performance, which largely relies on accurately capturing experimental phenomena. Spectral techniques, especially photoluminescence (PL) spectroscopy, time-resolved photoluminescence (TRPL) spectroscopy, photoluminescence quantum yield (PLQY) measurement, photoluminescence (PL) mapping spectroscopy, and transient absorption (TA) spectroscopy, are highly valued for their ability to provide detailed information about the material's working state. In this Review, we provide an overview of the latest advancements in these spectral techniques in PSC research. We demonstrate their advantages in monitoring the reconstruction of electronic structure, carrier dynamics, evolution of interfacial states, and separation of photogenerated charges in PSCs. Additionally, we discuss how to interpret the underlying physical and chemical processes in perovskite materials based on these spectral characterizations. Ultimately, we look forward to these techniques providing deeper insights into the further development of PSCs and their application in the field of renewable energy.
@@ -34,14 +34,14 @@ Zongxuan Yuan, Meifang Yang, Lei Zhang, Wen-Guang Li, Tian Tian*, and Huan Pang*
 The pursuit of sustainable and renewable energy sources has been a focal point for the scientific community for decades. In light of the global challenges posed by climate change and the gradual depletion of fossil fuel reserves, researchers are dedicated to developing clean and efficient energy conversion solutions, which have become a paramount priority in scientific inquiry.<sup><a href="#ref1">1</a></sup> Solar energy, as a prominent renewable source, is particularly emphasized due to its abundance, cleanliness, and sustainability. It offers a continuous energy source with minimal environmental impact during usage.<sup><a href="ref2">2</a></sup> Over recent years, various methods for harnessing solar energy have emerged, including solar heating,<sup><a href="#ref3">3</a></sup> artificial photosynthesis,<sup><a href="#ref4">4</a></sup>photovoltaics (PV),<sup><a href="#ref5">5</a></sup> and photocatalytic decomposition.<sup><a href="#ref6">6</a></sup> Among them, photovoltaic technology has garnered significant attention for its effectiveness in converting solar energy into electrical energy. PV systems mostly work on the principle that when light strikes a semiconductor material (e.g., silicon,<sup><a href="#ref7">7</a></sup>,<sup><a href="#ref8">8</a></sup> chalcogenide,<sup><a href="#ref9">9</a></sup> <sup><a href="#ref10">10</a></sup>organic PV<sup><a href="#ref11">11</a></sup>,<sup><a href="#ref12">12</a></sup>), it excites electrons to transition from the valence band to the conduction band, thereby generating free electrons and holes. In the presence of an electric field, these charge carriers migrate in opposite directions, forming an electric current. According to the development of solar cell technology, the materials used in it can be categorized into three generations ([Figure 1](#figure_1)). Among them, perovskite solar cells (PSCs) demonstrate remarkable PV performance due to their high absorption coefficients,<sup><a href="#ref14">14</a></sup> efficient bipolar carrier transport capabilites,<sup><a href="#ref15">15</a></sup> long carrier diffusion lengths and prolonged carrier lifetimes.<sup><a href="#ref16">16</a></sup> The typical PSCs consist of several key components: a transparent conductive substrate (TCO), an electron transport layer (ETL), a perovskite (PVK) absorber layer, a hole transport layer (HTL) and a metal back electrode. When sunlight strikes PSCs, the PVK absorber layer absorbs light energy, generating electron−hole pairs. These charge carriers are rapidly separated by the built-in electric field, with the electrons migrating toward the ETL and the holes moving to the HTL. The ETL and the HTL are composed of n-type and p-type semiconductor materials, respectively, which provide efficient transport pathways for the electrons and holes. Consequently, the separated electrons and holes are collected at the TCO and metal back electrodes, respectively, forming a current that can be harnessed through an external circuit.<sup><a href="#ref17">17</a></sup>
 
 <a id="figure_1"></a>
-<Image src="https://s2.loli.net/2025/01/15/FDgYOnC4eNfqczm.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/FDgYOnC4eNfqczm.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="w-full text-center text-sm">
     <strong>Figure 1.</strong> Three generations of PV cells.<sup><a href="#ref13">13</a></sup> Adapted with permission from ref 13. Copyright 2023 Royal Society of Chemistry.
 </div>
 
 <a id="figure_2"></a>
-<Image src="https://s2.loli.net/2025/01/15/uyJ2FYWzT69LRds.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/uyJ2FYWzT69LRds.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="w-full text-center text-sm">
     <strong>Figure 2.</strong> Mechanism diagram.<sup><a href="#ref25">25</a></sup> Adapted with permission from ref 25. Copyright 2019 Nature Publishing Group.
@@ -55,7 +55,7 @@ Spectroscopic techniques play a crucial role in PSCs characterization. These cha
 
 
 <a id="figure_3"></a>
-<Image src="https://s2.loli.net/2025/01/15/uxDyK3P2pfz6otq.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/uxDyK3P2pfz6otq.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="w-full text-center text-sm">
     <strong>Figure 3.</strong> Scheme for the TRPL.<sup><a href="#ref39">39</a></sup> Adapted with permission from ref 39. Copyright 2022 Springer.
@@ -108,7 +108,7 @@ the radiative process of carries following excitation by short light pulses, typ
 sample is excited by a laser pulse and when the detector captures the fluorescent photon signal emitted by the sample. This process requires the definition of a "start" signal and a "stop" signal. The "start" signal is provided by the synchronized trigger output of the pulsed laser or the pulse output signal of a fast photodiode, while the "stop" signal is achieved by the detection of photon signals by a single-photon detector. By repeatedly measuring this time difference and sorting the detected event times into a histogram based on their arrival times, the decay curve of photoluminescence can be reconstructed ([Figure 3](#figure_3)). TRPL experiments are typically conducted using timecorrelated single photon counting. In this technique, the sample is periodically excited by pulsed lasers that emit light at a specific wavelength. The emitted light is then recorded by a high-speed detector, such as a single-photon counter, over time delays. By analyzing the PL decay curve, the PL lifetime of the material can be determined. Ideally, after each excitation pulse, either 0 or 1 photon is measured, and it typically requires millions to billions of excitation pulses to achieve sufficient signal-to-noise ratio (S/N). Consequently, the TRPL intensity
 
 <a id="figure_4"></a>
-<Image src="https://s2.loli.net/2025/01/15/RIOyg2fDekGvb98.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/RIOyg2fDekGvb98.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-sm">
     <strong>Figure 4.</strong>
@@ -150,7 +150,7 @@ The PL mapping provides valuable insights into the luminescent properties of PSC
 **2.5. Transient Absorption (TA) Spectroscopy.** TA spectroscopy is an advanced time-resolved spectroscopic technique that monitors the real-time dynamics of excited states in materials by tracking changes in spectral absorption.
 
 <a id="figure_5"></a>
-<Image src="https://s2.loli.net/2025/01/15/jt87eEZmd9I6r5q.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/jt87eEZmd9I6r5q.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-sm">
     <strong>Figure 5.</strong> An illustrative example of studying the internal electron movement in PSCs through PL spectroscopy. (a) PL spectra of the TiO<sub>2</sub>/FAPbI<sub>3</sub> and TiO<sub>2</sub>-SK/FAPbI<sub>3</sub> films. Adapted with permission from ref <a href="#ref68">68</a>. Copyright 2024 Wiley-VCH. (b) PL spectra of the PVK films deposited on SnO<sub>2</sub>, SnO<sub>2</sub>/PCBM, and SnO<sub>2</sub>/AHF-4. Adapted with permission from ref <a href="#ref69">69</a>. Copyright 2023 American Chemical Society. (c) PL spectra of PVK films on the TiO<sub>2</sub> and TiO<sub>2</sub>-AS. Adapted with permission from ref <a href="#ref59">59</a>. Copyright 2023 Wiley-VCH. (d) PL spectra of the samples with and without the structure of TB-C8-Ni. Adapted with permission from ref <a href="#ref70">70</a>. Copyright 2024 Elsevier. (e) PL spectra of the FAPbI<sub>3</sub> films deposited on the different types of SnO<sub>2</sub> NC layers. Adapted with permission from ref <a href="#ref71">71</a>. Copyright 2023 Wiley-VCH. (f) The PL spectra of PVK, PVK/TIPS-Pn, and PVK/TIPS-Pn/CB. Adapted with permission from ref <a href="#ref72">72</a>. Copyright 2023 Wiley-VCH.
@@ -173,7 +173,7 @@ SE occurs when molecules in the excited state are stimulated by the probe light 
 For instance, Luo et al.<sup><a href="#ref68">68</a></sup> modified the interface between the titanium dioxide (TiO<sub>2</sub>) ETL and the PVK layer with versatile potassium trifluoromethanesulfonate, achieving effective cross-linking that significantly enhanced electron transfer efficiency from the PVK layer to the ETL. In [Figure 5a](#figure_5), the PL intensity of the TiO<sub>2</sub>-SK film is lower than that of the TiO<sub>2</sub> film, indicating that TiO<sub>2</sub> ETLs treated with SK can reduce electron−hole recombination in the PVK layer, thereby more effectively extracting electrons and enhancing the energy conversion efficiency of solar cells. Similarly, the team of
 
 <a id="figure_6"></a>
-<Image src="https://s2.loli.net/2025/01/15/cQviMI4rpR65Elq.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/cQviMI4rpR65Elq.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-sm">
     <strong>Figure 6.</strong>
@@ -204,14 +204,14 @@ PL spectroscopy plays a crucial role in the research of PSCs, as it not only rev
 Concerning characterizing the polarization coupling of hole-transporting materials, Li et al.<sup><a href="#ref73">73</a></sup> modified SnO<sub>2</sub> with potassium isopropylxanthate (KiPX). The sulfur ligand, due to the presence of Lewis acid centers, interacts strongly with Pb<sup>2+</sup> in the perovskite and Sn<sup>4+</sup> on the SnO<sub>2</sub> surface, resulting in the formation of more robust interfacial dipoles and enhanced charge transfer. As shown in [Figure 6a](#figure_6), the carrier lifetime of KiPX decreases following its modification, indicating that stronger interfacial dipoles are established at the KiPX-modified interfaces. This modification reduces energy band bending in the perovskite region, facilitating electron transfer from the perovskite layer to the SnO<sub>2</sub> ETL. In addition, for the characterization of defect
 
 <a id="figure_7"></a>
-<Image src="https://s2.loli.net/2025/01/15/ZcztCqbPBORhLKy.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/ZcztCqbPBORhLKy.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-sm">
-    <strong>Figure 7.</strong> 
+    <strong>Figure 7.</strong>
     <br>
     (a) Normalized PLQY of glass/PIC/perovskite stacks (indicated as PIC sample) relative to the control sample (PIC concentration 0). Adapted with permission from ref 80. Copyright 2023 AAAS.
     <br>
-    (b) PLQY of PVK films on different substrates. Adapted with permission from ref 81. Copyright 2023 AAAS. 
+    (b) PLQY of PVK films on different substrates. Adapted with permission from ref 81. Copyright 2023 AAAS.
     <br>
     (c) Excitation-intensity-dependent PLQY of the Sn PVK films with and without CA. Adapted with permission from ref 82. Copyright 2023 Nature Publishing Group.
     <br>
@@ -231,17 +231,17 @@ Dai's team<sup><a href="#ref78">78</a></sup> used the thiophene derivative 3-thi
 TRPL technology plays a crucial role in the research of PSCs, as it not only reveals the carrier dynamics within the materials, including the lifetime and polarization coupling of carriers, but also aids in optimizing material and interface
 
 <a id="figure_8"></a>
-<Image src="https://s2.loli.net/2025/01/15/n8xtCsKM6oBFzbh.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/n8xtCsKM6oBFzbh.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-sm">
     <strong>Figure 8.</strong>
-    Confocal PL mapping of 
+    Confocal PL mapping of
     <br>
-    (a) pristine CsFA, 
+    (a) pristine CsFA,
     <br>
-    (b) 2D-S/CsFA, 
+    (b) 2D-S/CsFA,
     <br>
-    (c) 2D-R/CsFA PVK samples. 
+    (c) 2D-R/CsFA PVK samples.
     <br>
     Adapted with permission from ref 88. Copyright 2023 Wiley-VCH.
     <br>
@@ -265,10 +265,10 @@ In the field of exploring kinetic models, Christian M. Wolff<sup><a href="#ref83
 PLQY is a key parameter for assessing the performance of PSCs, directly related to the photoelectric conversion efficiency of photogenerated carriers in the material. A high
 
 <a id="figure_9"></a>
-<Image src="https://s2.loli.net/2025/01/15/oiwqX5pThHSc7D9.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/15/oiwqX5pThHSc7D9.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
 
 <div class="text-sm">
-    <strong>Figure 9.</strong> 
+    <strong>Figure 9.</strong>
     TA spectra of (a) C<sub>60</sub>/CM and (b) APTES-linked C<sub>60</sub>/CM samples. Adapted with permission from ref 92. Copyright 2021 Wiley-VCH.
     <br>
     The TA spectra of (c) ITO/PTAAPVK films and (d) ITO/PTAA/2PACz/PVK films. Adapted with permission from ref 93. Copyright 2023 Chinese Chemical Society.

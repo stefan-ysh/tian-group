@@ -22,7 +22,7 @@ Published in <i>**[Chinese Chemical Society](http://dx.doi.org/10.31635/ccschem.
 Ying Tan, Xueqing Chang, JunXing Zhong, Wenhuai Feng, Meifang Yang, Tian Tian, Li Gong*, Wu-Qiang Wu*
 
 <div class="publication-container">
-    <Image src="https://s2.loli.net/2025/01/20/rAtlE7mBesOyCWJ.png" alt="Publication Image" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+    <Image src="https://s2.loli.net/2025/01/20/rAtlE7mBesOyCWJ.png" alt="Publication Image" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
     <div class="text-xs">
 An “all-in-one” interlayer was introduced at HTL/perovskite buried interface to achieve favorable energy level
 alignment with underlying PTAA and form robust coordination bonding with adjacent perovskite for maximized
@@ -72,7 +72,7 @@ In a preliminary study, the PTAA materials with a molecular weight less than 6 k
 
 The functions of 2PACz interlayer far exceed enhancing the wettability of the HTL surface and improving the HTL/perovskite contact affinity. It is anticipated that the 2PACz containing a carbazole structure and PA groups is able to chemically interact with both underlying PTAA and upper perovskite layer. The interaction between 2PACz and PTAA has been investigated by Raman spectroscopy (Supporting Information Figure S4), which has been widely utilized to investigate the potential chemical interaction between different molecules with specific functional groups and/or organic moieties.<sup>[27](#ref27), [28](#ref28), [29](#ref29)</sup> For the PTAA sample, the peak located at 1293 cm<sup>-1</sup> corresponded to the C–N bond stretching vibration of the triphenylamine structure.
 
-<Image src="https://s2.loli.net/2025/01/20/73YSwAVuij9KBst.png" alt=" Chemical structure of (a) PTAA and (b) 2PACz" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/73YSwAVuij9KBst.png" alt=" Chemical structure of (a) PTAA and (b) 2PACz" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading='lazy' />
 
 <div class="text-xs">
 <b>Figure 1</b> | Chemical structure of (a) PTAA and (b) 2PACz. Contact angle images for a droplet of perovskite precursor on (c) PTAA and (d) PTAA/2PACz. (e) FT-IR spectra of pristine 2PACz and 2PACz–PbI<sub>2</sub> blend. (f) Schematic illustration of chemical interaction and defect passivation of PTAA/perovskite buried interface by 2PACz molecules.
@@ -91,7 +91,7 @@ The improved contact affinity and chemical interaction effect will be in favor o
 We fabricated the inverted PSCs with a device architecture of ITO/HTL/perovskite/C<sub>60</sub>/BCP/Cu, in which the HTL is either pristine PTAA or bilayered PTAA/2PACz (Figure [2a](#fig2)). The cross-sectional SEM images of the corresponding devices are displayed in Supporting Information Figure S9, which shows that the thickness of perovskite film is ~500 nm for both devices. One can observe better interfacial contact junctions at PTAA/2PACz-based devices, showcasing columnar-like perovskite grains tightly connecting with both HTL and ETL (Supporting Information Figure S9b), which is helpful for boosting carrier extraction and transport throughout the monolithic device.<sup>[17](#ref17)</sup> Figure [2b](#fig2) shows the J–V curves of the PTAA and PTAA/2PACz-based PSCs fabricated with Cs<sub>0.05</sub>(FA<sub>0.83</sub>MA<sub>0.17</sub>)<sub>0.95</sub>Pb(I<sub>0.83</sub>Br<sub>0.17</sub>)<sub>3</sub> perovskite films. The corresponding photovoltaic parameters, such as short-circuit photocurrent density (J<sub>sc</sub>), open-circuit photovoltage (V<sub>oc</sub>), fill factor (FF), and PCE, are summarized in Table 1. Relative to PTAA-based PSCs, all the photovoltaic parameters of the PTAA/2PACz-based devices improved dramatically, boosting the PCE from 18.14% to 20.05%, accompanied by a negligible J–V hysteresis with remarkably reduced hysteresis index (Supporting Information Figure S10 and Table S1). Such a performance enhancement can be ascribed to the synergistic roles of facilitated hole extraction and suppressed charge recombination at HTL/perovskite buried interface with 2PACz modification, which will be discussed in the following. The alleviated J–V hysteresis can be attributed to the optimized carrier dynamics with reduced charge accumulation at the HTL/perovskite interface.<sup>[43](#ref43)</sup> In addition, PTAA/2PACz-based devices had greatly reduced leakage current densities as compared to the PTAA-based PSCs (Supporting Information Figure S11), suggesting the compactness of both the bilayered HTL film and perovskite layer.<sup>[44](#ref44)</sup> The EQE was measured to check the reliability of the enhanced photocurrent (Supporting Information Figure S12), and the PTAA/2PACz-based device exhibited higher EQE values over the wavelength region from 380 to 760 nm, relative to the PTAA-based PSC, which is in good consistency with the J–V measurement. Supporting Information Figure S13 presents the steady output of photocurrent density and PCE as a function of time for the PSCs operating at the maximum power point as indicated. A stabilized PCE of 19.36% is achieved for the device based on PTAA/2PACz HTL, which is higher than that of its PTAA-based counterpart. The PTAA/2PACz-based PSCs exhibited better PCE reproducibility than the reference PTAA-only ones (Figure [2c](#fig2)). Specifically, more than 46% of PTAA/2PACz-based devices had PCEs over 19%, while only 6.7% of PTAA-based PSCs showed PCEs over 18%. The outstanding reproducibility of device performance validates the effectiveness of employing bilayered PTAA/2PACz HTL.
 
 <a id="fig2"></a>
-<Image src="https://s2.loli.net/2025/01/20/RFNLeTSQydf6Zhb.png" alt="Figure 2" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/RFNLeTSQydf6Zhb.png" alt="Figure 2" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading='lazy' />
 
 <div class="w-full text-sm">
     <b>Figure 2</b> |<br /> (a) Schematic illustration of inverted PSC with a device architecture of ITO/PTAA/2PACz/perovskite/C<sub>60</sub>/BCP/Cu. <br />(b) J–V characteristics and (c) PCE histogram of Cs<sub>0.05</sub>(FA<sub>0.83</sub>MA<sub>0.17</sub>)<sub>0.95</sub>Pb(I<sub>0.83</sub>Br<sub>0.17</sub>)<sub>3</sub>-based PSCs fabricated with or without 2PACz interlayer. <br />(d) J–V characteristics of the hole-only devices (as indicated) measured under dark conditions. <br />(e) J–V curve and (f) EQE spectrum and integrated J<sub>sc</sub> value of the champion blade-coated PSC based on PTAA/2PACz HTL and FA<sub>0.4</sub>MA<sub>0.6</sub>PbI<sub>3</sub> perovskite film.
@@ -127,7 +127,7 @@ We employed femtosecond transient absorption (fs-TA) spectroscopy to analyze the
 
 <a id="fig3"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/gMQneWLzDkXUCw6.png" alt="Figure 3" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/gMQneWLzDkXUCw6.png" alt="Figure 3" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading='lazy' />
 
 <div class="w-full text-sm">
     <b>Figure 3</b> |
@@ -143,7 +143,7 @@ We employed femtosecond transient absorption (fs-TA) spectroscopy to analyze the
 
 <a id="fig4"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/1jYTyoNEXPuw69S.png" alt="Figure 4" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/1jYTyoNEXPuw69S.png" alt="Figure 4" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading='lazy' />
 
 <div class="w-full text-sm">
     <b>Figure 4</b> |
@@ -159,7 +159,7 @@ The perovskite materials and devices are very sensitive and can easily degrade u
 
 <a id="fig5"></a>
 
-<Image src="https://s2.loli.net/2025/01/20/UQEDwjri4Hp92Gh.png" alt="Figure 5 PCE evolution as a function of time for the unencapsulated devices (a) in ambient air and (b) under continuous heating at 85 °C" class="mx-auto my-0 w-full max-w-lg" width={1000} height={1000} />
+<Image src="https://s2.loli.net/2025/01/20/UQEDwjri4Hp92Gh.png" alt="Figure 5 PCE evolution as a function of time for the unencapsulated devices (a) in ambient air and (b) under continuous heating at 85 °C" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading='lazy' />
 
 <div class="w-full text-sm">
     <b>Figure 5</b> | PCE evolution as a function of time for the unencapsulated devices (a) in ambient air and (b) under continuous heating at 85 °C. Change of XRD patterns of the perovskite films deposited on (c) PTAA and (d) PTAA/2PACz HTL upon 85 °C heating for different duration.
