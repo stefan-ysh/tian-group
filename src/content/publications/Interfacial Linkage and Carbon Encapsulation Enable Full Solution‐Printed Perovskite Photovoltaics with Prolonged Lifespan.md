@@ -30,7 +30,7 @@ tags: [markdown, blog]
 
 ## Interfacial Linkage and Carbon Encapsulation Enable Full Solution‐Printed Perovskite Photovoltaics with Prolonged Lifespan
 
-Published in **_Angewandte Chemie International Edition_**
+Published in [**_Angewandte Chemie International Edition_**](http://dx.doi.org/10.1002/anie.202108495)
 
 Tian Tian, Jun-Xing Zhong, Meifang Yang, Wenhuai Feng, Chengxi Zhang, Wenjing Zhang, Yaser. Abdi, Lianzhou Wang,\* Bing-Xin Lei,\* and Wu-Qiang Wu\*
 

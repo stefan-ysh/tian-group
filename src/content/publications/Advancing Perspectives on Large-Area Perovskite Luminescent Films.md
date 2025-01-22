@@ -17,7 +17,7 @@ tags: [markdown, blog]
 
 ## Advancing Perspectives on Large-Area Perovskite Luminescent Films
 
-Published in **_American Chemical Society_**
+Published in _[**American Chemical Society**](http://dx.doi.org/10.1021/acs.energyfuels.4c03168)_
 
 Lei Zhang, Hui Kang, Xinyi Lin, Qin Xu, Bing-Xin Lei*, Tian Tian*, Huan Pang
 

@@ -17,7 +17,7 @@ tags: [markdown, blog]
 
 ## Custom Molecular Design of Ligands for Perovskite Photovoltaics
 
-Published in: _[**ACS**](http://dx.doi.org/10.1021/accountsmr.1c00099)_
+Published in: [_**American Chemical Society**_](http://dx.doi.org/10.1021/accountsmr.1c00099)
 
 Meifang Yang, Tian Tian, Wenhuai Feng, Lianzhou Wang*, Wu-Qiang Wu*
 

@@ -17,7 +17,7 @@ tags: [markdown, blog]
 
 ## Large-area waterproof and durable perovskite luminescent textiles
 
-Published in <i>**[Nature Communications](http://dx.doi.org/10.1038/s41467-023-35830-8)**</i>
+Published in [_**Nature Communications**_](http://dx.doi.org/10.1038/s41467-023-35830-8)
 
 Tian Tian, Meifang Yang, Yuxuan Fang, Shuo Zhang, Yuxin Chen, Lianzhou Wang*, WuQiang Wu*
 

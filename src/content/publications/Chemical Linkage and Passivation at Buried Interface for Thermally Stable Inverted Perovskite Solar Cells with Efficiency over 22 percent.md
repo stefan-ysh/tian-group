@@ -17,7 +17,7 @@ tags: [markdown, blog]
 
 ## Chemical Linkage and Passivation at Buried Interface for Thermally Stable Inverted Perovskite Solar Cells with Efficiency over 22%
 
-Published in <i>**[Chinese Chemical Society](http://dx.doi.org/10.31635/ccschem.022.202202154)**</i>
+Published in [_**Chinese Chemical Society**_](http://dx.doi.org/10.31635/ccschem.022.202202154)
 
 Ying Tan, Xueqing Chang, JunXing Zhong, Wenhuai Feng, Meifang Yang, Tian Tian, Li Gong*, Wu-Qiang Wu*
 

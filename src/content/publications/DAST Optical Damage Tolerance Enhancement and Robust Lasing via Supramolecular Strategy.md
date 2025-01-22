@@ -30,7 +30,7 @@ import Image from 'next/image'
 
 ## DAST Optical Damage Tolerance Enhancement and Robust Lasing via Supramolecular Strategy
 
-Published in _**[American Chemical Society (ACS)](http://dx.doi.org/10.1021/acsphotonics.0c00602)**_
+Published in [_**American Chemical Society**_](http://dx.doi.org/10.1021/acsphotonics.0c00602)
 
 Tian Tian, Yunkun Wang, Wenjing Zhang, Bing Wang, Cheng Fan, Guanjun You, Shuai Yuan, Gongjie Xu, Min Li, Chuan Xu, and Bin Cai\*
 

@@ -18,7 +18,7 @@ tags: [markdown, blog]
 
 ## Unlocking multi-photon excited luminescence in pyrazolate trinuclear gold clusters for dynamic cell imaging
 
-Published in **_Nature Communications_**
+Published in [**_Nature Communications_**](http://dx.doi.org/10.1038/s41467-024-51753-4)
 
 Yu-Xin Chen, Haidong Yu, Lihua Wu, Yuan-Jun Tong, Jianqiao Xu, Huan Pang, Chao Wu*, Tian Tian* & Gangfeng Ouyang\*
 

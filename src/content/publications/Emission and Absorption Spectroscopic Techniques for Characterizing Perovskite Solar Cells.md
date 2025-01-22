@@ -17,7 +17,7 @@ author: [Zongxuan Yuan, Meifang Yang, Lei Zhang, WenGuang Li, Tian Tian*, Huan P
 
 ## Emission and Absorption Spectroscopic Techniques for Characterizing Perovskite Solar Cells
 
-Published as part of **_The Journal of Physical Chemistry C_** special issue "Spectroscopic Techniques for Renewable Energy".
+Published as part of _[**The Journal of Physical Chemistry C**](http://dx.doi.org/10.1021/acs.jpcc.4c06770)_ special issue "Spectroscopic Techniques for Renewable Energy".
 
 Zongxuan Yuan, Meifang Yang, Lei Zhang, Wen-Guang Li, Tian Tian*, and Huan Pang*
 
@@ -52,7 +52,6 @@ Spectroscopic techniques play a crucial role in PSCs characterization. These cha
 ## 2. Overview Of Spectroscopic Techniques
 
 **2.1. Photoluminescence (PL) Spectroscopy.** PL spectroscopy is a sensitive optical detection technique that utilizes a light source to excite molecules in a sample, causing them to transition from their ground state to a higher excited state. While in the excited state, the molecules often experience nonradiative energy loss through internal transitions and internal crossovers before returning to the ground state. The phenomenon of this energy being released in the form of photons with longer wavelengths is called photoluminescence or phosphorescence ([Figure 2](#figure_2)). By accurately measuring the intensity of this emitted light, the PL spectrum obtained, it included properties and state of existence of the molecule involved.<sup><a href="#ref23">23</a></sup>,<sup><a href="#ref24">24</a></sup> PL spectrum consists of an excitation (Ex) spectrum and an emission (Em) spectrum, reflecting the vibrational energy level structure of the ground and excited state, respectively. The Ex spectrum often referred to as the absorption spectrum, illustrates the transition of electrons from a lower energy state to a higher energy state upon absorbing light energy. The total energy within a molecule as it absorbs light energy and excites is formed by the superposition of some different energy states.<sup><a href="#ref26">26</a></sup>
-
 
 <a id="figure_3"></a>
 <Image src="https://s2.loli.net/2025/01/15/uxDyK3P2pfz6otq.png" alt="12123" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />

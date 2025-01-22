@@ -30,7 +30,7 @@ tags: [markdown, publication]
 
 ## Durable organic nonlinear optical membranes for thermotolerant lightings and in vivo bioimaging
 
-Published in <i>**Nature Communications**</i>
+Published in [_**Nature Communications**_](http://dx.doi.org/10.1038/s41467-023-40168-2)
 
 Tian Tian, Yuxuan Fang, Wenhui Wang, Meifang Yang, Ying Tan, Chuan Xu, Shuo Zhang, Yuxin Chen, Mingyi Xu*, Bin Cai*, Wu-Qiang Wu\*
 
