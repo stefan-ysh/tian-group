@@ -15,9 +15,9 @@ author:
     Chengxi Zhang,
     Wenjing Zhang,
     Yaser. Abdi,
-    Lianzhou Wang,
-    \* Bing-Xin Lei,
-    \* and Wu-Qiang Wu\*,
+    Lianzhou Wang*,
+    Bing-Xin Lei*,
+    and Wu-Qiang Wu*
   ]
 journal: 'Angewandte Chemie International Edition'
 journalShort: 'Angewandte Chemie'
