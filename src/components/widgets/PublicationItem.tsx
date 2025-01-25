@@ -1,18 +1,18 @@
 'use client';
 import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, SquareArrowOutUpRight, Book } from 'lucide-react';
-import { Card, Spinner } from '@nextui-org/react';
-import { Slider } from '@nextui-org/slider';
+import { Card, Spinner } from "@heroui/react";
+import { Slider } from "@heroui/slider";
 import React, { forwardRef } from 'react';
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from '@nextui-org/react';
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@heroui/react";
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Tooltip } from '@nextui-org/tooltip';
+import { Tooltip } from "@heroui/tooltip";
 import { useState, useRef } from 'react';
 import NextImage from 'next/image';
 // react-pdf
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
-import { Progress } from '@nextui-org/react';
+import { Progress } from "@heroui/react";
 import { useRouter } from 'next/navigation';
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 interface PublicationItemProps {

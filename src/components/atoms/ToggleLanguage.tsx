@@ -1,7 +1,7 @@
 'use client';
 
 import { setUserLocale } from '~/services/locale';
-import { Button, Switch } from '@nextui-org/react';
+import { Button, Switch } from "@heroui/react";
 import { useLocale } from 'next-intl';
 import { useTransition, useState, useEffect } from 'react';
 

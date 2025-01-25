@@ -15,7 +15,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Link,
-} from '@nextui-org/react';
+} from "@heroui/react";
 import { useTranslations, useLocale } from 'next-intl';
 
 const Header = () => {

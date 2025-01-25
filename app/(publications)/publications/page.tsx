@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 // import Link from 'next/link';
 import { findLatestPublications } from '~/utils/publications';
 import { Timeline } from '~/components/ui/timeline';
-import { Card, CardBody, Switch } from '@nextui-org/react';
+import { Card, CardBody, Switch } from "@heroui/react";
 import { PublicationItem } from '~/components/widgets/PublicationItem';
 
 import NextImage from 'next/image';

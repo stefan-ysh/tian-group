@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Chip, Card } from '@nextui-org/react';
+import { Chip, Card } from "@heroui/react";
 import { useRouter } from 'next/navigation';
 import NextImage from 'next/image';
 import { useTranslations } from 'next-intl';

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import {Image} from "@nextui-org/react";
+import {Image} from "@heroui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "~/lib/utils";
 

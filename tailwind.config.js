@@ -1,12 +1,12 @@
 // const defaultTheme = require('tailwindcss/defaultTheme');
 // const colors = require('tailwindcss/colors');
-const { nextui } = require('@nextui-org/react');
+const { heroui } = require("@heroui/react");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',
     './src/**/*.{js,ts,jsx,tsx,md,mdx}',
-    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
+    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   // theme: {
   //   extend: {
@@ -65,7 +65,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/typography'),
     require('tailwindcss-animate'),
-    nextui({
+    heroui({
       "themes": {
       //   "light": {
       //     "colors": {

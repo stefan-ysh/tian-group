@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { IconSun, IconMoon } from '@tabler/icons-react';
-import { Button } from '@nextui-org/react';
+import { Button } from "@heroui/react";
 import { useTheme } from 'next-themes';
 
 const ToggleTheme = () => {

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { Chip, Image, Card } from '@nextui-org/react';
+import { Chip, Image, Card } from "@heroui/react";
 import { useRouter } from 'next/navigation';
 
 interface ActivityItemProps {
