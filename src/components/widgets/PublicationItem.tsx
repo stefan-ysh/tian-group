@@ -52,7 +52,10 @@ export const PublicationItem = ({
     >
       <div
         onClick={() => {
-          router.push(`/publications/${slug}`);
+          // 本地预览，涉及版权
+          // router.push(`/publications/${slug}`);
+          // 新窗口预览
+          window.open(link, '_blank')
         }}
         className="w-4/5 md:w-3/5 flex flex-col md:flex-row mx-auto md:m-auto items-center justify-center cursor-pointer"
       >
