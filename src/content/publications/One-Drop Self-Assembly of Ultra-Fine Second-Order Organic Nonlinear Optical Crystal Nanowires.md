@@ -32,7 +32,7 @@ tags: [markdown, blog]
 
 Published in: _[**Springer Nature Link**](http://dx.doi.org/10.1186/s11671-019-3103-y)_
 
-Tian Tian, Bin Cai\*, Qingqing Cheng, Cheng Fan, Yanyan Wang, Gongjie Xu, Fuxing Gu, Feng Liao, Okihiro Sugihara, Eiji Hase, Takeshi Yasui
+Tian Tian, Bin Cai*, Qingqing Cheng, Cheng Fan, Yanyan Wang, Gongjie Xu, Fuxing Gu, Feng Liao, Okihiro Sugihara, Eiji Hase, Takeshi Yasui
 
 <Image src="https://s2.loli.net/2025/01/13/c8vuTdHg6A1kUyB.png" alt="" width="1000" height="1000" loading="lazy" class="mx-auto my-0 w-full max-w-lg" />
 

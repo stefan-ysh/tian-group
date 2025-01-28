@@ -19,7 +19,7 @@ import Image from 'next/image'
 
 Published in: [**_John Wiley & Sons_**](http://dx.doi.org/10.1002/solr.202200258)
 
-Gengling Liu, Tian Tian*, Jianyu Yang, Jun-Xing Zhong, Dilbara Gulamova*, Wu-Qiang Wu\*
+Gengling Liu, Tian Tian*, Jianyu Yang, Jun-Xing Zhong, Dilbara Gulamova*, Wu-Qiang Wu*
 
 <Image src="https://s2.loli.net/2025/01/13/eSzhdIGOU3vqtyk.png" alt="Multidentate Chelation Heals Structural Imperfections for Minimized Recombination Loss in Lead‐Free Perovskite Solar Cells" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading='lazy' />
 

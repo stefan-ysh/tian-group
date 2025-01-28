@@ -32,7 +32,7 @@ tags: [markdown, publication]
 
 Published in [_**Nature Communications**_](http://dx.doi.org/10.1038/s41467-023-40168-2)
 
-Tian Tian, Yuxuan Fang, Wenhui Wang, Meifang Yang, Ying Tan, Chuan Xu, Shuo Zhang, Yuxin Chen, Mingyi Xu*, Bin Cai*, Wu-Qiang Wu\*
+Tian Tian, Yuxuan Fang, Wenhui Wang, Meifang Yang, Ying Tan, Chuan Xu, Shuo Zhang, Yuxin Chen, Mingyi Xu*, Bin Cai*, Wu-Qiang Wu*
 
 <div class="publication-container">
     <Image src="https://s2.loli.net/2025/01/13/yefgXJvNj8qbGdY.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
