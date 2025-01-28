@@ -6,7 +6,7 @@ description: |
 image: 'https://s2.loli.net/2025/01/13/EVW9FUTOLyHpmtg.png'
 link: 'http://dx.doi.org/10.1038/s41467-024-51753-4'
 author:
-  [YuXin Chen, Haidong Yu, Lihua Wu, YuanJun Tong, Jianqiao Xu, Huan Pang, Chao Wu*, Tian Tian\*, Gangfeng Ouyang\*]
+  [YuXin Chen, Haidong Yu, Lihua Wu, YuanJun Tong, Jianqiao Xu, Huan Pang, Chao Wu*, Tian Tian*, Gangfeng Ouyang*]
 journal: 'Nature Communications'
 journalShort: 'NC'
 tags: [markdown, blog]
@@ -20,7 +20,7 @@ tags: [markdown, blog]
 
 Published in [**_Nature Communications_**](http://dx.doi.org/10.1038/s41467-024-51753-4)
 
-Yu-Xin Chen, Haidong Yu, Lihua Wu, Yuan-Jun Tong, Jianqiao Xu, Huan Pang, Chao Wu*, Tian Tian* & Gangfeng Ouyang\*
+Yu-Xin Chen, Haidong Yu, Lihua Wu, Yuan-Jun Tong, Jianqiao Xu, Huan Pang, Chao Wu*, Tian Tian* & Gangfeng Ouyang*
 
 <div class="publication-container">
  <Image src="https://s2.loli.net/2025/01/13/EVW9FUTOLyHpmtg.png" alt="Device structure and performance" class="mx-auto my-0 w-full max-w-lg" width="1000" height="1000" loading="lazy" />
