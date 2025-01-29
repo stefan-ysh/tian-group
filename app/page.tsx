@@ -3,6 +3,7 @@ import { Mail, School } from 'lucide-react';
 import { Metadata } from 'next';
 import NextImage from 'next/image';
 import React from 'react';
+import { useTranslations } from "next-intl";
 
 export const metadata: Metadata = {
   title: '田甜科研小组 | 扬州大学化学学院',
@@ -18,6 +19,7 @@ export const metadata: Metadata = {
 };
 
 export default function App() {
+  const t = useTranslations('HomePage')
   return (
     <div className="h-[calc(100vh-70px)] flex flex-1 justify-center items-center">
       <Card
@@ -40,11 +42,11 @@ export default function App() {
               <div className="flex justify-between items-start">
                 <div className="flex flex-col gap-0">
                   <div className="flex items-end gap-2">
-                    <h3 className="font-semibold text-foreground/90">Tian Tian</h3>
-                    <p className="text-small text-foreground/80">Professor</p>
+                    <h3 className="font-semibold text-foreground/90">{t('Name')}</h3>
+                    <p className="text-small text-foreground/80">{t('Title')}</p>
                   </div>
 
-                  <h1 className="text-large font-medium mt-2">Yangzhou University</h1>
+                  {/* <h1 className="text-large font-medium mt-2">{t('School')}</h1> */}
                 </div>
               </div>
               <div className="w-full mt-2 text-xs">
@@ -54,7 +56,7 @@ export default function App() {
                 </div>
                 <div className="flex items-center gap-2 mt-2">
                   <School size={16} />
-                  <span>Jiangsu Province Yangzhou City Hanjiang District</span>
+                  <span>{t('Address')}</span>
                 </div>
               </div>
             </div>

@@ -1,7 +1,9 @@
 {
     "HomePage": {
-      "title": "你好世界",
-      "about": "前往关于我界面"
+      "Name": "田甜",
+      "Title": "教授",
+      "School": "扬州大学",
+      "Address": "江苏省扬州市邗江区四望亭路180号"
     },
     "Header":{
         "NavMenu": {
@@ -23,5 +25,8 @@
         "Postdoctoral": "博士后",
         "Doctoral": "博士"
       }
+    },
+    "Research": {
+      "Content": "中文内容"
     }
   }

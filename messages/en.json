@@ -1,7 +1,9 @@
 {
     "HomePage": {
-      "title": "Hello world!",
-      "about": "Go to the about page"
+      "Name": "Tian Tian",
+      "Title": "Professor",
+      "School": "Yangzhou University",
+      "Address": "No. 180 Siwangting Road, Hanjiang District, Yangzhou City, Jiangsu Province, China"
     },
     "Header":{
         "NavMenu": {
@@ -23,5 +25,8 @@
         "Postdoctoral": "Postdoctoral",
         "Doctoral": "Doctoral"
       }
+    },
+    "Research": {
+      "Content": "<div class='research-summary'><h1>Research Profile</h1><section class='research-overview'><h2>Research Focus</h2><p>Over recent years, my work has centered on <strong>nanophotonic materials</strong> and device engineering, with specific expertise in:</p><ul><li>Bandgap engineering of semiconductor heterostructures</li><li>Surface/interface defect passivation strategies</li><li>Photocarrier dynamics modulation</li><li>Solution-processed optoelectronic device fabrication</li></ul></section><section class='publications'><h2>Selected Publications</h2><div class='publication-list'><div class='publication-item'><span class='journal'><em>Nature Sustainability</em></span> <span class='title'>'Broadband Photoresponse in Perovskite/Organic Heterojunctions'</span> <span class='stats'>(ESI Hot Paper, Citations: 182)</span></div><div class='publication-item'><span class='journal'><em>Angew. Chem. Int. Ed.</em></span> <span class='title'>'Chalcogenide Surface Passivation for Enhanced Charge Extraction'</span> <span class='stats'>(Featured in <em>Materials Today</em>)</span></div></div></section><section class='patents'><h2>Patent Portfolio</h2><table><tr><th>Patent Number</th><th>Technology</th><th>Status</th></tr><tr><td>ZL202110XXXXXX.3</td><td>Nanomaterial Controllable Synthesis</td><td>Licensed</td></tr><tr><td>ZL202210XXXXXX.X</td><td>Flexible Device Encapsulation</td><td>Commercialized</td></tr></table></section><section class='projects'><h2>Research Leadership</h2><div class='project'><h3>NSFC Youth Program <span class='grant-no'>(621041XX)</span></h3><p>Investigated van der Waals heterostructure excitonics, achieving 98% interfacial charge transfer efficiency</p></div><div class='project'><h3>National Key R&D Program</h3><p>Developed interface passivation protocols enabling PCE&gt;25% in perovskite solar cells</p></div></section><section class='collaborations'><h2>Strategic Partnerships</h2><ul class='partners'><li>Tsinghua Flexible Electronics Center</li><li>CAS Institute of Semiconductors</li><li>Industry Partner: ABC Optoelectronics Co.</li></ul></section></div><style type='text/css'>.research-summary{font-family:Arial,sans-serif;line-height:1.6}h1{color:#2c3e50;border-bottom:2px solid #3498db}h2{color:#34495e;margin-top:1.5em}.publication-item{margin:10px 0;padding:8px;background:#f8f9fa}table{width:100%;border-collapse:collapse}td,th{border:1px solid #ddd;padding:8px}.grant-no{color:#7f8c8d;font-size:.9em}ul.partners li{list-style-type:circle;margin-left:20px}</style>"
     }
   }
