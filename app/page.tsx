@@ -1,7 +1,7 @@
 import { Button, Card, CardBody, Image, Slider } from "@heroui/react";
 import { Mail, School } from 'lucide-react';
-import DirectionAwareHover from '~/components/ui/direction-aware-hover';
 import { Metadata } from 'next';
+import NextImage from 'next/image';
 import React from 'react';
 
 export const metadata: Metadata = {
@@ -28,13 +28,13 @@ export default function App() {
         <CardBody>
           <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4 items-center justify-center">
             <div className="relative col-span-6 md:col-span-4">
-              <DirectionAwareHover
-                imageUrl="https://nextui.org/images/album-cover.png"
-                className="w-full h-full md:w-[200px] md:h-[200px]"
-                imageClassName="h-full w-full rounded-md object-cover shadow-sm"
-              >
-                Tian Tian
-              </DirectionAwareHover>
+              <NextImage
+                src="https://s2.loli.net/2025/01/29/6vOktfKD38m9TZj.png"
+                className="w-full h-full md:w-[200px] md:h-[200px] object-cover"
+                width={200}
+                height={200}
+                alt="扬州大学 化学学院 教授 田甜"
+              />
             </div>
             <div className="flex flex-col col-span-6 md:col-span-8 ml-4">
               <div className="flex justify-between items-start">
