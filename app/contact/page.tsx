@@ -23,25 +23,24 @@ export default function Contact() {
   return (
     <Card
       isBlurred
-      className="border-none bg-background/60 dark:bg-default-100/50 max-w-[610px] mx-auto my-10"
+      className="border-none bg-background/60 dark:bg-default-100/50 max-w-[700px] mx-auto h-[calc(100vh-200px)] mt-0"
       shadow="sm"
     >
       <CardBody>
-        <div className="flex flex-col z-50">
+        <div className="flex flex-col">
           <div className="w-full text-sm">
-            <div className="flex items-start md:items-center flex-col md:flex-row gap-2 my-10">
-              <Mail size={16} />
+            <div className="flex items-start md:items-end flex-col md:flex-row gap-2 my-10">
+              <Mail size={40} />
               <a href="mailto:tiant91@yzu.edu.cn" className="whitespace-nowrap">
                 tiant91@yzu.edu.cn
               </a>
             </div>
-            <div className="flex items-start md:items-center flex-col md:flex-row gap-2 my-10">
-              <School size={16} />
+            <div className="flex items-start md:items-end flex-col md:flex-row gap-2 my-10">
+              <School size={40} />
               <span>{t('Address')}</span>
             </div>
           </div>
         </div>
-        {/* <Globe /> */}
       </CardBody>
     </Card>
   );
