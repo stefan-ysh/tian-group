@@ -1,47 +1,56 @@
-import { Button, Card, CardBody, Image, Slider } from '@heroui/react';
-import { Mail, School } from 'lucide-react';
-import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
-import NextImage from 'next/image';
-import React from 'react';
+'use client';
 
-export const metadata: Metadata = {
-  title: '田甜科研小组 | 扬州大学化学学院',
-  description:
-    '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、JACS、JPC、NC、Wiley、Nature、Science、Advanced Materials等众多权威期刊。',
-  keywords:
-    '田甜, 扬州大学, 化学学院, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 教授, Angew, JACS, JPC, NC, Wiley, Nature, Science, Advanced Materials, Advanced Functional Materials, ACS Nano, ACS Catalysis, ACS Energy Letters, ACS Energy & Fuels, ACS Sustainable Chemistry & Engineering, Journal of Materials Chemistry A',
-  openGraph: {
-    title: '田甜科研小组 | 扬州大学化学学院',
-    description:
-      '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、JACS、JPC、NC、Wiley、Nature、Science、Advanced Materials等众多权威期刊。',
-  },
-};
+import { Mail, MapPin, School } from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import React from 'react';
 
 export default function Contact() {
   const t = useTranslations('HomePage');
+  const common = useTranslations('common');
+  const header = useTranslations('Header');
   return (
-    <Card
-      isBlurred
-      className="border-none bg-background/60 dark:bg-default-100/50 max-w-[700px] mx-auto h-[calc(100vh-200px)] mt-0"
-      shadow="sm"
-    >
-      <CardBody>
-        <div className="flex flex-col">
-          <div className="w-full text-sm">
-            <div className="flex items-start md:items-end flex-col md:flex-row gap-2 my-10">
-              <Mail size={40} />
-              <a href="mailto:tiant91@yzu.edu.cn" className="whitespace-nowrap">
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-4xl font-bold text-center mb-16 ">{header('NavMenu.contact')}</h1>
+      
+      <div className="max-w-[900px] mx-auto">
+        <div className="bg-background/10 dark:bg-default-100/5 backdrop-blur-sm rounded-xl p-8 shadow-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {/* Email Contact */}
+            <div className="flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-4 rounded-full mb-4">
+                <Mail size={32} className="" />
+              </div>
+              <h3 className="font-medium text-xl mb-2">{common('Email')}</h3>
+              <a 
+                href="mailto:tiant91@yzu.edu.cn" 
+                className="transition-colors"
+              >
                 tiant91@yzu.edu.cn
               </a>
             </div>
-            <div className="flex items-start md:items-end flex-col md:flex-row gap-2 my-10">
-              <School size={40} />
-              <span>{t('Address')}</span>
+            
+            {/* Address */}
+            <div className="flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-4 rounded-full mb-4">
+                <MapPin size={32} className="" />
+              </div>
+              <h3 className="font-medium text-xl mb-2">{common('Address')}</h3>
+              <p className="text-default-600">
+                {t('Address')}
+              </p>
+            </div>
+            
+            {/* School */}
+            <div className="flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-4 rounded-full mb-4">
+                <School size={32} className="" />
+              </div>
+              <h3 className="font-medium text-xl mb-2">{common('College')}</h3>
+              <p className="text-default-600">{t('College')}</p>
             </div>
           </div>
         </div>
-      </CardBody>
-    </Card>
+      </div>
+    </div>
   );
 }

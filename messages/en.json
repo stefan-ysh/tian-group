@@ -1,8 +1,14 @@
 {
+    "common": {
+      "Email": "Email",
+      "Address": "Address",
+      "College": "College"
+    },
     "HomePage": {
       "Name": "Tian Tian",
       "Title": "Professor",
       "School": "Yangzhou University",
+      "College": "School of Chemistry",
       "Address": "No. 180 Siwangting Road, Hanjiang District, Yangzhou City, Jiangsu Province, China"
     },
     "Header":{

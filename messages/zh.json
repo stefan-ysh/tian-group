@@ -1,8 +1,14 @@
 {
+  "common": {
+    "Email": "邮箱",
+    "Address": "地址",
+    "College": "学院"
+  },
     "HomePage": {
       "Name": "田甜",
       "Title": "教授",
       "School": "扬州大学",
+      "College": "化学化工学院",
       "Address": "江苏省扬州市邗江区四望亭路180号"
     },
     "Header":{
