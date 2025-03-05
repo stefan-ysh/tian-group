@@ -1,26 +1,25 @@
 import md from 'markdown-it';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-
 import { findActivitiesByName, findLatestActivities } from '~/utils/activities';
+import { Chip } from "@heroui/react";
 
 export const dynamicParams = false;
 
 const getFormattedDate = (date) => date;
-
-
 
 export async function generateMetadata({ params }) {
   const activity = await findActivitiesByName(params.id);
   if (!activity) {
     return notFound();
   }
-  const title = `${activity.name} - ${activity.position}`;
+  const title = `${activity.title} | 组内活动`;
   return { title, description: activity.description };
 }
 
 export async function generateStaticParams() {
-  return (await findLatestActivities()).map(({ id }) => ({ id }));
+  const activities = await findLatestActivities();
+  return activities.map(({ id }) => ({ id }));
 }
 
 export default async function Page({ params }) {
@@ -33,25 +32,27 @@ export default async function Page({ params }) {
   return (
     <section className="mx-auto py-8 sm:py-16 lg:py-20">
       <article>
-        <header className={activity.image ? 'text-center' : ''}>
-          <h1 className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 text-1xl font-bold tracking-tighter sm:px-6 md:text-2xl">
-            👋 Hi there, I&apos;m {activity.name}
+        <header className="text-center">
+          <h1 className="leading-tighter font-heading mx-auto mb-4 max-w-3xl px-4 text-4xl font-bold tracking-tighter sm:px-6 md:text-5xl">
+            {activity.title}
           </h1>
-          {activity.image ? (
+          <div className="mx-auto mb-8 flex max-w-3xl flex-col items-center px-4 sm:px-6">
+            <div className="flex items-center gap-2">
+              <Chip color="warning" variant="flat" size="sm">
+                {activity.position}
+              </Chip>
+              <span className="text-sm text-gray-600 dark:text-gray-400">{activity.name}</span>
+            </div>
+          </div>
+          {activity.avatar && (
             <Image
-              src={activity.image}
+              src={activity.avatar}
               className="mx-auto mt-4 mb-6 max-w-full bg-gray-400 dark:bg-slate-700 sm:rounded-md lg:max-w-6xl"
               sizes="(max-width: 900px) 400px, 900px"
-              alt={activity.description}
-              loading="eager"
-              priority
+              alt={activity.description || ''}
               width={900}
               height={480}
             />
-          ) : (
-            <div className="mx-auto max-w-3xl px-4 sm:px-6">
-              <div className="border-t dark:border-slate-700" />
-            </div>
           )}
         </header>
         <div
