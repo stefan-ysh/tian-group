@@ -2,13 +2,14 @@
 name: '田甜'
 title: 'Professor'
 description: ''
-avatar: 'https://s2.loli.net/2025/01/13/g6KlzY3JFR4w1VT.jpg'
+avatar: 'https://s2.loli.net/2025/03/22/5uzDshdXwqIBctl.png'
 position: 'Professor'
+order: 1
 tags: [markdown, member]
 ---
 
 <!-- ![avatar](https://s2.loli.net/2025/01/13/g6KlzY3JFR4w1VT.jpg) -->
-<img src="https://s2.loli.net/2025/01/13/g6KlzY3JFR4w1VT.jpg" class="w-1/2 mx-auto" />
+<img src="https://s2.loli.net/2025/01/29/6vOktfKD38m9TZj.png" class="w-1/2 mx-auto" />
 
 <!-- <p>
 田甜，于2017年至2020年期间，参与了上海理工大学与丹麦技术大学联合培养博士项目，前往丹麦科技大学就读，这一跨学科、跨国界的学术经历为其后续的科研工作奠定了坚实的基础。2021年至2023年，她又在中山大学化学学院从事博士后研究工作，进一步深化了自己在化学领域的专业知识与科研能力。凭借其卓越的科研成果与学术潜力，田甜荣获国家青年基金资助，资助时间为2024年至2026年，这不仅是对其过往科研工作的肯定，更是对其未来科研道路的有力支持。目前，田甜担任扬州大学化学化工学院特聘教授，继续在科研与教学领域发光发热。
