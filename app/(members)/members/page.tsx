@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function Home({}) {
   const members = await findLatestMembers();
-  const renderData = members.sort((a, b) => { return (a.order - b.order) })
+  const renderData = members.sort((a: any, b: any) => { return (a.order - b.order) })
 
   return (
     <section className="mx-auto px-0 md:px-20 py-12 pt-0">
