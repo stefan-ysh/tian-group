@@ -40,5 +40,76 @@
     },
     "Research": {
       "Content": "<div class='research-summary'><h1>Research Profile</h1><section class='research-overview'><h2>Research Focus</h2><p>Over recent years, my work has centered on <strong>nanophotonic materials</strong> and device engineering, with specific expertise in:</p><ul><li>Bandgap engineering of semiconductor heterostructures</li><li>Surface/interface defect passivation strategies</li><li>Photocarrier dynamics modulation</li><li>Solution-processed optoelectronic device fabrication</li></ul></section><section class='publications'><h2>Selected Publications</h2><div class='publication-list'><div class='publication-item'><span class='journal'><em>Nature Sustainability</em></span> <span class='title'>'Broadband Photoresponse in Perovskite/Organic Heterojunctions'</span> <span class='stats'>(ESI Hot Paper, Citations: 182)</span></div><div class='publication-item'><span class='journal'><em>Angew. Chem. Int. Ed.</em></span> <span class='title'>'Chalcogenide Surface Passivation for Enhanced Charge Extraction'</span> <span class='stats'>(Featured in <em>Materials Today</em>)</span></div></div></section><section class='patents'><h2>Patent Portfolio</h2><table><tr><th>Patent Number</th><th>Technology</th><th>Status</th></tr><tr><td>ZL202110XXXXXX.3</td><td>Nanomaterial Controllable Synthesis</td><td>Licensed</td></tr><tr><td>ZL202210XXXXXX.X</td><td>Flexible Device Encapsulation</td><td>Commercialized</td></tr></table></section><section class='projects'><h2>Research Leadership</h2><div class='project'><h3>NSFC Youth Program <span class='grant-no'>(621041XX)</span></h3><p>Investigated van der Waals heterostructure excitonics, achieving 98% interfacial charge transfer efficiency</p></div><div class='project'><h3>National Key R&D Program</h3><p>Developed interface passivation protocols enabling PCE&gt;25% in perovskite solar cells</p></div></section><section class='collaborations'><h2>Strategic Partnerships</h2><ul class='partners'><li>Tsinghua Flexible Electronics Center</li><li>CAS Institute of Semiconductors</li><li>Industry Partner: ABC Optoelectronics Co.</li></ul></section></div><style type='text/css'>.research-summary{font-family:Arial,sans-serif;line-height:1.6}h1{color:#2c3e50;border-bottom:2px solid #3498db}h2{color:#34495e;margin-top:1.5em}.publication-item{margin:10px 0;padding:8px;background:#f8f9fa}table{width:100%;border-collapse:collapse}td,th{border:1px solid #ddd;padding:8px}.grant-no{color:#7f8c8d;font-size:.9em}ul.partners li{list-style-type:circle;margin-left:20px}</style>"
+    },
+    "ResearchPage": {
+      "pageTitle": "Research Areas",
+      "pageDescription": "Our research group focuses on the interdisciplinary frontier of materials chemistry and physical chemistry, integrating molecular design, interface engineering, and optoelectronic performance optimization to develop basic research and application technologies for novel functional materials, providing innovative solutions to key challenges in energy, environment, and biomedical fields.",
+      
+      "perovskiteTitle": "Perovskite Photovoltaic Materials and Devices",
+      "perovskiteDescription": "This research direction focuses on in-depth research on the new generation photovoltaic material—metal halide perovskites, dedicated to solving key scientific issues in efficiency improvement, stability enhancement, and large-scale application of perovskite solar cells. Through precise molecular design, interface engineering, and device structure innovation, we achieve highly efficient and stable perovskite photovoltaic devices.",
+      "researchContent": "Key Research Areas:",
+      
+      "perovskiteStructure": "Perovskite Material Structural Design and Stability Control",
+      "perovskiteStructureContent": "We have developed innovative strategies to stabilize black-phase CsPbI3 under humidity over 70%, through precise control of lattice distortion and defect passivation, achieving structural stability of perovskite materials under harsh environmental conditions.",
+      
+      "printablePV": "Full-Solution Printable Perovskite Photovoltaic Devices",
+      "printablePVContent": "Based on carbon electrode technology, we have developed efficient, printable, and durable perovskite solar cells. Through interface linkage and carbon encapsulation strategies, we significantly improved the photoelectric conversion efficiency and operational lifetime of devices, providing new solutions for large-scale, low-cost photovoltaic technology.",
+      
+      "interfaceDesign": "Interface Molecular Design and Passivation Technology",
+      "interfaceDesignContent": "We have designed and synthesized a series of functional ligand molecules that repair perovskite structural defects through multidentate chelation, minimizing charge recombination loss. This achieves the dual functions of passivating interfaces and enhancing charge transport, increasing device efficiency to over 22%.",
+      
+      "leadFreePV": "Lead-Free Perovskite Solar Cell Research",
+      "leadFreePVContent": "Through precise molecular design and interface engineering, we have developed efficient and stable lead-free perovskite solar cells. By healing structural defects through multidentate chelation, we effectively solved the performance bottleneck issues in low-toxicity/lead-free perovskite materials.",
+      
+      "largePeovskite": "Large-Area Perovskite Luminescent Materials and Devices",
+      "largePeovskiteContent": "We have developed large-area waterproof and durable perovskite luminescent films and smart textiles. Through innovative interface regulation strategies and encapsulation technologies, we have solved the challenges of uniformity and stability in large-area fabrication of perovskite luminescent materials.",
+      
+      "nonlinearTitle": "Organic Nonlinear Optical Materials and Devices",
+      "nonlinearDescription": "This research direction focuses on the molecular design, supramolecular assembly, and application development of novel organic nonlinear optical materials. Through precise regulation of molecular structure, crystal orientation, and interface interactions, we achieve excellent nonlinear optical performance, providing key material support for frontier fields such as optical communication, laser technology, and bioimaging.",
+      
+      "heatResistant": "Innovative Design of Heat-Resistant Organic Nonlinear Optical Membranes",
+      "heatResistantContent": "Through precise molecular structure design and host-guest supramolecular chemistry strategies, we have developed organic nonlinear optical membrane materials with excellent thermal stability, breaking through the application limitations of traditional materials in high-temperature environments and achieving application expansion in thermally stable lighting and in vivo bioimaging.",
+      
+      "nanowires": "Self-Assembly Preparation of Ultra-Fine Second-Order Organic Nonlinear Optical Crystal Nanowires",
+      "nanowiresContent": "We have innovatively developed a one-drop self-assembly method to prepare ultra-fine second-order organic nonlinear optical crystal nanowires. Through precise control of the crystallization process and molecular orientation, we achieved efficient second-order nonlinear optical response at the nanoscale, providing new functional materials for micro-nano optoelectronic devices.",
+      
+      "dastResearch": "DAST Optical Damage Tolerance Enhancement and Robust Lasing Research",
+      "dastResearchContent": "Using supramolecular strategies, we have significantly improved the optical damage tolerance of DAST (4-N,N-dimethylamino-4'-N'-methyl-stilbazolium tosylate) crystals. Through host-guest interactions and lattice engineering, we optimized molecular arrangement and electronic structure, achieving robust laser output and providing new approaches for high-power nonlinear optical applications.",
+      
+      "multifunctional": "Multifunctional Organic Nonlinear Optical Materials and Devices",
+      "multifunctionalContent": "We have designed and synthesized a series of organic nonlinear optical materials with multiple functions. Through precise combination of molecular building blocks and optimized regulation of supramolecular interactions, we integrated optical nonlinearity, luminescence, sensing, and other functionalities, expanding application prospects in optoelectronic and biomedical fields.",
+      
+      "luminTitle": "Multifunctional Luminescent Materials and Bioimaging Technology",
+      "luminDescription": "This research direction is dedicated to developing advanced luminescent materials with specific photophysical properties and exploring their application potential in biomedical imaging, sensing detection, and smart displays. Through molecular structure design and material assembly strategies, we achieve efficient, stable, and functionally tunable luminescent material systems, providing innovative solutions for biomedical research and smart display technology.",
+      
+      "goldClusters": "Multi-Photon Excited Luminescence Mechanism and Applications of Metal Clusters",
+      "goldClustersContent": "We have revealed the multi-photon excited luminescence mechanism of pyrazolate trinuclear gold clusters, explored their electronic structure and energy level transition characteristics, and developed new luminescent probes for dynamic cell imaging. This achieves high-contrast, low-background interference imaging of deep structures in biological tissues, providing new imaging tools for biomedical research.",
+      
+      "luminFilms": "Preparation and Performance Optimization of Large-Area Perovskite Luminescent Films",
+      "luminFilmsContent": "We systematically studied the large-area preparation process and optimization strategies for perovskite luminescent films. Through component regulation, interface engineering, and defect management, we significantly improved the luminescence quantum efficiency, color purity, and stability of materials, breaking through the bottlenecks of uniformity and stability in large-area preparation of traditional perovskite materials.",
+      
+      "textiles": "Development of Waterproof and Durable Perovskite Luminescent Textiles",
+      "textilesContent": "We have innovatively developed perovskite luminescent textile materials that integrate waterproofing, wash resistance, and high luminescence efficiency. Through advanced interface modification and encapsulation technology, we solved the stability problem of perovskite materials in humid environments, expanding application prospects in smart wearable and flexible display fields.",
+      
+      "bioImaging": "Design of Biocompatible Luminescent Materials and Bioimaging Applications",
+      "bioImagingContent": "We have designed and synthesized a series of luminescent materials with good biocompatibility, including metal-organic frameworks, quantum dots, and organic luminescent systems. Through precise control of their surface chemistry and energy level structure, we achieved targeted imaging and long-term tracking at cellular and in vivo levels, providing powerful tools for disease diagnosis and biological process research.",
+      
+      "spectroTitle": "Advanced Spectroscopic Characterization and Material Testing Technology",
+      "spectroDescription": "This research direction is committed to developing and applying advanced spectroscopic characterization and material testing technologies to deeply analyze the microstructure, electronic properties, and photoelectric conversion mechanisms of novel functional materials, providing theoretical guidance and experimental basis for material performance optimization and device design. Through the synergistic application of multiple spectroscopic methods, we establish material structure-performance relationships and reveal key physicochemical processes.",
+      
+      "spectroTech": "Comprehensive Spectroscopic Characterization of Perovskite Solar Cells",
+      "spectroTechContent": "We systematically studied the application of emission and absorption spectroscopic techniques in characterizing perovskite solar cells, including steady-state and transient photoluminescence, absorption spectroscopy, time-resolved spectroscopy, and electroluminescence. We established a multi-scale, multi-dimensional characterization methodology system, deeply revealing key information about material defect characteristics, carrier dynamics, and interface energy level matching.",
+      
+      "interfaceMonitor": "In-situ Monitoring of Interface Defects and Charge Transport Processes",
+      "interfaceMonitorContent": "We developed highly sensitive in-situ monitoring technologies for interface defect characteristics and charge transport processes. By combining electrochemical impedance spectroscopy, transient photocurrent/photovoltage, and photo-induced microwave conductivity techniques, we achieved precise characterization of interface defect state density, energy level distribution, and charge transfer dynamics, providing scientific basis for interface engineering optimization.",
+      
+      "characterization": "Comprehensive Characterization Methods and Standardized Testing for High-Performance Materials",
+      "characterizationContent": "We established comprehensive characterization methods and standardized testing processes for novel functional materials, including structural characterization, morphology analysis, optical properties, electrical performance, and stability evaluation, providing comprehensive support for rational design and performance optimization of materials.",
+      
+      "insituTech": "Application of Advanced In-situ Characterization Technologies in Materials Research",
+      "insituTechContent": "We explored and developed a series of advanced in-situ characterization technologies, such as in-situ XRD, in-situ Raman, in-situ AFM, and spectroscopic measurements in operating environments. This enabled dynamic monitoring of structural evolution, phase transition processes, and performance degradation mechanisms of materials under actual working conditions, providing key basis for improving material stability and device lifetime.",
+      
+      "outlookTitle": "Research Outlook",
+      "outlookContent": "Our research team will continue to focus on the frontiers of materials science and chemistry, deeply exploring the design synthesis, structural regulation, and application development of novel functional materials, promoting innovative development in perovskite optoelectronic materials, organic nonlinear optical materials, multifunctional luminescent materials, and other fields. Through the combination of theoretical calculations and experimental research, and a research strategy that emphasizes both molecular-level design and macroscopic performance optimization, we aim to solve key scientific problems in energy, environment, and biomedical fields, making positive contributions to sustainable development and human health."
     }
   }
