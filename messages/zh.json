@@ -9,7 +9,13 @@
       "Title": "教授",
       "School": "扬州大学",
       "College": "化学化工学院",
-      "Address": "江苏省扬州市邗江区四望亭路180号"
+      "Address": "江苏省扬州市邗江区四望亭路180号",
+      "researchDirection": "研究方向",
+      "researchDirectionContent": "本研究组专注于环糊精、钙钛矿和太阳能电池等领域的前沿研究，致力于开发新型材料与技术，推动绿色能源发展。",
+      "researchTeam": "研究队伍",
+      "researchTeamContent": "我们的团队由经验丰富的研究人员、博士后和研究生组成，共同致力于化学前沿科学研究，培养新一代科研人才。",
+      "researchAchievements": "研究成果",
+      "researchAchievementsContent": "研究成果广泛发表于Angew、JACS、Nature、Science等国际顶级期刊，在多个化学研究领域取得突破性进展。"
     },
     "Header":{
         "NavMenu": {

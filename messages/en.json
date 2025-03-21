@@ -9,7 +9,13 @@
       "Title": "Professor",
       "School": "Yangzhou University",
       "College": "School of Chemistry",
-      "Address": "No. 180 Siwangting Road, Hanjiang District, Yangzhou City, Jiangsu Province, China"
+      "Address": "No. 180 Siwangting Road, Hanjiang District, Yangzhou City, Jiangsu Province, China",
+      "researchDirection": "Research Direction",
+      "researchDirectionContent": "Our research group focuses on cutting-edge research in the fields of cyclodextrins, perovskites, and solar cells, dedicated to developing novel materials and technologies to advance green energy development.",
+      "researchTeam": "Research Team",
+      "researchTeamContent": "Our team is composed of experienced researchers, postdoctoral fellows, and graduate students, all dedicated to pioneering scientific research in chemistry and nurturing the next generation of scientific talent.",
+      "researchAchievements": "Research Achievements",
+      "researchAchievementsContent": "Our research achievements have been widely published in top-tier international journals such as Angewandte Chemie, JACS, Nature, and Science, marking breakthrough progress in multiple fields of chemistry research."
     },
     "Header":{
         "NavMenu": {
