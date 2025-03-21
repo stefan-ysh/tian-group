@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
-export async function generateMetadata({ params: { locale } }) {
+export async function generateMetadata({ params: { locale }}: any) {
   const t = await getTranslations({ locale, namespace: 'ResearchPage' });
   
   return {
