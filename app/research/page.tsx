@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import Image from 'next/image';
 
 export async function generateMetadata({ params: { locale }}: any) {
   const t = await getTranslations({ locale, namespace: 'ResearchPage' });
@@ -82,7 +82,7 @@ export default function ResearchPage() {
               <div className="lg:col-span-1 flex justify-center items-start order-last lg:order-first">
                 <div className="rounded-lg overflow-hidden shadow-md">
                   <Image 
-                    src="/images/publications/nonlinear-optics.jpg" 
+                    src="https://s2.loli.net/2025/03/23/OubUxzXqMp36n1N.png" 
                     alt={t('nonlinearTitle')}
                     width={400} 
                     height={300}
