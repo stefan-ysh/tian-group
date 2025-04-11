@@ -7,36 +7,34 @@ import { getTypeIcon, getTypeColor, NewsType } from '../../components/NewsTimeli
 import NextImage from 'next/image';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-
-interface DetailNewsItem {
-  id: string;
-  title: string;
-  date: string;
-  summary: string;
-  type: string;
-  imageUrl?: string;
-  link?: string;
-  tags?: string[];
-  authors?: {
-    id: string;
-    name: string;
-  }[];
-  publishDate: string;
-  publication?: {
-    journal: string;
-    volume?: string;
-    issue?: string;
-    doi?: string;
-  };
-}
+import { DetailNewsItem } from '../../../src/types/content';
 
 interface NewsDetailContentProps {
   newsItem: DetailNewsItem;
-  formatDate: (date: string) => string;
 }
 
-export function NewsDetailContent({ newsItem, formatDate }: NewsDetailContentProps) {
+export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
   const t = useTranslations('News');
+  
+  // 内部处理日期格式化
+  const formatDate = (dateStr: string): string => {
+    if (!dateStr) return '';
+    try {
+      const date = new Date(dateStr);
+      if (isNaN(date.getTime())) {
+        return dateStr; // Return original if invalid date
+      }
+      return date.toLocaleDateString('zh-CN', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).replace(/\//g, '-');
+    } catch (e) {
+      console.error("Error formatting date:", e);
+      return dateStr; // Return original on error
+    }
+  };
+  
   // Safely assert the newsItem.type as NewsType for use with our type-specific functions
   const newsType = newsItem.type as NewsType;
   
@@ -65,7 +63,7 @@ export function NewsDetailContent({ newsItem, formatDate }: NewsDetailContentPro
           
           <div className="flex items-center gap-1 text-foreground/70">
             <Calendar size={16} />
-            <span>{formatDate(newsItem.publishDate)}</span>
+            <span>{formatDate(newsItem.date)}</span>
           </div>
         </div>
         
@@ -89,14 +87,13 @@ export function NewsDetailContent({ newsItem, formatDate }: NewsDetailContentPro
           <div className="mb-4 text-lg">
             <h2 className="font-semibold mb-2">作者</h2>
             <div className="flex flex-wrap gap-2">
-              {newsItem.authors.map((author) => (
-                // <Link
-                //   key={author.id}
-                //   href={`/members/${author.id}`}
-                //   className="px-3 py-1 bg-primary/10 rounded-full hover:bg-primary/20 transition-colors"
-                // >
-                // </Link>
-                  author.name
+              {newsItem.authors.map((author, index) => (
+                <span 
+                  key={author.id || `author-${index}`}
+                  className="px-3 py-1 bg-primary/10 rounded-full"
+                >
+                  {author.name}
+                </span>
               ))}
             </div>
           </div>

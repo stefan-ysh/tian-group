@@ -3,6 +3,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
+import { DetailNewsItem } from '../types/content';
 
 // Directory for publications
 const PUBLICATIONS_DIR = join(process.cwd(), 'src/content/publications');
@@ -242,6 +243,8 @@ export async function findLatestNews({ count, page, limit } = {}) {
 
 /**
  * Find a news item by ID
+ * @param {string} id - The ID of the news item to find
+ * @returns {Promise<import('../types/content').DetailNewsItem|null>} - The found news item or null
  */
 export async function findNewsById(id) {
   if (!id) return null;

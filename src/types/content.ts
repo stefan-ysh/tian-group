@@ -83,4 +83,26 @@ export interface Event extends BaseContentItem {
   location?: string;
   speakers?: string[];
   eventType?: string; // 例如：会议、研讨会、工作坊等
+}
+
+// 添加 DetailNewsItem 接口定义
+export interface DetailNewsItem {
+  id: string;
+  title: string;
+  date: string;
+  summary: string;
+  type: string;
+  imageUrl?: string;
+  link?: string;
+  tags?: string[];
+  authors?: {
+    id: string;
+    name: string;
+  }[];
+  publication?: {
+    journal: string;
+    volume?: string;
+    issue?: string;
+    doi?: string;
+  };
 } 

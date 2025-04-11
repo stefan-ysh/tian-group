@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getNewsCounts } from '../../../../src/utils/contentLoader';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     // 获取所有新闻类型的数量

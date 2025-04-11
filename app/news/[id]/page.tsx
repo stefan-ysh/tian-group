@@ -1,35 +1,13 @@
 import { Metadata } from 'next';
 import { findNewsById, fetchNews } from '../../../src/utils/news';
 import { notFound } from 'next/navigation';
-import { Calendar, Newspaper, FileText, Award, ExternalLink } from 'lucide-react';
-import NextImage from 'next/image';
 import Link from 'next/link';
-import { Chip, Divider, Card, CardBody } from '@heroui/react';
-import { NewsType } from '../../components/NewsTimeline';
 import { NewsDetailContent } from './NewsDetailContent';
+import { DetailNewsItem } from '../../../src/types/content';
 
-// Define a comprehensive news item type for the detail page
-interface DetailNewsItem {
-  id: string;
-  title: string;
-  date: string;
-  summary: string;
-  type: string;
-  imageUrl?: string;
-  link?: string;
-  tags?: string[];
-  authors?: {
-    id: string;
-    name: string;
-  }[];
-  publication?: {
-    journal: string;
-    volume?: string;
-    issue?: string;
-    doi?: string;
-  };
-  publishDate: string;
-}
+// Let Next.js decide the best rendering strategy
+export const dynamic = 'auto';
+export const dynamicParams = true;
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
@@ -62,23 +40,27 @@ export async function generateStaticParams() {
   }));
 }
 
-// Format date
-function formatDate(dateStr: string): string {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-}
-
 export default async function NewsDetailPage({ params }: { params: { id: string } }) {
-  const newsItem = await findNewsById(params.id) as DetailNewsItem;
+  const newsItem = await findNewsById(params.id);
   
   // If news item not found, show 404
   if (!newsItem) {
     notFound();
   }
+  
+  // Create a safe version of the news item for the client component
+  const safeNewsItem = {
+    id: newsItem.id,
+    title: newsItem.title,
+    date: newsItem.date || '',
+    summary: newsItem.summary || '',
+    type: newsItem.type || '',
+    imageUrl: newsItem.imageUrl,
+    link: newsItem.link,
+    tags: newsItem.tags || [],
+    authors: newsItem.authors || [],
+    publication: newsItem.publication || undefined
+  };
   
   return (
     <section className="w-full mx-auto">
@@ -100,8 +82,8 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
           </nav>
         </div>
         
-        {/* Use client component for rendering content that uses client-side functions */}
-        <NewsDetailContent newsItem={newsItem} formatDate={formatDate} />
+        {/* Use client component for rendering content */}
+        <NewsDetailContent newsItem={safeNewsItem} />
         
         {/* Back to news */}
         <div className="mt-8 text-center">
