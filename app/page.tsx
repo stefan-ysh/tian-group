@@ -6,12 +6,6 @@ import NextImage from 'next/image';
 import React, { useState, useEffect, ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 
-// Dynamically import HomeNews with { ssr: true } to avoid server components issues
-const HomeNewsSection = dynamic(() => import('./components/HomeNewsClient').then(mod => mod.HomeNewsClient), {
-  ssr: true,
-  loading: () => <div className="h-40 flex items-center justify-center">Loading latest news...</div>
-});
-
 // 动态导入 framer-motion，减少初始包大小
 const MotionComponent = dynamic(() => import('~/components/atoms/MotionWrapper').then(mod => mod.default), {
   ssr: true,
@@ -186,9 +180,6 @@ export default function App() {
           </Card>
         </MotionComponent>
       </div>
-      
-      {/* Recent News Section */}
-      <HomeNewsSection />
     </div>
   );
 }
