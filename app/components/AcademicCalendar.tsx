@@ -59,10 +59,10 @@ export function AcademicCalendar({ events }: AcademicCalendarProps) {
   const t = useTranslations('AcademicCalendar');
   const [activeTab, setActiveTab] = useState("upcoming");
   
-  const now = new Date();
-  
+  // 将日期对象移入useMemo内部，以避免依赖变化
   // 将事件分为未来和过去
   const { upcomingEvents, pastEvents } = useMemo(() => {
+    const now = new Date(); // 移到内部
     const upcoming: AcademicEvent[] = [];
     const past: AcademicEvent[] = [];
     
@@ -80,7 +80,7 @@ export function AcademicCalendar({ events }: AcademicCalendarProps) {
     past.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
     
     return { upcomingEvents: upcoming, pastEvents: past };
-  }, [events, now]);
+  }, [events]); // 移除 now 依赖项，因为现在它在内部创建
   
   // 根据年份归类过去的事件
   const pastEventsByYear = useMemo(() => {

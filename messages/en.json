@@ -2,7 +2,11 @@
   "common": {
     "Email": "Email",
     "Address": "Address",
-    "College": "College"
+    "College": "College",
+    "Location": "Location",
+    "ContactUs": "Contact Us",
+    "MapPlaceholder": "Map will be displayed here",
+    "GetInTouch": "You can get in touch with us by the following ways if you are interested in joining our research team."
   },
   "HomePage": {
     "Name": "Tian Tian",
@@ -114,7 +118,7 @@
   },
   "JoinUs": {
     "title": "Job Announcement",
-    "description": "We are looking for a postdoctoral researcher to join the Tian Tian Research Group, focusing on perovskite solar cells, organic nonlinear optical materials, and luminescent materials. Our research team is dedicated to advancing the frontiers of these fields, and we welcome talented individuals who are passionate about this work.",
+    "description": "We are looking for a postdoctoral researcher to join the research group of Pang Huan at Yangzhou University - Tian Tian's scientific team, focusing on perovskite solar cells, organic nonlinear optical materials, and luminescent materials. Our research team is dedicated to advancing the frontiers of these fields, and we welcome talented individuals who are passionate about this work.",
     "requirements": "Position Requirements",
     "researchDirection": "Research Directions",
     "applicationMethod": "Application Method",
@@ -133,7 +137,9 @@
   },
   "metadata": {
     "title": "Tian Research Group",
-    "description": "Official website of Professor Tian Tian's Research Group, School of Chemistry, Yangzhou University"
+    "description": "Official website of Professor Tian Tian's Research Group, School of Chemistry, Yangzhou University",
+    "contactTitle": "Contact Us | Tian Research Group",
+    "contactDescription": "Contact Tian Research Group, located at the School of Chemistry, Yangzhou University. We welcome collaboration and those interested in joining our research team."
   },
   "ResearchHighlights": {
     "title": "Research Highlights",

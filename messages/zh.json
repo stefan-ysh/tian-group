@@ -2,7 +2,11 @@
   "common": {
     "Email": "邮箱",
     "Address": "地址",
-    "College": "学院"
+    "College": "学院",
+    "Location": "位置",
+    "ContactUs": "联系我们",
+    "MapPlaceholder": "地图将显示在这里",
+    "GetInTouch": "如果您有兴趣加入我们的研究团队，可以通过以下方式联系我们，我们期待与您的交流与合作。"
   },
   "HomePage": {
     "Name": "田甜",
@@ -114,7 +118,7 @@
   },
   "JoinUs": {
     "title": "招聘启示",
-    "description": "我们正在寻找一位博士后研究员，加入田甜科研小组，专注于钙钛矿太阳能电池、有机非线性光学材料及发光材料的研究。我们的研究团队致力于推动这些领域的前沿科学，期待有志于此的优秀人才加入。",
+    "description": "我们正在寻找一位博士后研究员，加入扬州大学庞欢课题组-田甜科研小组，专注于钙钛矿太阳能电池、有机非线性光学材料及发光材料的研究。我们的研究团队致力于推动这些领域的前沿科学，期待有志于此的优秀人才加入。",
     "requirements": "职位要求",
     "researchDirection": "研究方向",
     "applicationMethod": "应聘方式",
@@ -133,7 +137,9 @@
   },
   "metadata": {
     "title": "田甜研究组",
-    "description": "扬州大学 化学学院 田甜教授研究组官方网站"
+    "description": "扬州大学 化学学院 田甜教授研究组官方网站",
+    "contactTitle": "联系我们 | 田甜研究组",
+    "contactDescription": "联系田甜研究组，位于扬州大学瘦西湖校区化学化工学院，欢迎交流合作和加入我们的研究团队。"
   },
   "ResearchHighlights": {
     "title": "研究亮点",

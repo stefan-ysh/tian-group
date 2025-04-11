@@ -19,6 +19,12 @@ export default function ResearchPage() {
   
   return (
     <div className="container mx-auto py-12 px-4 max-w-6xl">
+      {/* 页面标题 */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-primary mb-4">{t('pageTitle')}</h1>
+        <div className="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+      </div>
+      
       <p className="text-center text-foreground/70 mb-10 max-w-3xl mx-auto">
         {t('pageDescription')}
       </p>

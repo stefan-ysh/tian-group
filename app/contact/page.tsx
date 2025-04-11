@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, MapPin, School } from 'lucide-react';
+import { Mail, MapPin, School, Globe, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
@@ -8,49 +8,78 @@ export default function Contact() {
   const t = useTranslations('HomePage');
   const common = useTranslations('common');
   const header = useTranslations('Header');
+  
   return (
-    <div className="container mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold text-center mb-16 ">{header('NavMenu.contact')}</h1>
+    <section className="mx-auto max-w-4xl px-6 py-12">
+      {/* 页面标题 */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-primary mb-4">{common('ContactUs')}</h1>
+        <div className="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+      </div>
       
-      <div className="max-w-[900px] mx-auto">
-        <div className="bg-background/10 dark:bg-default-100/5 backdrop-blur-sm rounded-xl p-8 shadow-md">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {/* Email Contact */}
-            <div className="flex flex-col items-center text-center">
-              <div className="bg-primary/10 p-4 rounded-full mb-4">
-                <Mail size={32} className="" />
-              </div>
-              <h3 className="font-medium text-xl mb-2">{common('Email')}</h3>
-              <a 
-                href="mailto:tiant91@yzu.edu.cn" 
-                className="transition-colors"
-              >
-                tiant91@yzu.edu.cn
-              </a>
+      {/* 主要内容 */}
+      <div className="bg-white/90 dark:bg-gray-800/80 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
+        {/* 介绍部分 */}
+        <div className="flex items-start mb-10">
+          <div className="bg-primary/10 p-3 rounded-full mr-4">
+            <Users className="w-8 h-8 text-primary" />
+          </div>
+          <div>
+            <p className="text-foreground/90 leading-relaxed text-lg">
+              {common('GetInTouch')}
+            </p>
+          </div>
+        </div>
+
+        {/* 联系方式卡片 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Email Contact */}
+          <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl hover:shadow-md transition-all">
+            <div className="bg-primary/10 w-14 h-14 flex items-center justify-center rounded-full mb-4">
+              <Mail className="w-7 h-7 text-primary" />
             </div>
-            
-            {/* Address */}
-            <div className="flex flex-col items-center text-center">
-              <div className="bg-primary/10 p-4 rounded-full mb-4">
-                <MapPin size={32} className="" />
-              </div>
-              <h3 className="font-medium text-xl mb-2">{common('Address')}</h3>
-              <p className="text-default-600">
-                {t('Address')}
-              </p>
+            <h3 className="font-bold text-xl mb-3 text-primary">{common('Email')}</h3>
+            <a 
+              href="mailto:tiant91@yzu.edu.cn" 
+              className="text-foreground/90 hover:text-primary transition-colors"
+            >
+              tiant91@yzu.edu.cn
+            </a>
+          </div>
+          
+          {/* Address */}
+          <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl hover:shadow-md transition-all">
+            <div className="bg-primary/10 w-14 h-14 flex items-center justify-center rounded-full mb-4">
+              <MapPin className="w-7 h-7 text-primary" />
             </div>
-            
-            {/* School */}
-            <div className="flex flex-col items-center text-center">
-              <div className="bg-primary/10 p-4 rounded-full mb-4">
-                <School size={32} className="" />
-              </div>
-              <h3 className="font-medium text-xl mb-2">{common('College')}</h3>
-              <p className="text-default-600">{t('College')}</p>
+            <h3 className="font-bold text-xl mb-3 text-primary">{common('Address')}</h3>
+            <p className="text-foreground/90">
+              {t('Address')}
+            </p>
+          </div>
+          
+          {/* School */}
+          <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl hover:shadow-md transition-all">
+            <div className="bg-primary/10 w-14 h-14 flex items-center justify-center rounded-full mb-4">
+              <School className="w-7 h-7 text-primary" />
             </div>
+            <h3 className="font-bold text-xl mb-3 text-primary">{common('College')}</h3>
+            <p className="text-foreground/90">{t('College')}</p>
+          </div>
+        </div>
+        
+        {/* 地图 */}
+        <div className="mt-10 p-6 border border-gray-200 dark:border-gray-700 rounded-xl">
+          <div className="flex items-center mb-6">
+            <Globe className="w-6 h-6 text-primary mr-3" />
+            <h2 className="text-2xl font-bold text-primary">{common('Location')}</h2>
+          </div>
+          <div className="aspect-video w-full bg-gray-100 dark:bg-gray-700/30 flex items-center justify-center rounded-lg">
+            <p className="text-foreground/70">{common('MapPlaceholder')}</p>
+            {/* 如果有地图组件，可以在这里添加 */}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

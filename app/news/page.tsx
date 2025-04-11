@@ -1,35 +1,19 @@
-import { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
-import { NewsTimeline, NewsItem } from '../components/NewsTimeline';
-import { fetchNews } from '../../src/utils/news';
-
-// Static metadata for SEO
-export const metadata: Metadata = {
-  title: '新闻动态 | 田甜科研小组',
-  description: '田甜科研小组最新动态，包括研究进展、学术会议、活动等实时新闻。了解扬州大学化学学院的最新科研成果。',
-  keywords: '田甜, 扬州大学, 化学学院, 新闻动态, 科研进展, 学术活动, 会议, 讲座, 团队活动',
-  openGraph: {
-    title: '新闻动态 | 田甜科研小组',
-    description: '田甜科研小组最新动态，包括研究进展、学术会议、活动等实时新闻。了解扬州大学化学学院的最新科研成果。'
-  }
-};
+'use client';
+import { useTranslations } from 'next-intl';
 
 export default async function NewsPage() {
+  const t = useTranslations('News');
   return (
     <section className="w-full mx-auto py-8">
-      {/* <div className="container mx-auto px-4"> */}
-        {/* <header className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-foreground mb-4">
-            新闻动态
-          </h1>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
-            了解我们研究组的最新动态，包括研究成果、学术活动、团队荣誉及合作项目。
-          </p>
-        </header> */}
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-primary mb-4">{t('title')}</h1>
+          <div className="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+        </div>
         
         {/* News Timeline Component */}
         <NewsClientWrapper />
-      {/* </div> */}
+      </div>
     </section>
   );
 }

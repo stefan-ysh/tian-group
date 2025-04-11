@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, GraduationCap, Book, Mail, BriefcaseBusiness, Users, Lightbulb } from 'lucide-react';
 
 // Static metadata for SEO
 export const metadata: Metadata = {
@@ -18,33 +17,79 @@ export default function JoinUsWrapper({}) {
   const t = useTranslations('JoinUs');
 
   return (
-    <section className="mx-auto max-w-3xl px-6 pt-0">
-      {/* 招聘启示 */}
-      <section>
-        <div className="bg-white/90 dark:bg-gray-800/80 rounded-xl p-8 shadow-lg">
-          <h2 className="text-3xl font-bold mb-8 text-primary border-l-4 border-primary pl-4 flex items-center">
-            {t('title')}
-          </h2>
-
-          <p className="text-foreground/90 leading-relaxed mb-6">{t('description')}</p>
-
-          <h3 className="text-2xl font-semibold text-primary/90 mt-6 mb-4">{t('requirements')}</h3>
-          <ul className="list-disc list-inside space-y-3 text-foreground/90 ml-5">
-            <li className="pl-2">{t('positionRequirements.1')}</li>
-            <li className="pl-2">{t('positionRequirements.2')}</li>
-            <li className="pl-2">{t('positionRequirements.3')}</li>
-            <li className="pl-2">{t('positionRequirements.4')}</li>
-          </ul>
-
-          <h3 className="text-2xl font-semibold text-primary/90 mt-6 mb-4">{t('researchDirection')}</h3>
-          <p className="text-foreground/90 leading-relaxed mb-4">{t('researchDetails.1')}</p>
-          <p className="text-foreground/90 leading-relaxed mb-4">{t('researchDetails.2')}</p>
-          <p className="text-foreground/90 leading-relaxed mb-4">{t('researchDetails.3')}</p>
-
-          <h3 className="text-2xl font-semibold text-primary/90 mt-6 mb-4">{t('applicationMethod')}</h3>
-          <p className="text-foreground/90 leading-relaxed mb-4">{t('email')}</p>
+    <section className="mx-auto max-w-4xl px-6 py-12">
+      {/* 页面标题 */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-primary mb-4">{t('title')}</h1>
+        <div className="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+      </div>
+      
+      {/* 主要内容 */}
+      <div className="bg-white/90 dark:bg-gray-800/80 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
+        {/* 介绍部分 */}
+        <div className="flex items-start mb-10">
+          <div className="bg-primary/10 p-3 rounded-full mr-4">
+            <Users className="w-8 h-8 text-primary" />
+          </div>
+          <div>
+            <p className="text-foreground/90 leading-relaxed text-lg">{t('description')}</p>
+          </div>
         </div>
-      </section>
+
+        {/* 申请要求 */}
+        <div className="mb-10">
+          <div className="flex items-center mb-6">
+            <GraduationCap className="w-6 h-6 text-primary mr-3" />
+            <h2 className="text-2xl font-bold text-primary">{t('requirements')}</h2>
+          </div>
+          <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-6">
+            <ul className="space-y-4">
+              {[1, 2, 3, 4].map((num) => (
+                <li key={num} className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                  <span className="text-foreground/90">{t(`positionRequirements.${num}`)}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* 研究方向 */}
+        <div className="mb-10">
+          <div className="flex items-center mb-6">
+            <Lightbulb className="w-6 h-6 text-primary mr-3" />
+            <h2 className="text-2xl font-bold text-primary">{t('researchDirection')}</h2>
+          </div>
+          
+          <div className="grid gap-4 md:grid-cols-3">
+            {[1, 2, 3].map((num) => (
+              <div 
+                key={num} 
+                className="bg-gray-50 dark:bg-gray-700/50 p-5 rounded-xl hover:shadow-md transition-all"
+              >
+                <div className="bg-primary/10 w-10 h-10 flex items-center justify-center rounded-full mb-4">
+                  <Book className="w-5 h-5 text-primary" />
+                </div>
+                <p className="text-foreground/90">{t(`researchDetails.${num}`)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 申请方式 */}
+        <div>
+          <div className="flex items-center mb-6">
+            <Mail className="w-6 h-6 text-primary mr-3" />
+            <h2 className="text-2xl font-bold text-primary">{t('applicationMethod')}</h2>
+          </div>
+          <div className="bg-primary/5 rounded-xl p-6 border border-primary/10">
+            <div className="flex items-center">
+              <BriefcaseBusiness className="w-8 h-8 text-primary mr-4" />
+              <p className="text-foreground/90 text-lg">{t('email')}</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
