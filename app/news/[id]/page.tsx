@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { NewsDetailContent } from './NewsDetailContent';
 import { DetailNewsItem } from '../../../src/types/content';
 
-// Let Next.js decide the best rendering strategy
-export const dynamic = 'auto';
+// Force dynamic rendering to avoid issues with server/client components
+export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
 // Generate metadata for the page
