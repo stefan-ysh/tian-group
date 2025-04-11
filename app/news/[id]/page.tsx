@@ -9,26 +9,34 @@ import { DetailNewsItem } from '../../../src/types/content';
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-// Generate metadata for the page
+// Generate metadata for the page - This approach is working correctly so we'll keep it
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  const newsItem = await findNewsById(params.id);
-  
-  if (!newsItem) {
+  try {
+    const newsItem = await findNewsById(params.id);
+    
+    if (!newsItem) {
+      return {
+        title: '新闻未找到 | 田甜科研小组',
+        description: '抱歉，您请求的新闻内容未找到。'
+      };
+    }
+    
     return {
-      title: '新闻未找到 | 田甜科研小组',
-      description: '抱歉，您请求的新闻内容未找到。'
+      title: `${newsItem.title} | 田甜科研小组`,
+      description: newsItem.summary || '田甜科研小组最新动态',
+      openGraph: {
+        title: `${newsItem.title} | 田甜科研小组`,
+        description: newsItem.summary || '田甜科研小组最新动态',
+        images: newsItem.imageUrl ? [{ url: newsItem.imageUrl }] : []
+      }
+    };
+  } catch (error) {
+    console.error('Error generating metadata for news item:', error);
+    return {
+      title: '新闻详情 | 田甜科研小组',
+      description: '田甜科研小组新闻详情页面'
     };
   }
-  
-  return {
-    title: `${newsItem.title} | 田甜科研小组`,
-    description: newsItem.summary,
-    openGraph: {
-      title: `${newsItem.title} | 田甜科研小组`,
-      description: newsItem.summary,
-      images: newsItem.imageUrl ? [{ url: newsItem.imageUrl }] : []
-    }
-  };
 }
 
 // Generate static params for all news items

@@ -1,14 +1,12 @@
 import { Metadata } from 'next';
 
+// Static metadata for SEO
 export const metadata: Metadata = {
-  title: '田甜科研小组 | 扬州大学化学学院',
-  description:
-    '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-  keywords:
-    '田甜, 扬州大学, 化学学院, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 教授, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano,  ACS Energy Letters',
+  title: '联系我们 | 田甜科研小组',
+  description: '联系田甜科研小组，位于扬州大学瘦西湖校区化学化工学院，欢迎交流合作和加入我们的研究团队。',
+  keywords: '田甜, 扬州大学, 化学学院, 联系方式, 科研合作, 招聘, 地址, 邮箱, 电话',
   openGraph: {
-    title: '田甜科研小组 | 扬州大学化学学院',
-    description:
-      '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+    title: '联系我们 | 田甜科研小组',
+    description: '联系田甜科研小组，位于扬州大学瘦西湖校区化学化工学院，欢迎交流合作和加入我们的研究团队。',
   },
 }; 

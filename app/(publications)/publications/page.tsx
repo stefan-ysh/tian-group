@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { findLatestPublications } from '~/utils/publications';
 import { PublicationsClient, Publication } from '~/components/client/PublicationsClient';
 
@@ -7,15 +8,16 @@ export type TimelineView = 'grid' | 'timeline';
 // Use 'force-dynamic' to avoid prerendering issues
 export const dynamic = 'force-dynamic';
 
+// Static metadata for SEO
 export const metadata: Metadata = {
   title: '成果及论文 | 田甜科研小组',
-  description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-  keywords: '田甜, 扬州大学, 化学学院, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 教授, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano,  ACS Energy Letters',
+  description: '田甜科研小组发表的学术论文及研究成果，包括Angew、NC、Wiley、Advanced Materials等国际权威期刊上的文章。',
+  keywords: '田甜, 扬州大学, 化学学院, 科研成果, 论文发表, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano, ACS Energy Letters',
   openGraph: {
     title: '成果及论文 | 田甜科研小组',
-    description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+    description: '田甜科研小组发表的学术论文及研究成果，包括Angew、NC、Wiley、Advanced Materials等国际权威期刊上的文章。'
   }
-}
+};
 
 export default async function PublicationsPage() {
   const publications = await findLatestPublications();

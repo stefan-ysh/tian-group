@@ -1,10 +1,15 @@
 "use client";
+import { Metadata } from 'next';
 import { Card, CardBody } from '@heroui/react';
 import { Award, BookOpen, Mail, School, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import NextImage from 'next/image';
 import React, { useState, useEffect, ReactNode } from 'react';
 import dynamic from 'next/dynamic';
+
+// Home page metadata is handled in root layout for better SEO
+// Since this is a client component, metadata must be defined in a server component
+// The metadata for homepage is defined in app/metadata.ts
 
 // 动态导入 framer-motion，减少初始包大小
 const MotionComponent = dynamic(() => import('~/components/atoms/MotionWrapper').then(mod => mod.default), {

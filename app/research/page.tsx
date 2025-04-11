@@ -3,15 +3,16 @@ import { useTranslations } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
-export async function generateMetadata({ params: { locale }}: any) {
-  const t = await getTranslations({ locale, namespace: 'ResearchPage' });
-  
-  return {
-    title: `${t('pageTitle')} | 田甜科研小组`,
-    description: t('pageDescription'),
-    keywords: '钙钛矿太阳能电池, 有机非线性光学材料, 发光材料, 生物成像, 光谱表征, 扬州大学, 田甜科研组',
-  };
-}
+// Simple static metadata
+export const metadata: Metadata = {
+  title: '研究方向 | 田甜科研小组',
+  description: '田甜科研小组的主要研究方向包括钙钛矿太阳能电池、有机非线性光学材料、发光材料与生物成像、光谱表征与材料测试等。',
+  keywords: '钙钛矿太阳能电池, 有机非线性光学材料, 发光材料, 生物成像, 光谱表征, 扬州大学, 田甜科研组',
+  openGraph: {
+    title: '研究方向 | 田甜科研小组',
+    description: '田甜科研小组的主要研究方向包括钙钛矿太阳能电池、有机非线性光学材料、发光材料与生物成像、光谱表征与材料测试等。'
+  }
+};
 
 export default function ResearchPage() {
   const t = useTranslations('ResearchPage');

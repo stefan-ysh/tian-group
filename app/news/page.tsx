@@ -1,16 +1,18 @@
 import { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { NewsTimeline, NewsItem } from '../components/NewsTimeline';
 import { fetchNews } from '../../src/utils/news';
 
+// Static metadata for SEO
 export const metadata: Metadata = {
   title: '新闻动态 | 田甜科研小组',
-  description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-  keywords: '田甜, 扬州大学, 化学学院, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 教授, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano,  ACS Energy Letters',
+  description: '田甜科研小组最新动态，包括研究进展、学术会议、活动等实时新闻。了解扬州大学化学学院的最新科研成果。',
+  keywords: '田甜, 扬州大学, 化学学院, 新闻动态, 科研进展, 学术活动, 会议, 讲座, 团队活动',
   openGraph: {
     title: '新闻动态 | 田甜科研小组',
-    description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。'
+    description: '田甜科研小组最新动态，包括研究进展、学术会议、活动等实时新闻。了解扬州大学化学学院的最新科研成果。'
   }
-}
+};
 
 export default async function NewsPage() {
   return (
