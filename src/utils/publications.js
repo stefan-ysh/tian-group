@@ -50,7 +50,7 @@ export const findPublicationsByName = async (slug) => {
       content,
     };
   } catch (e) {
-    console.log('[ e ] >', e)
+    // console.log('[ e ] >', e)
   }
 
   return null;
