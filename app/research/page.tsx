@@ -149,7 +149,7 @@ export default function ResearchPage() {
               <div className="lg:col-span-1 flex justify-center items-start">
                 <div className="rounded-lg overflow-hidden shadow-md">
                   <Image 
-                    src="/images/publications/luminescent-materials.jpg" 
+                    src="https://s2.loli.net/2025/04/12/L8d5qxVXQnNIhZe.png" 
                     alt={t('luminTitle')} 
                     width={400} 
                     height={300}
@@ -172,7 +172,7 @@ export default function ResearchPage() {
               <div className="lg:col-span-1 flex justify-center items-start order-last lg:order-first">
                 <div className="rounded-lg overflow-hidden shadow-md">
                   <Image 
-                    src="/images/publications/spectroscopy-techniques.jpg" 
+                    src="https://s2.loli.net/2025/04/12/2EwDxbTWt64L3Aq.png" 
                     alt={t('spectroTitle')} 
                     width={400} 
                     height={300}
