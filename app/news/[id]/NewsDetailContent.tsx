@@ -6,6 +6,7 @@ import { Card, CardBody, Chip, Divider } from '@heroui/react';
 import { getTypeIcon, getTypeColor, NewsType } from '../../components/NewsTimeline';
 import NextImage from 'next/image';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
 interface DetailNewsItem {
   id: string;
@@ -20,6 +21,7 @@ interface DetailNewsItem {
     id: string;
     name: string;
   }[];
+  publishDate: string;
   publication?: {
     journal: string;
     volume?: string;
@@ -34,6 +36,7 @@ interface NewsDetailContentProps {
 }
 
 export function NewsDetailContent({ newsItem, formatDate }: NewsDetailContentProps) {
+  const t = useTranslations('News');
   // Safely assert the newsItem.type as NewsType for use with our type-specific functions
   const newsType = newsItem.type as NewsType;
   

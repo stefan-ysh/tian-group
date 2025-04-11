@@ -28,6 +28,7 @@ interface DetailNewsItem {
     issue?: string;
     doi?: string;
   };
+  publishDate: string;
 }
 
 // Generate metadata for the page
@@ -80,7 +81,7 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
   }
   
   return (
-    <section className="w-full mx-auto py-8">
+    <section className="w-full mx-auto">
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Breadcrumb */}
         <div className="mb-8">
