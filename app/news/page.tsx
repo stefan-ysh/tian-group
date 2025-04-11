@@ -1,7 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
 
-export default async function NewsPage() {
+export default function NewsPage() {
   const t = useTranslations('News');
   return (
     <section className="w-full mx-auto py-8">
