@@ -6,26 +6,26 @@
   },
   "HomePage": {
     "Name": "Tian Tian",
-    "Title": "Professor",
+    "Title": "Professor, Ph.D. Supervisor",
     "School": "Yangzhou University",
     "College": "School of Chemistry",
-    "Address": "No. 180 Siwangting Road, Hanjiang District, Yangzhou City, Jiangsu Province, China",
-    "researchDirection": "Research Direction",
-    "researchDirectionContent": "Our research group focuses on cutting-edge research in the fields of cyclodextrins, perovskites, and solar cells, dedicated to developing novel materials and technologies to advance green energy development.",
+    "Address": "School of Chemistry, Yangzhou University, 88 University South Road, Yangzhou, Jiangsu",
+    "researchDirection": "Research Directions",
+    "researchDirectionContent": "Professor Tian's research group focuses on designing and synthesizing innovative functional materials for energy storage, catalysis, and environmental remediation. Our work covers the development of novel battery materials, efficient catalysts, and environmentally friendly adsorbents, addressing current energy and environmental challenges.",
     "researchTeam": "Research Team",
-    "researchTeamContent": "Our team is composed of experienced researchers, postdoctoral fellows, and graduate students, all dedicated to pioneering scientific research in chemistry and nurturing the next generation of scientific talent.",
+    "researchTeamContent": "Our team comprises passionate postdoctoral researchers, doctoral students, and master's students from diverse academic backgrounds, all dedicated to scientific exploration and technological innovation. The group's multidisciplinary background and international perspective provide unique insights for addressing complex scientific problems.",
     "researchAchievements": "Research Achievements",
-    "researchAchievementsContent": "Our research achievements have been widely published in top-tier international journals such as Angewandte Chemie, JACS, Nature, and Science, marking breakthrough progress in multiple fields of chemistry research."
+    "researchAchievementsContent": "We have published a series of research papers in important international academic journals, including Nature Materials, Nature Communications, and Advanced Materials. Our research has received funding from the National Natural Science Foundation of China, Jiangsu Provincial Key R&D Program, and other sources, and we have established collaborative relationships with numerous research institutions both within China and internationally."
   },
   "Header": {
     "NavMenu": {
       "home": "Home",
       "research": "Research",
+      "members": "Team Members",
       "publications": "Publications",
-      "members": "Members",
       "news": "News",
       "activities": "Activities",
-      "joinus": "JoinUs",
+      "joinus": "Join Us",
       "contact": "Contact"
     }
   },
@@ -129,6 +129,95 @@
       "1": "We have in-depth research on the structural design of perovskite photovoltaic materials, the development of printable photovoltaic devices, and their interface design.",
       "2": "We explore the potential of organic materials in optical applications, especially in lasers and optoelectronic devices.",
       "3": "We are committed to developing new luminescent materials for applications in bioimaging and other optoelectronic applications."
+    }
+  },
+  "metadata": {
+    "title": "Tian Research Group",
+    "description": "Official website of Professor Tian Tian's Research Group, School of Chemistry, Yangzhou University"
+  },
+  "ResearchHighlights": {
+    "title": "Research Highlights",
+    "description": "Our research team is dedicated to developing novel functional materials and solutions to address current challenges in energy, environment, and sustainable development. Here are some of our recent representative research achievements.",
+    "readMore": "Read More",
+    "viewAllResearch": "View All Research Projects"
+  },
+  "TeamMembers": {
+    "title": "Research Team",
+    "description": "Our team consists of researchers from diverse professional backgrounds, including professors, postdoctoral researchers, doctoral students, and master's students. We possess a wide range of research interests and professional skills, collectively dedicated to scientific innovation and technological breakthroughs.",
+    "researchInterests": "Research Interests",
+    "downloadCV": "Download CV",
+    "viewProfile": "View Profile",
+    "viewAllMembers": "View All Team Members"
+  },
+  "GlobalCollaboration": {
+    "title": "International Collaboration",
+    "description": "We have established an extensive network of collaborations with top research institutions and scientists worldwide. Through international cooperation, we share knowledge, equipment, and resources to jointly advance the frontiers of science.",
+    "visitWebsite": "Visit Website",
+    "collaborationOpportunities": "Collaboration Opportunities",
+    "collaborationText": "We welcome researchers, students, and industry partners from around the world to join our research network. We offer various collaboration opportunities, including student exchange programs, visiting scholar positions, and industry partnerships.",
+    "exchangeStudents": "Exchange Students",
+    "visitingScholars": "Visiting Scholars",
+    "industryPartners": "Industry Partners",
+    "contactUs": "Contact Us"
+  },
+  "Publications": {
+    "title": "Publications",
+    "searchPlaceholder": "Search papers, authors, keywords...",
+    "yearFilter": "Filter by Year",
+    "journalFilter": "Filter by Journal",
+    "allYears": "All Years",
+    "allJournals": "All Journals",
+    "resetFilters": "Reset Filters",
+    "showingResults": "Showing {count} results",
+    "noPublicationsFound": "No publications found matching your criteria",
+    "viewOnline": "View Online",
+    "downloadPDF": "Download PDF",
+    "abstract": "Abstract",
+    "citations": "Citations",
+    "loadMore": "Load More",
+    "readMore": "Read More",
+    "viewOptions": "View Options",
+    "gridView": "Grid View",
+    "timelineView": "Timeline View"
+  },
+  "AcademicCalendar": {
+    "title": "Academic Calendar",
+    "upcomingEvents": "Upcoming Events",
+    "pastEvents": "Past Events",
+    "noUpcomingEvents": "No upcoming events scheduled",
+    "noPastEvents": "No past events recorded",
+    "events": "events",
+    "details": "View Details",
+    "andOthers": "and {count} others",
+    "organizedBy": "Organized by",
+    "eventTypes": {
+      "conference": "Conference",
+      "seminar": "Seminar",
+      "workshop": "Workshop",
+      "meeting": "Meeting",
+      "other": "Other Event"
+    }
+  },
+  "News": {
+    "title": "News",
+    "allNews": "All News",
+    "publications": "Publications",
+    "awards": "Awards",
+    "events": "Events",
+    "groupActivities": "Group Activities",
+    "announcements": "Announcements",
+    "noNewsFound": "No news found",
+    "loadMore": "Load More",
+    "readMore": "Read More",
+    "readPaper": "Read Paper",
+    "details": "View Details",
+    "viewAll": "View All News",
+    "types": {
+      "publication": "Publication",
+      "award": "Award",
+      "event": "Group Activity",
+      "media": "Media Coverage",
+      "announcement": "Announcement"
     }
   }
 }

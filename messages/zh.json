@@ -6,23 +6,23 @@
   },
   "HomePage": {
     "Name": "田甜",
-    "Title": "教授",
+    "Title": "教授，博士生导师",
     "School": "扬州大学",
     "College": "化学化工学院",
-    "Address": "江苏省扬州市邗江区四望亭路180号",
+    "Address": "江苏省扬州市大学南路88号 扬州大学化学学院",
     "researchDirection": "研究方向",
-    "researchDirectionContent": "本研究组专注于环糊精、钙钛矿和太阳能电池等领域的前沿研究，致力于开发新型材料与技术，推动绿色能源发展。",
-    "researchTeam": "研究队伍",
-    "researchTeamContent": "我们的团队由经验丰富的研究人员、博士后和研究生组成，共同致力于化学前沿科学研究，培养新一代科研人才。",
+    "researchDirectionContent": "田甜教授的研究小组专注于设计和合成创新的功能材料，用于能源存储、催化和环境修复。我们的工作涵盖新型电池材料、高效催化剂和环境友好型吸附剂的开发，致力于解决当前能源和环境挑战。",
+    "researchTeam": "研究团队",
+    "researchTeamContent": "我们的团队由一群充满热情的博士后、博士生和硕士生组成，他们来自不同的专业背景，共同致力于科学探索和技术创新。研究组具有多样化的学科背景和国际视野，为解决复杂的科学问题提供了独特视角。",
     "researchAchievements": "研究成果",
-    "researchAchievementsContent": "研究成果广泛发表于Angew、JACS、Nature、Science等国际顶级期刊，在多个化学研究领域取得突破性进展。"
+    "researchAchievementsContent": "我们在国内外重要学术期刊上发表了一系列研究论文，包括《自然材料》、《自然通讯》、《先进材料》等。研究成果获得了国家自然科学基金、江苏省重点研发计划等多项资助，并与多家国内外研究机构建立了合作关系。"
   },
   "Header": {
     "NavMenu": {
-      "home": "主页",
+      "home": "首页",
       "research": "研究方向",
-      "publications": "成果及论文",
-      "members": "组员介绍",
+      "members": "团队成员",
+      "publications": "发表论文",
       "news": "新闻动态",
       "activities": "组内活动",
       "joinus": "加入我们",
@@ -129,6 +129,95 @@
       "1": "我们在钙钛矿光伏材料的结构设计、可打印光伏器件的开发及其界面设计方面有深入研究。",
       "2": "我们探索有机材料在光学应用中的潜力，特别是在激光和光电器件中的应用。",
       "3": "我们致力于开发新型发光材料，应用于生物成像和其他光电应用。"
+    }
+  },
+  "metadata": {
+    "title": "田甜研究组",
+    "description": "扬州大学 化学学院 田甜教授研究组官方网站"
+  },
+  "ResearchHighlights": {
+    "title": "研究亮点",
+    "description": "我们的研究团队致力于开发新型功能材料和解决方案，以应对当前的能源、环境和可持续发展挑战。以下是我们近期的一些代表性研究成果。",
+    "readMore": "阅读详情",
+    "viewAllResearch": "查看所有研究项目"
+  },
+  "TeamMembers": {
+    "title": "研究团队",
+    "description": "我们的团队由来自不同专业背景的研究人员组成，包括教授、博士后研究员、博士生和硕士生。我们拥有多元化的研究兴趣和专业技能，共同致力于科学创新和技术突破。",
+    "researchInterests": "研究兴趣",
+    "downloadCV": "下载简历",
+    "viewProfile": "查看详细资料",
+    "viewAllMembers": "查看全部团队成员"
+  },
+  "GlobalCollaboration": {
+    "title": "国际合作",
+    "description": "我们与世界各地的顶尖研究机构和科学家建立了广泛的合作网络。通过国际合作，我们共享知识、设备和资源，共同推动科学前沿的发展。",
+    "visitWebsite": "访问网站",
+    "collaborationOpportunities": "合作机会",
+    "collaborationText": "我们欢迎来自世界各地的研究人员、学生和产业伙伴加入我们的研究网络。我们提供多种合作机会，包括学生交流、访问学者项目和产业合作。",
+    "exchangeStudents": "交换生项目",
+    "visitingScholars": "访问学者",
+    "industryPartners": "产业合作",
+    "contactUs": "联系我们"
+  },
+  "Publications": {
+    "title": "发表论文",
+    "searchPlaceholder": "搜索论文、作者、关键词...",
+    "yearFilter": "年份筛选",
+    "journalFilter": "期刊筛选",
+    "allYears": "所有年份",
+    "allJournals": "所有期刊",
+    "resetFilters": "重置筛选",
+    "showingResults": "显示 {count} 条结果",
+    "noPublicationsFound": "未找到符合条件的论文",
+    "viewOnline": "在线查看",
+    "downloadPDF": "下载PDF",
+    "abstract": "摘要",
+    "citations": "引用次数",
+    "loadMore": "加载更多",
+    "readMore": "阅读全文",
+    "viewOptions": "查看选项",
+    "gridView": "网格视图",
+    "timelineView": "时间线视图"
+  },
+  "AcademicCalendar": {
+    "title": "学术活动日历",
+    "upcomingEvents": "即将举行的活动",
+    "pastEvents": "过往活动",
+    "noUpcomingEvents": "暂无即将举行的活动",
+    "noPastEvents": "暂无过往活动记录",
+    "events": "个活动",
+    "details": "查看详情",
+    "andOthers": "等 {count} 人",
+    "organizedBy": "主办方",
+    "eventTypes": {
+      "conference": "学术会议",
+      "seminar": "研讨会",
+      "workshop": "工作坊",
+      "meeting": "组会",
+      "other": "其他活动"
+    }
+  },
+  "News": {
+    "title": "新闻动态",
+    "allNews": "全部",
+    "publications": "论文发表",
+    "awards": "荣誉奖项",
+    "events": "学术活动",
+    "groupActivities": "组内活动",
+    "announcements": "公告",
+    "noNewsFound": "暂无相关新闻",
+    "loadMore": "加载更多",
+    "readMore": "阅读全文",
+    "readPaper": "阅读论文",
+    "details": "查看详情",
+    "viewAll": "查看全部新闻",
+    "types": {
+      "publication": "论文发表",
+      "award": "荣誉奖项",
+      "event": "组内活动",
+      "media": "媒体报道",
+      "announcement": "公告"
     }
   }
 }

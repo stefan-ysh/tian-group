@@ -8,7 +8,7 @@ link: 'http://dx.doi.org/10.1088/1674-4926/43/3/030501'
 author: [Tian Tian, Meifang Yang, Jianyu Yang, Wuqiang Wu*, Liming Ding*]
 journal: 'Journal of Semiconductors'
 journalShort: 'JOS'
-tags: [markdown, blog]
+tags: ['All-Inorganic Perovskites', 'CsPbI3', 'Phase Stability', 'Crystal Redissolution', 'Humidity Resistance', 'DAST Additive', 'Molecular Coordination', 'Ambient Processing', 'Perovskite Films', 'Black-Phase Stabilization']
 ---
 
 <script>

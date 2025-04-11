@@ -78,6 +78,8 @@ export default async function RootLayout({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
           </svg>
         </a>
+        <span id="finicount_views"></span>
+        <script async src="//finicounter.eu.org/finicounter.js"></script>
         <Script src="/js/backTop.js" strategy="afterInteractive" />
       </body>
     </html>

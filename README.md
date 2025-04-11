@@ -1,170 +1,117 @@
-# Tailnext
+# Tian Group Website
 
-**Tailnext** is a free and open-source template to make your website using **[NextJS](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/)**. Ready to start a new project and designed taking into account best practices.
+**Tian Group Website** 是一个基于 **[NextJS](https://nextjs.org/) + [Tailwind CSS](https://tailwindcss.com/)** 开发的研究组官方网站，旨在展示Tian Group的研究成果、团队成员和最新动态。
 
-## Features
+## 特点
 
-- ✅ Integration with **Tailwind CSS** supporting **Dark mode**.
-- ✅ **Production-ready** scores in [Lighthouse](https://web.dev/measure/) and [PageSpeed Insights](https://pagespeed.web.dev/) reports.
-- ✅ **Image optimization** and **Font optimization**.
-- ✅ Fast and **SEO friendly blog**.
-- ✅ Generation of **project sitemap** and **robots.txt** based on your routes.
-
-<br>
-
-<img src="./screenshot.jpg" alt="Tailnext Theme Screenshot">
-
-[![onWidget](https://custom-icon-badges.demolab.com/badge/made%20by%20-onWidget-556bf2?style=flat-square&logo=onwidget&logoColor=white&labelColor=101827)](https://onwidget.com)
-[![License](https://img.shields.io/github/license/onwidget/tailnext?style=flat-square&color=dddddd&labelColor=000000)](https://github.com/onwidget/tailnext/blob/main/LICENSE.md)
-[![Maintained](https://img.shields.io/badge/maintained%3F-yes-brightgreen.svg?style=flat-square)](https://github.com/onwidget)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/onwidget/tailnext#contributing)
-[![Known Vulnerabilities](https://snyk.io/test/github/onwidget/tailnext/badge.svg?style=flat-square)](https://snyk.io/test/github/onwidget/tailnext)
+- ✅ 使用 **Next.js** 构建的现代化网站，支持服务端渲染和静态生成
+- ✅ 使用 **Tailwind CSS** 进行样式设计，支持**Dark mode**
+- ✅ **统一的内容管理系统**，通过Markdown文件管理所有内容
+- ✅ **可复用组件架构**，包括新闻时间线、发布内容筛选等功能
+- ✅ **优化的图像处理**和**字体加载**
+- ✅ **移动端响应式设计**，在各种设备上提供良好的用户体验
+- ✅ **SEO友好**的内容组织和元数据管理
 
 <br>
 
-<details open>
-<summary>Table of Contents</summary>
+## 项目结构
 
-- [Demo](#demo)
-- [Getting started](#getting-started)
-  - [Project structure](#project-structure)
-  - [Commands](#commands)
-  - [Configuration](#configuration)
-  - [Deploy](#deploy)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Acknowledgements](#acknowledgements)
-- [License](#license)
-
-</details>
-
-<br>
-
-## Demo
-
-📌 [https://tailnext.vercel.app/](https://tailnext.vercel.app/)
-
-<br>
-
-## Getting started
-
-- Clone: `git clone https://github.com/onwidget/tailnext.git`
-- Enter in the directory: `cd tailnext`
-- Install dependencies: `npm install`
-- Start the development server: `npm run dev`
-- View project in local environment: `localhost:3000`
-
-### Project structure
-
-Inside **Tailnext** template, you'll see the following folders and files:
+项目的主要结构如下:
 
 ```
 /
-├── .storybook/
 ├── app/
-│   ├── (blog)
-│   │   ├── [slug]
-|   |   |   └── page.js
-|   |   └── blog
-|   |       └── page.js
-│   ├── head.js
+│   ├── (group)
+│   │   ├── members
+│   │   └── gallery
+│   ├── (publications)
+│   │   └── publications
+│   ├── (homepage)
+│   │   └── page.js
 │   ├── layout.js
-│   └── page.js
+│   └── loading.js
 ├── public/
-│   └── favicon.svg
+│   └── images/
 ├── src/
 │   ├── assets/
 │   │   ├── images/
-|   |   └── styles/
-|   |       └── base.css
+│   │   └── styles/
 │   ├── components/
 │   │   ├── atoms/
-|   |   └── widgets/
-|   |       ├── Header.astro
-|   |       ├── Footer.astro
-|   |       └── ...
-│   │── content/
-│   |   └── blog/
-│   |       ├── demo-post-1.md
-│   |       └── ...
-│   ├── stories/
+│   │   ├── common/
+│   │   └── widgets/
+│   ├── content/
+│   │   ├── publications/
+│   │   ├── awards/
+│   │   ├── announcements/
+│   │   └── events/
+│   ├── hooks/
+│   ├── types/
 │   ├── utils/
-│   └── config.mjs
+│   └── config.js
 ├── package.json
-└── ...
+└── tailwind.config.js
 ```
 
-[![Edit Tailnext on CodeSandbox](https://codesandbox.io/static/img/play-codesandbox.svg)](https://githubbox.com/onwidget/tailnext/tree/main)
+## 内容管理
 
-> **Seasoned next.js expert?** Delete this file. Update `config.mjs` and contents. Have fun!
+网站的内容管理基于Markdown文件，存储在`src/content`目录下:
 
-<br>
+- **publications/**: 研究组的学术出版物
+- **awards/**: 获奖信息
+- **announcements/**: 公告信息
+- **events/**: 活动信息
 
-### Commands
+所有这些内容都会被统一处理并作为新闻(News)项展示在首页的时间线上。
 
-All commands are run from the root of the project, from a terminal:
+## 开发指南
 
-| Command               | Action                                       |
-| :-------------------- | :------------------------------------------- |
-| `npm install`         | Install dependencies                         |
-| `npm run dev`         | Starts local dev server at `localhost:3000`  |
-| `npm run build`       | Build your production site to `./dist/`      |
-| `npm run preview`     | Preview your build locally, before deploying |
-| `npm run storybook`   | Open storybook to view stories by widgets    |
-| `npm run format`      | Format codes with Prettier                   |
-| `npm run lint:eslint` | Run Eslint                                   |
+### 安装
 
-<br>
+```bash
+# 克隆仓库
+git clone https://github.com/yourusername/tian-group.git
+cd tian-group
 
-### Configuration
+# 安装依赖
+npm install
 
-Coming soon ..
-
-<br>
-
-### Deploy
-
-#### Deploy to production (manual)
-
-You can create an optimized production build with:
-
-```shell
-npm run build
+# 启动开发服务器
+npm run dev
 ```
 
-Now, your website is ready to be deployed. All generated files are located at
-`dist` folder, which you can deploy the folder to any hosting service you
-prefer.
+### 命令
 
-#### Deploy to Netlify
+所有命令都在项目根目录下运行:
 
-Clone this repository on own GitHub account and deploy to Netlify:
+| 命令                    | 作用                                 |
+| :---------------------- | :----------------------------------- |
+| `npm install`           | 安装依赖                             |
+| `npm run dev`           | 启动开发服务器，默认地址`localhost:3000` |
+| `npm run build`         | 构建生产版本到`./dist/`              |
+| `npm run start`         | 启动生产版本服务                     |
+| `npm run format`        | 使用Prettier格式化代码               |
+| `npm run lint`          | 运行ESLint检查代码                   |
 
-[![Netlify Deploy button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/onwidget/tailnext.git)
+## 贡献指南
 
-#### Deploy to Vercel
+欢迎为Tian Group网站做出贡献。如果您有任何想法、建议或发现任何问题，请随时开启讨论、提交issue或创建pull request。
 
-Clone this repository on own GitHub account and deploy to Vercel:
+### 贡献内容的一般步骤
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2Ftailnext)
+1. Fork 这个仓库
+2. 创建一个新的分支 (`git checkout -b feature/your-feature`)
+3. 提交您的更改 (`git commit -m 'Add some feature'`)
+4. 推送到您创建的分支 (`git push origin feature/your-feature`)
+5. 创建一个Pull Request
 
-<br>
+### 添加新的出版物或其他内容
 
-## Roadmap
+1. 在相应的目录(如`src/content/publications/`)中创建新的Markdown文件
+2. 使用正确的frontmatter格式添加元数据
+3. 撰写内容主体
+4. 提交更改并创建Pull Request
 
-Coming soon ..
+## 许可证
 
-<br>
-
-## Contributing
-
-If you have any idea, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request.
-That would be very useful for all of us and we would be happy to listen and take action.
-
-## Acknowledgements
-
-Initially created by [onWidget](https://onwidget.com) and maintained by a community of [contributors](https://github.com/onwidget/tailnext/graphs/contributors).
-
-## License
-
-**Tailnext** is licensed under the MIT license — see the [LICENSE](https://github.com/onwidget/tailnext/blob/main/LICENSE.md) file for details.
+本项目采用MIT许可证 - 详见LICENSE文件

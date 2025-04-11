@@ -1,6 +1,6 @@
 ---
 publishDate: 'May 2022'
-title: 'Carbon Electrode Endows High‐Efficiency Perovskite Photovoltaics Affordable, Fully Printable, and Durable'
+title: 'Carbon Electrode Endows High‐Efficiency Perovskite Photovoltaics: Affordable, Fully Printable, and Durable'
 description: |
   Perovskite photovoltaics have witnessed overwhelming success over the past decade. Carbon‐based perovskite solar cells (C‐PSCs), using carbon materials as electrodes, make the perovskite photovoltaics more attractive than ever. Since its first launch in 2013, the development of state‐of‐the‐art C‐PSCs has made remarkable achievements in various aspects. Herein, the recent ground‐breaking advancement of C‐PSCs has been summarized, with a particular focus on highlighting the unique advantages of carbon electrodes that enable perovskite photovoltaics affordable, fully printable, and durable. Limitations and challenges associated with C‐PSCs are discussed. An insightful perspective regarding future research directions is provided, revolutionizing the pathway toward new‐generation photovoltaics and optoelectronics. This highlight aims to provide a snapshot of the recent exciting progress in carbon‐electrode‐based perovskite solar cells (PSCs), which brings a fresh and insightful perspective toward making perovskite photovoltaics affordable, fully printable, and durable.
 image: 'https://s2.loli.net/2025/01/13/eSzhdIGOU3vqtyk.png'
@@ -8,7 +8,7 @@ link: 'http://dx.doi.org/10.1002/solr.202200258'
 author: [Gengling Liu, Tian Tian*, Jianyu Yang, Jun-Xing Zhong, Dilbara Gulamova*, Wu-Qiang Wu*]
 journal: 'John Wiley & Sons'
 journalShort: 'Wiley'
-tags: [markdown, blog]
+tags: ['Perovskite Solar Cells', 'Carbon Electrodes', 'Low-Cost Photovoltaics', 'Fully Printable', 'Durability', 'Solution Processing', 'Stability', 'C-PSCs', 'Cost-Efficiency', 'Optoelectronics']
 ---
 
 <script>

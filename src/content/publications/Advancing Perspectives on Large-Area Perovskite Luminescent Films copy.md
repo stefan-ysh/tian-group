@@ -24,5 +24,5 @@ author:
 
 journal: 'Advanced Materials'
 journalShort: 'AM'
-tags: [markdown, blog]
+tags: ['Rare-Earth Materials', 'Afterglow Films', 'Luminescent Materials', 'Energy-Saving', 'Electrospinning', 'Multicolor Emissions', 'Thermoluminescence', 'Sustainable Illumination']
 ---
