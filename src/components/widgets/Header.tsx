@@ -30,7 +30,6 @@ const Header = () => {
     <Navbar onMenuOpenChange={setIsMenuOpen} className="max-w-full">
       <NavbarContent>
         <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="sm:hidden" />
-        {isMenuOpen}
         {/* <NavbarBrand>
           <Logo />
         </NavbarBrand> */}
@@ -48,6 +47,9 @@ const Header = () => {
                 style={{
                   borderBottom: pathname === href ? '2px solid #333' : '',
                 }}
+                role="link"
+                tabIndex={0}
+                aria-label={t(code)}
               >
                 {t(code)}
               </span>

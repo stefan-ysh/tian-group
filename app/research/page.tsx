@@ -59,7 +59,7 @@ export default function ResearchPage() {
               <div className="lg:col-span-1 flex justify-center items-start">
                 <div className="rounded-lg overflow-hidden shadow-md">
                   <Image 
-                    src="/images/publications/perovskite-device.jpg" 
+                    src="https://s2.loli.net/2025/04/11/HILsVPjtMEkm9Fl.png" 
                     alt={t('perovskiteTitle')} 
                     width={400} 
                     height={300}

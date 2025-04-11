@@ -1,18 +1,19 @@
 'use client';
 
 import { setUserLocale } from '~/services/locale';
-import { Button, Switch } from "@heroui/react";
+import { Button } from "@heroui/react";
 import { useLocale } from 'next-intl';
 import { useTransition, useState, useEffect } from 'react';
 
-const Header = () => {
+const ToggleLanguage = () => {
   const locale = useLocale();
   const [mounted, setMounted] = useState<boolean>(false);
 
   const [isPending, startTransition] = useTransition();
   useEffect(() => {
     setMounted(true);
-  });
+  }, []);
+  
   const handleOnClick = () => {
     startTransition(() => {
       setUserLocale(locale === 'en' ? 'zh' : 'en');
@@ -22,7 +23,13 @@ const Header = () => {
   return (
     <>
       {mounted ? (
-        <Button onPress={handleOnClick} size="sm" isIconOnly aria-label="Toggle dark mode" variant="light">
+        <Button 
+          onPress={handleOnClick} 
+          size="sm" 
+          isIconOnly 
+          aria-label={`Switch to ${locale === 'en' ? 'Chinese' : 'English'}`} 
+          variant="light"
+        >
           {locale === 'en' ? ' EN' : '中'}
         </Button>
       ) : null}
@@ -30,4 +37,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default ToggleLanguage;

@@ -12,7 +12,11 @@ import Script from 'next/script'
 
 import '~/assets/styles/base.css';
 
-const customFont = CustomFont({ subsets: ['latin'], variable: '--font-custom' });
+const customFont = CustomFont({ 
+  subsets: ['latin'], 
+  variable: '--font-custom',
+  display: 'swap',
+});
 
 export interface LayoutProps {
   children: React.ReactNode;
@@ -39,6 +43,17 @@ export default async function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>{`
+          *, *::before, *::after {
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+          }
+          
+          @media(prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+              transition-duration: 0.01ms !important;
+            }
+          }
+        `}</style>
       </head>
       <body className="tracking-tight antialiased">
         <Providers>
@@ -57,12 +72,13 @@ export default async function RootLayout({
           title="Back to top"
           id="backToTop"
           className="fixed bottom-6 right-6 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full p-3 shadow-lg transition-all duration-300 opacity-0 invisible"
+          aria-label="回到顶部"
         >
           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
           </svg>
         </a>
-        <Script src="/js/backTop.js" />
+        <Script src="/js/backTop.js" strategy="afterInteractive" />
       </body>
     </html>
   );

@@ -35,9 +35,6 @@ export default async function Activities() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
       <header className="mb-8 text-center md:mb-12">
-        <h1 className="leading-tighter font-heading text-4xl font-bold tracking-tighter md:text-5xl">
-          组内活动（待完善）
-        </h1>
         <p className="mt-4 text-xl text-gray-600 dark:text-gray-400">
           记录我们的精彩时刻
         </p>
