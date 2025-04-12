@@ -211,7 +211,7 @@ export function NewsTimeline({
   };
   
   return (
-    <div className="w-full  rounded-2xl p-8 shadow-xl">
+    <div className="w-full  rounded-2xl p-8 pt-0">
       <div className="container mx-auto px-0">
         {/* <div className="flex items-center gap-2 mb-8">
           <Newspaper className="text-primary" size={24} />
