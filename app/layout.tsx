@@ -7,6 +7,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Inter as CustomFont } from 'next/font/google';
 import Script from 'next/script';
+
 import type { Metadata } from 'next';
 
 // import PageAnimatePresence from '~/components/atoms/PageAnimatePresence';
@@ -49,6 +50,7 @@ export default async function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
         <style>{`
           *, *::before, *::after {
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
