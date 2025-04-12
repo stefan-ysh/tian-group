@@ -8,13 +8,14 @@ import md from 'markdown-it';
 import { ArrowLeft, CalendarDays, MapPin } from 'lucide-react';
 import { useActivity } from '~/hooks/useActivities';
 import { DetailPageSkeletonLoader } from '../../../components/ui/SkeletonLoader';
-
+import { useLocale } from 'next-intl';
 // 格式化日期函数
 const getFormattedDate = (dateString) => {
+  const locale = useLocale();
   const date = new Date(dateString);
-  return date.toLocaleDateString('zh-CN', {
+  return date.toLocaleDateString(locale, {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   });
 };

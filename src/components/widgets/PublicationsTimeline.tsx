@@ -3,7 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { Card, CardBody, Chip, Button, Divider } from '@heroui/react';
 import { Calendar, Book, ExternalLink, ChevronDown, ZoomIn } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
 import Link from 'next/link';
 
@@ -66,11 +66,11 @@ export function PublicationsTimeline({
 
   // Format date
   const formatDate = (dateStr: string): string => {
+    const locale = useLocale();
     const date = new Date(dateStr);
-    return date.toLocaleDateString('zh-CN', {
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
-      month: 'long',
-      day: 'numeric',
+      month: 'short',
     });
   };
 

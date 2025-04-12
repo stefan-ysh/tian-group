@@ -25,7 +25,7 @@ import {
   AlignLeft,
   ScrollText
 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
 import Link from 'next/link';
 
@@ -36,6 +36,7 @@ export interface NewsItem {
   id: string;
   title: string;
   date: string;  // ISO string
+  publishDate: string;
   summary: string;
   type: NewsType;
   imageUrl?: string;
@@ -165,11 +166,11 @@ export function NewsTimeline({
   
   // 格式化日期
   const formatDate = (dateStr: string): string => {
+    const locale = useLocale();
     const date = new Date(dateStr);
-    return date.toLocaleDateString('zh-CN', {
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+      month: 'short'
     });
   };
   
@@ -322,7 +323,7 @@ export function NewsTimeline({
                         {/* 日期（所有屏幕尺寸） */}
                         <div className="flex items-center gap-1">
                           <Calendar className="text-primary" size={14} />
-                          <span className="text-xs text-foreground/70">{formatDate(item.date)}</span>
+                          <span className="text-xs text-foreground/70">{formatDate(item.publishDate || item.date)}</span>
                         </div>
                       </div>
                       

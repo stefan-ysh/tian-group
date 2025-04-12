@@ -31,6 +31,7 @@ export interface NewsItem extends BaseContentItem {
   type: NewsType;
   aspect?: string;
   authors?: Author[];
+  publishDate?: string;
   publication?: {
     journal: string;
     volume?: string;

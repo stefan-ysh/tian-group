@@ -6,7 +6,7 @@ import { CalendarDays, MapPin } from 'lucide-react';
 import { Chip } from '@heroui/react';
 import { useActivities } from '~/hooks/useActivities';
 import { ActivitiesSkeletonLoader } from '../../components/ui/SkeletonLoader';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface Activity {
   id: string;
@@ -21,10 +21,11 @@ interface Activity {
 
 // 日期格式化函数
 const formatDate = (dateString: string) => {
+  const locale = useLocale();
   const date = new Date(dateString);
-  return date.toLocaleDateString('zh-CN', {
+  return date.toLocaleDateString(locale, {
     year: 'numeric',
-    month: 'long',
+    month: 'short',
     day: 'numeric',
   });
 };

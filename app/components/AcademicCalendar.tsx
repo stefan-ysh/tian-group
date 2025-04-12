@@ -21,7 +21,7 @@ import {
   ChevronRight,
   MoreHorizontal
 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
 import Link from 'next/link';
 
@@ -101,10 +101,11 @@ export function AcademicCalendar({ events }: AcademicCalendarProps) {
   
   // 格式化日期
   const formatDate = (dateStr: string): string => {
+    const locale = useLocale();
     const date = new Date(dateStr);
-    return date.toLocaleDateString('zh-CN', {
+    return date.toLocaleDateString(locale, {
       year: 'numeric',
-      month: 'long',
+      month: 'short',
       day: 'numeric'
     });
   };

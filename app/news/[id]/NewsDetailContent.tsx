@@ -6,7 +6,7 @@ import { Card, CardBody, Chip, Divider } from '@heroui/react';
 import { getTypeIcon, getTypeColor, NewsType } from '../../components/NewsTimeline';
 import NextImage from 'next/image';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { DetailNewsItem } from '../../../src/types/content';
 
 interface NewsDetailContentProps {
@@ -18,16 +18,17 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
   
   // 内部处理日期格式化
   const formatDate = (dateStr: string): string => {
+    const locale = useLocale();
     if (!dateStr) return '';
     try {
       const date = new Date(dateStr);
       if (isNaN(date.getTime())) {
         return dateStr; // Return original if invalid date
       }
-      return date.toLocaleDateString('zh-CN', {
+      return date.toLocaleDateString(locale, {
         year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
+        month: 'short',
+        day: 'numeric',
       }).replace(/\//g, '-');
     } catch (e) {
       console.error("Error formatting date:", e);
