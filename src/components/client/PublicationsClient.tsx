@@ -33,6 +33,9 @@ export function PublicationsClient({ publications }: PublicationsClientProps) {
     <div className="w-full">
       <div className="flex flex-col md:flex-row justify-between items-start">
         <div className="flex items-center gap-2 mb-8">
+          {/* 对SEO友好的隐藏标题 */}
+          <h1 className="sr-only">{t('title')}</h1>
+          
           {/* <div className="bg-primary/10 p-2 rounded-full">
             <Book className="text-primary" size={20} />
           </div> */}

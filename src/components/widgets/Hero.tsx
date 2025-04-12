@@ -14,9 +14,15 @@ const Hero = ({ title, subtitle, tagline, callToAction, callToAction2, image }: 
               </p>
             )}
             {title && (
-              <h1 className="leading-tighter font-heading mb-6 text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl">
-                {title}
-              </h1>
+              <>
+                {/* 对SEO友好的隐藏标题 */}
+                <h1 className="sr-only">{title}</h1>
+                
+                {/* 视觉上相同的元素 */}
+                <div className="leading-tighter font-heading mb-6 text-4xl font-bold tracking-tighter md:text-5xl lg:text-6xl">
+                  {title}
+                </div>
+              </>
             )}
             <div className="mx-auto max-w-3xl">
               {subtitle && <p className="mb-6 text-xl font-normal text-gray-600 dark:text-slate-400">{subtitle}</p>}

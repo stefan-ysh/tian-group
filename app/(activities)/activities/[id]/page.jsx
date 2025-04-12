@@ -1,58 +1,43 @@
-import md from 'markdown-it';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { findActivitiesByName, findLatestActivities } from '~/utils/activities';
-import { Chip, Button } from "@heroui/react";
-import { CalendarDays, MapPin, Users, ArrowLeft } from 'lucide-react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
+import { Button, Image, Chip } from '@heroui/react';
+import md from 'markdown-it';
+import { ArrowLeft, CalendarDays, MapPin } from 'lucide-react';
+import { useActivity } from '~/hooks/useActivities';
+import { DetailPageSkeletonLoader } from '../../../components/ui/SkeletonLoader';
 
-export const dynamicParams = false;
-
-const getFormattedDate = (date) => {
-  if (!date) return '';
-  const dateObj = new Date(date);
-  return dateObj.toLocaleDateString('zh-CN', {
+// 格式化日期函数
+const getFormattedDate = (dateString) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('zh-CN', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
 };
 
-// Helper function to get position color
-function getPositionColor(position) {
-  switch (position?.toLowerCase()) {
-    case 'academic':
-      return 'primary';
-    case 'training':
-      return 'success';
-    case 'conference':
-      return 'warning';
-    case 'field trip':
-      return 'danger';
-    default:
-      return 'default';
+export default function Page() {
+  const params = useParams();
+  const { activity, isLoading, isError } = useActivity(params.id);
+
+  if (isLoading) {
+    return <DetailPageSkeletonLoader />;
   }
-}
 
-export async function generateMetadata({ params }) {
-  const activity = await findActivitiesByName(params.id);
-  if (!activity) {
-    return notFound();
-  }
-  const title = `${activity.title} | 组内活动`;
-  return { title, description: activity.description };
-}
-
-export async function generateStaticParams() {
-  const activities = await findLatestActivities();
-  return activities.map(({ id }) => ({ id }));
-}
-
-export default async function Page({ params }) {
-  const activity = await findActivitiesByName(params.id);
-
-  if (!activity) {
-    return notFound();
+  if (isError || !activity) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20">
+        <h2 className="text-2xl font-semibold text-red-500 mb-4">未找到活动</h2>
+        <Link href="/activities" passHref>
+          <Button variant="light" startContent={<ArrowLeft size={18} />}>
+            返回活动列表
+          </Button>
+        </Link>
+      </div>
+    );
   }
 
   const formattedDate = getFormattedDate(activity.date);
@@ -71,6 +56,8 @@ export default async function Page({ params }) {
         </Link>
       </div>
       <article>
+        <h1 className="sr-only">活动详情: {activity.title}</h1>
+        
         <header className="mb-12">
           <div className="flex flex-wrap justify-center gap-2 mb-6">
             {activity.tags && activity.tags.map((tag, index) => (
@@ -79,9 +66,9 @@ export default async function Page({ params }) {
               </Chip>
             ))}
           </div>
-          <h1 className="leading-tighter font-heading text-center mx-auto mb-6 max-w-3xl text-4xl font-bold tracking-tighter sm:text-5xl text-primary">
+          <h2 className="leading-tighter font-heading text-center mx-auto mb-6 max-w-3xl text-4xl font-bold tracking-tighter sm:text-5xl text-primary">
             {activity.title}
-          </h1>
+          </h2>
           <div className="mb-6 flex justify-center flex-wrap gap-6 text-gray-600 dark:text-gray-400">
             <div className="flex items-center gap-1">
               <CalendarDays size={18} className="text-primary" />

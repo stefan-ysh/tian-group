@@ -13,8 +13,8 @@ export default function Contact() {
     <section className="mx-auto max-w-4xl px-6 py-12">
       {/* 页面标题 */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-primary mb-4">{common('ContactUs')}</h1>
-        <div className="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+        {/* 对SEO友好的隐藏标题 */}
+        <h1 className="sr-only">{common('ContactUs')}</h1>
       </div>
       
       {/* 主要内容 */}

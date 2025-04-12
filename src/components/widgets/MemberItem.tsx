@@ -36,7 +36,7 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
           loading='lazy'
           className="w-5/6 h-5/6 md:w-[300px] md:h-[300px] p-0 sm:p-1 md:p-2 !object-cover rounded-full bg-transparent transition-all hover:bg-secondary-100 hover:scale-90"
         />
-        <div className="w-full flex justify-between items-center 2xl:text-[12px] mt-2 gap-1">
+        <div className="w-full flex justify-between items-center mt-2 gap-1">
           <Chip color="warning" variant="flat" size='sm'>
             {t(position)}
           </Chip>

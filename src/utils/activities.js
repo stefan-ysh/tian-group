@@ -1,8 +1,15 @@
+'use server';
+
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
 
 const BLOG_DIR = join(process.cwd(), 'src/content/activities');
+
+// 内存缓存
+let _activities = null;
+let _cacheTime = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存有效期
 
 // Mock data for activities when no files are found
 const mockActivities = [
@@ -207,16 +214,24 @@ const mockActivities = [
   },
 ];
 
-const load = () => {
+// 加载活动数据
+const load = async () => {
   try {
+    // 如果缓存有效，直接返回缓存数据
+    if (_activities && (Date.now() - _cacheTime < CACHE_DURATION)) {
+      return _activities;
+    }
+
     const files = fs.readdirSync(BLOG_DIR);
 
     if (files.length === 0) {
-      // 如果没有文件，返回模拟数据
-      return Promise.resolve(mockActivities);
+      // 如果没有文件，使用模拟数据并缓存
+      _activities = mockActivities;
+      _cacheTime = Date.now();
+      return mockActivities;
     }
 
-    const activities = Promise.all(
+    const activities = await Promise.all(
       files
         .filter((filename) => filename.endsWith('.md'))
         .map(async (filename) => {
@@ -225,28 +240,33 @@ const load = () => {
         }),
     );
 
+    // 缓存结果
+    _activities = activities;
+    _cacheTime = Date.now();
+    
     return activities;
   } catch (error) {
-    // 如果目录不存在或者有其他错误，返回模拟数据
-    return Promise.resolve(mockActivities);
+    console.error('Error loading activities:', error);
+    // 如果读取文件失败，使用模拟数据
+    _activities = mockActivities;
+    _cacheTime = Date.now();
+    return mockActivities;
   }
 };
 
-let _memberss;
-
 /** */
 export const fetchActivities = async () => {
-  _memberss = _memberss || load();
-
-  return await _memberss;
+  return await load();
 };
 
 /** */
-export const findLatestActivities = async ({ count } = {}) => {
-  const _count = count || 40;
+export const findLatestActivities = async (count = 20) => {
   const activities = await fetchActivities();
-
-  return activities ? activities.slice(_count * -1) : [];
+  
+  // 按日期排序
+  return activities
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, count);
 };
 
 /** */

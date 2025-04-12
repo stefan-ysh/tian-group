@@ -21,15 +21,11 @@ export default function ResearchPage() {
     <div className="container mx-auto py-12 px-4 max-w-6xl">
       {/* 页面标题 */}
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-primary mb-4">{t('pageTitle')}</h1>
-        <div className="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+        {/* 对SEO友好的隐藏标题 */}
+        <h1 className="sr-only">{t('pageTitle')}</h1>
       </div>
       
-      <p className="text-center text-foreground/70 mb-10 max-w-3xl mx-auto">
-        {t('pageDescription')}
-      </p>
-      
-      <div className=" rounded-2xl p-8 shadow-xl">
+      <div className=" rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
         <div className="space-y-16">
           {/* 钙钛矿光伏材料与器件 */}
           <section>

@@ -7,8 +7,7 @@ export default function NewsPage() {
     <section className="w-full mx-auto py-12">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-primary mb-4">{t('title')}</h1>
-          <div className="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+          <h1 className="sr-only">{t('title')}</h1>
         </div>
         
         {/* News Timeline Component */}

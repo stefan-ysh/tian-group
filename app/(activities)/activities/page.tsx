@@ -1,7 +1,12 @@
-import { findLatestActivities } from '~/utils/activities';
+'use client';
+
+import { useState, useEffect } from 'react';
 import { ActivityItem } from '~/components/widgets/ActivityItem';
-import { CalendarDays, Clock, Calendar, MapPin } from 'lucide-react';
+import { CalendarDays, MapPin } from 'lucide-react';
 import { Chip } from '@heroui/react';
+import { useActivities } from '~/hooks/useActivities';
+import { ActivitiesSkeletonLoader } from '../../components/ui/SkeletonLoader';
+import { useTranslations } from 'next-intl';
 
 interface Activity {
   id: string;
@@ -11,45 +16,57 @@ interface Activity {
   avatar: string;
   position: string;
   date: string;
-  tags: string[];
+  tags?: string[];
 }
 
-// Helper function to format dates
-function formatDate(dateString: string) {
+// 日期格式化函数
+const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   return date.toLocaleDateString('zh-CN', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
   });
-}
+};
 
-export default async function Activities() {
-  const activities = await findLatestActivities();
-
-  // Sort activities by date in descending order
-  const sortedActivities = activities.sort((a: Activity, b: Activity) => {
+export default function Activities() {
+  const { activities, isLoading, isError } = useActivities();
+  const t = useTranslations('Header.NavMenu');
+  // 按日期排序活动（最新的在前）
+  const sortedActivities = [...activities].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-  // Group activities by year
+  // 按年份分组活动
   const groupedActivities: Record<string, Activity[]> = {};
-  sortedActivities.forEach((activity: Activity) => {
+  sortedActivities.forEach((activity) => {
     const year = new Date(activity.date).getFullYear().toString();
     if (!groupedActivities[year]) {
       groupedActivities[year] = [];
     }
-    groupedActivities[year].push(activity);
+    groupedActivities[year].push(activity as Activity);
   });
 
-  // Get years in descending order
+  // 获取年份（降序排列）
   const years = Object.keys(groupedActivities).sort((a, b) => parseInt(b) - parseInt(a));
+
+  if (isLoading) {
+    return <ActivitiesSkeletonLoader />;
+  }
+
+  if (isError) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <p className="text-xl text-center text-red-500">加载活动数据失败，请稍后重试</p>
+      </div>
+    );
+  }
 
   return (
     <section className="mx-auto max-w-6xl py-12 px-6">
       <header className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-primary mb-4">组内活动</h1>
-        <div className="h-1 w-32 bg-primary mx-auto rounded-full"></div>
+        {/* 对SEO友好的隐藏标题 */}
+        <h1 className="sr-only">{t('activities')}</h1>
       </header>
 
       <div className="space-y-16">
