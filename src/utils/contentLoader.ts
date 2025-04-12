@@ -181,6 +181,7 @@ export async function loadPublications(): Promise<Publication[]> {
       isHighlighted: frontmatter.highlighted || false,
       impactFactor: frontmatter.impactFactor || undefined,
       citations: frontmatter.citations || undefined,
+      aspect: frontmatter.aspect || undefined,
       pdfUrl: frontmatter.pdfUrl || undefined
     };
   });
@@ -201,6 +202,7 @@ export async function loadAwards(): Promise<Award[]> {
       link: frontmatter.link || undefined,
       recipient: frontmatter.recipient || undefined,
       organization: frontmatter.organization || undefined,
+      aspect: frontmatter.aspect || undefined,
       awardType: frontmatter.awardType || undefined
     };
   });
@@ -220,6 +222,7 @@ export async function loadAnnouncements(): Promise<Announcement[]> {
       tags: frontmatter.tags || ['Announcement'],
       link: frontmatter.link || undefined,
       category: frontmatter.category || undefined,
+      aspect: frontmatter.aspect || undefined,
       deadline: frontmatter.deadline ? parseDate(frontmatter.deadline) : undefined,
       status: frontmatter.status || 'active'
     };
@@ -266,6 +269,7 @@ export async function loadAllAsNewsItems(): Promise<NewsItem[]> {
     summary: pub.summary,
     type: 'publication' as NewsType,
     imageUrl: pub.imageUrl,
+    aspect: pub.aspect,
     link: pub.link,
     tags: pub.tags,
     authors: pub.authors,
@@ -284,6 +288,7 @@ export async function loadAllAsNewsItems(): Promise<NewsItem[]> {
     summary: award.summary,
     type: 'award' as NewsType,
     imageUrl: award.imageUrl,
+    aspect: award.aspect,
     link: award.link,
     tags: award.tags
   }));
@@ -295,6 +300,7 @@ export async function loadAllAsNewsItems(): Promise<NewsItem[]> {
     summary: announcement.summary,
     type: 'announcement' as NewsType,
     imageUrl: announcement.imageUrl,
+    aspect: announcement.aspect,
     link: announcement.link,
     tags: announcement.tags
   }));
@@ -306,6 +312,7 @@ export async function loadAllAsNewsItems(): Promise<NewsItem[]> {
     summary: event.summary,
     type: 'event' as NewsType,
     imageUrl: event.imageUrl,
+    aspect: event.aspect,
     link: event.link,
     tags: event.tags
   }));

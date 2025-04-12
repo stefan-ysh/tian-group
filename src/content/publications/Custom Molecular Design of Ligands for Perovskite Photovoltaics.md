@@ -4,6 +4,7 @@ title: 'Custom Molecular Design of Ligands for Perovskite Photovoltaics'
 description: |
   Perovskite photovoltaics have witnessed overwhelming success owing to their high power conversion efficiency, low voltage deficit, sensitive photoelectric response and good operational stability. However, solution-processed, polycrystalline perovskite films inevitably contain a high density of crystallographic defects, such as uncoordinated ions and dangling bonds at the surfaces and grain boundaries, which can result in charge recombination, thus causing energy loss and impaired device performance. These intrinsic imperfections can be remedied through a chemically induced intermarriage between halide perovskites of soft crystallographic nature and judiciously designed exotic ligand molecules. Utilizing rational molecular design of the component moieties, i.e., the core and tail functional groups, the ligand molecules can be endowed with both more comprehensive and salient advantages to further boost device performance, thus setting perovskite photovoltaics on course for a more prosperous future.
 image: 'https://s2.loli.net/2025/01/13/FbDdwuXO6yHVtq4.png'
+aspect: square
 link: 'http://dx.doi.org/10.1021/accountsmr.1c00099'
 author: [Meifang Yang, Tian Tian, Wenhuai Feng, Lianzhou Wang*, Wu-Qiang Wu*]
 journal: 'American Chemical Society'

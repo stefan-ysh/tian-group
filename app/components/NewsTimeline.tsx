@@ -35,6 +35,7 @@ export interface NewsItem {
   type: NewsType;
   imageUrl?: string;
   link?: string;
+  aspect?: string;
   tags?: string[];
   authors?: {
     id: string;
@@ -290,25 +291,19 @@ export function NewsTimeline({
         {/* 新闻时间线 */}
         <div className="relative">
           {/* 垂直时间线 */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700 transform md:translate-x-[-0.5px]"></div>
+          <div className="absolute left-4 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700 md:left-8"></div>
           
-          <div className="space-y-8">
+          <div className="space-y-6">
             {visibleNews.map((item, index) => (
-              <div key={item.id} className={`relative flex flex-col md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+              <div key={item.id} className="relative flex items-start pl-10 md:pl-16">
                 {/* 时间线上的点 */}
-                <div className="absolute left-[-8px] md:left-1/2 top-0 w-4 h-4 rounded-full bg-primary transform md:translate-x-[-8px]"></div>
-                
-                {/* 日期（移动端显示） */}
-                <div className="md:hidden mb-3 flex items-center gap-2">
-                  <Calendar className="text-primary" size={16} />
-                  <span className="text-sm text-foreground/70">{formatDate(item.date)}</span>
-                </div>
+                <div className="absolute left-[12px] md:left-[30px] top-2 w-4 h-4 rounded-full bg-primary transform -translate-x-1/2"></div>
                 
                 {/* 内容卡片 */}
-                <div className={`w-full md:w-[calc(50%-20px)] ${index % 2 === 0 ? 'md:pr-0' : 'md:pl-0'}`}>
+                <div className="w-full">
                   <Card className="border border-primary/10 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                     <CardBody className="p-5">
-                      {/* 新闻类型标签 */}
+                      {/* 新闻类型标签和日期 */}
                       <div className="flex justify-between items-center mb-3">
                         <Chip 
                           variant="flat" 
@@ -319,8 +314,8 @@ export function NewsTimeline({
                           {t(`types.${item.type}`)}
                         </Chip>
                         
-                        {/* 日期（桌面端显示） */}
-                        <div className="hidden md:flex items-center gap-1">
+                        {/* 日期（所有屏幕尺寸） */}
+                        <div className="flex items-center gap-1">
                           <Calendar className="text-primary" size={14} />
                           <span className="text-xs text-foreground/70">{formatDate(item.date)}</span>
                         </div>
@@ -333,7 +328,7 @@ export function NewsTimeline({
                       
                       {/* 图片（如果有） */}
                       {item.imageUrl && (
-                        <div className="relative h-48 w-full mb-3 rounded-md overflow-hidden">
+                        <div className={`relative w-full mb-3 rounded-md overflow-hidde ${item.aspect ? `aspect-${item.aspect}` : ''}`}>
                           <NextImage
                             src={item.imageUrl}
                             alt={item.title}

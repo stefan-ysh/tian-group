@@ -4,6 +4,7 @@ title: 'One-Drop Self-Assembly of Ultra-Fine Second-Order Organic Nonlinear Opti
 description: |
   In this study, we propose a one-drop self-assembly method, which proved capable of successfully preparing 4-N, N-dimethylamino-4'-N'-methyl-stilbazolium tosylate (DAST) single-crystalline nanowires (NWs). The apparent roughness of the DAST NWs was determined to be less than 100 pm by using a high-resolution atomic force microscope, indicating their ultrafine quality. The DAST NWs also exhibited excellent nonlinear optical properties, including two-photon excited fluorescence and second harmonic generation, which could enable the production of low-cost, low-power-consumption wideband wavelength conversion devices. Thus, the described method may provide a new avenue for organic NW fabrication.
 image: 'https://s2.loli.net/2025/01/13/c8vuTdHg6A1kUyB.png'
+aspect: video
 link: 'http://dx.doi.org/10.1186/s11671-019-3103-y'
 author:
   [

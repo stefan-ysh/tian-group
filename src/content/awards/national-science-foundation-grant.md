@@ -1,8 +1,9 @@
 ---
-title: "获得xx基金资助"
+title: "xx基金（模拟数据，开发中...）"
 date: "2024-07-25"
 description: "。。。"
-image: "https://i.imgur.com/pKXmffK.jpg"
+image: "https://ts1.tc.mm.bing.net/th/id/R-C.e0afe08fb3456c707d001b2f4b75857e?rik=FRwAy3WaKNz7SQ&riu=http%3a%2f%2fwww.logosj.com%2fwp-content%2fuploads%2f2013%2f11%2f1-1311131U443.jpg&ehk=g0iQyQp8P5nFRoETT5AFg2viQ8Q2aw0L9AYC4Qdy%2bUQ%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1"
+aspect: video
 tags: ["奖项", "基金", "xx"]
 recipient: "xx"
 organization: "xx"

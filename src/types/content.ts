@@ -29,6 +29,7 @@ export type NewsType = 'publication' | 'award' | 'event' | 'media' | 'announceme
  */
 export interface NewsItem extends BaseContentItem {
   type: NewsType;
+  aspect?: string;
   authors?: Author[];
   publication?: {
     journal: string;
@@ -48,6 +49,7 @@ export interface Publication extends BaseContentItem {
   volume?: string;
   issue?: string;
   pages?: string;
+  aspect?: string;
   doi?: string;
   abstract?: string;
   isHighlighted?: boolean;

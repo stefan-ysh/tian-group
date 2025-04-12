@@ -47,6 +47,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'p26.toutiaoimg.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'ts1.tc.mm.bing.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'tc.lepubiopharma.com',
+      },
     ],
   },
 };

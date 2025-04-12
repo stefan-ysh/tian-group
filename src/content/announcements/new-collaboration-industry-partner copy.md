@@ -1,8 +1,9 @@
 ---
-title: "开发中..."
+title: "与xxx合作(模拟数据，开发中...)"
 date: "2024-06-20"
 description: "。。。"
-image: "https://i.imgur.com/aCTnQjV.jpg"
+image: "https://tc.lepubiopharma.com/upload/2021-03/161577381781232600.jpg"
+aspect: video
 tags: ["合作", "产业合作", "技术转移"]
 category: "合作公告"
 status: "active"
