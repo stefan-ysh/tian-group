@@ -64,6 +64,7 @@ export interface Publication extends BaseContentItem {
 export interface Award extends BaseContentItem {
   recipient?: string;
   organization?: string;
+  aspect?: string;
   awardType?: string; // 例如：荣誉奖、研究资助等
 }
 
@@ -73,6 +74,7 @@ export interface Award extends BaseContentItem {
 export interface Announcement extends BaseContentItem {
   category?: string; // 例如：招聘、通知、活动等
   deadline?: string; // ISO格式的日期，如果适用
+  aspect?: string;
   status?: 'active' | 'expired';
 }
 
@@ -85,6 +87,7 @@ export interface Event extends BaseContentItem {
   location?: string;
   speakers?: string[];
   eventType?: string; // 例如：会议、研讨会、工作坊等
+  aspect?: string;
 }
 
 // 添加 DetailNewsItem 接口定义
