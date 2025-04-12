@@ -52,7 +52,7 @@ const Header = () => {
           links.map(({ label, href, icon: Icon, links: subLinks, code }, index) => {
             return (
               <NavbarItem key={`item-link-${index}`} isActive={pathname === `/${locale}${href}` || pathname === href}>
-                <span
+                {/* <span
                   onClick={() => {
                     router.push(href as string);
                   }}
@@ -65,7 +65,12 @@ const Header = () => {
                   aria-label={t(code)}
                 >
                   {t(code)}
-                </span>
+                </span> */}
+                <Link href={href || '#'} className="cursor-pointer hover:border-b-2 hover:border-primary-500 text-primary-400" style={{
+                  borderBottom: (pathname === href || pathname === `/${locale}${href}`) ? '2px solid #333' : '',
+                }} aria-label={t(code)}>
+                  {t(code)}
+                </Link>
               </NavbarItem>
             );
           })}
