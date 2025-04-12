@@ -9,20 +9,12 @@ import { ArrowLeft, CalendarDays, MapPin } from 'lucide-react';
 import { useActivity } from '~/hooks/useActivities';
 import { DetailPageSkeletonLoader } from '../../../components/ui/SkeletonLoader';
 import { useLocale } from 'next-intl';
-// 格式化日期函数
-const getFormattedDate = (dateString) => {
-  const locale = useLocale();
-  const date = new Date(dateString);
-  return date.toLocaleDateString(locale, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
-};
+import { formatDate } from '../../../../src/utils/utils';
 
 export default function Page() {
   const params = useParams();
   const { activity, isLoading, isError } = useActivity(params.id);
+  const locale = useLocale();
 
   if (isLoading) {
     return <DetailPageSkeletonLoader />;
@@ -40,8 +32,6 @@ export default function Page() {
       </div>
     );
   }
-
-  const formattedDate = getFormattedDate(activity.date);
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-16 lg:py-20">
@@ -71,9 +61,9 @@ export default function Page() {
             {activity.title}
           </h2>
           <div className="mb-6 flex justify-center flex-wrap gap-6 text-gray-600 dark:text-gray-400">
-            <div className="flex items-center gap-1">
-              <CalendarDays size={18} className="text-primary" />
-              <span>{formattedDate}</span>
+            <div className="flex items-center gap-2 text-gray-500 mb-4">
+              <CalendarDays className="text-primary" size={16} />
+              <span>{formatDate(activity.date, 'long', locale)}</span>
             </div>
             {activity.location && (
               <div className="flex items-center gap-1">

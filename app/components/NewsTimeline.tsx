@@ -28,6 +28,7 @@ import {
 import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
 import Link from 'next/link';
+import { formatDate } from '../../src/utils/utils';
 
 // Export the NewsType type so it can be used in other components
 export type NewsType = 'publication' | 'award' | 'event' | 'media' | 'announcement';
@@ -86,6 +87,7 @@ export function NewsTimeline({
   typeCounts
 }: NewsTimelineProps) {
   const t = useTranslations('News');
+  const locale = useLocale();
   const [activeFilter, setActiveFilter] = useState<NewsType | 'all'>('all');
   
   // 调试日志
@@ -163,16 +165,6 @@ export function NewsTimeline({
       }));
     }
   }, [activeFilter, displayCounts, initialDisplayCount, onLoadMore]);
-  
-  // 格式化日期
-  const formatDate = (dateStr: string): string => {
-    const locale = useLocale();
-    const date = new Date(dateStr);
-    return date.toLocaleDateString(locale, {
-      year: 'numeric',
-      month: 'short'
-    });
-  };
   
   // 获取每个类型的数量 - 优先使用传入的typeCounts
   const counts = useMemo(() => {
@@ -323,7 +315,7 @@ export function NewsTimeline({
                         {/* 日期（所有屏幕尺寸） */}
                         <div className="flex items-center gap-1">
                           <Calendar className="text-primary" size={14} />
-                          <span className="text-xs text-foreground/70">{formatDate(item.publishDate || item.date)}</span>
+                          <span className="text-xs text-foreground/70">{formatDate(item.publishDate || item.date, 'short', locale)}</span>
                         </div>
                       </div>
                       

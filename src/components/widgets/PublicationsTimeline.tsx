@@ -6,6 +6,7 @@ import { Calendar, Book, ExternalLink, ChevronDown, ZoomIn } from 'lucide-react'
 import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
 import Link from 'next/link';
+import { formatDate } from '../../utils/utils';
 
 export interface PublicationItem {
   slug: string;
@@ -39,6 +40,7 @@ export function PublicationsTimeline({
 }: PublicationsTimelineProps) {
   const t = useTranslations('Publications');
   const [displayCount, setDisplayCount] = useState(initialDisplayCount);
+  const locale = useLocale();
 
   // Sort publications by date (newest first)
   const sortedPublications = useMemo(() => {
@@ -64,16 +66,6 @@ export function PublicationsTimeline({
     }
   };
 
-  // Format date
-  const formatDate = (dateStr: string): string => {
-    const locale = useLocale();
-    const date = new Date(dateStr);
-    return date.toLocaleDateString(locale, {
-      year: 'numeric',
-      month: 'short',
-    });
-  };
-
   return (
     <div className="w-full py-4">
       <div className="container mx-auto p-0">
@@ -94,7 +86,7 @@ export function PublicationsTimeline({
                 <div className="flex items-center mb-4">
                   <div className="bg-primary text-white p-2 w-full rounded-md text-sm font-medium flex items-center gap-1">
                     <Calendar size={14} />
-                    <span className="whitespace-nowrap">{formatDate(publication.publishDate)}</span>
+                    <span className="whitespace-nowrap">{formatDate(publication.publishDate, 'short', locale)}</span>
                   </div>
                   <Divider className="flex-grow ml-4" />
                 </div>

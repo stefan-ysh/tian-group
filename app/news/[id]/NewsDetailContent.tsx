@@ -8,6 +8,7 @@ import NextImage from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { DetailNewsItem } from '../../../src/types/content';
+import { formatDate } from '../../../src/utils/utils';
 
 interface NewsDetailContentProps {
   newsItem: DetailNewsItem;
@@ -15,26 +16,7 @@ interface NewsDetailContentProps {
 
 export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
   const t = useTranslations('News');
-  
-  // 内部处理日期格式化
-  const formatDate = (dateStr: string): string => {
-    const locale = useLocale();
-    if (!dateStr) return '';
-    try {
-      const date = new Date(dateStr);
-      if (isNaN(date.getTime())) {
-        return dateStr; // Return original if invalid date
-      }
-      return date.toLocaleDateString(locale, {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-      }).replace(/\//g, '-');
-    } catch (e) {
-      console.error("Error formatting date:", e);
-      return dateStr; // Return original on error
-    }
-  };
+  const locale = useLocale();
   
   // Safely assert the newsItem.type as NewsType for use with our type-specific functions
   const newsType = newsItem.type as NewsType;
@@ -62,9 +44,9 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
              newsItem.type === 'media' ? '媒体报道' : '公告'}
           </Chip>
           
-          <div className="flex items-center gap-1 text-foreground/70">
+          <div className="flex items-center gap-2 text-foreground/60 text-sm">
             <Calendar size={16} />
-            <span>{formatDate(newsItem.date)}</span>
+            <span>{formatDate(newsItem.date, 'long', locale)}</span>
           </div>
         </div>
         

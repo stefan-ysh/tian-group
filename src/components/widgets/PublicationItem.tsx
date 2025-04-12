@@ -14,6 +14,8 @@ import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import { Progress } from "@heroui/react";
 import { useRouter } from 'next/navigation';
+import { formatDate } from '~/utils/utils';
+import { useLocale } from 'next-intl';
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 interface PublicationItemProps {
   title: string;
@@ -43,8 +45,8 @@ export const PublicationItem = ({
   journalShort,
 }: PublicationItemProps) => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const locale = useLocale()
 
-  const router = useRouter();
   return (
     <Card
       key={slug}
@@ -107,7 +109,7 @@ export const PublicationItem = ({
           </div>
           <div className="flex items-center gap-1">
             <Calendar size={16} />
-            <span className="text-xs">{publishDate}</span>
+            <span className="text-xs">{formatDate(publishDate, 'short', locale)}</span>
           </div>
         </div>
       </div>

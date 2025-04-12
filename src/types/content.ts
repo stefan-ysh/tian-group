@@ -51,6 +51,7 @@ export interface Publication extends BaseContentItem {
   issue?: string;
   pages?: string;
   aspect?: string;
+  publishDate?: string;
   doi?: string;
   abstract?: string;
   isHighlighted?: boolean;

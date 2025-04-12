@@ -24,6 +24,7 @@ import {
 import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
 import Link from 'next/link';
+import { formatDate } from '../../src/utils/utils';
 
 export interface EventSpeaker {
   id?: string;
@@ -58,6 +59,7 @@ interface AcademicCalendarProps {
 export function AcademicCalendar({ events }: AcademicCalendarProps) {
   const t = useTranslations('AcademicCalendar');
   const [activeTab, setActiveTab] = useState("upcoming");
+  const locale = useLocale();
   
   // 将日期对象移入useMemo内部，以避免依赖变化
   // 将事件分为未来和过去
@@ -99,34 +101,23 @@ export function AcademicCalendar({ events }: AcademicCalendarProps) {
       .sort(([yearA], [yearB]) => parseInt(yearB) - parseInt(yearA));
   }, [pastEvents]);
   
-  // 格式化日期
-  const formatDate = (dateStr: string): string => {
-    const locale = useLocale();
-    const date = new Date(dateStr);
-    return date.toLocaleDateString(locale, {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    });
-  };
-  
   // 格式化时间范围
   const formatDateRange = (startDate: string, endDate?: string): string => {
     const start = new Date(startDate);
     
     if (!endDate) {
-      return formatDate(startDate);
+      return formatDate(startDate, 'medium', locale);
     }
     
     const end = new Date(endDate);
     
     // 如果是同一天的活动
     if (start.toDateString() === end.toDateString()) {
-      return `${formatDate(startDate)} ${start.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })} - ${end.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' })}`;
+      return `${formatDate(startDate, 'medium', locale)} ${start.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })} - ${end.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' })}`;
     }
     
     // 多天活动
-    return `${formatDate(startDate)} - ${formatDate(endDate)}`;
+    return `${formatDate(startDate, 'medium', locale)} - ${formatDate(endDate, 'medium', locale)}`;
   };
   
   return (

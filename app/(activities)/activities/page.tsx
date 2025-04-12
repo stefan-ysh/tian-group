@@ -7,6 +7,7 @@ import { Chip } from '@heroui/react';
 import { useActivities } from '~/hooks/useActivities';
 import { ActivitiesSkeletonLoader } from '../../components/ui/SkeletonLoader';
 import { useTranslations, useLocale } from 'next-intl';
+import { formatDate } from '../../../src/utils/utils';
 
 interface Activity {
   id: string;
@@ -19,20 +20,10 @@ interface Activity {
   tags?: string[];
 }
 
-// 日期格式化函数
-const formatDate = (dateString: string) => {
-  const locale = useLocale();
-  const date = new Date(dateString);
-  return date.toLocaleDateString(locale, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  });
-};
-
 export default function Activities() {
   const { activities, isLoading, isError } = useActivities();
   const t = useTranslations('Header.NavMenu');
+  const locale = useLocale();
   // 按日期排序活动（最新的在前）
   const sortedActivities = [...activities].sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -99,7 +90,7 @@ export default function Activities() {
                   <div className="mt-3 flex items-center gap-4 px-1 justify-between">
                     <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
                       <CalendarDays className="mr-1 h-4 w-4" />
-                      {formatDate(date)}
+                      {formatDate(date, 'short', locale)}
                     </div>
                     <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
                       <MapPin className="h-4 w-4" />

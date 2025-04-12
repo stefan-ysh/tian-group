@@ -85,18 +85,3 @@ export function paginateNews(news: NewsItem[], page: number, itemsPerPage: numbe
 export function getRecentNews(news: NewsItem[], count: number): NewsItem[] {
   return sortNewsByDate(news).slice(0, count);
 }
-
-/**
- * 格式化日期
- * @param dateStr ISO格式的日期字符串
- * @param locale 区域设置
- * @returns 格式化后的日期字符串
- */
-export function formatDate(dateStr: string, locale: string = 'zh-CN'): string {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString(locale, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-} 
