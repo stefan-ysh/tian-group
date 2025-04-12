@@ -10,7 +10,7 @@ author:
   [YuXin Chen, Haidong Yu, Lihua Wu, YuanJun Tong, Jianqiao Xu, Huan Pang, Chao Wu*, Tian Tian*, Gangfeng Ouyang*]
 journal: 'Nature Communications'
 journalShort: 'NC'
-tags: [markdown, blog]
+tags: [Biochemistry, Biophysics, Biomedical Engineering, Chemical Engineering, Chemistry, Materials Science, Nanotechnology, Photonics, Science and Technology]
 ---
 
 <script>

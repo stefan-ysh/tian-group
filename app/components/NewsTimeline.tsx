@@ -18,7 +18,12 @@ import {
   ExternalLink,
   ChevronDown,
   ChevronRight,
-  Megaphone
+  Megaphone,
+  Users,
+  BookOpen,
+  FileDigit,
+  AlignLeft,
+  ScrollText
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import NextImage from 'next/image';
@@ -206,7 +211,7 @@ export function NewsTimeline({
   };
   
   return (
-    <div className="w-full bg-white/90 dark:bg-gray-800/80 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
+    <div className="w-full  rounded-2xl p-8 shadow-xl">
       <div className="container mx-auto px-0">
         {/* <div className="flex items-center gap-2 mb-8">
           <Newspaper className="text-primary" size={24} />
@@ -291,13 +296,13 @@ export function NewsTimeline({
         {/* 新闻时间线 */}
         <div className="relative">
           {/* 垂直时间线 */}
-          <div className="absolute left-4 top-0 bottom-0 w-px bg-gray-200 dark:bg-gray-700 md:left-8"></div>
+          <div className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/20 rounded-full md:left-8"></div>
           
           <div className="space-y-6">
             {visibleNews.map((item, index) => (
               <div key={item.id} className="relative flex items-start pl-10 md:pl-16">
                 {/* 时间线上的点 */}
-                <div className="absolute left-[12px] md:left-[30px] top-2 w-4 h-4 rounded-full bg-primary transform -translate-x-1/2"></div>
+                <div className="absolute left-2 md:left-8 top-2 w-5 h-5 rounded-full bg-primary ring-2 ring-white dark:ring-gray-800 shadow-md transform -translate-x-1/2 z-10"></div>
                 
                 {/* 内容卡片 */}
                 <div className="w-full">
@@ -340,34 +345,46 @@ export function NewsTimeline({
                       
                       {/* 论文作者（如果有） */}
                       {item.type === 'publication' && item.authors && item.authors.length > 0 && (
-                        <div className="mb-2 text-sm text-foreground/80">
-                          {item.authors.map((author, idx) => (
-                            <React.Fragment key={author.id}>
-                              {/* <Link
-                                href={`/members/${author.id}`}
-                                className="hover:text-primary hover:underline transition-colors"
-                              > */}
-                                {author.name}
-                              {/* </Link> */}
-                              {idx < item.authors!.length - 1 && <span>, </span>}
-                            </React.Fragment>
-                          ))}
+                        <div className="mb-4">
+                          <div className="flex items-start gap-2">
+                            <Users size={16} className="text-primary flex-shrink-0 mt-1" />
+                            <div className="flex-1">
+                              <div className="flex flex-wrap text-sm font-medium">
+                                {item.authors.map((author, idx) => (
+                                  <React.Fragment key={author.id}>
+                                    <span className="mr-1 text-foreground/80">
+                                      {author.name}
+                                    </span>
+                                    {idx < item.authors!.length - 1 && (
+                                      <span className="mr-1 text-primary">•</span>
+                                    )}
+                                  </React.Fragment>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       )}
                       
                       {/* 论文出版信息（如果有） */}
-                      {item.type === 'publication' && item.publication && (
-                        <div className="mb-3 text-sm italic text-foreground/70">
-                          {item.publication.journal}
-                          {item.publication.volume && `, ${item.publication.volume}`}
-                          {item.publication.issue && `(${item.publication.issue})`}
+                      {item.publication && (
+                        <div className="flex items-start gap-2 mb-4">
+                          <BookOpen size={16} className="text-primary flex-shrink-0 mt-1" />
+                          <div className="flex-1 text-sm text-gray-600 dark:text-gray-300 italic">
+                            <span className="font-medium">{item.publication.journal}</span>
+                            {item.publication.volume && <span>, {item.publication.volume}</span>}
+                            {item.publication.issue && <span>({item.publication.issue})</span>}
+                          </div>
                         </div>
                       )}
                       
                       {/* 摘要 */}
-                      <p className="text-sm text-foreground/80 mb-4">
-                        {item.summary}
-                      </p>
+                      <div className="flex items-start gap-2 mb-4">
+                        <ScrollText size={16} className="text-primary flex-shrink-0 mt-1" />
+                        <div className="flex-1 text-sm leading-relaxed text-foreground/80 bg-gray-50 dark:bg-gray-800/50 p-0 rounded-lg">
+                          {item.summary}
+                        </div>
+                      </div>
                       
                       {/* 标签（如果有） */}
                       {item.tags && item.tags.length > 0 && (

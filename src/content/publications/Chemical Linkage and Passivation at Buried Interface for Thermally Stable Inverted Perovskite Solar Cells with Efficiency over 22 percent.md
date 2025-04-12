@@ -9,7 +9,7 @@ link: 'http://dx.doi.org/10.31635/ccschem.022.202202154'
 author: [Ying Tan, Xueqing Chang, JunXing Zhong, Wenhuai Feng, Meifang Yang, Tian Tian, Li Gong*, Wu-Qiang Wu*]
 journal: 'Chinese Chemical Society'
 journalShort: 'CCS'
-tags: [markdown, blog]
+tags: [Chemistry, Materials Science, Nanotechnology, Photonics, Science and Technology]
 ---
 
 <script>

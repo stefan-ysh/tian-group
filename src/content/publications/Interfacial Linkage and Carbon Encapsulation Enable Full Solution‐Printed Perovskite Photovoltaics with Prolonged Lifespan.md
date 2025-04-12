@@ -22,7 +22,7 @@ author:
   ]
 journal: 'Angewandte Chemie International Edition'
 journalShort: 'Angewandte Chemie'
-tags: [markdown, blog]
+tags: ['Solar Cells', 'Perovskite', 'Interface Engineering', 'Carbon Materials', 'Stability', 'Printing Process']
 ---
 
 <script>

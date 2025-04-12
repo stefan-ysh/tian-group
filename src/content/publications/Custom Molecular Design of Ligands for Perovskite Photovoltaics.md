@@ -9,7 +9,7 @@ link: 'http://dx.doi.org/10.1021/accountsmr.1c00099'
 author: [Meifang Yang, Tian Tian, Wenhuai Feng, Lianzhou Wang*, Wu-Qiang Wu*]
 journal: 'American Chemical Society'
 journalShort: 'ACS'
-tags: [markdown, blog]
+tags: ['Research', 'Publication', 'Perovskite', 'Solar Cells', 'Materials Science', 'Molecular Design']
 ---
 
 <script>

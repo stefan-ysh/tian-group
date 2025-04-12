@@ -25,7 +25,7 @@ author:
   ]
 journal: 'John Wiley & Sons'
 journalShort: 'Wiley'
-tags: [markdown, blog]
+tags: ['Perovskite', 'Solar Cells', 'Lead-Free', 'Chelation', 'Photovoltaics', 'Materials Science']
 ---
 
 <script>
