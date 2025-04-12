@@ -39,6 +39,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'teacher.yzu.edu.cn',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'p26.toutiaoimg.com',
+      },
     ],
   },
 };

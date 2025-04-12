@@ -1,8 +1,8 @@
 ---
-name: '组内学术讨论'
-title: '2024年春季学期第一次组会'
+name: '组内学术讨论(模拟数据)'
+title: '2024关于项目进展的临时线上组会'
 description: '讨论最新研究进展和文献分享'
-avatar: '/images/activities/group-meeting-spring-2024.jpg'
+avatar: 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1000'
 position: 'Academic'
 date: '2024-03-20'
 tags: [meeting, academic]
@@ -17,7 +17,7 @@ tags: [meeting, academic]
 
 ## 参会人员
 
-- 教师：田甜教授
+- 教师：田甜
 - 研究生：张三、李四、王五
 - 本科生：赵六
 
@@ -29,8 +29,8 @@ tags: [meeting, academic]
 
 ## 会议照片
 
-![会议照片1](/images/activities/meeting-1.jpg)
+![会议照片1](https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1000)
 *组会讨论现场*
 
-![会议照片2](/images/activities/meeting-2.jpg)
+![会议照片2](https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?q=80&w=1000)
 *实验方案讨论* 

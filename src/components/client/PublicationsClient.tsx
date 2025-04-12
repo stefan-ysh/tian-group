@@ -30,13 +30,15 @@ export function PublicationsClient({ publications }: PublicationsClientProps) {
   const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('grid');
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="w-full">
       <div className="flex flex-col md:flex-row justify-between items-start">
         <div className="flex items-center gap-2 mb-8">
-          <Book className="text-primary" size={24} />
-          <h2 className="text-2xl font-bold text-foreground">{t('title')}</h2>
+          {/* <div className="bg-primary/10 p-2 rounded-full">
+            <Book className="text-primary" size={20} />
+          </div> */}
+          {/* <h2 className="text-2xl font-bold text-primary">{t('title')}</h2> */}
         </div>
-        <ButtonGroup variant="flat" className="w-full md:w-auto">
+        <ButtonGroup variant="flat" className="w-full md:w-auto mb-8">
           <Button
             startContent={<Grid size={18} />}
             color={viewMode === 'grid' ? 'primary' : 'default'}

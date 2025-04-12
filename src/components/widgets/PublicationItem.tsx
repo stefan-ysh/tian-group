@@ -48,7 +48,7 @@ export const PublicationItem = ({
   return (
     <Card
       key={slug}
-      className="flex flex-col md:flex-row overflow-hidden rounded-xl drop-shadow hover:drop-shadow-none transition-all duration-500 p-5 md:p-2 gap-5"
+      className="flex flex-col md:flex-row overflow-hidden rounded-xl drop-shadow hover:drop-shadow-none transition-all duration-500 p-5 md:p-2 gap-5 bg-gray-50 dark:bg-gray-700/50"
     >
       <div
         onClick={() => {

@@ -205,12 +205,12 @@ export function NewsTimeline({
   };
   
   return (
-    <div className="w-full">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center gap-2 mb-8">
+    <div className="w-full bg-white/90 dark:bg-gray-800/80 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
+      <div className="container mx-auto px-0">
+        {/* <div className="flex items-center gap-2 mb-8">
           <Newspaper className="text-primary" size={24} />
           <h2 className="text-2xl font-bold text-foreground">{t('title')}</h2>
-        </div>
+        </div> */}
         
         {/* 过滤选项卡 */}
         <div className="mb-8">
@@ -306,7 +306,7 @@ export function NewsTimeline({
                 
                 {/* 内容卡片 */}
                 <div className={`w-full md:w-[calc(50%-20px)] ${index % 2 === 0 ? 'md:pr-0' : 'md:pl-0'}`}>
-                  <Card className="border border-primary/10 hover:shadow-md transition-shadow">
+                  <Card className="border border-primary/10 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                     <CardBody className="p-5">
                       {/* 新闻类型标签 */}
                       <div className="flex justify-between items-center mb-3">

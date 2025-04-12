@@ -9,10 +9,11 @@ interface ActivityItemProps {
   avatar: string;
   position: string;
   title: string;
+  tags?: string[];
   description: string;
 }
 
-export const ActivityItem = ({ id, name, avatar, position, title, description }: ActivityItemProps) => {
+export const ActivityItem = ({ id, name, avatar, position, title, description, tags = [] }: ActivityItemProps) => {
   const router = useRouter();
 
   const handleClick = () => {
@@ -21,13 +22,14 @@ export const ActivityItem = ({ id, name, avatar, position, title, description }:
 
   return (
     <Card 
-      className="w-full max-w-sm cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl"
+      className="w-full cursor-pointer overflow-hidden transition-all duration-300 hover:shadow-xl bg-gray-50 dark:bg-gray-700/50"
+      shadow="sm"
     >
       <div 
         onClick={handleClick}
         className="w-full h-full"
       >
-        <div className="aspect-w-16 aspect-h-9 relative overflow-hidden">
+        <div className="aspect-w-16 aspect-h-9 w-full h-[200px] relative overflow-hidden">
           <Image
             isZoomed
             src={avatar}
@@ -35,15 +37,17 @@ export const ActivityItem = ({ id, name, avatar, position, title, description }:
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>
-        <div className="p-6">
-          <div className="mb-3 flex items-center gap-2">
-            <Chip color="warning" variant="flat" size="sm">
-              {position}
-            </Chip>
-            <span className="text-sm text-gray-600 dark:text-gray-400">{name}</span>
+        <div className="p-6 bg-gray-50 dark:bg-gray-700/50">
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            {tags.map((tag, index) => (
+              <Chip key={index} color="warning" variant="flat" size="sm" className="capitalize">
+                {tag}
+              </Chip>
+            ))}
+            <span className="text-sm">{name}</span>
           </div>
           <h3 className="mb-2 text-xl font-semibold tracking-tight">{title}</h3>
-          <p className="text-gray-600 dark:text-gray-400 line-clamp-2">{description}</p>
+          <p className="line-clamp-2 mb-3">{description}</p>
         </div>
       </div>
     </Card>

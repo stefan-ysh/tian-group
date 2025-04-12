@@ -100,11 +100,11 @@ export function PublicationsTimeline({
                 </div>
 
                 {/* Publication card */}
-                <Card className="overflow-hidden w-full ml-3">
+                <Card className="overflow-hidden w-full ml-3 bg-gray-50 dark:bg-gray-700/50">
                   <CardBody className="p-0">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                       {/* Publication image */}
-                      <div className="md:col-span-3 p-4 flex items-center justify-center bg-default-50">
+                      <div className="md:col-span-3 p-4 flex items-center justify-center bg-gray-50 dark:bg-gray-700/50">
                         <Link
                           href={publication.link}
                           target="_blank"

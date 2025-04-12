@@ -43,7 +43,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col">
       <div className="flex-grow flex flex-col justify-center items-center px-5 py-12">
         <MotionComponent {...animationProps}>
-          <Card isBlurred className="border-none bg-background/60 dark:bg-default-100/50 max-w-[900px] mx-auto" shadow="md">
+          <Card isBlurred className="border-none bg-gray-50 dark:bg-gray-700/50 max-w-[900px] mx-auto" shadow="md">
             <CardBody className="p-6 md:p-8">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-start">
                 {/* 左侧个人信息 */}
@@ -123,7 +123,7 @@ export default function App() {
                   {...(prefersReducedMotion ? {} : {
                     initial: { opacity: 0, x: 20 },
                     animate: { opacity: 1, x: 0 },
-                    transition: { duration: 0.6, delay: 0.3 }
+                    transition: { duration: 0.6, delay: 0 }
                   })}
                 >
                   {/* 研究方向部分 */}
@@ -131,7 +131,7 @@ export default function App() {
                     {...(prefersReducedMotion ? {} : {
                       initial: { opacity: 0, y: 10 },
                       animate: { opacity: 1, y: 0 },
-                      transition: { duration: 0.5, delay: 0.5 },
+                      transition: { duration: 0.5, delay: 0 },
                       whileHover: { scale: 1.02 }
                     })}
                   >
@@ -149,7 +149,7 @@ export default function App() {
                     {...(prefersReducedMotion ? {} : {
                       initial: { opacity: 0, y: 10 },
                       animate: { opacity: 1, y: 0 },
-                      transition: { duration: 0.5, delay: 0.7 },
+                      transition: { duration: 0.5, delay: 0 },
                       whileHover: { scale: 1.02 }
                     })}
                   >
@@ -167,7 +167,7 @@ export default function App() {
                     {...(prefersReducedMotion ? {} : {
                       initial: { opacity: 0, y: 10 },
                       animate: { opacity: 1, y: 0 },
-                      transition: { duration: 0.5, delay: 0.9 },
+                      transition: { duration: 0.5, delay: 0 },
                       whileHover: { scale: 1.02 }
                     })}
                   >
