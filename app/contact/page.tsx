@@ -10,7 +10,7 @@ export default function Contact() {
   const header = useTranslations('Header');
   
   return (
-    <section className="mx-auto max-w-4xl px-6 py-12">
+    <section className="mx-auto max-w-5xl px-6 py-12">
       {/* 页面标题 */}
       <div className="text-center mb-12">
         {/* 对SEO友好的隐藏标题 */}

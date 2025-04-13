@@ -32,7 +32,7 @@ interface PublicationsTimelineProps {
 
 export function PublicationsTimeline({
   publications,
-  initialDisplayCount = 8,
+  initialDisplayCount = 6,
   showLoadMoreButton = true,
   onLoadMore,
   isLoading = false,
@@ -68,7 +68,7 @@ export function PublicationsTimeline({
 
   return (
     <div className="w-full py-4">
-      <div className="container mx-auto p-0">
+      <div className="w-full p-0">
         {/* No publications found message */}
         {sortedPublications.length === 0 && (
           <div className="py-12 text-center text-foreground/60">
@@ -178,9 +178,8 @@ export function PublicationsTimeline({
           </div>
         )}
 
-
         {/* Load more button */}
-        {sortedPublications.length > displayCount && (
+        {sortedPublications.length > displayCount && showLoadMoreButton && (
           <div className="flex justify-center mt-8">
             <Button
               color="primary"

@@ -4,15 +4,13 @@ import { useTranslations } from 'next-intl';
 export default function NewsPage() {
   const t = useTranslations('News');
   return (
-    <section className="w-full mx-auto py-12">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="text-center mb-12">
-          <h1 className="sr-only">{t('title')}</h1>
-        </div>
-        
-        {/* News Timeline Component */}
-        <NewsClientWrapper />
+    <section className="mx-auto max-w-5xl py-12 px-6">
+      <div className="text-center mb-12">
+        <h1 className="sr-only">{t('title')}</h1>
       </div>
+      
+      {/* News Timeline Component */}
+      <NewsClientWrapper />
     </section>
   );
 }

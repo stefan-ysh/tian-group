@@ -87,7 +87,7 @@ export function NewsClient() {
   }
 
   return (
-    <>
+    <div className="w-full">
       <NewsTimeline 
         news={news} 
         initialDisplayCount={news.length}
@@ -114,6 +114,6 @@ export function NewsClient() {
           </Button>
         </div>
       )}
-    </>
+    </div>
   );
 } 

@@ -1,69 +1,22 @@
-import md from 'markdown-it';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-
-import { findMembersByName, findLatestMembers } from '~/utils/members';
+import { findLatestMembers } from '~/utils/members';
+import { MemberClientPage } from './MemberClientPage';
 
 export const dynamicParams = false;
 
-
-
-const getFormattedDate = (date) => date;
-
-export async function generateMetadata({ params }) {
-  const member = await findMembersByName(params.slug);
-  if (!member) {
-    return notFound();
-  }
-  const title = `${member.name} - ${member.position}`;
-  return { title, description: member.description };
-}
-
+// 用于静态生成路径
 export async function generateStaticParams() {
-  return (await findLatestMembers()).map(({ slug }) => ({ slug }));
+  try {
+    const members = await findLatestMembers();
+    return members.map(({ slug }) => ({
+      slug: encodeURIComponent(slug),
+    }));
+  } catch (error) {
+    console.error('Error generating static params:', error);
+    return [];
+  }
 }
 
-export default async function Page({ params }) {
-  const member = await findMembersByName(params.slug);
-
-  if (!member) {
-    return notFound();
-  }
-
-  return (
-    <section className="mx-auto py-8 sm:py-16 lg:py-20">
-      <article>
-        <header className={member.image ? 'text-center' : ''}>
-          <h1 className="sr-only">👋 Hi there, I&apos;m {member.name}</h1>
-          <div className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 text-1xl font-bold tracking-tighter sm:px-6 md:text-2xl">
-            👋 Hi there, I&apos;m {member.name}
-          </div>
-          {member.image ? (
-            <Image
-              src={member.image}
-              className="mx-auto mt-4 mb-6 max-w-full bg-gray-400 dark:bg-slate-700 sm:rounded-md lg:max-w-6xl"
-              sizes="(max-width: 900px) 400px, 900px"
-              alt={member.description}
-              loading="eager"
-              priority
-              width={900}
-              height={480}
-            />
-          ) : (
-            <div className="mx-auto max-w-3xl px-4 sm:px-6">
-              <div className="border-t dark:border-slate-700" />
-            </div>
-          )}
-        </header>
-        <div
-          className="prose-md prose-headings:font-heading prose-headings:leading-tighter container prose prose-lg mx-auto mt-8 max-w-3xl px-6 prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-primary-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-slate-300 dark:prose-a:text-primary-400 sm:px-6 lg:prose-xl"
-          dangerouslySetInnerHTML={{
-            __html: md({
-              html: true,
-            }).render(member.content),
-          }}
-        />
-      </article>
-    </section>
-  );
+// 服务器组件不需要使用useParams和useState等客户端hooks
+export default function Page({ params }) {
+  return <MemberClientPage slug={params.slug} />;
 }

@@ -18,7 +18,7 @@ export default function ResearchPage() {
   const t = useTranslations('ResearchPage');
   
   return (
-    <div className="container mx-auto py-12 px-4 max-w-6xl">
+    <div className="container mx-auto py-12 px-4 max-w-5xl">
       {/* 页面标题 */}
       <div className="text-center mb-12">
         {/* 对SEO友好的隐藏标题 */}

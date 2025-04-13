@@ -380,7 +380,7 @@ export function NewsTimeline({
                       </div>
                       
                       {/* 标签（如果有） */}
-                      {item.tags && item.tags.length > 0 && (
+                      {/* {item.tags && item.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mb-3">
                           {item.tags.map(tag => (
                             <Chip 
@@ -393,7 +393,7 @@ export function NewsTimeline({
                             </Chip>
                           ))}
                         </div>
-                      )}
+                      )} */}
                       
                       {/* 详细链接 */}
                       {(item.link || item.type === 'publication' || item.type === 'event') && (
