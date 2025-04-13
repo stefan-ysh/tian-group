@@ -40,8 +40,8 @@ export default function App() {
   };
   
   return (
-    <div className="min-h-screen flex flex-col">
-      <div className="flex-grow flex flex-col justify-center items-center px-5 py-12">
+    <div className="flex flex-col">
+      <div className="flex-grow flex flex-col justify-center items-center p-0 md:px-5 md:py-12">
         <MotionComponent {...animationProps}>
           <Card isBlurred className="border-none bg-gray-50 dark:bg-gray-700/50 max-w-[900px] mx-auto" shadow="md">
             <CardBody className="p-6 md:p-8">

@@ -10,15 +10,15 @@ export default function Contact() {
   const header = useTranslations('Header');
   
   return (
-    <section className="mx-auto max-w-5xl px-6 py-12">
+    <section className="mx-auto max-w-5xl p-0 md:px-6 md:py-12">
       {/* 页面标题 */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-1">
         {/* 对SEO友好的隐藏标题 */}
         <h1 className="sr-only">{common('ContactUs')}</h1>
       </div>
       
       {/* 主要内容 */}
-      <div className="bg-white/90 dark:bg-gray-800/80 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
+      <div className="bg-white/90 dark:bg-gray-800/80 rounded-2xl p-4 md:p-8 shadow-xl border border-gray-100 dark:border-gray-700">
         {/* 介绍部分 */}
         <div className="flex items-start mb-10">
           <div className="bg-primary/10 p-3 rounded-full mr-4">

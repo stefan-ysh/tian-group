@@ -83,7 +83,7 @@ export function PublicationsPageClient() {
   }
 
   return (
-    <section className="mx-auto max-w-6xl py-8 sm:py-16 lg:py-20 px-6 min-h-[70vh]">
+    <section className="mx-auto max-w-6xl py-0 sm:py-16 lg:py-20 px-6 min-h-[70vh]">
       {error ? (
         <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
           <h2 className="text-xl font-bold mb-2">数据加载失败</h2>

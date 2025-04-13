@@ -85,7 +85,7 @@ export function PublicationsClient({
 
   return (
     <div className="w-full">
-      <div className="flex flex-col md:flex-row justify-between items-start mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-start mb-2">
         <div className="flex items-center gap-2 mb-4 md:mb-0">
           <h1 className="sr-only">{t('title')}</h1>
         </div>

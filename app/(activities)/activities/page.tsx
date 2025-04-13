@@ -55,8 +55,8 @@ export default function Activities() {
   }
 
   return (
-    <section className="mx-auto max-w-5xl py-12 px-6">
-      <header className="text-center mb-12">
+    <section className="mx-auto max-w-5xl p-0 md:py-12 md:px-6">
+      <header className="text-center mb-1">
         {/* 对SEO友好的隐藏标题 */}
         <h1 className="sr-only">{t('activities')}</h1>
       </header>

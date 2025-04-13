@@ -18,18 +18,18 @@ export default function ResearchPage() {
   const t = useTranslations('ResearchPage');
   
   return (
-    <div className="container mx-auto py-12 px-4 max-w-5xl">
+    <div className="container mx-auto p-0 md:py-12 md:px-4 max-w-5xl">
       {/* 页面标题 */}
-      <div className="text-center mb-12">
+      <div className="text-center mb-1">
         {/* 对SEO友好的隐藏标题 */}
         <h1 className="sr-only">{t('pageTitle')}</h1>
       </div>
       
-      <div className=" rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700">
+      <div className=" rounded-2xl ">
         <div className="space-y-16">
           {/* 钙钛矿光伏材料与器件 */}
           <section>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-8 hover:shadow-md transition-all">
+            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 md:p-8 hover:shadow-md transition-all">
               <h2 className="text-2xl font-semibold mb-6 text-primary border-l-4 border-primary pl-4 flex items-center">
                 {t('perovskiteTitle')}
               </h2>
@@ -77,7 +77,7 @@ export default function ResearchPage() {
           
           {/* 有机非线性光学材料 */}
           <section>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-8 hover:shadow-md transition-all">
+            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 md:p-8 hover:shadow-md transition-all">
               <h2 className="text-2xl font-semibold mb-6 text-primary border-l-4 border-primary pl-4 flex items-center">
                 {t('nonlinearTitle')}
               </h2>
@@ -122,7 +122,7 @@ export default function ResearchPage() {
           
           {/* 发光材料与生物成像 */}
           <section>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-8 hover:shadow-md transition-all">
+            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 md:p-8 hover:shadow-md transition-all">
               <h2 className="text-2xl font-semibold mb-6 text-primary border-l-4 border-primary pl-4 flex items-center">
                 {t('luminTitle')}
               </h2>
@@ -167,7 +167,7 @@ export default function ResearchPage() {
           
           {/* 光谱表征与材料测试 */}
           <section>
-            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-8 hover:shadow-md transition-all">
+            <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 md:p-8 hover:shadow-md transition-all">
               <h2 className="text-2xl font-semibold mb-6 text-primary border-l-4 border-primary pl-4 flex items-center">
                 {t('spectroTitle')}
               </h2>

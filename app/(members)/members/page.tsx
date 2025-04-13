@@ -89,7 +89,7 @@ export default function MembersPage() {
       {error ? (
         <MembersError />
       ) : (
-        <div className="grid grid-cols-1 gap-4 p-5 pt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 pt-0 p-5 md:pt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {loading ? (
             // 显示8个骨架项
             Array(8).fill(0).map((_, index) => (
