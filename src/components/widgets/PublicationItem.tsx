@@ -15,7 +15,7 @@ import 'react-pdf/dist/Page/TextLayer.css';
 import { Progress } from "@heroui/react";
 import { useRouter } from 'next/navigation';
 import { formatDate } from '~/utils/utils';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 interface PublicationItemProps {
   title: string;
@@ -46,6 +46,7 @@ export const PublicationItem = ({
 }: PublicationItemProps) => {
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const locale = useLocale()
+  const t = useTranslations('Publications.list')
 
   return (
     <Card
@@ -72,7 +73,7 @@ export const PublicationItem = ({
         />
       </div>
       <div className="w-full md:w-11/12 flex flex-col justify-between">
-        <h2 className="text-md font-semibold ">{title}</h2>
+        <h2 className="text-md font-semibold ">{t(`${title}.title`)}</h2>
         <div className="flex items-center gap-3 flex-wrap my-4 sm:my-1">
           {author.map((author, index) =>
             isMobile ? (

@@ -85,7 +85,7 @@ export function PublicationsClient({
 
   return (
     <div className="w-full">
-      <div className="flex flex-col md:flex-row justify-between items-start mb-2">
+      <div className="flex flex-col md:flex-row justify-between items-start mb-8">
         <div className="flex items-center gap-2 mb-4 md:mb-0">
           <h1 className="sr-only">{t('title')}</h1>
         </div>
@@ -93,16 +93,16 @@ export function PublicationsClient({
           <Button
             startContent={<Grid size={18} />}
             color={viewMode === 'grid' ? 'primary' : 'default'}
-            className="w-full md:w-auto"
-            onClick={() => handleViewModeChange('grid')}
+            className={`"w-full md:w-auto border-b-1 border-gray-900 ${viewMode === 'grid' ? '' : 'bg-primary'}"`}
+            onPress={() => handleViewModeChange('grid')}
           >
             {t('gridView')}
           </Button>
           <Button
             startContent={<Clock size={18} />}
             color={viewMode === 'timeline' ? 'primary' : 'default'}
-            className="w-full md:w-auto"
-            onClick={() => handleViewModeChange('timeline')}
+            className={`"w-full md:w-auto border-b-1 border-gray-900 ${viewMode === 'timeline' ? '' : 'bg-primary'}"`}
+            onPress={() => handleViewModeChange('timeline')}
           >
             {t('timelineView')}
           </Button>
@@ -131,22 +131,18 @@ export function PublicationsClient({
         ) : (
           // 时间线视图
           <PublicationsTimeline 
-            publications={publications} 
-            initialDisplayCount={displayCount} 
-            showLoadMoreButton={hasMorePublications}
-            isLoading={isLoadingMore}
-            onLoadMore={handleLoadMore}
+            publications={visiblePublications} 
           />
         )}
         
-        {/* 网格视图中的加载更多按钮 */}
-        {viewMode === 'grid' && hasMorePublications && (
+        {/* 统一的加载更多按钮，不论视图类型 */}
+        {hasMorePublications && (
           <div className="flex justify-center mt-8">
             <Button
               color="primary"
               variant="flat"
               className="px-6"
-              onClick={handleLoadMore}
+              onPress={handleLoadMore}
               isLoading={isLoadingMore}
               isDisabled={isLoadingMore}
             >

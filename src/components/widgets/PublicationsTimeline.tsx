@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
-import { Card, CardBody, Chip, Button, Divider } from '@heroui/react';
-import { Calendar, Book, ExternalLink, ChevronDown, ZoomIn } from 'lucide-react';
+import React, { useMemo } from 'react';
+import { Card, CardBody, Chip, Divider } from '@heroui/react';
+import { Calendar, Book, ExternalLink, ZoomIn } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
 import Link from 'next/link';
@@ -23,48 +23,18 @@ export interface PublicationItem {
 
 interface PublicationsTimelineProps {
   publications: PublicationItem[];
-  initialDisplayCount?: number;
-  showLoadMoreButton?: boolean;
-  onLoadMore?: () => void;
-  isLoading?: boolean;
-  totalPublicationsCount?: number;
 }
 
 export function PublicationsTimeline({
   publications,
-  initialDisplayCount = 6,
-  showLoadMoreButton = true,
-  onLoadMore,
-  isLoading = false,
-  totalPublicationsCount,
 }: PublicationsTimelineProps) {
   const t = useTranslations('Publications');
-  const [displayCount, setDisplayCount] = useState(initialDisplayCount);
   const locale = useLocale();
 
   // Sort publications by date (newest first)
   const sortedPublications = useMemo(() => {
     return [...publications].sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
   }, [publications]);
-
-  // Currently displayed publications
-  const visiblePublications = useMemo(() => {
-    return sortedPublications.slice(0, displayCount);
-  }, [sortedPublications, displayCount]);
-
-  // Handle internal load more
-  const handleInternalLoadMore = () => {
-    setDisplayCount((prevCount) => prevCount + 3);
-  };
-
-  // Handle load more - prioritize external handler
-  const handleLoadMore = () => {
-    if (onLoadMore) {
-      onLoadMore();
-    } else {
-      handleInternalLoadMore();
-    }
-  };
 
   return (
     <div className="w-full py-4">
@@ -78,9 +48,9 @@ export function PublicationsTimeline({
         )}
 
         {/* Publications Timeline */}
-        {visiblePublications.length > 0 && (
+        {sortedPublications.length > 0 && (
           <div className="space-y-8">
-            {visiblePublications.map((publication, index) => (
+            {sortedPublications.map((publication, index) => (
               <div key={publication.slug} className="relative">
                 {/* Date marker */}
                 <div className="flex items-center mb-4">
@@ -126,7 +96,7 @@ export function PublicationsTimeline({
                               rel="noopener noreferrer"
                               className="hover:text-primary transition-colors duration-300 flex items-start gap-1"
                             >
-                              {publication.title}
+                              {t.rich(`list.${publication.title}.title`) || publication.title}
                             </Link>
                           </h3>
 
@@ -140,7 +110,9 @@ export function PublicationsTimeline({
                           </div>
 
                           {/* Description */}
-                          <p className="text-sm text-foreground/70 line-clamp-3">{publication.description}</p>
+                          <p className="text-sm text-foreground/70 line-clamp-3">
+                            {t.rich(`list.${publication.title}.desc`) || publication.description}
+                          </p>
                         </div>
 
                         {/* Journal and date */}
@@ -165,7 +137,7 @@ export function PublicationsTimeline({
                 </Card>
 
                 {/* Vertical timeline line */}
-                {index < visiblePublications.length - 1 && (
+                {index < sortedPublications.length - 1 && (
                   <div
                     className="absolute left-0 top-14 bottom-0 w-[1px] bg-primary"
                     style={{ height: 'calc(100% + 2rem)' }}
@@ -175,22 +147,6 @@ export function PublicationsTimeline({
                 )}
               </div>
             ))}
-          </div>
-        )}
-
-        {/* Load more button */}
-        {sortedPublications.length > displayCount && showLoadMoreButton && (
-          <div className="flex justify-center mt-8">
-            <Button
-              color="primary"
-              variant="flat"
-              endContent={<ChevronDown />}
-              onClick={handleLoadMore}
-              isLoading={isLoading}
-              isDisabled={isLoading}
-            >
-              {t('loadMore')}
-            </Button>
           </div>
         )}
       </div>
