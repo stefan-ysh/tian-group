@@ -51,6 +51,7 @@ export default async function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <script defer src="https://umami-22rzhpgxp-shuais-projects-c6dfe303.vercel.app/script.js" data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"></script>
         <style>{`
           *, *::before, *::after {
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
@@ -87,7 +88,6 @@ export default async function RootLayout({
           </svg>
         </a>
         <Script src="/js/backTop.js" strategy="afterInteractive" />
-        <Script defer src="https://umami-22rzhpgxp-shuais-projects-c6dfe303.vercel.app/script.js" data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"></Script>
       </body>
     </html>
   );
