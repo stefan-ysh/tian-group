@@ -280,7 +280,7 @@ export default function Contact() {
                   <div className="mt-2 text-xs text-gray-500">
                     <p>API状态: {scriptStatus}</p>
                     {!mapApiKey && (
-                      <p className="text-red-500 mt-1">请在.env.local文件中设置NEXT_PUBLIC_MAP_API</p>
+                      <p className="text-red-500 mt-1">请在.env.local文件中设置NEXT_PUBLIC_MAP_API。</p>
                     )}
                   </div>
                 </div>
