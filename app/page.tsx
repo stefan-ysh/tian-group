@@ -110,7 +110,7 @@ export default function App() {
                           whileHover: { x: 5, color: "var(--color-primary)" }
                         })}
                       >
-                        <School className="text-primary" size={18} />
+                        <School className="text-primary shrink-0" size={18} />
                         <span>{t('Address')}</span>
                       </MotionComponent>
                     </MotionComponent>
