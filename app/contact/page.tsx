@@ -3,7 +3,6 @@
 import { Mail, MapPin, School, Globe, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import React, { useEffect, useRef, useState } from 'react';
-import Script from 'next/script';
 import getConfig from 'next/config';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
@@ -12,6 +11,9 @@ import { useTheme } from 'next-themes';
 declare global {
   interface Window {
     AMap: any;
+    _AMapSecurityConfig: {
+      securityJsCode: string;
+    };
   }
 }
 
@@ -38,6 +40,83 @@ export default function Contact() {
     lng: 119.423332,
     lat: 32.398812
   };
+
+  // 动态加载高德地图脚本
+  useEffect(() => {
+    if (!mapApiKey) {
+      setMapError('Missing API key');
+      console.error('Missing AMap API key');
+      return;
+    }
+
+    // 检查脚本是否已存在
+    if (window.AMap) {
+      setScriptStatus('loaded');
+      setMapLoaded(true);
+      return;
+    }
+
+    console.log('Loading AMap script dynamically');
+    setScriptStatus('loading');
+
+    // 创建脚本元素
+    const script = document.createElement('script');
+    script.src = `https://webapi.amap.com/maps?v=2.0&key=${mapApiKey}&plugin=AMap.ToolBar,AMap.Scale`;
+    script.async = true;
+    script.defer = true;
+    
+    // 监听脚本加载事件
+    script.onload = () => {
+      console.log('AMap script loaded dynamically');
+      setScriptStatus('loaded');
+      setMapLoaded(true);
+      
+      // 延迟初始化地图，确保DOM和脚本都已加载完成
+      setTimeout(() => {
+        initMap();
+      }, 500);
+    };
+    
+    script.onerror = (error) => {
+      console.error('Failed to load AMap script dynamically', error);
+      setScriptStatus('error');
+      setMapError('Failed to load map API');
+    };
+    
+    // 添加脚本到文档
+    document.head.appendChild(script);
+    
+    // 清理函数
+    return () => {
+      // 如果脚本仍在加载中，可以选择移除它
+      if (scriptStatus === 'loading') {
+        document.head.removeChild(script);
+      }
+    };
+  }, [mapApiKey]);
+
+  // 监听路由变化，确保在导航回页面时地图正确显示
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      // 如果页面变为可见，且地图已加载但没有实例，则重新初始化
+      if (document.visibilityState === 'visible' && window.AMap && !mapInstance) {
+        console.log('Page became visible, reinitializing map');
+        setTimeout(() => initMap(), 300);
+      }
+    };
+
+    // 添加页面可见性变化事件
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // 组件加载时，也检查一次
+    if (mapLoaded && !mapInstance) {
+      setTimeout(() => initMap(), 300);
+    }
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [mapLoaded, mapInstance]);
 
   // 初始化地图
   const initMap = () => {
@@ -78,6 +157,10 @@ export default function Contact() {
         map.addControl(new window.AMap.Scale());
       });
       
+      // 移除可能存在的旧按钮
+      const existingButtons = document.querySelectorAll('.center-button-container');
+      existingButtons.forEach(btn => btn.remove());
+      
       // 添加自定义回到中心点按钮
       const centerButtonContent = document.createElement('div');
       centerButtonContent.className = 'center-button';
@@ -109,12 +192,15 @@ export default function Contact() {
       };
       
       const centerButton = document.createElement('div');
+      centerButton.className = 'center-button-container';
       centerButton.appendChild(centerButtonContent);
       centerButton.style.position = 'absolute';
       centerButton.style.bottom = '110px';
       centerButton.style.right = '10px';
       
-      mapRef.current.appendChild(centerButton);
+      if (mapRef.current) {
+        mapRef.current.appendChild(centerButton);
+      }
       
       setMapInstance(map);
       console.log('Map initialized successfully');
@@ -123,74 +209,32 @@ export default function Contact() {
       setMapError(`Error initializing map: ${error instanceof Error ? error.message : String(error)}`);
     }
   };
-
-  // 处理脚本加载完成
-  const handleScriptLoad = () => {
-    console.log('AMap script loaded');
-    setScriptStatus('loaded');
-    setMapLoaded(true);
-    
-    // 延迟初始化地图，确保DOM和脚本都已加载完成
-    setTimeout(() => {
-      initMap();
-    }, 500);
-  };
   
-  // 处理脚本加载失败
-  const handleScriptError = () => {
-    console.error('Failed to load AMap script');
-    setScriptStatus('error');
-    setMapError('Failed to load map API');
-  };
-  
-  // 清理函数
-  useEffect(() => {
-    return () => {
-      if (mapInstance) {
-        mapInstance.destroy();
-      }
-    };
-  }, [mapInstance]);
-
   // 当主题更改时，更新地图样式
   useEffect(() => {
     if (mapInstance) {
       mapInstance.setMapStyle(isDark ? 'amap://styles/dark' : 'amap://styles/normal');
     }
   }, [isDark, mapInstance]);
-
-  // 调试日志
-  useEffect(() => {
-    console.log('Map API key:', mapApiKey ? mapApiKey.substring(0, 4) + '...' : 'none');
-    console.log('Current script status:', scriptStatus);
-    console.log('Map loaded state:', mapLoaded);
-    console.log('Map error:', mapError);
-    console.log('Current theme:', theme, 'isDark:', isDark);
-  }, [scriptStatus, mapLoaded, mapError, mapApiKey, theme, isDark]);
   
-  // 如果没有API密钥，显示错误
+  // 清理函数
   useEffect(() => {
-    if (!mapApiKey) {
-      setMapError('Missing API key');
-      console.error('Missing AMap API key');
-    }
-  }, [mapApiKey]);
+    return () => {
+      if (mapInstance) {
+        try {
+          mapInstance.destroy();
+        } catch (error) {
+          console.error('Error destroying map:', error);
+        }
+      }
+    };
+  }, [mapInstance]);
   
   // 静态地图URL（备用方案）- 也支持深色模式
   const staticMapUrl = `https://restapi.amap.com/v3/staticmap?location=${position.lng},${position.lat}&zoom=15&size=750*400&markers=mid,,A:${position.lng},${position.lat}&key=${mapApiKey}${isDark ? '&style=7' : ''}`;
   
   return (
     <section className="mx-auto max-w-5xl p-0 md:px-6 md:py-12">
-      {/* 加载高德地图 API */}
-      {mapApiKey && (
-        <Script 
-          src={`https://webapi.amap.com/maps?v=2.0&key=${mapApiKey}&plugin=AMap.ToolBar,AMap.Scale`}
-          onLoad={handleScriptLoad}
-          onError={handleScriptError}
-          strategy="afterInteractive"
-        />
-      )}
-      
       {/* 页面标题 */}
       <div className="text-center mb-1">
         {/* 对SEO友好的隐藏标题 */}
@@ -258,7 +302,7 @@ export default function Contact() {
             {/* 动态地图 */}
             <div ref={mapRef} className="w-full h-full relative">
               {/* 加载状态或错误信息 */}
-              {(!mapLoaded || mapError) && (
+              {(!mapInstance || mapError) && (
                 <div className="w-full h-full flex flex-col items-center justify-center absolute inset-0 bg-gray-100 dark:bg-gray-700/30 z-10">
                   {mapError ? (
                     <>
