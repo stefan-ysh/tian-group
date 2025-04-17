@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
-import { Card, Image, Chip } from "@heroui/react";
+import { Card, Chip } from "@heroui/react";
+import NextImage from 'next/image';
 import { useRouter } from 'next/navigation';
 
 interface ActivityItemProps {
@@ -30,10 +31,11 @@ export const ActivityItem = ({ id, name, avatar, position, title, description, t
         className="w-full h-full"
       >
         <div className="aspect-w-16 aspect-h-9 w-full h-[200px] relative overflow-hidden">
-          <Image
-            isZoomed
+          <NextImage
             src={avatar}
             alt={title}
+            width={1024}
+            height={576}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
         </div>

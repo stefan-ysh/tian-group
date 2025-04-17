@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { Button, Image, Chip } from '@heroui/react';
+import { Button, Chip } from '@heroui/react';
+import NextImage from 'next/image';
 import md from 'markdown-it';
 import { ArrowLeft, CalendarDays, MapPin } from 'lucide-react';
 import { useActivity } from '~/hooks/useActivities';
@@ -77,7 +78,7 @@ export default function Page() {
           </p>
           {activity.avatar && (
             <div className="mt-8 mx-auto max-w-4xl overflow-hidden rounded-lg shadow-lg">
-              <Image
+              <NextImage
                 src={activity.avatar}
                 className="w-full h-auto object-cover"
                 sizes="(max-width: 1024px) 100vw, 1024px"

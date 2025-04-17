@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { Card, CardBody, Chip, Divider } from '@heroui/react';
-import { Calendar, Book, ExternalLink, ZoomIn } from 'lucide-react';
+import { Calendar, Book, ExternalLink } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
 import Link from 'next/link';
@@ -71,18 +71,15 @@ export function PublicationsTimeline({
                           href={publication.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="relative group"
+                          className="relative group w-full"
                         >
                           <NextImage
                             src={publication.image}
                             alt={publication.title}
                             width={180}
                             height={180}
-                            className="object-contain max-h-[180px] transition-all duration-300 group-hover:scale-105"
+                            className="object-contain max-h-[180px] transition-all duration-300 group-hover:scale-105 !w-full"
                           />
-                          <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                            <ZoomIn className="text-primary" size={24} />
-                          </div>
                         </Link>
                       </div>
 
@@ -110,7 +107,7 @@ export function PublicationsTimeline({
                           </div>
 
                           {/* Description */}
-                          <p className="text-sm text-foreground/70 line-clamp-3">
+                          <p className="text-xs text-foreground/70 ">
                             {t.rich(`list.${publication.title}.desc`) || publication.description}
                           </p>
                         </div>
