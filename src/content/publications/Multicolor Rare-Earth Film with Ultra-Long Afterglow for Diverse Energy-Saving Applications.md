@@ -13,7 +13,6 @@ author:
     Meifang Yang,
     Zongxuan Yuan,
     Zihao Chen,
-    Zihao Chen,
     Wen-Guang Li,
     Hui Kang,
     Songtao Zhang,
