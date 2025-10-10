@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+  </head>
+  <body>
+    <img-comparison-slider hover="hover" class="slider-example-split-line">
+      <figure slot="first" class="before">
+        <img slot="first" src="./before.jpg" />
+        <figcaption>Light On</figcaption>
+      </figure>
+      <figure slot="second" class="after">
+        <img slot="second" src="./after.png" />
+        <figcaption>Light Off</figcaption>
+      </figure>
+    </img-comparison-slider>
+  </body>
+</html>
+
+<style>
+  .before,
+  .after {
+    margin: 0;
+  }
+
+  .before figcaption,
+  .after figcaption {
+    background: #fff;
+    border: 1px solid #c0c0c0;
+    border-radius: 12px;
+    color: #2e3452;
+    opacity: 0.8;
+    padding: 12px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 100%;
+  }
+
+  .before figcaption {
+    left: 12px;
+  }
+
+  .after figcaption {
+    right: 12px;
+  }
+  img {
+    width: 100%;
+  }
+  .slider-example-split-line {
+    --divider-width: 2px;
+    --divider-color: #ffa658;
+    --default-handle-opacity: 0;
+  }
+</style>
