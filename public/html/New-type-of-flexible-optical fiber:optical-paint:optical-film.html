@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .flipbook {
+      width: 90vw;
+      height: 90vh;
+      margin: 0 auto;
+    }
+    .flipbook-head {
+      text-align: center;
+    }
+    button {
+      background-color: #7cd5e557;
+      border: none;
+      padding: 5px 30px;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <flipbook
+        class="flipbook"
+        :pages="pages"
+        pageNumber="1"
+        :singlePage="true"
+        v-slot="flipbook"
+        :clickToZoom="false"
+      >
+        <div class="flipbook-head">
+          <button @click="flipbook.flipLeft"><</button>
+          <button @click="flipbook.flipRight">></button>
+        </div>
+      </flipbook>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flipbook-vue@0.10.1/dist/flipbook.min.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data() {
+          return {
+            pages: [
+              null,
+              "./11.jpg",
+              "./22.jpg",
+              "./33.jpg",
+              "./44.jpg",
+              "./55.jpg",
+              "./66.jpg",
+              "./77.jpg",
+              "./88.jpg",
+              "./99.jpg",
+              "1010.jpg",
+              "1111.jpg",
+              "1212.jpg",
+              "1313.jpg",
+              null,
+            ],
+          };
+        },
+      });
+    </script>
+  </body>
+</html>
