@@ -1,22 +1,22 @@
 'use client';
-import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, SquareArrowOutUpRight, Book } from 'lucide-react';
+import { Calendar, ZoomIn, ZoomOut, ChevronLeft, ChevronRight, SquareArrowOutUpRight, Book, Sparkles, X } from 'lucide-react';
 import { Card, Spinner } from "@heroui/react";
 import { Slider } from "@heroui/slider";
 import React, { forwardRef } from 'react';
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure } from "@heroui/react";
 import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
 import { Tooltip } from "@heroui/tooltip";
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import NextImage from 'next/image';
-// react-pdf
-import { Document, Page, pdfjs } from 'react-pdf';
-import 'react-pdf/dist/Page/AnnotationLayer.css';
-import 'react-pdf/dist/Page/TextLayer.css';
+import md from 'markdown-it';
+import tm from 'markdown-it-texmath';
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
 import { Progress } from "@heroui/react";
 import { useRouter } from 'next/navigation';
 import { formatDate } from '~/utils/utils';
 import { useLocale, useTranslations } from 'next-intl';
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+
 interface PublicationItemProps {
   title: string;
   image: string;
@@ -47,12 +47,159 @@ export const PublicationItem = ({
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const locale = useLocale()
   const t = useTranslations('Publications.list')
+  const tCommon = useTranslations('Common')
+  
+  // AI Summary states
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [summary, setSummary] = useState('');
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [error, setError] = useState('');
+  const modalContentRef = useRef<HTMLDivElement>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  // Generate AI summary
+  const generateSummary = async () => {
+    if (isGenerating) {
+      console.log('Already generating, skipping duplicate request');
+      return;
+    }
+
+    try {
+      setIsGenerating(true);
+      setError('');
+      setSummary('');
+      onOpen();
+
+      // Create abort controller for this request
+      abortControllerRef.current = new AbortController();
+
+      const response = await fetch('/api/publications/summary', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          slug,
+          locale,
+          stream: true,
+        }),
+        signal: abortControllerRef.current.signal,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || tCommon('serverError'));
+      }
+
+      if (!response.body) {
+        throw new Error(tCommon('invalidResponse'));
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let accumulatedText = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+
+        if (done) {
+          console.log('Stream complete');
+          break;
+        }
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n').filter((line) => line.trim() !== '');
+
+        for (const line of lines) {
+          if (line.startsWith('data:')) {
+            const jsonData = line.replace(/^data:[\s]?/, '').trim();
+
+            if (jsonData === '[DONE]') {
+              console.log('Received DONE signal');
+              continue;
+            }
+
+            try {
+              const parsedData = JSON.parse(jsonData);
+
+              if (parsedData.initial) {
+                console.log('Received initial signal');
+                continue;
+              }
+
+              if (parsedData.error) {
+                throw new Error(parsedData.error);
+              }
+
+              if (parsedData.choices && parsedData.choices[0]) {
+                if (parsedData.choices[0].delta) {
+                  const content = parsedData.choices[0].delta.content || '';
+                  accumulatedText += content;
+                  setSummary(accumulatedText);
+
+                  // Auto-scroll
+                  setTimeout(() => {
+                    if (modalContentRef.current) {
+                      modalContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                    }
+                  }, 100);
+                } else if (parsedData.choices[0].finish_reason === 'stop') {
+                  console.log('Generation finished');
+                  break;
+                }
+              }
+            } catch (e: any) {
+              if (e.name === 'SyntaxError') {
+                console.warn('Failed to parse JSON:', jsonData);
+              } else {
+                throw e;
+              }
+            }
+          }
+        }
+      }
+
+      if (!accumulatedText) {
+        throw new Error(tCommon('summaryFailed'));
+      }
+    } catch (err: any) {
+      console.error('Error generating summary:', err);
+      
+      if (err.name === 'AbortError') {
+        console.log('Request was cancelled');
+        setError(tCommon('requestCancelled'));
+      } else {
+        setError(err.message || tCommon('summaryFailed'));
+      }
+    } finally {
+      setIsGenerating(false);
+      abortControllerRef.current = null;
+    }
+  };
+
+  // Cancel request
+  const cancelRequest = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    onClose();
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
 
   return (
-    <Card
-      key={slug}
-      className="flex flex-col md:flex-row overflow-hidden rounded-xl drop-shadow hover:drop-shadow-none transition-all duration-500 p-5 md:p-2 gap-5 bg-gray-50 dark:bg-gray-700/50"
-    >
+    <>
+      <Card
+        key={slug}
+        className="flex flex-col md:flex-row overflow-hidden rounded-xl drop-shadow hover:drop-shadow-none transition-all duration-500 p-5 md:p-2 gap-5 bg-gray-50 dark:bg-gray-700/50"
+      >
       <div
         onClick={() => {
           // 本地预览，涉及版权
@@ -108,12 +255,113 @@ export const PublicationItem = ({
               {journalShort}
             </span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 space-x-2">
+            <Button
+              isIconOnly
+              size="sm"
+              variant="light"
+              onPress={generateSummary}
+              disabled={isGenerating}
+              className="min-w-unit-6 w-unit-6 h-unit-6"
+              title={tCommon('aiSummary')}
+            >
+              <Sparkles size={14} className="text-primary" />
+            </Button>
             <Calendar size={16} />
             <span className="text-xs">{formatDate(publishDate, 'short', locale)}</span>
           </div>
         </div>
       </div>
     </Card>
+
+    {/* AI Summary Modal */}
+    <Modal 
+      isOpen={isOpen} 
+      onClose={cancelRequest}
+      size="3xl"
+      scrollBehavior="inside"
+      classNames={{
+        base: "max-h-[90vh]",
+        header: "border-b border-gray-200 dark:border-gray-700",
+        body: "py-6",
+        footer: "border-t border-gray-200 dark:border-gray-700",
+      }}
+    >
+      <ModalContent>
+        <ModalHeader className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <Sparkles size={20} className="text-primary" />
+            <span>{tCommon('aiSummary')}</span>
+          </div>
+          <Button
+            isIconOnly
+            size="sm"
+            variant="light"
+            onPress={cancelRequest}
+            className="min-w-unit-8 w-unit-8 h-unit-8"
+          >
+            <X size={18} />
+          </Button>
+        </ModalHeader>
+        <ForwardedModalBody ref={modalContentRef}>
+          {isGenerating && !summary && (
+            <div className="flex flex-col items-center justify-center py-12 space-y-4">
+              <Spinner size="lg" color="primary" />
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                {tCommon('generating')}
+              </p>
+            </div>
+          )}
+          
+          {error && (
+            <div className="flex flex-col items-center justify-center py-12 space-y-4">
+              <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
+              <Button
+                color="primary"
+                variant="flat"
+                onPress={() => {
+                  setError('');
+                  generateSummary();
+                }}
+              >
+                {tCommon('retry')}
+              </Button>
+            </div>
+          )}
+
+          {summary && (
+            <div 
+              className="ai-summary-content prose prose-slate dark:prose-invert max-w-none
+                prose-headings:font-semibold 
+                prose-h2:text-lg prose-h2:mt-6 prose-h2:mb-3
+                prose-p:my-2 prose-p:leading-relaxed
+                prose-ul:my-2 prose-ul:list-disc prose-ul:pl-6
+                prose-li:my-1
+                prose-strong:font-semibold prose-strong:text-gray-900 dark:prose-strong:text-gray-100
+                prose-code:text-sm prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
+              dangerouslySetInnerHTML={{
+                __html: md({
+                  html: true,
+                  breaks: true,
+                  linkify: true,
+                })
+                  .use(tm, {
+                    engine: katex,
+                    delimiters: 'dollars',
+                    katexOptions: { macros: { '\\RR': '\\mathbb{R}' } },
+                  })
+                  .render(summary),
+              }}
+            />
+          )}
+        </ForwardedModalBody>
+        <ModalFooter>
+          <Button variant="flat" onPress={cancelRequest}>
+            {isGenerating ? tCommon('cancel') : tCommon('close')}
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  </>
   );
 };

@@ -8,6 +8,21 @@
     "MapPlaceholder": "地图将显示在这里",
     "GetInTouch": "如果您有兴趣加入我们的研究团队，可以通过以下方式联系我们，我们期待与您的交流与合作。"
   },
+  "Common": {
+    "aiSummary": "AI 论文总结",
+    "generating": "正在生成 AI 总结...",
+    "preparing": "正在准备内容...",
+    "summaryGenerated": "总结已生成",
+    "retry": "重试",
+    "close": "关闭",
+    "cancel": "取消",
+    "serverError": "服务器错误",
+    "invalidResponse": "服务器返回的数据格式无效",
+    "parseError": "无法解析服务器响应",
+    "summaryFailed": "无法生成摘要，请稍后再试",
+    "streamInterrupted": "读取中断，显示部分内容",
+    "requestCancelled": "请求已取消"
+  },
   "HomePage": {
     "Name": "田甜",
     "Title": "副教授，硕士生导师",

@@ -9,4 +9,87 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border-width: 0;
-} 
+}
+
+/* AI 摘要加载动画 */
+@keyframes spinner-pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 0.5; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.spinner-pulse {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: currentColor;
+  border-radius: 50%;
+  animation: spinner-pulse 1.5s ease-in-out infinite;
+}
+
+/* AI 摘要内容样式优化 */
+.ai-summary-content h2 {
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  padding-bottom: 0.5rem !important;
+  border-bottom: 1px solid rgb(229, 231, 235) !important;
+  color: rgb(17, 24, 39) !important;
+}
+
+.dark .ai-summary-content h2 {
+  border-bottom-color: rgb(55, 65, 81) !important;
+  color: rgb(243, 244, 246) !important;
+}
+
+.ai-summary-content ul {
+  list-style-type: disc !important;
+  padding-left: 1.5rem !important;
+  margin: 0.5rem 0 !important;
+}
+
+.ai-summary-content li {
+  margin: 0.5rem 0 !important;
+  line-height: 1.75 !important;
+  color: rgb(55, 65, 81) !important;
+}
+
+.dark .ai-summary-content li {
+  color: rgb(209, 213, 219) !important;
+}
+
+.ai-summary-content p {
+  margin: 0.75rem 0 !important;
+  line-height: 1.75 !important;
+  color: rgb(55, 65, 81) !important;
+}
+
+.dark .ai-summary-content p {
+  color: rgb(209, 213, 219) !important;
+}
+
+.ai-summary-content strong {
+  font-weight: 600 !important;
+  color: rgb(17, 24, 39) !important;
+}
+
+.dark .ai-summary-content strong {
+  color: rgb(243, 244, 246) !important;
+}
+
+.ai-summary-content code {
+  background-color: rgb(243, 244, 246) !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: 0.25rem !important;
+  font-size: 0.875rem !important;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+.dark .ai-summary-content code {
+  background-color: rgb(31, 41, 55) !important;
+}
+
+.ai-summary-content em {
+  font-style: italic !important;
+}

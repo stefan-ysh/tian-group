@@ -8,6 +8,21 @@
     "MapPlaceholder": "Map will be displayed here",
     "GetInTouch": "You can get in touch with us by the following ways if you are interested in joining our research team."
   },
+  "Common": {
+    "aiSummary": "AI Paper Summary",
+    "generating": "Generating AI summary...",
+    "preparing": "Preparing content...",
+    "summaryGenerated": "Summary generated",
+    "retry": "Retry",
+    "close": "Close",
+    "cancel": "Cancel",
+    "serverError": "Server error",
+    "invalidResponse": "Invalid server response format",
+    "parseError": "Cannot parse server response",
+    "summaryFailed": "Failed to generate summary. Please try again later",
+    "streamInterrupted": "Stream interrupted, showing partial content",
+    "requestCancelled": "Request cancelled"
+  },
   "HomePage": {
     "Name": "Tian Tian",
     "Title": "Associate Professor, Master Supervisor",
