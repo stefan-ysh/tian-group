@@ -32,7 +32,11 @@ const Header = () => {
   const p = useTranslations('Publications');
 
   return (
-    <Navbar onMenuOpenChange={setIsMenuOpen} className="max-w-full">
+    <Navbar 
+      isMenuOpen={isMenuOpen}
+      onMenuOpenChange={setIsMenuOpen} 
+      className="max-w-full"
+    >
       <NavbarContent>
         <NavbarMenuToggle aria-label={isMenuOpen ? 'Close menu' : 'Open menu'} className="sm:hidden" />
         {/* <NavbarBrand>
