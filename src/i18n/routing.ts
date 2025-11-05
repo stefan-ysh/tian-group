@@ -6,6 +6,8 @@ export const routing = defineRouting({
   locales: ['en', 'zh'],
   // Used when no locale matches
   defaultLocale: 'zh',
+  // 不在URL中显示locale前缀，通过cookie管理
+  localePrefix: 'never'
 });
 
 export const locales = ['zh', 'en'] as const;

@@ -5,7 +5,7 @@ import ToggleTheme from '~/components/atoms/ToggleTheme';
 import ToggleLanguage from '~/components/atoms/ToggleLanguage';
 import Logo from '~/components/atoms/Logo';
 import { headerData } from '~/shared/data/global.data';
-import { useRouter, usePathname } from 'next/navigation';
+import { usePathname, Link as IntlLink } from '~/i18n/routing';
 import {
   Navbar,
   NavbarBrand,
@@ -14,7 +14,6 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Link,
   Dropdown,
   DropdownTrigger,
   DropdownMenu,
@@ -27,16 +26,10 @@ import { Grid, Clock, ChevronDown } from 'lucide-react';
 const Header = () => {
   const { links, actions, isSticky, showToggleTheme, showRssFeed, position } = headerData;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations('Header.NavMenu');
   const p = useTranslations('Publications');
-
-  // Helper function to check if path starts with a specific route
-  const isActive = (path: string) => {
-    return pathname.startsWith(`/${locale}${path}`) || pathname.startsWith(path);
-  };
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen} className="max-w-full">
@@ -50,27 +43,20 @@ const Header = () => {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {links &&
           links.map(({ label, href, icon: Icon, links: subLinks, code }, index) => {
+            const isCurrentPage = pathname === href;
             return (
-              <NavbarItem key={`item-link-${index}`} isActive={pathname === `/${locale}${href}` || pathname === href}>
-                <span
-                  onClick={() => {
-                    router.push(href as string);
-                  }}
-                  className="cursor-pointer w-full hover:border-b-2 hover:border-primary-500"
+              <NavbarItem key={`item-link-${index}`} isActive={isCurrentPage}>
+                <IntlLink 
+                  href={href || '/'}
+                  prefetch={true}
+                  className="cursor-pointer hover:border-b-2 hover:border-primary-500 transition-all duration-200"
                   style={{
-                    borderBottom: (pathname === href || pathname === `/${locale}${href}`) ? '2px solid #333' : '',
+                    borderBottom: isCurrentPage ? '2px solid #333' : '',
                   }}
-                  role="link"
-                  tabIndex={0}
                   aria-label={t(code)}
                 >
                   {t(code)}
-                </span>
-                {/* <Link href={href || '#'} className="cursor-pointer hover:border-b-2 hover:border-primary-500 text-primary-400" style={{
-                  borderBottom: (pathname === href || pathname === `/${locale}${href}`) ? '2px solid #333' : '',
-                }} aria-label={t(code)}>
-                  {t(code)}
-                </Link> */}
+                </IntlLink>
               </NavbarItem>
             );
           })}
@@ -92,18 +78,21 @@ const Header = () => {
       <NavbarMenu className={`${isMenuOpen ? 'block' : 'hidden'} sm:hidden`}>
         {links &&
           links.map(({ label, href, icon: Icon, links: subLinks, code }, index) => {
+            const isCurrentPage = pathname === href;
             return (
               <NavbarMenuItem key={`${label}-${index}`}>
-                <Link
-                  href={href || '#'}
-                  className="cursor-pointer hover:border-b-2 hover:border-primary-500 text-primary-400"
+                <IntlLink
+                  href={href || '/'}
+                  prefetch={true}
+                  className="cursor-pointer hover:border-b-2 hover:border-primary-500 text-primary-400 transition-all duration-200"
                   style={{
-                    borderBottom: (pathname === href || pathname === `/${locale}${href}`) ? '2px solid #333' : '',
+                    borderBottom: isCurrentPage ? '2px solid #333' : '',
                   }}
                   aria-label={t(code)}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {t(code)}
-                </Link>
+                </IntlLink>
               </NavbarMenuItem>
             );
           })}
