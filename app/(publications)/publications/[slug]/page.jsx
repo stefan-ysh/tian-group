@@ -1,30 +1,61 @@
-import { findLatestPublications } from '~/utils/publications';
+import { findPublicationsByName, findLatestPublications } from '~/utils/publications';
 import { PublicationClientPage } from './PublicationClientPage';
 
 export const dynamicParams = false;
 
-// 生成页面元数据
+// 生成页面元数据 - 修复build时URL错误
 export async function generateMetadata({ params }) {
   try {
-    const { slug } = params;
-    // 使用相对路径进行API请求
-    const res = await fetch(`/api/publications/${slug}`);
+    const slug = decodeURIComponent(params.slug);
+    const publication = await findPublicationsByName(slug);
     
-    if (!res.ok) {
-      throw new Error(`Failed to fetch publication with slug: ${slug}`);
+    if (!publication) {
+      return {
+        title: '出版物未找到',
+        description: '请求的出版物信息不存在'
+      };
     }
     
-    const publication = await res.json();
-    
     return {
-      title: `${publication.title} | Tian Group`,
-      description: publication.abstract,
+      title: publication.title,
+      description: publication.abstract || publication.description || '田甜科研小组发表的学术论文',
+      keywords: [
+        publication.title,
+        '田甜',
+        '扬州大学',
+        '化学学院',
+        ...(publication.tags || []),
+        ...(publication.authors || []),
+      ].filter(Boolean),
+      authors: publication.authors?.map(author => ({ name: author })) || [{ name: '田甜科研小组' }],
+      openGraph: {
+        title: publication.title,
+        description: publication.abstract || publication.description || '田甜科研小组发表的学术论文',
+        type: 'article',
+        publishedTime: publication.publishDate || publication.date,
+        authors: publication.authors || ['田甜科研小组'],
+        tags: publication.tags || [],
+        images: publication.image ? [{
+          url: publication.image,
+          width: 1200,
+          height: 630,
+          alt: publication.title,
+        }] : undefined,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: publication.title,
+        description: publication.abstract?.slice(0, 200) || publication.description,
+      },
+      alternates: {
+        canonical: `https://tiantian.group/publications/${encodeURIComponent(slug)}`,
+      },
     };
   } catch (error) {
     console.error('Error generating metadata:', error);
     return {
-      title: 'Publication | Tian Group',
-      description: 'Publication details',
+      title: '出版物',
+      description: '论文详情页面'
     };
   }
 }

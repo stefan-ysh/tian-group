@@ -3,6 +3,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from '~/components/atoms/Providers';
 // import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
+import { OrganizationSchema, WebSiteSchema } from '~/components/seo/JsonLd';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { Inter as CustomFont } from 'next/font/google';
@@ -24,11 +25,55 @@ export interface LayoutProps {
   children: React.ReactNode;
 }
 
-// Static metadata as a fallback
+// Static metadata as a fallback with enhanced SEO
 export const metadata: Metadata = {
-  title: '田甜科研小组 | 扬州大学化学学院',
-  description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-  keywords: '田甜, 扬州大学, 化学学院, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 教授',
+  metadataBase: new URL('https://tiantian.group'),
+  title: {
+    default: '田甜科研小组 | 扬州大学化学学院',
+    template: '%s | 田甜科研小组'
+  },
+  description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+  keywords: ['田甜', '扬州大学', '化学学院', '庞欢课题组', '科研实验室', '环糊精', '钙钛矿', '太阳能电池', '发光材料', '教授', 'Angew', 'NC', 'Wiley', 'Advanced Materials', 'Advanced Functional Materials', 'ACS Nano', 'ACS Energy Letters', '科研团队', '学术研究'],
+  authors: [{ name: '田甜' }],
+  creator: '田甜科研小组',
+  publisher: '扬州大学化学学院',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'zh_CN',
+    alternateLocale: ['en_US'],
+    url: 'https://tiantian.group',
+    siteName: '田甜科研小组',
+    title: '田甜科研小组 | 扬州大学化学学院',
+    description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: '田甜科研小组',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: '田甜科研小组 | 扬州大学化学学院',
+    description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
+    images: ['/og-image.jpg'],
+  },
+  alternates: {
+    canonical: 'https://tiantian.group',
+  },
 };
 
 export default async function RootLayout({
@@ -65,6 +110,8 @@ export default async function RootLayout({
         `}</style>
       </head>
       <body className="tracking-tight antialiased">
+        <OrganizationSchema />
+        <WebSiteSchema />
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <Header />
