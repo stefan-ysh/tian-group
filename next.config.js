@@ -55,6 +55,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'tc.lepubiopharma.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'media.springernature.com',
+      },
     ],
   },
 };
