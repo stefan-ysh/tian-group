@@ -1,9 +1,12 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { findNewsById, fetchNews } from '../../../src/utils/news';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { NewsDetailContent } from './NewsDetailContent';
 import { DetailNewsItem } from '../../../src/types/content';
+
+import { BreadcrumbSchema, NewsArticleSchema } from '~/components/seo/JsonLd';
+import { generateNewsMetadata, generateSEOMetadata } from '~/lib/seo';
 
 // Force dynamic rendering to avoid issues with server/client components
 export const dynamic = 'force-dynamic';
@@ -15,27 +18,29 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     const newsItem = await findNewsById(params.id);
     
     if (!newsItem) {
-      return {
-        title: '新闻未找到 | 田甜科研小组',
-        description: '抱歉，您请求的新闻内容未找到。'
-      };
+      return generateSEOMetadata({
+        title: '新闻未找到',
+        description: '抱歉，您请求的新闻内容未找到。',
+        path: `/news/${params.id}`,
+        noindex: true,
+      });
     }
-    
-    return {
-      title: `${newsItem.title} | 田甜科研小组`,
-      description: newsItem.summary || '田甜科研小组最新动态',
-      openGraph: {
-        title: `${newsItem.title} | 田甜科研小组`,
-        description: newsItem.summary || '田甜科研小组最新动态',
-        images: newsItem.imageUrl ? [{ url: newsItem.imageUrl }] : []
-      }
-    };
+
+    return generateNewsMetadata({
+      id: newsItem.id,
+      title: newsItem.title,
+      excerpt: newsItem.summary || undefined,
+      date: newsItem.date || undefined,
+      image: newsItem.imageUrl || undefined,
+      tags: newsItem.tags || [],
+    });
   } catch (error) {
     console.error('Error generating metadata for news item:', error);
-    return {
-      title: '新闻详情 | 田甜科研小组',
-      description: '田甜科研小组新闻详情页面'
-    };
+    return generateSEOMetadata({
+      title: '新闻详情',
+      description: '田甜科研小组新闻详情页面。',
+      path: `/news/${params.id}`,
+    });
   }
 }
 
@@ -69,9 +74,20 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
     authors: newsItem.authors || [],
     publication: newsItem.publication || undefined
   };
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
+  const url = `${siteUrl}/news/${params.id}`;
   
   return (
     <section className="w-full mx-auto">
+      <BreadcrumbSchema
+        items={[
+          { name: '首页', url: siteUrl },
+          { name: '新闻动态', url: `${siteUrl}/news` },
+          { name: newsItem.title, url },
+        ]}
+      />
+      <NewsArticleSchema news={{ ...safeNewsItem, id: params.id, imageUrl: newsItem.imageUrl }} />
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Breadcrumb */}
         <div className="mb-8">

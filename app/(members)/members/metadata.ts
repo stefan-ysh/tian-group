@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 
-// Static metadata for SEO
-export const metadata: Metadata = {
-  title: '组内成员 | 田甜科研小组',
-  description: '田甜科研小组成员介绍，包括硕士、博士、博士后等各层次科研人员。',
-  keywords: '田甜, 扬州大学, 化学学院, 科研团队, 组内成员, 研究生, 教授, 博士后',
-  openGraph: {
-    title: '组内成员 | 田甜科研小组',
-    description: '田甜科研小组成员介绍，包括硕士、博士、博士后等各层次科研人员。'
-  }
-}; 
+import { generateSEOMetadata } from '~/lib/seo';
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: '组内成员',
+  description: '田甜科研小组成员介绍，包括博士后、博士研究生、硕士研究生及其他团队成员。',
+  keywords: ['组内成员', '科研团队', '博士后', '博士研究生', '硕士研究生', '团队介绍'],
+  path: '/members',
+  type: 'website',
+});

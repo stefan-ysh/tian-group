@@ -5,8 +5,7 @@ import Providers from '~/components/atoms/Providers';
 import Header from '~/components/widgets/Header';
 import { OrganizationSchema, WebSiteSchema } from '~/components/seo/JsonLd';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-import { Inter as CustomFont } from 'next/font/google';
+import { getLocale, getMessages } from 'next-intl/server';
 import Script from 'next/script';
 
 import type { Metadata } from 'next';
@@ -15,19 +14,15 @@ import type { Metadata } from 'next';
 
 import '~/assets/styles/base.css';
 
-const customFont = CustomFont({ 
-  subsets: ['latin'], 
-  variable: '--font-custom',
-  display: 'swap',
-});
-
 export interface LayoutProps {
   children: React.ReactNode;
 }
 
 // Static metadata as a fallback with enhanced SEO
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tiantian.group'),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: '田甜科研小组 | 扬州大学化学学院',
     template: '%s | 田甜科研小组'
@@ -52,7 +47,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'zh_CN',
     alternateLocale: ['en_US'],
-    url: 'https://tiantian.group',
+    url: SITE_URL,
     siteName: '田甜科研小组',
     title: '田甜科研小组 | 扬州大学化学学院',
     description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
@@ -72,17 +67,16 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   alternates: {
-    canonical: 'https://tiantian.group',
+    canonical: SITE_URL,
   },
 };
 
 export default async function RootLayout({
   children,
-  params: { locale },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
 }) {
+  const locale = await getLocale();
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
@@ -90,7 +84,7 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`text-foreground bg-background motion-safe:scroll-smooth 2xl:text-[20px] ${customFont.variable} font-sans`}
+      className="text-foreground bg-background motion-safe:scroll-smooth 2xl:text-[20px] font-sans"
     >
       <head>
         <meta charSet="utf-8" />

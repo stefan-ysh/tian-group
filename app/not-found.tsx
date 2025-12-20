@@ -1,5 +1,17 @@
 import Link from 'next/link';
 
+import type { Metadata } from 'next';
+
+import { generateSEOMetadata } from '~/lib/seo';
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: '页面未找到',
+  description: '抱歉，您访问的页面不存在或已被移动。',
+  noindex: true,
+  path: '/404',
+  type: 'website',
+});
+
 export default function NotFound() {
   return (
     <section className="flex flex-col items-center justify-center min-h-[80vh] px-4 py-12">

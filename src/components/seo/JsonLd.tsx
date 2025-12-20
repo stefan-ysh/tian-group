@@ -5,6 +5,8 @@
 
 import React from 'react';
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
+
 interface JsonLdProps {
   data: Record<string, any>;
 }
@@ -25,8 +27,8 @@ export function OrganizationSchema() {
     '@type': 'ResearchOrganization',
     name: '田甜科研小组',
     alternateName: 'Tian Tian Research Group',
-    url: 'https://tiantian.group',
-    logo: 'https://tiantian.group/logo.png',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
     description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
     address: {
       '@type': 'PostalAddress',
@@ -70,7 +72,7 @@ export function ScholarlyArticleSchema({ publication }: { publication: any }) {
       name: publication.journal || '田甜科研小组',
     },
     keywords: publication.tags?.join(', '),
-    url: `https://tiantian.group/publications/${encodeURIComponent(publication.title)}`,
+    url: `${SITE_URL}/publications/${encodeURIComponent(publication.slug || publication.title)}`,
   };
 
   if (publication.doi) {
@@ -112,7 +114,7 @@ export function PersonSchema({ member }: { member: any }) {
       name: '扬州大学化学学院',
     },
     description: member.description,
-    url: `https://tiantian.group/members/${member.slug}`,
+    url: `${SITE_URL}/members/${member.slug}`,
   };
 
   if (member.email) {
@@ -133,7 +135,7 @@ export function WebSiteSchema() {
     '@type': 'WebSite',
     name: '田甜科研小组',
     alternateName: 'Tian Tian Research Group',
-    url: 'https://tiantian.group',
+    url: SITE_URL,
     description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
     publisher: {
       '@type': 'ResearchOrganization',
@@ -143,11 +145,79 @@ export function WebSiteSchema() {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://tiantian.group/search?q={search_term_string}',
+        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
   };
+
+  return <JsonLd data={schema} />;
+}
+
+// 新闻文章 Schema
+export function NewsArticleSchema({ news }: { news: any }) {
+  const schema: Record<string, any> = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: news.title,
+    description: news.summary || news.excerpt,
+    datePublished: news.date,
+    author: (news.authors || ['田甜科研小组']).map((name: string) => ({
+      '@type': 'Person',
+      name,
+    })),
+    publisher: {
+      '@type': 'Organization',
+      name: '田甜科研小组',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${SITE_URL}/news/${news.id}`,
+    },
+  };
+
+  if (news.imageUrl) {
+    schema.image = [news.imageUrl];
+  }
+
+  if (news.tags?.length) {
+    schema.keywords = news.tags.join(', ');
+  }
+
+  return <JsonLd data={schema} />;
+}
+
+// 组内活动（事件） Schema
+export function EventSchema({ activity }: { activity: any }) {
+  const schema: Record<string, any> = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: activity.title,
+    description: activity.description,
+    startDate: activity.date,
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+    eventStatus: 'https://schema.org/EventScheduled',
+    organizer: {
+      '@type': 'Organization',
+      name: '田甜科研小组',
+      url: SITE_URL,
+    },
+    location: activity.location
+      ? {
+          '@type': 'Place',
+          name: activity.location,
+        }
+      : undefined,
+    url: `${SITE_URL}/activities/${activity.id}`,
+  };
+
+  if (activity.avatar) {
+    schema.image = [activity.avatar];
+  }
+
+  if (activity.tags?.length) {
+    schema.keywords = activity.tags.join(', ');
+  }
 
   return <JsonLd data={schema} />;
 }

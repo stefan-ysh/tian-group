@@ -8,11 +8,50 @@ import type { Metadata } from 'next';
 const SITE_CONFIG = {
   name: '田甜科研小组',
   nameEn: 'Tian Tian Research Group',
-  url: 'https://tiantian.group',
-  description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-  keywords: ['田甜', '扬州大学', '化学学院', '庞欢课题组', '科研实验室', '环糊精', '钙钛矿', '太阳能电池', '发光材料', '教授', 'Angew', 'NC', 'Wiley', 'Advanced Materials'],
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group',
+  description:
+    '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+  keywords: [
+    '田甜',
+    '扬州大学',
+    '化学学院',
+    '庞欢课题组',
+    '科研实验室',
+    '环糊精',
+    '钙钛矿',
+    '太阳能电池',
+    '发光材料',
+    '教授',
+    'Angew',
+    'NC',
+    'Wiley',
+    'Advanced Materials',
+    'Advanced Functional Materials',
+    'ACS Nano',
+    'ACS Energy Letters',
+  ],
   ogImage: '/og-image.jpg',
-};
+  publisher: '扬州大学化学学院',
+} as const;
+
+function normalizePath(path: string) {
+  if (!path) return '';
+  if (path === '/') return '';
+  return path.startsWith('/') ? path : `/${path}`;
+}
+
+function toAbsoluteUrl(pathOrUrl: string) {
+  if (!pathOrUrl) return SITE_CONFIG.url;
+  if (pathOrUrl.startsWith('http://') || pathOrUrl.startsWith('https://')) return pathOrUrl;
+  return `${SITE_CONFIG.url}${pathOrUrl.startsWith('/') ? '' : '/'}${pathOrUrl}`;
+}
+
+function toOpenGraphLocale(locale?: string) {
+  // next-intl is configured with locales: 'zh' | 'en' and localePrefix: 'never'
+  if (!locale) return 'zh_CN';
+  if (locale.toLowerCase().startsWith('en')) return 'en_US';
+  return 'zh_CN';
+}
 
 interface GenerateMetadataOptions {
   title?: string;
@@ -24,6 +63,7 @@ interface GenerateMetadataOptions {
   publishedTime?: string;
   authors?: string[];
   locale?: string;
+  noindex?: boolean;
 }
 
 /**
@@ -38,16 +78,19 @@ export function generateSEOMetadata({
   type = 'website',
   publishedTime,
   authors,
-  locale = 'zh-CN',
+  locale,
+  noindex = false,
 }: GenerateMetadataOptions = {}): Metadata {
   const pageTitle = title 
     ? `${title} | ${SITE_CONFIG.name}` 
     : SITE_CONFIG.name;
   
-  const url = `${SITE_CONFIG.url}${path}`;
-  const imageUrl = image.startsWith('http') ? image : `${SITE_CONFIG.url}${image}`;
+  const cleanPath = normalizePath(path);
+  const url = `${SITE_CONFIG.url}${cleanPath}`;
+  const imageUrl = toAbsoluteUrl(image);
   
   const allKeywords = Array.from(new Set([...SITE_CONFIG.keywords, ...keywords]));
+  const ogLocale = toOpenGraphLocale(locale);
 
   const metadata: Metadata = {
     title: pageTitle,
@@ -55,13 +98,13 @@ export function generateSEOMetadata({
     keywords: allKeywords,
     authors: authors?.map(name => ({ name })) || [{ name: SITE_CONFIG.name }],
     creator: SITE_CONFIG.name,
-    publisher: '扬州大学化学学院',
+    publisher: SITE_CONFIG.publisher,
     robots: {
-      index: true,
-      follow: true,
+      index: !noindex,
+      follow: !noindex,
       googleBot: {
-        index: true,
-        follow: true,
+        index: !noindex,
+        follow: !noindex,
         'max-video-preview': -1,
         'max-image-preview': 'large',
         'max-snippet': -1,
@@ -69,8 +112,7 @@ export function generateSEOMetadata({
     },
     openGraph: {
       type,
-      locale,
-      alternateLocale: locale === 'zh-CN' ? ['en-US'] : ['zh-CN'],
+      locale: ogLocale,
       url,
       siteName: SITE_CONFIG.name,
       title: pageTitle,
@@ -92,10 +134,6 @@ export function generateSEOMetadata({
     },
     alternates: {
       canonical: url,
-      languages: {
-        'zh-CN': `${SITE_CONFIG.url}/zh${path}`,
-        'en-US': `${SITE_CONFIG.url}/en${path}`,
-      },
     },
   };
 
@@ -125,7 +163,12 @@ export function generatePublicationMetadata(publication: {
   date?: string;
   image?: string;
   doi?: string;
+  slug?: string;
 }): Metadata {
+  const canonicalPath = publication.slug
+    ? `/publications/${encodeURIComponent(publication.slug)}`
+    : `/publications/${encodeURIComponent(publication.title)}`;
+
   return generateSEOMetadata({
     title: publication.title,
     description: publication.abstract || publication.description || '田甜科研小组发表的学术论文',
@@ -136,7 +179,7 @@ export function generatePublicationMetadata(publication: {
       '研究成果',
     ],
     image: publication.image,
-    path: `/publications/${encodeURIComponent(publication.title)}`,
+    path: canonicalPath,
     type: 'article',
     publishedTime: publication.publishDate || publication.date,
     authors: publication.authors,
@@ -176,11 +219,12 @@ export function generateNewsMetadata(news: {
   date?: string;
   image?: string;
   id: string;
+  tags?: string[];
 }): Metadata {
   return generateSEOMetadata({
     title: news.title,
     description: news.excerpt || news.content?.slice(0, 160),
-    keywords: ['新闻', '科研动态', '研究进展'],
+    keywords: ['新闻', '科研动态', '研究进展', ...(news.tags || [])],
     image: news.image,
     path: `/news/${news.id}`,
     type: 'article',
@@ -192,9 +236,9 @@ export function generateNewsMetadata(news: {
  * 获取页面的canonical URL
  */
 export function getCanonicalUrl(path: string, locale?: string): string {
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  const localePath = locale ? `/${locale}${cleanPath}` : cleanPath;
-  return `${SITE_CONFIG.url}${localePath}`;
+  // localePrefix is configured as 'never', so URL is locale-agnostic.
+  const cleanPath = normalizePath(path);
+  return `${SITE_CONFIG.url}${cleanPath}`;
 }
 
 /**

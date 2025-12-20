@@ -1,43 +1,24 @@
-'use client';
-import { useTranslations } from 'next-intl';
+import type { Metadata } from 'next';
 
-export default function NewsPage() {
-  const t = useTranslations('News');
+import NewsPageClient from './NewsPageClient';
+import { generateSEOMetadata } from '~/lib/seo';
+import { BreadcrumbSchema } from '~/components/seo/JsonLd';
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: '新闻动态',
+  description:
+    '田甜科研小组最新动态与科研进展，包含学术会议、研究成果发布、团队活动与重要通知等内容。',
+  keywords: ['新闻动态', '科研进展', '学术会议', '团队活动', '研究成果'],
+  path: '/news',
+  type: 'website',
+});
+
+export default function Page() {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
   return (
-    <section className="mx-auto max-w-5xl p-0 md:py-12 md:px-6">
-      <div className="text-center mb-1">
-        <h1 className="sr-only">{t('title')}</h1>
-      </div>
-      
-      {/* News Timeline Component */}
-      <NewsClientWrapper />
-    </section>
+    <>
+      <BreadcrumbSchema items={[{ name: '首页', url: siteUrl }, { name: '新闻动态', url: `${siteUrl}/news` }]} />
+      <NewsPageClient />
+    </>
   );
 }
-
-// Client component wrapper to handle news data loading
-import dynamic from 'next/dynamic';
-
-const NewsClientWrapper = dynamic(() => import('./NewsClient').then(mod => mod.NewsClient), {
-  ssr: true,
-  loading: () => (
-    <div className="py-12 text-center">
-      <div className="animate-pulse flex flex-col items-center">
-        <div className="h-8 w-48 bg-gray-50 dark:bg-gray-700/50 rounded mb-8"></div>
-        <div className="grid grid-cols-1 gap-6 w-full max-w-4xl mx-auto">
-          {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="bg-gray-50 dark:bg-gray-700/50 rounded-lg shadow-sm p-4">
-              <div className="flex justify-between items-center mb-3">
-                <div className="h-6 bg-gray-50 dark:bg-gray-700/50 rounded w-24"></div>
-                <div className="h-4 bg-gray-20 dark:bg-gray-700/10 rounded w-32"></div>
-              </div>
-              <div className="h-6 bg-gray-50 dark:bg-gray-700/50 rounded w-3/4 mb-3"></div>
-              <div className="h-4 bg-gray-20 dark:bg-gray-700/10 rounded w-full mb-2"></div>
-              <div className="h-4 bg-gray-20 dark:bg-gray-700/10 rounded w-5/6"></div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-});

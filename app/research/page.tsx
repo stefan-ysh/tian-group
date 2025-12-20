@@ -1,24 +1,26 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
-// Simple static metadata
-export const metadata: Metadata = {
-  title: '研究方向 | 田甜科研小组',
-  description: '田甜科研小组的主要研究方向包括钙钛矿太阳能电池、有机非线性光学材料、发光材料与生物成像、光谱表征与材料测试等。',
-  keywords: '钙钛矿太阳能电池, 有机非线性光学材料, 发光材料, 生物成像, 光谱表征, 扬州大学, 田甜科研组',
-  openGraph: {
-    title: '研究方向 | 田甜科研小组',
-    description: '田甜科研小组的主要研究方向包括钙钛矿太阳能电池、有机非线性光学材料、发光材料与生物成像、光谱表征与材料测试等。'
-  }
-};
+import { BreadcrumbSchema } from '~/components/seo/JsonLd';
+import { generateSEOMetadata } from '~/lib/seo';
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: '研究方向',
+  description:
+    '田甜科研小组的主要研究方向包括钙钛矿太阳能电池、有机非线性光学材料、发光材料与生物成像、光谱表征与材料测试等。',
+  keywords: ['研究方向', '钙钛矿太阳能电池', '有机非线性光学材料', '发光材料', '生物成像', '光谱表征', '材料测试'],
+  path: '/research',
+  type: 'website',
+});
 
 export default function ResearchPage() {
   const t = useTranslations('ResearchPage');
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
   
   return (
     <div className="container mx-auto p-0 md:py-12 md:px-4 max-w-5xl">
+      <BreadcrumbSchema items={[{ name: '首页', url: siteUrl }, { name: '研究方向', url: `${siteUrl}/research` }]} />
       {/* 页面标题 */}
       <div className="text-center mb-1">
         {/* 对SEO友好的隐藏标题 */}
