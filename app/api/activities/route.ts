@@ -16,12 +16,8 @@ interface ActivityItem {
   content?: string;
 }
 
-// 使用服务器端缓存提高性能
-let cachedActivities: ActivityItem[] = [];
-let cacheTime = 0;
-const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存
-
-export const dynamic = 'force-dynamic';
+// 配置缓存：30分钟重新验证，12小时内可使用过期缓存
+export const revalidate = 1800;
 
 export async function GET(request: NextRequest) {
   try {
@@ -44,40 +40,13 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(activity);
     }
     
-    // 检查缓存是否有效
-    if (cachedActivities && Date.now() - cacheTime < CACHE_DURATION) {
-      let activities = [...cachedActivities];
-      
-      // 应用分页
-      if (page && limit) {
-        const pageNum = parseInt(page);
-        const limitNum = parseInt(limit);
-        const startIndex = pageNum === 1 ? 0 : (pageNum - 1) * limitNum;
-        const endIndex = pageNum === 1 ? limitNum : startIndex + limitNum;
-        activities = activities.slice(startIndex, endIndex);
-      } 
-      // 或使用count参数
-      else if (count) {
-        activities = activities.slice(0, parseInt(count));
-      }
-      
-      return NextResponse.json({
-        items: activities,
-        total: cachedActivities.length
-      });
-    }
-    
-    // 如果缓存无效，获取所有活动
+    // 获取所有活动
     const allActivities = await fetchActivities();
     
     // 按日期排序（最新的在前）
     const sortedActivities = [...allActivities].sort((a, b) => 
       new Date(b.date).getTime() - new Date(a.date).getTime()
     );
-    
-    // 更新缓存
-    cachedActivities = sortedActivities;
-    cacheTime = Date.now();
     
     // 准备返回数据
     let activities = [...sortedActivities];
@@ -95,10 +64,21 @@ export async function GET(request: NextRequest) {
       activities = activities.slice(0, parseInt(count));
     }
     
-    return NextResponse.json({
-      items: activities,
-      total: sortedActivities.length
-    });
+    return NextResponse.json(
+      {
+        items: activities,
+        total: sortedActivities.length,
+      },
+      {
+        headers: {
+          // 浏览器缓存30分钟
+          'Cache-Control': 'public, s-maxage=1800, stale-while-revalidate=43200',
+          // CDN 缓存配置
+          'CDN-Cache-Control': 'public, s-maxage=1800',
+          'Vercel-CDN-Cache-Control': 'public, s-maxage=1800',
+        },
+      }
+    );
   } catch (error) {
     console.error('获取活动数据时出错:', error);
     return NextResponse.json(

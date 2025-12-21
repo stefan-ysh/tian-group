@@ -9,6 +9,9 @@ interface Member {
   order: number;
 }
 
+// 配置缓存：1小时重新验证，24小时内可使用过期缓存
+export const revalidate = 3600;
+
 export async function GET() {
   try {
     console.log('API: Fetching members data');
@@ -27,9 +30,20 @@ export async function GET() {
     // Sort by order property
     const sortedMembers = members.sort((a: Member, b: Member) => (a.order - b.order));
     
-    return NextResponse.json({ 
-      members: sortedMembers
-    });
+    return NextResponse.json(
+      { 
+        members: sortedMembers
+      },
+      {
+        headers: {
+          // 浏览器缓存1小时
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          // CDN 缓存配置
+          'CDN-Cache-Control': 'public, s-maxage=3600',
+          'Vercel-CDN-Cache-Control': 'public, s-maxage=3600',
+        },
+      }
+    );
   } catch (error) {
     console.error('API: Error fetching members data:', error);
     return NextResponse.json(

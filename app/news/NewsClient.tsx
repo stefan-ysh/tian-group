@@ -1,11 +1,21 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { NewsTimeline, NewsItem } from '../components/NewsTimeline';
+import dynamic from 'next/dynamic';
 import { Button } from '@heroui/react';
 import { ChevronDown } from 'lucide-react';
 import { NewsSkeletonLoader } from '../components/ui/SkeletonLoader';
 import { useTranslations } from 'next-intl';
+import type { NewsTimeline as NewsTimelineType, NewsItem } from '../components/NewsTimeline';
+
+// 懒加载 NewsTimeline 组件以减少初始包大小
+const NewsTimeline = dynamic(
+  () => import('../components/NewsTimeline').then((mod) => ({ default: mod.NewsTimeline })),
+  {
+    loading: () => <NewsSkeletonLoader />,
+    ssr: true,
+  }
+);
 // 定义计数类型
 interface NewsCounts {
   all: number;
@@ -87,7 +97,7 @@ export function NewsClient() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full" role="region" aria-label={t('title')}>
       <NewsTimeline 
         news={news} 
         initialDisplayCount={news.length}
@@ -106,8 +116,9 @@ export function NewsClient() {
             variant="flat"
             className="px-6"
             onClick={handleLoadMore}
-            endContent={<ChevronDown size={16} />}
+            endContent={<ChevronDown size={16} aria-hidden="true" />}
             isLoading={loading}
+            aria-label={loading ? '加载中...' : t('loadMore')}
           >
             {t('loadMore')}
             {/* ({news.length}/{totalNewsItems}) */}

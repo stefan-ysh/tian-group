@@ -204,7 +204,7 @@ export function NewsTimeline({
   };
   
   return (
-    <div className="w-full  rounded-2xl p-0 md:p-8 pt-0">
+    <div className="w-full  rounded-2xl p-0 md:p-8 pt-0" role="region" aria-label={t('title')}>
       <div className="container mx-auto px-0">
         {/* <div className="flex items-center gap-2 mb-8">
           <Newspaper className="text-primary" size={24} />
@@ -214,7 +214,7 @@ export function NewsTimeline({
         {/* 过滤选项卡 */}
         <div className="mb-8">
           <Tabs 
-            aria-label="News filters" 
+            aria-label={t('title') + ' - ' + t('filterTabs')} 
             selectedKey={activeFilter} 
             onSelectionChange={setActiveFilter as any}
             className="w-full"
@@ -293,9 +293,16 @@ export function NewsTimeline({
           
           <div className="space-y-6">
             {visibleNews.map((item, index) => (
-              <div key={item.id} className="relative flex items-start pl-10 md:pl-16">
+              <article 
+                key={item.id} 
+                className="relative flex items-start pl-10 md:pl-16"
+                aria-labelledby={`news-title-${item.id}`}
+              >
                 {/* 时间线上的点 */}
-                <div className="absolute left-2 md:left-8 top-2 w-5 h-5 rounded-full bg-primary ring-2 ring-white dark:ring-gray-800 shadow-md transform -translate-x-1/2 z-10"></div>
+                <div 
+                  className="absolute left-2 md:left-8 top-2 w-5 h-5 rounded-full bg-primary ring-2 ring-white dark:ring-gray-800 shadow-md transform -translate-x-1/2 z-10"
+                  aria-hidden="true"
+                ></div>
                 
                 {/* 内容卡片 */}
                 <div className="w-full">
@@ -314,13 +321,18 @@ export function NewsTimeline({
                         
                         {/* 日期（所有屏幕尺寸） */}
                         <div className="flex items-center gap-1">
-                          <Calendar className="text-primary" size={14} />
-                          <span className="text-xs text-foreground/70">{formatDate(item.publishDate || item.date, 'short', locale)}</span>
+                          <Calendar className="text-primary" size={14} aria-hidden="true" />
+                          <time 
+                            className="text-xs text-foreground/70" 
+                            dateTime={item.publishDate || item.date}
+                          >
+                            {formatDate(item.publishDate || item.date, 'short', locale)}
+                          </time>
                         </div>
                       </div>
                       
                       {/* 标题 */}
-                      <h3 className="text-lg font-semibold mb-2">
+                      <h3 className="text-lg font-semibold mb-2" id={`news-title-${item.id}`}>
                         {item.title}
                       </h3>
                       
@@ -329,9 +341,10 @@ export function NewsTimeline({
                         <div className={`relative w-full mb-3 rounded-md overflow-hidde ${item.aspect ? `aspect-${item.aspect}` : ''}`}>
                           <NextImage
                             src={item.imageUrl}
-                            alt={item.title}
+                            alt={`${item.title} - 配图`}
                             fill
                             className="object-cover"
+                            loading="lazy"
                           />
                         </div>
                       )}
@@ -404,17 +417,19 @@ export function NewsTimeline({
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-primary text-sm hover:underline flex items-center gap-1"
+                              aria-label={`${item.type === 'publication' ? t('readPaper') : t('readMore')}: ${item.title}`}
                             >
                               {item.type === 'publication' ? t('readPaper') : t('readMore')}
-                              <ExternalLink size={14} />
+                              <ExternalLink size={14} aria-hidden="true" />
                             </Link>
                           ) : (
                             <Link
                               href={getDetailLink(item)}
                               className="text-primary text-sm hover:underline flex items-center gap-1"
+                              aria-label={`${t('details')}: ${item.title}`}
                             >
                               {t('details')}
-                              <ChevronRight size={14} />
+                              <ChevronRight size={14} aria-hidden="true" />
                             </Link>
                           )}
                         </div>
@@ -422,7 +437,7 @@ export function NewsTimeline({
                     </CardBody>
                   </Card>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
@@ -435,8 +450,9 @@ export function NewsTimeline({
               variant="flat"
               className="px-6" 
               onClick={handleLoadMore}
-              endContent={<ChevronDown size={16} />}
+              endContent={<ChevronDown size={16} aria-hidden="true" />}
               isLoading={isLoading}
+              aria-label={isLoading ? '加载中...' : t('loadMore')}
             >
               {t('loadMore')}
             </Button>

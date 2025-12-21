@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { loadAllAsNewsItems } from '../../../src/utils/contentLoader';
 
-export const dynamic = 'force-dynamic';
+// 配置缓存：30分钟重新验证，12小时内可使用过期缓存
+export const revalidate = 1800;
 
 export async function GET(request: NextRequest) {
   try {
@@ -46,10 +47,21 @@ export async function GET(request: NextRequest) {
     }
     
     // 返回JSON响应，包含新闻项和总数量
-    return NextResponse.json({
-      items: news,
-      total: totalCount
-    });
+    return NextResponse.json(
+      {
+        items: news,
+        total: totalCount,
+      },
+      {
+        headers: {
+          // 浏览器缓存30分钟
+          'Cache-Control': 'public, s-maxage=1800, stale-while-revalidate=43200',
+          // CDN 缓存配置
+          'CDN-Cache-Control': 'public, s-maxage=1800',
+          'Vercel-CDN-Cache-Control': 'public, s-maxage=1800',
+        },
+      }
+    );
   } catch (error) {
     console.error('Error in news API route:', error);
     return NextResponse.json(

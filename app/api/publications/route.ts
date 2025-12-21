@@ -17,6 +17,9 @@ interface Publication {
   citations?: number;
 }
 
+// 配置缓存：1小时重新验证，24小时内可使用过期缓存
+export const revalidate = 3600;
+
 export async function GET() {
   try {
     console.log('API: Fetching publications data');
@@ -38,9 +41,20 @@ export async function GET() {
       }))
       .sort((a: Publication, b: Publication) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime());
 
-    return NextResponse.json({
-      publications: safePublications,
-    });
+    return NextResponse.json(
+      {
+        publications: safePublications,
+      },
+      {
+        headers: {
+          // 浏览器缓存1小时
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
+          // CDN 缓存配置
+          'CDN-Cache-Control': 'public, s-maxage=3600',
+          'Vercel-CDN-Cache-Control': 'public, s-maxage=3600',
+        },
+      }
+    );
   } catch (error) {
     console.error('API: Error fetching publications data:', error);
     return NextResponse.json({ error: 'Failed to fetch publications data' }, { status: 500 });
