@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /blank/
+
+# Host
+Host: https://tiantian.group/
+
+# Sitemaps
+Sitemap: https://tiantian.group/sitemap.xml

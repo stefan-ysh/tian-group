@@ -1,9 +1,9 @@
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from '~/components/atoms/Providers';
+import { OrganizationSchema, WebSiteSchema } from '~/components/seo/JsonLd';
 // import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
-import { OrganizationSchema, WebSiteSchema } from '~/components/seo/JsonLd';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import Script from 'next/script';
@@ -90,16 +90,12 @@ export default async function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <Script
-          src="https://umami.tiantian.group/script.js"
-          data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"
-          strategy="afterInteractive"
-        />
+        <script defer src="https://umami.tiantian.group/script.js" data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"></script>
         <style>{`
           *, *::before, *::after {
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
           }
-          
+
           @media(prefers-reduced-motion: reduce) {
             *, *::before, *::after {
               transition-duration: 0.01ms !important;
@@ -110,21 +106,11 @@ export default async function RootLayout({
       <body className="tracking-tight antialiased">
         <OrganizationSchema />
         <WebSiteSchema />
-        {/* Skip to main content link for accessibility */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          aria-label="跳转到主要内容"
-        >
-          跳转到主要内容
-        </a>
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <Header />
             {/* <PageAnimatePresence> */}
-              <main id="main-content">
-                {children}
-              </main>
+              {children}
               <Analytics />
               <SpeedInsights />
             {/* </PageAnimatePresence> */}
@@ -135,10 +121,10 @@ export default async function RootLayout({
           href="#top"
           title="Back to top"
           id="backToTop"
-          className="fixed bottom-6 right-6 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full p-3 shadow-lg transition-all duration-300 opacity-0 invisible focus:opacity-100 focus:visible focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="fixed bottom-6 right-6 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full p-3 shadow-lg transition-all duration-300 opacity-0 invisible"
           aria-label="回到顶部"
         >
-          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
           </svg>
         </a>
