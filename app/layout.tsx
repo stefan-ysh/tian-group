@@ -10,8 +10,6 @@ import Script from 'next/script';
 
 import type { Metadata } from 'next';
 
-// import PageAnimatePresence from '~/components/atoms/PageAnimatePresence';
-
 import '~/styles/base.css';
 
 export interface LayoutProps {
@@ -96,17 +94,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           src="https://umami.tiantian.group/script.js"
           data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"
         ></script>
-        <style>{`
-          *, *::before, *::after {
-            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-          }
-
-          @media(prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-              transition-duration: 0.01ms !important;
-            }
-          }
-        `}</style>
       </head>
       <body className="tracking-tight antialiased">
         <OrganizationSchema />
@@ -114,11 +101,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <Header />
-            {/* <PageAnimatePresence> */}
             {children}
             <Analytics />
             <SpeedInsights />
-            {/* </PageAnimatePresence> */}
             {/* <Footer /> */}
           </NextIntlClientProvider>
         </Providers>
