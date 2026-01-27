@@ -12,7 +12,7 @@ import type { Metadata } from 'next';
 
 // import PageAnimatePresence from '~/components/atoms/PageAnimatePresence';
 
-import '~/assets/styles/base.css';
+import '~/styles/base.css';
 
 export interface LayoutProps {
   children: React.ReactNode;

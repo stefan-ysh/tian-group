@@ -18,9 +18,16 @@ export async function GET(
 ) {
   try {
     const slug = params.slug;
-    console.log(`API: Fetching member with slug: ${slug}`);
+    const { searchParams } = new URL(request.url);
+    const queryLocale = searchParams.get('locale');
     
-    const member = await findMembersByName(slug) as Member;
+    const locale = queryLocale || (request.headers.get('cookie')?.split('; ')
+      .find(row => row.startsWith('NEXT_LOCALE='))
+      ?.split('=')[1]) || 'zh';
+    
+    console.log(`API: Fetching member with slug: ${slug} (locale: ${locale})`);
+    
+    const member = await findMembersByName(slug, locale) as Member;
     
     if (!member) {
       console.error(`API: Member not found with slug: ${slug}`);

@@ -12,10 +12,16 @@ interface Member {
 // 配置缓存：1小时重新验证，24小时内可使用过期缓存
 export const revalidate = 3600;
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
-    console.log('API: Fetching members data');
-    const members = await findLatestMembers();
+    const { searchParams } = new URL(request.url);
+    const locale = searchParams.get('locale') || 
+                   (request.headers.get('cookie')?.split('; ')
+                     .find(row => row.startsWith('NEXT_LOCALE='))
+                     ?.split('=')[1]) || 'zh';
+    
+    console.log(`API: Fetching members data (locale: ${locale})`);
+    const members = await findLatestMembers({ locale });
     
     if (!members || !Array.isArray(members)) {
       console.error('API: Members data is not an array or is empty', members);

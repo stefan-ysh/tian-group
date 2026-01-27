@@ -1,16 +1,18 @@
 ---
 name: '田甜'
+name_en: 'Tian Tian'
 title: 'Professor'
+title_en: 'Professor'
 description: '扬州大学化学化工学院特聘教授；扬州宇元新材有限公司（官网 https://www.cosmorigin.com）首席技术官（CTO）。研究方向：光电纳米材料与器件研发。'
-avatar: 'https://s2.loli.net/2025/03/22/5uzDshdXwqIBctl.png'
+description_en: 'Distinguished Professor at the School of Chemistry and Chemical Engineering, Yangzhou University; Chief Technology Officer (CTO) of Yangzhou Yuyuan New Material Co., Ltd.'
+avatar: '/images/avatar/tiantian.jpg'
 position: 'Professor'
+position_en: 'Professor'
 research_areas: '光电纳米材料与器件研发'
+research_areas_en: 'Research and development of photoelectric nanomaterials and devices'
 order: 1
 tags: [markdown, member]
 ---
-
-<!-- ![avatar](https://s2.loli.net/2025/01/13/g6KlzY3JFR4w1VT.jpg) -->
-<img src="/images/tiantian-avatar.jpg" class="w-1/2 mx-auto" />
 
 ## 学术经历
 
@@ -37,3 +39,31 @@ tags: [markdown, member]
 在我的教学工作中，我秉持"理论与实践并重"的理念，鼓励学生们亲自动手实践。我相信，真正的科研能力不仅仅来自书本知识，更需要在实验室中的摸索与思考。我希望能培养出不仅具备扎实专业知识，还拥有创新思维与解决问题能力的优秀人才，为化学化工领域的发展储备力量。
 
 我特别重视团队协作精神的培养，在课堂和实验室中创造机会让学生们共同解决问题。我也注重将国际视野带入教学，鼓励学生关注全球前沿研究动态，培养他们的国际交流能力。作为一名教育工作者，看到学生们在自己的引导下成长进步，是我最大的成就感来源。
+
+---EN---
+
+## Academic Experience
+
+I am Tian Tian. From 2017 to 2020, I had the privilege of participating in the joint doctoral program between University of Shanghai for Science and Technology and the Technical University of Denmark, where I went to Denmark for further study. This international learning experience gave me a valuable opportunity to come into contact with cutting-edge knowledge and technology in multi-disciplinary fields such as chemistry and material science. During the four years of studying abroad, I focused on the basic theoretical research of photoelectric nanomaterials, systematically learned material synthesis methods, characterization techniques and device design principles, and accumulated rich experimental experience and theoretical knowledge.
+
+From 2021 to 2023, I carried out postdoctoral research at the School of Chemistry, Sun Yat-sen University. The strong academic atmosphere of Sun Yat-sen University allowed me to exchange and cooperate with many outstanding colleagues and further deepened my professional quality in the field of chemistry. Here, I mainly researched the application of photoelectric nanomaterials in complex systems. Through a series of experimental projects, I solved several key scientific problems and opened up a new path for the practical application of photoelectric nanomaterials.
+
+## Current Work and Research Interests
+
+Currently, I serve as a Distinguished Professor at the School of Chemistry and Chemical Engineering, Yangzhou University, and as the Chief Technology Officer (CTO) of Yangzhou Yuyuan New Material Co., Ltd. (official website https://www.cosmorigin.com). In terms of teaching, I uphold a rigorous academic attitude, carefully design course content, and integrate the experience and cutting-edge knowledge I have accumulated in scientific research practice into the classroom, hoping to stimulate students' interest in learning and innovative thinking; in the field of scientific research, I continue to focus on the cutting-edge field of photoelectric nanomaterial preparation and device research and development.
+
+My research team mainly focuses on innovations in synthesis methods, precise performance control and efficient device integration of photoelectric nanomaterials. We actively explore new synthesis routes and develop photoelectric nanomaterials with unique structures and excellent properties; study the structure-property relationship of material microstructure and macro performance; achieve precise control of photoelectric nanomaterial properties through precise control of the size, morphology and composition of materials. In the device integration link, we have overcome technical problems such as the contact between materials and electrodes and device stability, and developed a series of high-performance photoelectric nanomaterial device prototypes. Our research results are expected to be applied in energy conversion, environmental monitoring, biosensing and other fields, generating practical value.
+
+## Research Achievements
+
+I am fortunate to have received support from the National Youth Natural Science Foundation of China (2024-2026), which is both an affirmation of my past work and important support for my future research.
+
+In terms of research output, as the first author or corresponding author, I have published more than 10 papers in international journals such as Nature Communications (3 papers), Nature Sustainability, and Angewandte Chemie. These studies cover multiple links of photoelectric nanomaterials from preparation to application, which not only attracted attention in the academic community, but also provided references for the development of related fields. My research results are innovative and forward-looking in theory, and also show potential in practical applications, laying a foundation for photoelectric nanomaterials to move from laboratory to market.
+
+At present, I have hosted 5 scientific research projects including the National Youth Natural Science Foundation, covering multiple aspects from basic research to application development. In these projects, I focus on the cultivation and development of team members and provide learning and growth opportunities for young scientific researchers. My team members and I worked together and achieved a series of scientific research results including invention patents and utility model patents. I believe these works have positive significance for improving China's independent innovation ability in the field of photoelectric nanomaterials and devices, and also contribute to China's move from a large chemical and chemical engineering country to a strong one.
+
+## Educational Philosophy
+
+In my teaching work, I uphold the concept of "equal emphasis on theory and practice" and encourage students to practice personally. I believe that true scientific research ability comes not only from book knowledge, but also needs exploration and thinking in the laboratory. I hope to cultivate outstanding talents who not only have solid professional knowledge, but also have innovative thinking and problem-solving abilities, so as to reserve strength for the development of the chemical and chemical engineering field.
+
+I pay special attention to the cultivation of team spirit and create opportunities for students to solve problems together in classrooms and laboratories. I also focus on bringing international perspectives into teaching, encouraging students to pay attention to global cutting-edge research trends, and cultivating their international communication skills. As an educator, seeing students grow and progress under my guidance is my greatest sense of achievement.

@@ -54,7 +54,29 @@
       "Graduate": "Graduate",
       "Lecturer": "Lecturer",
       "Postdoctoral": "Postdoctoral",
-      "Doctoral": "Doctoral"
+      "Doctoral": "Doctoral",
+      "Master Student": "Master Student",
+      "PhD Student": "PhD Student",
+      "Member": "Member"
+    },
+    "Detail": {
+      "greeting": "👋 Hi there, I'm {name}",
+      "joinYear": "Join Year",
+      "yearSuffix": "Class of {year}",
+      "researchArea": "Research Direction",
+      "email": "Email Address",
+      "loadError": "Data Loading Failed",
+      "tryAgain": "Unable to get member data, please try again later"
+    },
+    "ListPage": {
+      "title": "Tian Tian's Research Group Members",
+      "mentorTitle": "Mentor Introduction",
+      "studentsTitle": "Current Team Members",
+      "mentorPoint1": "Distinguished Professor, School of Chemistry and Chemical Engineering, Yangzhou University",
+      "mentorPoint2": "Focuses on photoelectric nanomaterials and device research and development",
+      "mentorPoint3": "Published 10+ papers as first/corresponding author in journals like Nature Communications, Nature Sustainability, Angewandte Chemie, etc.",
+      "mentorPoint4": "Principal Investigator of 5 research projects including National Youth Science Foundation",
+      "mentorPoint5": "Chief Technology Officer (CTO) of Yangzhou Yuyuan New Material Co., Ltd."
     }
   },
   "Research": {

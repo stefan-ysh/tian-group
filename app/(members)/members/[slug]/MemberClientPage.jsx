@@ -3,14 +3,16 @@
 import md from 'markdown-it';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 
 // 错误展示组件
 function MemberError() {
+  const t = useTranslations('Member.Detail');
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-      <h2 className="text-xl font-bold mb-2">数据加载失败</h2>
+      <h2 className="text-xl font-bold mb-2">{t('loadError')}</h2>
       <p className="text-gray-600 dark:text-gray-400 mb-4">
-        无法获取成员数据，请稍后再试
+        {t('tryAgain')}
       </p>
     </div>
   );
@@ -20,6 +22,8 @@ export function MemberClientPage({ slug }) {
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const t = useTranslations('Member.Detail');
+  const locale = useLocale();
 
   useEffect(() => {
     async function fetchMember() {
@@ -29,7 +33,7 @@ export function MemberClientPage({ slug }) {
         setLoading(true);
         setError(false);
         
-        const response = await fetch(`/api/members/${slug}`);
+        const response = await fetch(`/api/members/${slug}?locale=${locale}`);
         
         if (!response.ok) {
           throw new Error(`Member fetch failed: ${response.status}`);
@@ -51,7 +55,7 @@ export function MemberClientPage({ slug }) {
     }
     
     fetchMember();
-  }, [slug]);
+  }, [slug, locale]);
   
   if (error) {
     return <MemberError />;
@@ -64,7 +68,7 @@ export function MemberClientPage({ slug }) {
           // 加载中的骨架屏
           <div className="animate-pulse">
             <header className="text-center">
-              <div className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 h-8 bg-primary/10 rounded w-48 mx-auto"></div>
+              <div className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 h-8 bg-primary/10 rounded w-48"></div>
               <div className="h-64 md:h-96 max-w-3xl mx-auto mt-4 mb-6 bg-primary/10 rounded-md"></div>
             </header>
             <div className="mx-auto max-w-3xl px-6 space-y-4">
@@ -78,21 +82,20 @@ export function MemberClientPage({ slug }) {
         ) : member ? (
           // 实际内容
           <>
-            <header className={member.image ? 'text-center' : ''}>
-              <h1 className="sr-only">👋 Hi there, I&apos;m {member.name}</h1>
-              <div className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 text-1xl font-bold tracking-tighter sm:px-6 md:text-2xl">
-                👋 Hi there, I&apos;m {member.name}
+            <header className={member.avatar || member.image ? 'text-center' : ''}>
+              <div className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 text-2xl font-bold tracking-tighter sm:px-6 md:text-3xl text-purple-900 dark:text-purple-300">
+                {t('greeting', { name: member.name })}
               </div>
-              {member.image ? (
+              {member.avatar || member.image ? (
                 <Image
-                  src={member.image}
-                  className="mx-auto mt-4 mb-6 max-w-full bg-gray-400 dark:bg-slate-700 sm:rounded-md lg:max-w-5xl"
-                  sizes="(max-width: 900px) 400px, 900px"
+                  src={member.avatar || member.image}
+                  className="mx-auto mt-8 mb-6 max-w-[280px] sm:max-w-[320px] bg-gray-400 dark:bg-slate-700 rounded-xl shadow-lg border-4 border-white dark:border-gray-800"
+                  sizes="(max-width: 768px) 280px, 320px"
                   alt={member.description || member.name}
                   loading="eager"
                   priority
-                  width={900}
-                  height={480}
+                  width={400}
+                  height={500}
                 />
               ) : (
                 <div className="mx-auto max-w-3xl px-4 sm:px-6">
@@ -100,8 +103,30 @@ export function MemberClientPage({ slug }) {
                 </div>
               )}
             </header>
+
+            <div className="mx-auto max-w-3xl px-6 py-6 bg-gray-50/50 dark:bg-gray-800/30 rounded-2xl border border-gray-100 dark:border-gray-700 flex flex-col gap-4">
+              {member.joined_year && (
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                  <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('joinYear')}</span>
+                  <span className="text-gray-700 dark:text-gray-300">{t('yearSuffix', { year: member.joined_year })}</span>
+                </div>
+              )}
+              {member.research_areas && (
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                   <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('researchArea')}</span>
+                   <span className="text-gray-700 dark:text-gray-300">{member.research_areas}</span>
+                </div>
+              )}
+              {member.email && (
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                   <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('email')}</span>
+                   <a href={`mailto:${member.email}`} className="text-primary-600 hover:text-primary-700 transition-colors">{member.email}</a>
+                </div>
+              )}
+            </div>
+
             <div
-              className="prose-md prose-headings:font-heading prose-headings:leading-tighter container prose prose-lg mx-auto mt-8 max-w-3xl px-6 prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-primary-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-slate-300 dark:prose-a:text-primary-400 sm:px-6 lg:prose-xl"
+              className="prose-md prose-headings:font-heading prose-headings:leading-tighter container prose prose-lg mx-auto mt-12 max-w-3xl px-6 prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-primary-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-slate-300 dark:prose-a:text-primary-400 sm:px-6 lg:prose-xl leading-relaxed"
               dangerouslySetInnerHTML={{
                 __html: md({
                   html: true,
