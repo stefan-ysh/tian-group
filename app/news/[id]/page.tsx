@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { findNewsById, fetchNews } from '../../../src/utils/news';
+import { cookies } from 'next/headers';
+import { getTranslations } from 'next-intl/server';
+import { findNewsItemById, loadAllAsNewsItems } from '../../../src/utils/contentLoader';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { NewsDetailContent } from './NewsDetailContent';
-import { DetailNewsItem } from '../../../src/types/content';
-
 import { BreadcrumbSchema, NewsArticleSchema } from '~/components/seo/JsonLd';
 import { generateNewsMetadata, generateSEOMetadata } from '~/lib/seo';
 
@@ -12,15 +12,17 @@ import { generateNewsMetadata, generateSEOMetadata } from '~/lib/seo';
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-// Generate metadata for the page - This approach is working correctly so we'll keep it
+// Generate metadata for the page
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   try {
-    const newsItem = await findNewsById(params.id);
+    const cookieStore = await cookies();
+    const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
+    const newsItem = await findNewsItemById(params.id, locale);
     
     if (!newsItem) {
       return generateSEOMetadata({
-        title: '新闻未找到',
-        description: '抱歉，您请求的新闻内容未找到。',
+        title: locale === 'en' ? 'News Not Found' : '新闻未找到',
+        description: locale === 'en' ? 'Sorry, the news content you requested was not found.' : '抱歉，您请求的新闻内容未找到。',
         path: `/news/${params.id}`,
         noindex: true,
       });
@@ -46,7 +48,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
 // Generate static params for all news items
 export async function generateStaticParams() {
-  const news = await fetchNews();
+  const news = await loadAllAsNewsItems();
   
   return news.filter(item => item !== null).map((item) => ({
     id: item.id
@@ -54,27 +56,18 @@ export async function generateStaticParams() {
 }
 
 export default async function NewsDetailPage({ params }: { params: { id: string } }) {
-  const newsItem = await findNewsById(params.id);
+  const cookieStore = await cookies();
+  const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
+  const newsItem = await findNewsItemById(params.id, locale);
+  const t = await getTranslations({ locale, namespace: 'Header.NavMenu' });
+  const newsT = await getTranslations({ locale, namespace: 'News' });
+  const commonT = await getTranslations({ locale, namespace: 'Common' });
   
   // If news item not found, show 404
   if (!newsItem) {
     notFound();
   }
   
-  // Create a safe version of the news item for the client component
-  const safeNewsItem = {
-    id: newsItem.id,
-    title: newsItem.title,
-    date: newsItem.date || '',
-    summary: newsItem.summary || '',
-    type: newsItem.type || '',
-    imageUrl: newsItem.imageUrl,
-    link: newsItem.link,
-    tags: newsItem.tags || [],
-    authors: newsItem.authors || [],
-    publication: newsItem.publication || undefined
-  };
-
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
   const url = `${siteUrl}/news/${params.id}`;
   
@@ -82,22 +75,22 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
     <section className="w-full mx-auto">
       <BreadcrumbSchema
         items={[
-          { name: '首页', url: siteUrl },
-          { name: '新闻动态', url: `${siteUrl}/news` },
+          { name: commonT('Home'), url: siteUrl },
+          { name: newsT('title'), url: `${siteUrl}/news` },
           { name: newsItem.title, url },
         ]}
       />
-      <NewsArticleSchema news={{ ...safeNewsItem, id: params.id, imageUrl: newsItem.imageUrl }} />
+      <NewsArticleSchema news={{ ...newsItem, id: params.id, imageUrl: newsItem.imageUrl }} />
       <div className="container mx-auto px-4 max-w-4xl">
         {/* Breadcrumb */}
         <div className="mb-8">
           <nav className="flex text-sm">
             <Link href="/" className="text-foreground/60 hover:text-primary">
-              首页
+              {commonT('Home')}
             </Link>
             <span className="mx-2 text-foreground/60">/</span>
             <Link href="/news" className="text-foreground/60 hover:text-primary">
-              新闻动态
+              {newsT('title')}
             </Link>
             <span className="mx-2 text-foreground/60">/</span>
             <span className="text-foreground">
@@ -107,7 +100,7 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
         </div>
         
         {/* Use client component for rendering content */}
-        <NewsDetailContent newsItem={safeNewsItem} />
+        <NewsDetailContent newsItem={newsItem} />
         
         {/* Back to news */}
         <div className="mt-8 text-center">
@@ -115,10 +108,11 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
             href="/news"
             className="inline-flex items-center gap-2 px-4 py-2 bg-foreground/10 rounded-md hover:bg-foreground/20 transition-colors"
           >
-            返回新闻列表
+            {newsT('allNews')}
           </Link>
         </div>
       </div>
     </section>
   );
-} 
+}
+ 

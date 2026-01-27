@@ -10,6 +10,14 @@
       "Title": "Publications & Achievements",
       "Description": "Academic papers and research results published by the Tian Group, covering cyclodextrins, perovskites, solar cells, luminescent materials, etc., including journal info, authors, abstracts and tags.",
       "Keywords": ["Research Results", "Publications", "Academic Papers", "Journal Papers", "Perovskite", "Solar Cells", "Luminescent Materials", "Cyclodextrin"]
+    },
+    "Activities": {
+      "Title": "Group Activities",
+      "Description": "Records of group activities in Prof. Tian's lab, including academic seminars, lab safety training, international conferences, industrial visits, and group meetings."
+    },
+    "News": {
+      "Title": "News & Dynamics",
+      "Description": "Latest dynamics and research progress of Prof. Tian's research group, including academic conferences, research results release, team activities, and important announcements."
     }
   },
   "Common": {
@@ -76,11 +84,13 @@
       "Doctoral": "Doctoral",
       "Master Student": "Master Student",
       "PhD Student": "PhD Student",
-      "Member": "Member"
+      "Member": "Member",
+      "Alumnus": "Alumni"
     },
     "Detail": {
       "greeting": "👋 Hi there, I'm {name}",
       "joinYear": "Join Year",
+      "leaveYear": "Leave Year",
       "yearSuffix": "Class of {year}",
       "researchArea": "Research Direction",
       "email": "Email Address",
@@ -91,6 +101,7 @@
       "title": "Tian Tian's Research Group Members",
       "mentorTitle": "Mentor Introduction",
       "studentsTitle": "Current Team Members",
+      "alumniTitle": "Alumni",
       "mentorPoint1": "Distinguished Professor, School of Chemistry and Chemical Engineering, Yangzhou University",
       "mentorPoint2": "Focuses on photoelectric nanomaterials and device research and development",
       "mentorPoint3": "Published 10+ papers as first/corresponding author in journals like Nature Communications, Nature Sustainability, Angewandte Chemie, etc.",
@@ -325,6 +336,7 @@
   "News": {
     "title": "News",
     "allNews": "All News",
+    "loading": "Loading...",
     "publications": "Publications",
     "awards": "Awards",
     "events": "Events",

@@ -12,8 +12,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = messages.Metadata?.News || messages.News || {};
 
   return generateSEOMetadata({
-    title: t.title || '新闻动态',
-    description: t.description || '田甜课题组最新动态与科研进展，包含学术会议、研究成果发布、团队活动与重要通知等内容。',
+    title: t.Title || t.title || '新闻动态',
+    description: t.Description || t.description || '田甜课题组最新动态与科研进展，包含学术会议、研究成果发布、团队活动与重要通知等内容数据。',
     path: '/news',
     type: 'website',
   });

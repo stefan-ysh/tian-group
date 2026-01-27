@@ -1,14 +1,25 @@
----
-title: "与xxx合作(模拟数据，开发中...)"
+title: "与工业伙伴开展新合作(模拟数据，开发中...)"
+title_en: "New Collaboration with Industry Partners (Mock Data)"
 date: "2024-06-20"
-description: "。。。"
+description: "我们将与领先的工业伙伴在高性能材料领域展开深度合作。"
+description_en: "We will launch deep collaboration with leading industry partners in the field of high-performance materials."
 image: "https://tc.lepubiopharma.com/upload/2021-03/161577381781232600.jpg"
 aspect: video
 tags: ["合作", "产业合作", "技术转移"]
+tags_en: ["Collaboration", "Industry", "Tech Transfer"]
 category: "合作公告"
+category_en: "Collaboration Announcement"
 status: "active"
+
 ---
-<!-- 
+
+我们很高兴宣布启动一项新的工业合作项目。
+
+---EN---
+
+We are pleased to announce the launch of a new industrial collaboration project.
+
+<!--
 ## 合作内容
 
 我们很高兴宣布与XYZ太阳能科技有限公司正式签订战略合作协议。该合作将专注于以下几个方面：

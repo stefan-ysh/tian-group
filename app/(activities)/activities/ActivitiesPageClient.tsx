@@ -70,7 +70,7 @@ export default function ActivitiesPageClient() {
               </div>
               <div className="relative flex justify-start">
                 <span className="bg-white dark:bg-gray-900 pr-3 text-2xl font-semibold text-gray-900 dark:text-white">
-                  {year}年
+                  {locale === 'zh' ? `${year}年` : year}
                 </span>
               </div>
             </div>

@@ -201,7 +201,7 @@ export async function loadPublications(locale: string = 'zh'): Promise<Publicati
       year: new Date(date).getFullYear(),
       summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || 'https://i.imgur.com/FRQ93Lm.jpg',
-      tags: frontmatter.tags || ['Research', 'Publication'],
+      tags: (isEn && frontmatter.tags_en) ? frontmatter.tags_en : (frontmatter.tags || ['Research', 'Publication']),
       link: frontmatter.link || '',
       authors: parseAuthors(frontmatter.author),
       journal: (isEn && frontmatter.journal_en) ? frontmatter.journal_en : (frontmatter.journal || 'Unknown Journal'),
@@ -237,7 +237,7 @@ export async function loadAwards(locale: string = 'zh'): Promise<Award[]> {
       date: parseDate(frontmatter.date),
       summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || undefined,
-      tags: frontmatter.tags || ['Award'],
+      tags: (isEn && frontmatter.tags_en) ? frontmatter.tags_en : (frontmatter.tags || ['Award']),
       link: frontmatter.link || undefined,
       recipient: (isEn && frontmatter.recipient_en) ? frontmatter.recipient_en : (frontmatter.recipient || undefined),
       organization: (isEn && frontmatter.organization_en) ? frontmatter.organization_en : (frontmatter.organization || undefined),
@@ -265,7 +265,7 @@ export async function loadAnnouncements(locale: string = 'zh'): Promise<Announce
       date: parseDate(frontmatter.date),
       summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || undefined,
-      tags: frontmatter.tags || ['Announcement'],
+      tags: (isEn && frontmatter.tags_en) ? frontmatter.tags_en : (frontmatter.tags || ['Announcement']),
       link: frontmatter.link || undefined,
       category: (isEn && frontmatter.category_en) ? frontmatter.category_en : (frontmatter.category || undefined),
       aspect: frontmatter.aspect || undefined,
@@ -293,7 +293,7 @@ export async function loadEvents(locale: string = 'zh'): Promise<Event[]> {
       date: parseDate(frontmatter.date),
       summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || undefined,
-      tags: frontmatter.tags || ['Event'],
+      tags: (isEn && frontmatter.tags_en) ? frontmatter.tags_en : (frontmatter.tags || ['Event']),
       link: frontmatter.link || undefined,
       startDate: parseDate(frontmatter.startDate || frontmatter.date),
       endDate: frontmatter.endDate ? parseDate(frontmatter.endDate) : undefined,
@@ -397,5 +397,11 @@ export async function getNewsCounts(locale: string = 'zh'): Promise<Record<strin
   });
   
   return counts;
+}
+
+// 根据ID查找单个新闻项
+export async function findNewsItemById(id: string, locale: string = 'zh'): Promise<NewsItem | null> {
+  const allNews = await loadAllAsNewsItems(locale);
+  return allNews.find(item => item.id === id) || null;
 }
  

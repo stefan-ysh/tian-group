@@ -38,10 +38,7 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
             size="sm"
             startContent={getTypeIcon(newsType)}
           >
-            {newsItem.type === 'publication' ? '论文发表' : 
-             newsItem.type === 'award' ? '荣誉奖项' : 
-             newsItem.type === 'event' ? '学术活动' : 
-             newsItem.type === 'media' ? '媒体报道' : '公告'}
+            {t(`types.${newsItem.type}`)}
           </Chip>
           
           <div className="flex items-center gap-2 text-foreground/60 text-sm">
@@ -68,7 +65,7 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
         {/* Publication authors */}
         {newsItem.type === 'publication' && newsItem.authors && newsItem.authors.length > 0 && (
           <div className="mb-4 text-lg">
-            <h2 className="font-semibold mb-2">作者</h2>
+            <h2 className="font-semibold mb-2">{locale === 'en' ? 'Authors' : '作者'}</h2>
             <div className="flex flex-wrap gap-2">
               {newsItem.authors.map((author, index) => (
                 <span 
@@ -85,7 +82,7 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
         {/* Publication details */}
         {newsItem.type === 'publication' && newsItem.publication && (
           <div className="mb-6">
-            <h2 className="font-semibold mb-2">发表信息</h2>
+            <h2 className="font-semibold mb-2">{locale === 'en' ? 'Publication Information' : '发表信息'}</h2>
             <div className="text-lg italic text-foreground/80">
               {newsItem.publication.journal}
               {newsItem.publication.volume && `, ${newsItem.publication.volume}`}
@@ -112,15 +109,12 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
         {/* Summary/content */}
         <div className="text-lg mb-8 leading-relaxed">
           <p>{newsItem.summary}</p>
-          
-          {/* Here we would typically include more detailed content 
-              For now we're just using the summary */}
         </div>
         
         {/* Tags */}
         {newsItem.tags && newsItem.tags.length > 0 && (
           <div className="mt-6">
-            <h3 className="text-sm text-foreground/70 mb-2">标签</h3>
+            <h3 className="text-sm text-foreground/70 mb-2">{locale === 'en' ? 'Tags' : '标签'}</h3>
             <div className="flex flex-wrap gap-2">
               {newsItem.tags.map((tag) => (
                 <Chip key={tag} variant="flat" size="sm">
@@ -140,7 +134,7 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
             >
-              {t('readPaper')}
+              {newsItem.type === 'publication' ? t('readPaper') : (locale === 'en' ? 'View Online' : '查看详情')}
               <ExternalLink size={16} />
             </Link>
           </div>

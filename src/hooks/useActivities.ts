@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useSWR from 'swr';
+import { useLocale } from 'next-intl';
 
 interface ActivityItem {
   id: string;
@@ -34,6 +35,7 @@ const fetcher = async (url: string) => {
 };
 
 export function useActivities({ count, page, limit }: UseActivitiesOptions = {}) {
+  const locale = useLocale();
   // 构建URL和查询参数
   let url = '/api/activities';
   const params = new URLSearchParams();
@@ -43,7 +45,8 @@ export function useActivities({ count, page, limit }: UseActivitiesOptions = {})
   if (limit) params.append('limit', limit.toString());
   
   const queryString = params.toString();
-  const fullUrl = queryString ? `${url}?${queryString}` : url;
+  // Include locale in the SWR key to force re-fetch when locale changes
+  const fullUrl = queryString ? `${url}?${queryString}&locale=${locale}` : `${url}?locale=${locale}`;
   
   // 使用SWR进行数据获取
   const { data, error, isLoading, mutate } = useSWR<ActivitiesResponse>(
@@ -67,7 +70,8 @@ export function useActivities({ count, page, limit }: UseActivitiesOptions = {})
 
 // 获取单个活动的钩子
 export function useActivity(id: string) {
-  const url = id ? `/api/activities?id=${id}` : null;
+  const locale = useLocale();
+  const url = id ? `/api/activities?id=${id}&locale=${locale}` : null;
   
   const { data, error, isLoading } = useSWR<ActivityItem>(
     url, 
@@ -83,4 +87,5 @@ export function useActivity(id: string) {
     isLoading,
     isError: !!error
   };
-} 
+}
+ 

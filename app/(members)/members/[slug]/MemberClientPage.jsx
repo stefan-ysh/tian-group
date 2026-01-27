@@ -111,6 +111,12 @@ export function MemberClientPage({ slug }) {
                   <span className="text-gray-700 dark:text-gray-300">{t('yearSuffix', { year: member.joined_year })}</span>
                 </div>
               )}
+              {member.leave_year && (
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                  <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('leaveYear')}</span>
+                  <span className="text-gray-700 dark:text-gray-300">{member.leave_year}</span>
+                </div>
+              )}
               {member.research_areas && (
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                    <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('researchArea')}</span>

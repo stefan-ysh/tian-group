@@ -4,6 +4,7 @@ import { setUserLocale } from '~/services/locale';
 import { Button } from "@heroui/react";
 import { useLocale } from 'next-intl';
 import { useTransition, useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 const ToggleLanguage = () => {
   const locale = useLocale();
@@ -14,9 +15,12 @@ const ToggleLanguage = () => {
     setMounted(true);
   }, []);
   
+  const router = useRouter();
+  
   const handleOnClick = () => {
-    startTransition(() => {
-      setUserLocale(locale === 'en' ? 'zh' : 'en');
+    startTransition(async () => {
+      await setUserLocale(locale === 'en' ? 'zh' : 'en');
+      router.refresh();
     });
   };
 

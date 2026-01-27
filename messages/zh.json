@@ -10,6 +10,14 @@
       "Title": "成果及论文",
       "Description": "田甜课题组发表的学术论文与研究成果，涵盖环糊精、钙钛矿、太阳能电池、发光材料等方向，包含期刊信息、作者、摘要与标签等。",
       "Keywords": ["科研成果", "论文发表", "学术论文", "期刊论文", "钙钛矿", "太阳能电池", "发光材料", "环糊精"]
+    },
+    "Activities": {
+      "Title": "组内活动",
+      "Description": "田甜课题组组内活动记录，包括学术研讨会、实验室安全培训、国际学术会议参会、企业参观学习与组会讨论等。"
+    },
+    "News": {
+      "Title": "新闻动态",
+      "Description": "田甜课题组最新动态与科研进展，包含学术会议、研究成果发布、团队活动与重要通知等内容。"
     }
   },
   "Common": {
@@ -76,11 +84,13 @@
       "Doctoral": "博士",
       "Master Student": "硕士研究生",
       "PhD Student": "博士研究生",
-      "Member": "组员"
+      "Member": "组员",
+      "Alumnus": "往届人员"
     },
     "Detail": {
       "greeting": "👋 你好，我是 {name}",
       "joinYear": "入组时间",
+      "leaveYear": "离组时间",
       "yearSuffix": "{year} 级",
       "researchArea": "研究方向",
       "email": "邮箱地址",
@@ -91,6 +101,7 @@
       "title": "田甜课题组组内成员",
       "mentorTitle": "导师介绍",
       "studentsTitle": "当前组员",
+      "alumniTitle": "往届人员",
       "mentorPoint1": "现为扬州大学，化学化工学院 特聘教授",
       "mentorPoint2": "近年来一直从事光电纳米材料制备和器件研发领域的研究工作",
       "mentorPoint3": "目前以第一/通讯作者在Nature Communications、Nature Sustainability、Angewandte Chemie–International Edition等期刊上发表论文10余篇",
@@ -324,7 +335,8 @@
   },
   "News": {
     "title": "新闻动态",
-    "allNews": "全部",
+    "allNews": "全部新闻",
+    "loading": "加载中...",
     "publications": "论文发表",
     "awards": "荣誉奖项",
     "events": "学术活动",

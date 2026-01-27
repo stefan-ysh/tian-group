@@ -102,6 +102,7 @@ export function NewsTimeline({
     all: initialDisplayCount,
     publication: initialDisplayCount,
     award: initialDisplayCount,
+    event: initialDisplayCount,
     media: initialDisplayCount,
     announcement: initialDisplayCount
   });
@@ -275,6 +276,19 @@ export function NewsTimeline({
                 </div>
               }
             />
+            <Tab 
+              key="event" 
+              title={
+                <div className="flex items-center gap-2">
+                  <span>{t('groupActivities')}</span>
+                  {counts.event && counts.event > 0 && (
+                    <span className="inline-flex items-center justify-center w-5 h-5 bg-primary/10 text-primary text-xs rounded-full">
+                      {counts.event}
+                    </span>
+                  )}
+                </div>
+              }
+            />
           </Tabs>
         </div>
         
@@ -341,7 +355,7 @@ export function NewsTimeline({
                         <div className={`relative w-full mb-3 rounded-md overflow-hidde ${item.aspect ? `aspect-${item.aspect}` : ''}`}>
                           <NextImage
                             src={item.imageUrl}
-                            alt={`${item.title} - 配图`}
+                            alt={`${item.title} - ${locale === 'zh' ? '配图' : 'Featured Image'}`}
                             fill
                             className="object-cover"
                             loading="lazy"
@@ -452,7 +466,7 @@ export function NewsTimeline({
               onClick={handleLoadMore}
               endContent={<ChevronDown size={16} aria-hidden="true" />}
               isLoading={isLoading}
-              aria-label={isLoading ? '加载中...' : t('loadMore')}
+              aria-label={isLoading ? (t('loading') || 'Loading...') : t('loadMore')}
             >
               {t('loadMore')}
             </Button>

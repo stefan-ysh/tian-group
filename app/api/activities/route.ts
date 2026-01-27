@@ -1,26 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 
 import { fetchActivities, findActivitiesByName } from '../../../src/utils/activities';
 
-// 定义活动项的接口
-interface ActivityItem {
-  id: string;
-  name: string;
-  title: string;
-  description: string;
-  avatar: string;
-  position: string;
-  date: string;
-  location?: string;
-  tags?: string[];
-  content?: string;
-}
-
-// 配置缓存：30分钟重新验证，12小时内可使用过期缓存
-export const revalidate = 1800;
-
+// ... (existing interfaces)
 export async function GET(request: NextRequest) {
   try {
+    const cookieStore = await cookies();
+    const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
+    
     // 获取查询参数
     const url = new URL(request.url);
     const id = url.searchParams.get('id');
@@ -30,7 +18,7 @@ export async function GET(request: NextRequest) {
     
     // 如果请求特定活动
     if (id) {
-      const activity = await findActivitiesByName(id);
+      const activity = await findActivitiesByName(id, locale);
       if (!activity) {
         return NextResponse.json(
           { error: '未找到活动' },
@@ -41,7 +29,7 @@ export async function GET(request: NextRequest) {
     }
     
     // 获取所有活动
-    const allActivities = await fetchActivities();
+    const allActivities = await fetchActivities(locale);
     
     // 按日期排序（最新的在前）
     const sortedActivities = [...allActivities].sort((a, b) => 

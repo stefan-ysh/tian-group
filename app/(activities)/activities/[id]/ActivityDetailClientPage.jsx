@@ -9,12 +9,14 @@ import { ArrowLeft, CalendarDays, MapPin } from 'lucide-react';
 
 import { useActivity } from '~/hooks/useActivities';
 import { DetailPageSkeletonLoader } from '../../../components/ui/SkeletonLoader';
-import { useLocale } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { formatDate } from '../../../../src/utils/utils';
 
 export default function ActivityDetailClientPage({ id }) {
   const { activity, isLoading, isError } = useActivity(id);
   const locale = useLocale();
+  const t = useTranslations('News');
+  const commonT = useTranslations('Common');
 
   if (isLoading) {
     return <DetailPageSkeletonLoader />;
@@ -23,10 +25,10 @@ export default function ActivityDetailClientPage({ id }) {
   if (isError || !activity) {
     return (
       <div className="flex flex-col items-center justify-center py-20">
-        <h2 className="text-2xl font-semibold text-red-500 mb-4">未找到活动</h2>
+        <h2 className="text-2xl font-semibold text-red-500 mb-4">{locale === 'en' ? 'Activity Not Found' : '未找到活动'}</h2>
         <Link href="/activities" passHref>
           <Button variant="light" startContent={<ArrowLeft size={18} />}>
-            返回活动列表
+            {locale === 'en' ? 'Back to Activities' : '返回活动列表'}
           </Button>
         </Link>
       </div>
@@ -38,12 +40,12 @@ export default function ActivityDetailClientPage({ id }) {
       <div className="mb-6">
         <Link href="/activities" passHref>
           <Button variant="light" startContent={<ArrowLeft size={18} />} className="mb-4">
-            返回活动列表
+            {locale === 'en' ? 'Back to Activities' : '返回活动列表'}
           </Button>
         </Link>
       </div>
       <article>
-        <h1 className="sr-only">活动详情: {activity.title}</h1>
+        <h1 className="sr-only">{locale === 'en' ? 'Activity Detail' : '活动详情'}: {activity.title}</h1>
 
         <header className="mb-12">
           <div className="flex flex-wrap justify-center gap-2 mb-6">

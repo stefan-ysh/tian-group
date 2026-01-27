@@ -7,8 +7,8 @@ import { join } from 'path';
 const BLOG_DIR = join(process.cwd(), 'src/content/activities');
 
 // 内存缓存
-let _activities = null;
-let _cacheTime = 0;
+let _activities = {}; // { zh: [], en: [] }
+let _cacheTime = {}; // { zh: 0, en: 0 }
 const CACHE_DURATION = 5 * 60 * 1000; // 5分钟缓存有效期
 
 // Mock data for activities when no files are found
@@ -16,48 +16,38 @@ const mockActivities = [
   {
     id: 'spring-seminar-2024',
     name: '学术研讨会',
+    name_en: 'Academic Seminar',
     title: '2024年春季学术研讨会',
+    title_en: '2024 Spring Academic Seminar',
     description: '讨论最新的研究成果和方向，邀请多位知名专家进行报告',
+    description_en: 'Discussing latest research results and directions with invited experts',
     avatar: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1000',
     position: 'Office',
     date: '2024-04-15',
     location: '化学学院三楼会议室',
+    location_en: 'Room 301, College of Chemistry',
     tags: ['meeting', 'academic'],
     content: `
 ## 研讨会内容
-
-本次研讨会邀请了来自北京大学、清华大学和中科院的多位专家，围绕材料化学的最新研究成果进行深入交流和讨论。
-
-### 主要议题
-
-1. 新型催化材料的设计与应用
-2. 能源转化与存储材料研究进展
-3. 环境材料的最新发展
-4. 生物医用材料的创新应用
-
-### 参会人员
-
-- 主持人：田甜教授
-- 特邀嘉宾：李明教授（北京大学）、王华研究员（中科院）
-- 研究生：张三、李四、王五等15名学生
-- 本科生：高年级学生代表10名
-
-## 会议成果
-
-1. 达成了3项合作研究协议
-2. 为学生提供了与行业专家交流的宝贵机会
-3. 形成了明确的未来研究方向
+...
+---EN---
+## Seminar Content
+...
     `
   },
   {
     id: 'lab-safety-training',
     name: '实验室安全培训',
+    name_en: 'Lab Safety Training',
     title: '2024年实验室安全与规范操作培训',
+    title_en: '2024 Lab Safety & Standard Operation Training',
     description: '针对新加入成员的实验室安全培训和操作规范讲解',
+    description_en: 'Safety training and standard procedures for new members',
     avatar: 'https://images.unsplash.com/photo-1562411052-105105232432?q=80&w=1000',
     position: 'Lab',
     date: '2024-03-10',
     location: '化学实验室B201',
+    location_en: 'Lab B201, Chemistry Building',
     tags: ['training', 'safety'],
     content: `
 ## 培训内容
@@ -85,12 +75,16 @@ const mockActivities = [
   {
     id: 'international-conference',
     name: '国际学术会议参会',
+    name_en: 'International Conference',
     title: '第12届国际材料化学大会参会报告',
+    title_en: '12th International Materials Chemistry Conference',
     description: '研究组成员参加国际会议并作学术报告',
+    description_en: 'Group members participating and presenting at international conference',
     avatar: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000',
     position: 'Conference Hall',
     date: '2024-02-25',
     location: '新加坡国际会议中心',
+    location_en: 'Singapore International Convention Centre',
     tags: ['conference', 'academic'],
     content: `
 ## 会议概况
@@ -215,49 +209,58 @@ const mockActivities = [
 ];
 
 // 加载活动数据
-const load = async () => {
+const load = async (locale = 'zh') => {
   try {
     // 如果缓存有效，直接返回缓存数据
-    if (_activities && (Date.now() - _cacheTime < CACHE_DURATION)) {
-      return _activities;
+    if (_activities[locale] && (Date.now() - (_cacheTime[locale] || 0) < CACHE_DURATION)) {
+      return _activities[locale];
     }
 
     const files = fs.readdirSync(BLOG_DIR);
 
     if (files.length === 0) {
-      // 如果没有文件，使用模拟数据并缓存
-      _activities = mockActivities;
-      _cacheTime = Date.now();
-      return mockActivities;
+      // 如果没有文件，使用模拟数据
+      const localizedMocks = mockActivities.map(a => localizeActivity(a, locale));
+      _activities[locale] = localizedMocks;
+      _cacheTime[locale] = Date.now();
+      return localizedMocks;
     }
 
+    // 读取所有文件并解析，不在此处应用最终本地化，因为 fetchActivities 会处理
     const activities = await Promise.all(
       files
         .filter((filename) => filename.endsWith('.md'))
         .map(async (filename) => {
           const id = filename.replace('.md', '');
-          return await findActivitiesByName(id);
+          const readFile = fs.readFileSync(join(BLOG_DIR, `${id}.md`), 'utf-8');
+          const { data: frontmatter, content } = matter(readFile);
+          return {
+            id,
+            ...frontmatter,
+            content,
+          };
         }),
     );
 
-    // 缓存结果
-    _activities = activities;
-    _cacheTime = Date.now();
+    const localizedActivities = activities.map(a => localizeActivity(a, locale));
     
-    return activities;
+    // 缓存结果
+    _activities[locale] = localizedActivities;
+    _cacheTime[locale] = Date.now();
+    
+    return localizedActivities;
   } catch (error) {
     console.error('Error loading activities:', error);
-    // 如果读取文件失败，使用模拟数据
-    _activities = mockActivities;
-    _cacheTime = Date.now();
-    return mockActivities;
+    const localizedMocks = mockActivities.map(a => localizeActivity(a, locale));
+    _activities[locale] = localizedMocks;
+    _cacheTime[locale] = Date.now();
+    return localizedMocks;
   }
 };
 
 /** */
 export const fetchActivities = async (locale = 'zh') => {
-  const activities = await load();
-  return activities.map((activity) => localizeActivity(activity, locale));
+  return await load(locale);
 };
 
 /** */
@@ -275,6 +278,8 @@ const localizeActivity = (activity, locale) => {
     title: isEn && activity.title_en ? activity.title_en : activity.title,
     description: isEn && activity.description_en ? activity.description_en : activity.description,
     location: isEn && activity.location_en ? activity.location_en : activity.location,
+    position: isEn && activity.position_en ? activity.position_en : activity.position,
+    tags: isEn && activity.tags_en ? activity.tags_en : activity.tags,
     content: localizedContent.trim(),
   };
 };

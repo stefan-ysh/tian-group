@@ -7,6 +7,8 @@ interface Member {
   avatar: string;
   position: string;
   order: number;
+  joined_year?: string;
+  leave_year?: string;
 }
 
 // 配置缓存：1小时重新验证，24小时内可使用过期缓存

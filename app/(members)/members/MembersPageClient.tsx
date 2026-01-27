@@ -36,6 +36,8 @@ interface Member {
   avatar: string;
   position: string;
   description?: string;
+  joined_year?: string;
+  leave_year?: string;
 }
 
 export default function MembersPageClient() {
@@ -78,7 +80,7 @@ export default function MembersPageClient() {
 
   // 渲染内容，无论是否加载中都显示页面框架
   return (
-    <section className="mx-auto max-w-7xl px-4 md:px-6">
+    <section className="mx-auto max-w-5xl px-4 md:px-6">
       <h1 className="sr-only">{t('title')}</h1>
 
       {error ? (
@@ -148,19 +150,36 @@ export default function MembersPageClient() {
           ))}
 
           {/* 当前组员 */}
-          <div className="flex flex-col gap-6">
-             <h2 className="text-xl font-bold border-l-4 border-purple-800 pl-3 text-purple-900 dark:text-purple-300">
-                {t('studentsTitle')}
-             </h2>
-             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
-               {members
-                 .filter(m => m.slug !== 'tiantian')
-                 // Sort by simplified position hierarchy if needed, for now use order from API
-                 .map((student) => (
-                   <MemberItem key={student.slug} {...student} />
-                 ))}
-             </div>
-          </div>
+          {members.filter(m => m.slug !== 'tiantian' && !m.leave_year).length > 0 && (
+            <div className="flex flex-col gap-6">
+               <h2 className="text-xl font-bold border-l-4 border-purple-800 pl-3 text-purple-900 dark:text-purple-300">
+                  {t('studentsTitle')}
+               </h2>
+               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
+                 {members
+                   .filter(m => m.slug !== 'tiantian' && !m.leave_year)
+                   .map((student) => (
+                     <MemberItem key={student.slug} {...student} />
+                   ))}
+               </div>
+            </div>
+          )}
+
+          {/* 往届人员 */}
+          {members.filter(m => m.slug !== 'tiantian' && m.leave_year).length > 0 && (
+            <div className="flex flex-col gap-6">
+               <h2 className="text-xl font-bold border-l-4 border-purple-800 pl-3 text-purple-900 dark:text-purple-300">
+                  {t('alumniTitle')}
+               </h2>
+               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12 opacity-60">
+                 {members
+                   .filter(m => m.slug !== 'tiantian' && m.leave_year)
+                   .map((student) => (
+                     <MemberItem key={student.slug} {...student} showAvatar={false} />
+                   ))}
+               </div>
+            </div>
+          )}
         </div>
       )}
     </section>
