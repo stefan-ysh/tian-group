@@ -27,6 +27,19 @@ export async function generateMetadata({ params }) {
   });
 }
 
+// Generate static params for all activity items
+export async function generateStaticParams() {
+  try {
+    const activities = await findLatestActivities();
+    return activities.map(({ id }) => ({
+      id,
+    }));
+  } catch (error) {
+    console.error('Error generating static params for activities:', error);
+    return [];
+  }
+}
+
 export default async function Page({ params }) {
   const activity = await findActivitiesByName(params.id);
   const url = `${process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group'}/activities/${params.id}`;

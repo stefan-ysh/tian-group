@@ -4,13 +4,13 @@ const SITE = require('./src/config.js').SITE;
 module.exports = {
   siteUrl: `${SITE.origin}${SITE.basePathname}`,
   generateRobotsTxt: true,
-  sitemapSize: 5000,
+  sitemapSize: 7000,
   changefreq: 'weekly',
   priority: 0.7,
-  // 排除不需要索引的路径
-  exclude: ['/blank/*', '/api/*', '/_next/*'],
+  sourceDir: '.next',
   // 自动生成lastmod
   autoLastmod: true,
+  generateIndexSitemap: false,
   // Robots.txt配置
   robotsTxtOptions: {
     policies: [
@@ -20,9 +20,9 @@ module.exports = {
         disallow: ['/api/', '/_next/', '/blank/'],
       },
     ],
-    additionalSitemaps: [
-      `${SITE.origin}/sitemap.xml`,
-    ],
+    // additionalSitemaps: [
+    //   `${SITE.origin}/sitemap.xml`,
+    // ],
   },
   // 页面优先级配置
   transform: async (config, path) => {

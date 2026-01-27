@@ -22,7 +22,7 @@ export const MemberItem = ({ name, slug, avatar, position }: MemberItemProps) =>
     bg-gray-50 dark:bg-gray-700/50 cursor-pointer">
       <div
         onClick={() => {
-          router.push(`${slug}`);
+          router.push(`/members/${slug}`);
         }}
         className="flex flex-col items-center justify-center w-full h-full"
       >

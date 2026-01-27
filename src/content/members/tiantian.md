@@ -10,7 +10,7 @@ tags: [markdown, member]
 ---
 
 <!-- ![avatar](https://s2.loli.net/2025/01/13/g6KlzY3JFR4w1VT.jpg) -->
-<img src="https://s2.loli.net/2025/01/29/6vOktfKD38m9TZj.png" class="w-1/2 mx-auto" />
+<img src="/images/tiantian-avatar.jpg" class="w-1/2 mx-auto" />
 
 ## 学术经历
 

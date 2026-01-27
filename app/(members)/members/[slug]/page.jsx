@@ -42,7 +42,7 @@ export async function generateStaticParams() {
   try {
     const members = await findLatestMembers();
     return members.map(({ slug }) => ({
-      slug: encodeURIComponent(slug),
+      slug: slug,
     }));
   } catch (error) {
     console.error('Error generating static params:', error);
