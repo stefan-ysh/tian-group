@@ -105,10 +105,12 @@ function parseAuthors(authorStr?: string | string[]): Author[] {
  * 从markdown文件加载内容
  * @param contentType 内容类型
  * @param transformer 转换函数，将frontmatter转换为指定的内容类型
+ * @param locale 当前语言
  */
 export async function loadContentFromFiles<T extends BaseContentItem>(
   contentType: string, 
-  transformer: (frontmatter: any, id: string) => T | null
+  transformer: (frontmatter: any, id: string, locale: string, content: string) => T | null,
+  locale: string = 'zh'
 ): Promise<T[]> {
   const dir = CONTENT_DIRS[contentType as keyof typeof CONTENT_DIRS];
   if (!dir) {
@@ -132,7 +134,7 @@ export async function loadContentFromFiles<T extends BaseContentItem>(
         try {
           const filePath = join(dir, filename);
           const fileContent = fs.readFileSync(filePath, 'utf-8');
-          const { data: frontmatter } = matter(fileContent);
+          const { data: frontmatter, content: rawContent } = matter(fileContent);
           
           // 从文件名获取ID
           const id = filename.replace('.md', '').toLowerCase()
@@ -140,7 +142,7 @@ export async function loadContentFromFiles<T extends BaseContentItem>(
             .replace(/\s+/g, '-');    // 用连字符替换空格
           
           // 使用转换函数将frontmatter转换为所需内容类型
-          return transformer(frontmatter, id);
+          return transformer(frontmatter, id, locale, rawContent);
         } catch (error) {
           console.error(`Error processing file ${filename}:`, error);
           return null;
@@ -156,111 +158,167 @@ export async function loadContentFromFiles<T extends BaseContentItem>(
 }
 
 /**
+ * 本地化内容：处理字段后缀和内容分隔符
+ */
+function localizeItem<T>(item: any, frontmatter: any, locale: string, content: string, fields: string[]): T {
+  const isEn = locale === 'en';
+  
+  // 处理内容分隔
+  const contentParts = content.split('---EN---');
+  const localizedContent = isEn ? (contentParts[1] || contentParts[0]) : contentParts[0];
+
+  const localizedItem = { ...item };
+  
+  // 处理指定字段的本地化
+  fields.forEach(field => {
+    const enField = `${field}_en`;
+    if (isEn && frontmatter[enField]) {
+      localizedItem[field] = frontmatter[enField];
+    } else {
+      localizedItem[field] = frontmatter[field];
+    }
+  });
+
+  return {
+    ...localizedItem,
+    content: localizedContent.trim(),
+  } as T;
+}
+
+/**
  * 加载出版物数据
  */
-export async function loadPublications(): Promise<Publication[]> {
-  return loadContentFromFiles<Publication>('publications', (frontmatter, id) => {
+export async function loadPublications(locale: string = 'zh'): Promise<Publication[]> {
+  return loadContentFromFiles<Publication>('publications', (frontmatter, id, loc, content) => {
     const date = parseDate(frontmatter.publishDate);
+    const isEn = loc === 'en';
     
-    return {
+    const pub = {
       id: `publication-${id}`,
-      title: frontmatter.title || 'Untitled Publication',
+      title: (isEn && frontmatter.title_en) ? frontmatter.title_en : (frontmatter.title || 'Untitled Publication'),
       date: date,
       publishDate: frontmatter.publishDate || date,
       year: new Date(date).getFullYear(),
-      summary: frontmatter.description || '',
+      summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || 'https://i.imgur.com/FRQ93Lm.jpg',
       tags: frontmatter.tags || ['Research', 'Publication'],
       link: frontmatter.link || '',
       authors: parseAuthors(frontmatter.author),
-      journal: frontmatter.journal || 'Unknown Journal',
+      journal: (isEn && frontmatter.journal_en) ? frontmatter.journal_en : (frontmatter.journal || 'Unknown Journal'),
       volume: frontmatter.volume || '',
       issue: frontmatter.issue || '',
       pages: frontmatter.pages || '',
       doi: frontmatter.link?.replace('http://dx.doi.org/', '') || '',
-      abstract: frontmatter.abstract || '',
+      abstract: (isEn && frontmatter.abstract_en) ? frontmatter.abstract_en : (frontmatter.abstract || ''),
       isHighlighted: frontmatter.highlighted || false,
       impactFactor: frontmatter.impactFactor || undefined,
       citations: frontmatter.citations || undefined,
       aspect: frontmatter.aspect || undefined,
       pdfUrl: frontmatter.pdfUrl || undefined
     };
-  });
+
+    const contentParts = content.split('---EN---');
+    return {
+      ...pub,
+      content: (isEn ? (contentParts[1] || contentParts[0]) : contentParts[0]).trim()
+    } as Publication;
+  }, locale);
 }
 
 /**
  * 加载奖项数据
  */
-export async function loadAwards(): Promise<Award[]> {
-  return loadContentFromFiles<Award>('awards', (frontmatter, id) => {
-    return {
+export async function loadAwards(locale: string = 'zh'): Promise<Award[]> {
+  return loadContentFromFiles<Award>('awards', (frontmatter, id, loc, content) => {
+    const isEn = loc === 'en';
+    const award = {
       id: `award-${id}`,
-      title: frontmatter.title || 'Untitled Award',
+      title: (isEn && frontmatter.title_en) ? frontmatter.title_en : (frontmatter.title || 'Untitled Award'),
       date: parseDate(frontmatter.date),
-      summary: frontmatter.description || '',
+      summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || undefined,
       tags: frontmatter.tags || ['Award'],
       link: frontmatter.link || undefined,
-      recipient: frontmatter.recipient || undefined,
-      organization: frontmatter.organization || undefined,
+      recipient: (isEn && frontmatter.recipient_en) ? frontmatter.recipient_en : (frontmatter.recipient || undefined),
+      organization: (isEn && frontmatter.organization_en) ? frontmatter.organization_en : (frontmatter.organization || undefined),
       aspect: frontmatter.aspect || undefined,
-      awardType: frontmatter.awardType || undefined
+      awardType: (isEn && frontmatter.awardType_en) ? frontmatter.awardType_en : (frontmatter.awardType || undefined)
     };
-  });
+
+    const contentParts = content.split('---EN---');
+    return {
+      ...award,
+      content: (isEn ? (contentParts[1] || contentParts[0]) : contentParts[0]).trim()
+    } as Award;
+  }, locale);
 }
 
 /**
  * 加载公告数据
  */
-export async function loadAnnouncements(): Promise<Announcement[]> {
-  return loadContentFromFiles<Announcement>('announcements', (frontmatter, id) => {
-    return {
+export async function loadAnnouncements(locale: string = 'zh'): Promise<Announcement[]> {
+  return loadContentFromFiles<Announcement>('announcements', (frontmatter, id, loc, content) => {
+    const isEn = loc === 'en';
+    const ann = {
       id: `announcement-${id}`,
-      title: frontmatter.title || 'Untitled Announcement',
+      title: (isEn && frontmatter.title_en) ? frontmatter.title_en : (frontmatter.title || 'Untitled Announcement'),
       date: parseDate(frontmatter.date),
-      summary: frontmatter.description || '',
+      summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || undefined,
       tags: frontmatter.tags || ['Announcement'],
       link: frontmatter.link || undefined,
-      category: frontmatter.category || undefined,
+      category: (isEn && frontmatter.category_en) ? frontmatter.category_en : (frontmatter.category || undefined),
       aspect: frontmatter.aspect || undefined,
       deadline: frontmatter.deadline ? parseDate(frontmatter.deadline) : undefined,
       status: frontmatter.status || 'active'
     };
-  });
+
+    const contentParts = content.split('---EN---');
+    return {
+      ...ann,
+      content: (isEn ? (contentParts[1] || contentParts[0]) : contentParts[0]).trim()
+    } as Announcement;
+  }, locale);
 }
 
 /**
  * 加载活动数据
  */
-export async function loadEvents(): Promise<Event[]> {
-  return loadContentFromFiles<Event>('events', (frontmatter, id) => {
-    return {
+export async function loadEvents(locale: string = 'zh'): Promise<Event[]> {
+  return loadContentFromFiles<Event>('events', (frontmatter, id, loc, content) => {
+    const isEn = loc === 'en';
+    const event = {
       id: `event-${id}`,
-      title: frontmatter.title || 'Untitled Event',
+      title: (isEn && frontmatter.title_en) ? frontmatter.title_en : (frontmatter.title || 'Untitled Event'),
       date: parseDate(frontmatter.date),
-      summary: frontmatter.description || '',
+      summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || undefined,
       tags: frontmatter.tags || ['Event'],
       link: frontmatter.link || undefined,
       startDate: parseDate(frontmatter.startDate || frontmatter.date),
       endDate: frontmatter.endDate ? parseDate(frontmatter.endDate) : undefined,
-      location: frontmatter.location || undefined,
-      speakers: frontmatter.speakers || undefined,
-      eventType: frontmatter.eventType || undefined
+      location: (isEn && frontmatter.location_en) ? frontmatter.location_en : (frontmatter.location || undefined),
+      speakers: (isEn && frontmatter.speakers_en) ? frontmatter.speakers_en : (frontmatter.speakers || undefined),
+      eventType: (isEn && frontmatter.eventType_en) ? frontmatter.eventType_en : (frontmatter.eventType || undefined)
     };
-  });
+
+    const contentParts = content.split('---EN---');
+    return {
+      ...event,
+      content: (isEn ? (contentParts[1] || contentParts[0]) : contentParts[0]).trim()
+    } as Event;
+  }, locale);
 }
 
 /**
  * 将所有内容类型转换为新闻项
  */
-export async function loadAllAsNewsItems(): Promise<NewsItem[]> {
+export async function loadAllAsNewsItems(locale: string = 'zh'): Promise<NewsItem[]> {
   // 加载所有内容类型
-  const publications = await loadPublications();
-  const awards = await loadAwards();
-  const announcements = await loadAnnouncements();
-  const events = await loadEvents();
+  const publications = await loadPublications(locale);
+  const awards = await loadAwards(locale);
+  const announcements = await loadAnnouncements(locale);
+  const events = await loadEvents(locale);
   
   // 转换为新闻项
   const publicationNews: NewsItem[] = publications.map(pub => ({
@@ -326,8 +384,8 @@ export async function loadAllAsNewsItems(): Promise<NewsItem[]> {
 /**
  * 获取不同类型新闻的数量
  */
-export async function getNewsCounts(): Promise<Record<string, number>> {
-  const news = await loadAllAsNewsItems();
+export async function getNewsCounts(locale: string = 'zh'): Promise<Record<string, number>> {
+  const news = await loadAllAsNewsItems(locale);
   const counts: Record<string, number> = { all: news.length };
   
   // 计算每种类型的数量
@@ -339,4 +397,5 @@ export async function getNewsCounts(): Promise<Record<string, number>> {
   });
   
   return counts;
-} 
+}
+ 

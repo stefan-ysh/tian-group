@@ -23,32 +23,50 @@ const load = () => {
 let _publications;
 
 /** */
-export const fetchPublications = async () => {
-  _publications = _publications || load();
-
-  return await _publications;
+export const fetchPublications = async (locale = 'zh') => {
+  const publications = await load();
+  return publications.map((pub) => localizePublication(pub, locale));
 };
 
 /** */
-export const findLatestPublications = async ({ count } = {}) => {
+const localizePublication = (pub, locale) => {
+  if (!pub) return null;
+  const isEn = locale === 'en';
+
+  // Split content by separator
+  const contentParts = pub.content.split('---EN---');
+  const localizedContent = isEn ? contentParts[1] || contentParts[0] : contentParts[0];
+
+  return {
+    ...pub,
+    title: isEn && pub.title_en ? pub.title_en : pub.title,
+    abstract: isEn && pub.abstract_en ? pub.abstract_en : pub.abstract,
+    journal: isEn && pub.journal_en ? pub.journal_en : pub.journal,
+    content: localizedContent.trim(),
+  };
+};
+
+/** */
+export const findLatestPublications = async ({ count, locale = 'zh' } = {}) => {
   const _count = count || 100;
-  const publications = await fetchPublications();
+  const publications = await fetchPublications(locale);
 
   return publications ? publications.slice(_count * -1) : [];
 };
 
 /** */
-export const findPublicationsByName = async (slug) => {
+export const findPublicationsByName = async (slug, locale = 'zh') => {
   if (!slug) return null;
 
   try {
     const readFile = fs.readFileSync(join(BLOG_DIR, `${slug}.md`), 'utf-8');
     const { data: frontmatter, content } = matter(readFile);
-    return {
+    const pub = {
       slug,
       ...frontmatter,
       content,
     };
+    return localizePublication(pub, locale);
   } catch (e) {
     // console.log('[ e ] >', e)
   }
@@ -57,14 +75,14 @@ export const findPublicationsByName = async (slug) => {
 };
 
 /** */
-export const findPublicationsByIds = async (ids) => {
+export const findPublicationsByIds = async (ids, locale = 'zh') => {
   if (!Array.isArray(ids)) return [];
 
-  const publications = await fetchPublications();
+  const publications = await fetchPublications(locale);
 
   return ids.reduce(function (r, id) {
-    publications.some(function (publications) {
-      return id === publications.id && r.push(publications);
+    publications.some(function (pub) {
+      return id === pub.id && r.push(pub);
     });
     return r;
   }, []);

@@ -2,11 +2,13 @@
 
 import { PublicationsClient, Publication } from '~/components/client/PublicationsClient';
 import { useEffect, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { PublicationsGridSkeleton, PublicationsTimelineSkeleton } from '../../components/ui/SkeletonLoader';
 
 export type TimelineView = 'grid' | 'timeline';
 
 export function PublicationsPageClient() {
+  const t = useTranslations('Common');
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
@@ -86,9 +88,9 @@ export function PublicationsPageClient() {
     <section className="mx-auto max-w-6xl py-0 sm:py-16 lg:py-20 px-6 min-h-[70vh]">
       {error ? (
         <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
-          <h2 className="text-xl font-bold mb-2">数据加载失败</h2>
+          <h2 className="text-xl font-bold mb-2">{t('LoadingFailed')}</h2>
           <p className="text-gray-600 dark:text-gray-400 mb-4">
-            无法获取出版物数据，请稍后再试
+            {t('LoadingFailedDesc')}
           </p>
         </div>
       ) : loading ? (

@@ -18,68 +18,68 @@ export interface LayoutProps {
   children: React.ReactNode;
 }
 
-// Static metadata as a fallback with enhanced SEO
+// Static metadata base
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: '田甜课题组 | 扬州大学化学学院',
-    template: '%s | 田甜课题组'
-  },
-  description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-  keywords: ['田甜', '扬州大学', '化学学院', '田甜课题组', '科研实验室', '环糊精', '钙钛矿', '太阳能电池', '发光材料', '教授', 'Angew', 'NC', 'Wiley', 'Advanced Materials', 'Advanced Functional Materials', 'ACS Nano', 'ACS Energy Letters', '科研团队', '学术研究'],
-  authors: [{ name: '田甜' }],
-  creator: '田甜课题组',
-  publisher: '扬州大学化学学院',
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getMessages().then((m: any) => m.Metadata);
+  const locale = await getLocale();
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: {
+      default: t.Title,
+      template: `%s | ${t.Creator}`,
+    },
+    description: t.Description,
+    keywords: t.Keywords.split(',').map((s: string) => s.trim()),
+    authors: [{ name: t.Creator }],
+    creator: t.Creator,
+    publisher: t.Publisher,
+    robots: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'zh_CN',
-    alternateLocale: ['en_US'],
-    url: SITE_URL,
-    siteName: '田甜课题组',
-    title: '田甜课题组 | 扬州大学化学学院',
-    description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: '田甜课题组',
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
       },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: '田甜课题组 | 扬州大学化学学院',
-    description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
-    images: ['/og-image.jpg'],
-  },
-  alternates: {
-    canonical: SITE_URL,
-  },
-};
+    },
+    openGraph: {
+      type: 'website',
+      locale: locale === 'zh' ? 'zh_CN' : 'en_US',
+      alternateLocale: locale === 'zh' ? ['en_US'] : ['zh_CN'],
+      url: SITE_URL,
+      siteName: t.Creator,
+      title: t.Title,
+      description: t.Description,
+      images: [
+        {
+          url: '/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: t.Creator,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t.Title,
+      description: t.Description,
+      images: ['/og-image.jpg'],
+    },
+    alternates: {
+      canonical: SITE_URL,
+    },
+  };
+}
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const locale = await getLocale();
-  // Providing all messages to the client
-  // side is the easiest way to get started
   const messages = await getMessages();
+  const common = (messages as any).Common || {};
 
   return (
     <html
@@ -91,7 +91,11 @@ export default async function RootLayout({
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <script defer src="https://umami.tiantian.group/script.js" data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"></script>
+        <script
+          defer
+          src="https://umami.tiantian.group/script.js"
+          data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"
+        ></script>
         <style>{`
           *, *::before, *::after {
             transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
@@ -111,19 +115,19 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <Header />
             {/* <PageAnimatePresence> */}
-              {children}
-              <Analytics />
-              <SpeedInsights />
+            {children}
+            <Analytics />
+            <SpeedInsights />
             {/* </PageAnimatePresence> */}
             {/* <Footer /> */}
           </NextIntlClientProvider>
         </Providers>
         <a
           href="#top"
-          title="Back to top"
+          title={common.backToTop || 'Back to top'}
           id="backToTop"
           className="fixed bottom-6 right-6 bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-full p-3 shadow-lg transition-all duration-300 opacity-0 invisible"
-          aria-label="回到顶部"
+          aria-label={common.backToTop || 'Back to top'}
         >
           <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />

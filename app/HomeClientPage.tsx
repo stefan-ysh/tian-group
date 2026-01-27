@@ -76,7 +76,7 @@ export default function HomeClientPage() {
                       className="w-[220px] h-[220px] object-cover"
                       width={220}
                       height={220}
-                      alt="扬州大学 化学学院 教授 田甜"
+                      alt={t('AvatarAlt')}
                       priority
                     />
                   </MotionComponent>

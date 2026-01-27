@@ -1,11 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { loadAllAsNewsItems } from '../../../src/utils/contentLoader';
 
-// 配置缓存：30分钟重新验证，12小时内可使用过期缓存
+// 配置缓存：30分重新验证，12小时内内可使用过期缓存
 export const revalidate = 1800;
 
 export async function GET(request: NextRequest) {
   try {
+    const cookieStore = await cookies();
+    const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
+
     // 获取查询参数
     const url = new URL(request.url);
     const count = url.searchParams.get('count');
@@ -14,7 +18,7 @@ export async function GET(request: NextRequest) {
     const type = url.searchParams.get('type');
     
     // 加载所有新闻项
-    let allNews = await loadAllAsNewsItems();
+    let allNews = await loadAllAsNewsItems(locale);
     
     // 如果指定了类型，进行过滤
     if (type && type !== 'all') {

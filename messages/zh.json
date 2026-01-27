@@ -1,14 +1,26 @@
 {
-  "common": {
+  "Metadata": {
+    "Title": "田甜课题组 | 扬州大学化学学院",
+    "Description": "扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。",
+    "Keywords": "田甜, 扬州大学, 化学学院, 田甜课题组, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 发光材料, 教授, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano, ACS Energy Letters, 科研团队, 学术研究",
+    "Creator": "田甜课题组",
+    "Publisher": "扬州大学化学学院",
+    "Keywords_Array": ["田甜", "扬州大学", "化学学院", "田甜课题组", "科研实验室", "环糊精", "钙钛矿", "太阳能电池", "发光材料", "教授"],
+    "Publications": {
+      "Title": "成果及论文",
+      "Description": "田甜课题组发表的学术论文与研究成果，涵盖环糊精、钙钛矿、太阳能电池、发光材料等方向，包含期刊信息、作者、摘要与标签等。",
+      "Keywords": ["科研成果", "论文发表", "学术论文", "期刊论文", "钙钛矿", "太阳能电池", "发光材料", "环糊精"]
+    }
+  },
+  "Common": {
+    "Home": "首页",
     "Email": "邮箱",
     "Address": "地址",
     "College": "学院",
     "Location": "位置",
     "ContactUs": "联系我们",
     "MapPlaceholder": "地图将显示在这里",
-    "GetInTouch": "如果您有兴趣加入我们的研究团队，可以通过以下方式联系我们，我们期待与您的交流与合作。"
-  },
-  "Common": {
+    "GetInTouch": "如果您有兴趣加入我们的研究团队，可以通过以下方式联系我们，我们期待与您的交流与合作。",
     "aiSummary": "AI 论文总结",
     "generating": "正在生成 AI 总结...",
     "preparing": "正在准备内容...",
@@ -21,14 +33,21 @@
     "parseError": "无法解析服务器响应",
     "summaryFailed": "无法生成摘要，请稍后再试",
     "streamInterrupted": "读取中断，显示部分内容",
-    "requestCancelled": "请求已取消"
+    "requestCancelled": "请求已取消",
+    "backToTop": "回到顶部",
+    "LoadingData": "数据加载中...",
+    "LoadingFailed": "数据加载失败",
+    "LoadingFailedDesc": "无法获取数据，请稍后再试",
+    "MissingMapApiKey": "请在 .env.local 文件中设置 NEXT_PUBLIC_MAP_API。",
+    "MapLoadError": "地图加载失败"
   },
   "HomePage": {
     "Name": "田甜",
-    "Title": "副教授，硕士生导师",
+    "Title": "教授",
     "School": "扬州大学",
     "College": "化学化工学院",
-    "Address": "江苏省扬州市大学南路88号 扬州大学化学学院",
+    "AvatarAlt": "扬州大学 化学学院 教授 田甜",
+    "Address": "江苏省扬州市四望亭路180号 扬州大学化学学院",
     "researchDirection": "研究方向",
     "researchDirectionContent": "田甜教授的研究小组专注于设计和合成创新的功能材料，用于能源存储、催化和环境修复。我们的工作涵盖新型电池材料、高效催化剂和环境友好型吸附剂的开发，致力于解决当前能源和环境挑战。",
     "researchTeam": "研究团队",

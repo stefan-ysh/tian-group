@@ -1,26 +1,35 @@
 import type { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
+import { getMessages, getLocale } from 'next-intl/server';
 import { CheckCircle, GraduationCap, Book, Mail, BriefcaseBusiness, Users, Lightbulb } from 'lucide-react';
 
 import { BreadcrumbSchema } from '~/components/seo/JsonLd';
 import { generateSEOMetadata } from '~/lib/seo';
 
-export const metadata: Metadata = generateSEOMetadata({
-  title: '加入我们',
-  description:
-    '加入田甜课题组，我们欢迎有志于从事钙钛矿太阳能电池、有机非线性光学材料、发光材料等领域研究的博士后和研究生。',
-  keywords: ['加入我们', '招聘', '博士后', '研究生', '人才招募', '科研团队', '扬州大学', '化学学院'],
-  path: '/joinus',
-  type: 'website',
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const messages: any = await getMessages({ locale });
+  const t = messages.Metadata?.JoinUs || messages.JoinUs || {};
+
+  return generateSEOMetadata({
+    title: t.title || '加入我们',
+    description: t.description || '加入田甜课题组，我们欢迎有志于从事钙钛矿太阳能电池、有机非线性光学材料、发光材料等领域研究的博士后和研究生。',
+    path: '/joinus',
+    type: 'website',
+  });
+}
 
 export default function JoinUsWrapper({}) {
   const t = useTranslations('JoinUs');
+  const common = useTranslations('Common');
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
 
   return (
     <section className="mx-auto max-w-5xl p-0 md:px-6 md:py-12">
-      <BreadcrumbSchema items={[{ name: '首页', url: siteUrl }, { name: '加入我们', url: `${siteUrl}/joinus` }]} />
+      <BreadcrumbSchema items={[
+        { name: common('Home'), url: siteUrl }, 
+        { name: t('title'), url: `${siteUrl}/joinus` }
+      ]} />
       {/* 页面标题 */}
       <div className="text-center mb-1">
         {/* 对SEO友好的隐藏标题 */}

@@ -1,14 +1,26 @@
 {
-  "common": {
+  "Metadata": {
+    "Title": "Tian Group | College of Chemistry, Yangzhou University",
+    "Description": "Tian Group at the College of Chemistry, Yangzhou University, focuses on cyclodextrins, perovskites, solar cells, and luminescent materials research. Results published in Angew, NC, Wiley, Advanced Materials, etc.",
+    "Keywords": "Tian Tian, Yangzhou University, College of Chemistry, Tian Group, Research Laboratory, Cyclodextrin, Perovskite, Solar Cells, Luminescent Materials, Professor, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano, ACS Energy Letters, Research Team, Academic Research",
+    "Creator": "Tian Group",
+    "Publisher": "College of Chemistry, Yangzhou University",
+    "Keywords_Array": ["Tian Tian", "Yangzhou University", "College of Chemistry", "Tian Group", "Research Laboratory", "Cyclodextrin", "Perovskite", "Solar Cells", "Luminescent Materials", "Professor"],
+    "Publications": {
+      "Title": "Publications & Achievements",
+      "Description": "Academic papers and research results published by the Tian Group, covering cyclodextrins, perovskites, solar cells, luminescent materials, etc., including journal info, authors, abstracts and tags.",
+      "Keywords": ["Research Results", "Publications", "Academic Papers", "Journal Papers", "Perovskite", "Solar Cells", "Luminescent Materials", "Cyclodextrin"]
+    }
+  },
+  "Common": {
+    "Home": "Home",
     "Email": "Email",
     "Address": "Address",
     "College": "College",
     "Location": "Location",
     "ContactUs": "Contact Us",
     "MapPlaceholder": "Map will be displayed here",
-    "GetInTouch": "You can get in touch with us by the following ways if you are interested in joining our research team."
-  },
-  "Common": {
+    "GetInTouch": "You can get in touch with us by the following ways if you are interested in joining our research team.",
     "aiSummary": "AI Paper Summary",
     "generating": "Generating AI summary...",
     "preparing": "Preparing content...",
@@ -21,14 +33,21 @@
     "parseError": "Cannot parse server response",
     "summaryFailed": "Failed to generate summary. Please try again later",
     "streamInterrupted": "Stream interrupted, showing partial content",
-    "requestCancelled": "Request cancelled"
+    "requestCancelled": "Request cancelled",
+    "backToTop": "Back to top",
+    "LoadingData": "Loading data...",
+    "LoadingFailed": "Data loading failed",
+    "LoadingFailedDesc": "Failed to fetch data, please try again later",
+    "MissingMapApiKey": "Please set NEXT_PUBLIC_MAP_API in .env.local file.",
+    "MapLoadError": "Failed to load map"
   },
   "HomePage": {
     "Name": "Tian Tian",
-    "Title": "Associate Professor, Master Supervisor",
+    "Title": "Professor",
+    "AvatarAlt": "Professor Tian Tian, College of Chemistry, Yangzhou University",
     "School": "Yangzhou University",
     "College": "School of Chemistry",
-    "Address": "School of Chemistry, Yangzhou University, 88 University South Road, Yangzhou, Jiangsu",
+    "Address": "180 Siwangting Road, Yangzhou, Jiangsu",
     "researchDirection": "Research Directions",
     "researchDirectionContent": "Professor Tian's research group focuses on designing and synthesizing innovative functional materials for energy storage, catalysis, and environmental remediation. Our work covers the development of novel battery materials, efficient catalysts, and environmentally friendly adsorbents, addressing current energy and environmental challenges.",
     "researchTeam": "Research Team",

@@ -2,9 +2,10 @@
 
 import { Mail, MapPin, School, Globe, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import getConfig from 'next/config';
 import { useTheme } from 'next-themes';
+import NextImage from 'next/image';
 
 // 声明全局 AMap 变量以解决类型错误
 declare global {
@@ -26,7 +27,7 @@ export default function ContactPageClient() {
   const mapApiKey = process.env.NEXT_PUBLIC_MAP_API || publicRuntimeConfig.mapApiKey || '';
 
   const t = useTranslations('HomePage');
-  const common = useTranslations('common');
+  const common = useTranslations('Common');
   const mapRef = useRef<HTMLDivElement>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [mapInstance, setMapInstance] = useState<any>(null);
@@ -39,82 +40,8 @@ export default function ContactPageClient() {
     lat: 32.398812,
   };
 
-  // 动态加载高德地图脚本
-  useEffect(() => {
-    if (!mapApiKey) {
-      setMapError('Missing API key');
-      console.error('Missing AMap API key');
-      return;
-    }
-
-    // 检查脚本是否已存在
-    if (window.AMap) {
-      setScriptStatus('loaded');
-      setMapLoaded(true);
-      return;
-    }
-
-    setScriptStatus('loading');
-
-    // 创建脚本元素
-    const script = document.createElement('script');
-    script.src = `https://webapi.amap.com/maps?v=2.0&key=${mapApiKey}&plugin=AMap.ToolBar,AMap.Scale`;
-    script.async = true;
-    script.defer = true;
-
-    // 监听脚本加载事件
-    script.onload = () => {
-      setScriptStatus('loaded');
-      setMapLoaded(true);
-
-      // 延迟初始化地图，确保DOM和脚本都已加载完成
-      setTimeout(() => {
-        initMap();
-      }, 500);
-    };
-
-    script.onerror = (error) => {
-      console.error('Failed to load AMap script dynamically', error);
-      setScriptStatus('error');
-      setMapError('Failed to load map API');
-    };
-
-    // 添加脚本到文档
-    document.head.appendChild(script);
-
-    // 清理函数
-    return () => {
-      // 如果脚本仍在加载中，可以选择移除它
-      if (scriptStatus === 'loading') {
-        document.head.removeChild(script);
-      }
-    };
-  }, [mapApiKey]);
-
-  // 监听路由变化，确保在导航回页面时地图正确显示
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      // 如果页面变为可见，且地图已加载但没有实例，则重新初始化
-      if (document.visibilityState === 'visible' && window.AMap && !mapInstance) {
-        setTimeout(() => initMap(), 300);
-      }
-    };
-
-    // 添加页面可见性变化事件
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    // 组件加载时，也检查一次
-    if (mapLoaded && !mapInstance) {
-      setTimeout(() => initMap(), 300);
-    }
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [mapLoaded, mapInstance]);
-
   // 初始化地图
-  const initMap = () => {
+  const initMap = useCallback(() => {
     try {
       if (!mapRef.current) {
         setMapError('Map container not found');
@@ -202,7 +129,79 @@ export default function ContactPageClient() {
       console.error('Error initializing map:', error);
       setMapError(`Error initializing map: ${error instanceof Error ? error.message : String(error)}`);
     }
-  };
+  }, [isDark, position.lat, position.lng, t]);
+
+  // 动态加载高德地图脚本
+  useEffect(() => {
+    if (!mapApiKey) {
+      setMapError('Missing API key');
+      console.error('Missing AMap API key');
+      return;
+    }
+
+    // 检查脚本是否已存在
+    if (window.AMap) {
+      setScriptStatus('loaded');
+      setMapLoaded(true);
+      return;
+    }
+
+    setScriptStatus('loading');
+
+    // 创建脚本元素
+    const script = document.createElement('script');
+    script.src = `https://webapi.amap.com/maps?v=2.0&key=${mapApiKey}&plugin=AMap.ToolBar,AMap.Scale`;
+    script.async = true;
+    script.defer = true;
+
+    // 监听脚本加载事件
+    script.onload = () => {
+      setScriptStatus('loaded');
+      setMapLoaded(true);
+
+      // 延迟初始化地图，确保DOM和脚本都已加载完成
+      setTimeout(() => {
+        initMap();
+      }, 500);
+    };
+
+    script.onerror = (error) => {
+      console.error('Failed to load AMap script dynamically', error);
+      setScriptStatus('error');
+      setMapError('Failed to load map API');
+    };
+
+    // 添加脚本到文档
+    document.head.appendChild(script);
+
+    // 清理函数
+    return () => {
+      // 如果脚本仍在加载中，可以选择移除它
+      // 注意：由于异步加载，脚本可能已经移除或正在加载
+    };
+  }, [mapApiKey, initMap]);
+
+  // 监听路由变化，确保在导航回页面时地图正确显示
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      // 如果页面变为可见，且地图已加载但没有实例，则重新初始化
+      if (document.visibilityState === 'visible' && window.AMap && !mapInstance) {
+        setTimeout(() => initMap(), 300);
+      }
+    };
+
+    // 添加页面可见性变化事件
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // 组件加载时，也检查一次
+    if (mapLoaded && !mapInstance) {
+      setTimeout(() => initMap(), 300);
+    }
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [mapLoaded, mapInstance, initMap]);
 
   // 当主题更改时，更新地图样式
   useEffect(() => {
@@ -296,7 +295,7 @@ export default function ContactPageClient() {
                       <p className="text-red-500 mb-2">{mapError}</p>
                       {mapApiKey && (
                         <div className="w-full h-full relative">
-                          <img src={staticMapUrl} alt={t('College')} className="w-full h-full object-cover" />
+                          <NextImage src={staticMapUrl} alt={t('College')} fill className="object-cover" />
                         </div>
                       )}
                     </>
@@ -306,7 +305,7 @@ export default function ContactPageClient() {
 
                   <div className="mt-2 text-xs text-gray-500">
                     <p>API状态: {scriptStatus}</p>
-                    {!mapApiKey && <p className="text-red-500 mt-1">请在.env.local文件中设置NEXT_PUBLIC_MAP_API。</p>}
+                    {!mapApiKey && <p className="text-red-500 mt-1">{common('MissingMapApiKey')}</p>}
                   </div>
                 </div>
               )}

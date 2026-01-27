@@ -1,4 +1,5 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
+import { cookies } from 'next/headers';
 
 import { findLatestPublications } from '~/utils/publications';
 
@@ -20,10 +21,13 @@ interface Publication {
 // 配置缓存：1小时重新验证，24小时内可使用过期缓存
 export const revalidate = 3600;
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
-    console.log('API: Fetching publications data');
-    const publications = await findLatestPublications();
+    const cookieStore = await cookies();
+    const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
+
+    console.log(`API: Fetching publications data for locale: ${locale}`);
+    const publications = await findLatestPublications({ locale });
 
     if (!publications || !Array.isArray(publications)) {
       console.error('API: Publications data is not an array or is empty', publications);

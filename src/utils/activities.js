@@ -255,14 +255,34 @@ const load = async () => {
 };
 
 /** */
-export const fetchActivities = async () => {
-  return await load();
+export const fetchActivities = async (locale = 'zh') => {
+  const activities = await load();
+  return activities.map((activity) => localizeActivity(activity, locale));
 };
 
 /** */
-export const findLatestActivities = async (count = 20) => {
-  const activities = await fetchActivities();
-  
+const localizeActivity = (activity, locale) => {
+  if (!activity) return null;
+  const isEn = locale === 'en';
+
+  // Split content by separator
+  const contentParts = (activity.content || '').split('---EN---');
+  const localizedContent = isEn ? contentParts[1] || contentParts[0] : contentParts[0];
+
+  return {
+    ...activity,
+    name: isEn && activity.name_en ? activity.name_en : activity.name,
+    title: isEn && activity.title_en ? activity.title_en : activity.title,
+    description: isEn && activity.description_en ? activity.description_en : activity.description,
+    location: isEn && activity.location_en ? activity.location_en : activity.location,
+    content: localizedContent.trim(),
+  };
+};
+
+/** */
+export const findLatestActivities = async (count = 20, locale = 'zh') => {
+  const activities = await fetchActivities(locale);
+
   // 按日期排序
   return activities
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -270,22 +290,23 @@ export const findLatestActivities = async (count = 20) => {
 };
 
 /** */
-export const findActivitiesByName = async (id) => {
+export const findActivitiesByName = async (id, locale = 'zh') => {
   if (!id) return null;
 
   try {
     const readFile = fs.readFileSync(join(BLOG_DIR, `${id}.md`), 'utf-8');
     const { data: frontmatter, content } = matter(readFile);
-    return {
+    const activity = {
       id,
       ...frontmatter,
       content,
     };
+    return localizeActivity(activity, locale);
   } catch (e) {
     // 如果文件不存在，从模拟数据中查找
-    const mockActivity = mockActivities.find(activity => activity.id === id);
+    const mockActivity = mockActivities.find((activity) => activity.id === id);
     if (mockActivity) {
-      return mockActivity;
+      return localizeActivity(mockActivity, locale);
     }
   }
 
@@ -293,10 +314,10 @@ export const findActivitiesByName = async (id) => {
 };
 
 /** */
-export const findPostsByIds = async (ids) => {
+export const findPostsByIds = async (ids, locale = 'zh') => {
   if (!Array.isArray(ids)) return [];
 
-  const activities = await fetchActivities();
+  const activities = await fetchActivities(locale);
 
   return ids.reduce(function (r, id) {
     activities.some(function (post) {
