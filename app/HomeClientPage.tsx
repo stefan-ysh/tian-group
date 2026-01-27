@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import NextImage from 'next/image';
 import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import tiantianImg from '~/assets/images/avatar/tiantian.jpg';
 
 // 动态导入 framer-motion，减少初始包大小
 const MotionComponent = dynamic(
@@ -72,7 +73,7 @@ export default function HomeClientPage() {
                         })}
                   >
                     <NextImage
-                      src="https://s2.loli.net/2025/01/29/6vOktfKD38m9TZj.png"
+                      src={tiantianImg}
                       className="w-[220px] h-[220px] object-cover"
                       width={220}
                       height={220}
