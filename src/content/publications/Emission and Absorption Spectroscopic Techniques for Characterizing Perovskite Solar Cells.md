@@ -326,7 +326,7 @@ The authors declare no competing financial interest.
 
 ### Biographies
 
-**Zongxuan Yuan** received his bachelor's degree in Materials Science and Engineering from East China University of Technology in 2019. Currently, he is a graduate student in the research group of Professor Tian Tian and Professor Pang Huan. His research interests include the study of the HTL layer of perovskite solar cells.
+**Zongxuan Yuan** received his bachelor's degree in Materials Science and Engineering from East China University of Technology in 2019. Currently, he is a graduate student in the research group of Professor Tian Tian. His research interests include the study of the HTL layer of perovskite solar cells.
 
 **Meifang Yang** received her Ph.D. from Sun Yat-sen University in 2024. Her research focuses on semiconducting materials and optoelectronic devices.
 

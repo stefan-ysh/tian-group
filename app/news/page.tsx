@@ -7,7 +7,7 @@ import { BreadcrumbSchema } from '~/components/seo/JsonLd';
 export const metadata: Metadata = generateSEOMetadata({
   title: '新闻动态',
   description:
-    '田甜科研小组最新动态与科研进展，包含学术会议、研究成果发布、团队活动与重要通知等内容。',
+    '田甜课题组最新动态与科研进展，包含学术会议、研究成果发布、团队活动与重要通知等内容。',
   keywords: ['新闻动态', '科研进展', '学术会议', '团队活动', '研究成果'],
   path: '/news',
   type: 'website',

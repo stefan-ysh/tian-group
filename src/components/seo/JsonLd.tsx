@@ -25,11 +25,11 @@ export function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ResearchOrganization',
-    name: '田甜科研小组',
+    name: '田甜课题组',
     alternateName: 'Tian Tian Research Group',
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
+    description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'CN',
@@ -69,7 +69,7 @@ export function ScholarlyArticleSchema({ publication }: { publication: any }) {
     })) || [{ '@type': 'Person', name: '田甜' }],
     publisher: {
       '@type': 'Organization',
-      name: publication.journal || '田甜科研小组',
+      name: publication.journal || '田甜课题组',
     },
     keywords: publication.tags?.join(', '),
     url: `${SITE_URL}/publications/${encodeURIComponent(publication.slug || publication.title)}`,
@@ -133,13 +133,13 @@ export function WebSiteSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: '田甜科研小组',
+    name: '田甜课题组',
     alternateName: 'Tian Tian Research Group',
     url: SITE_URL,
-    description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
+    description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
     publisher: {
       '@type': 'ResearchOrganization',
-      name: '田甜科研小组',
+      name: '田甜课题组',
     },
     potentialAction: {
       '@type': 'SearchAction',
@@ -162,13 +162,13 @@ export function NewsArticleSchema({ news }: { news: any }) {
     headline: news.title,
     description: news.summary || news.excerpt,
     datePublished: news.date,
-    author: (news.authors || ['田甜科研小组']).map((name: string) => ({
+    author: (news.authors || ['田甜课题组']).map((name: string) => ({
       '@type': 'Person',
       name,
     })),
     publisher: {
       '@type': 'Organization',
-      name: '田甜科研小组',
+      name: '田甜课题组',
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -199,7 +199,7 @@ export function EventSchema({ activity }: { activity: any }) {
     eventStatus: 'https://schema.org/EventScheduled',
     organizer: {
       '@type': 'Organization',
-      name: '田甜科研小组',
+      name: '田甜课题组',
       url: SITE_URL,
     },
     location: activity.location

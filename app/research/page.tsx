@@ -8,7 +8,7 @@ import { generateSEOMetadata } from '~/lib/seo';
 export const metadata: Metadata = generateSEOMetadata({
   title: '研究方向',
   description:
-    '田甜科研小组的主要研究方向包括钙钛矿太阳能电池、有机非线性光学材料、发光材料与生物成像、光谱表征与材料测试等。',
+    '田甜课题组的主要研究方向包括钙钛矿太阳能电池、有机非线性光学材料、发光材料与生物成像、光谱表征与材料测试等。',
   keywords: ['研究方向', '钙钛矿太阳能电池', '有机非线性光学材料', '发光材料', '生物成像', '光谱表征', '材料测试'],
   path: '/research',
   type: 'website',

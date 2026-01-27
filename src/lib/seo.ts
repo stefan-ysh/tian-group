@@ -6,16 +6,16 @@
 import type { Metadata } from 'next';
 
 const SITE_CONFIG = {
-  name: '田甜科研小组',
+  name: '田甜课题组',
   nameEn: 'Tian Tian Research Group',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group',
   description:
-    '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+    '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
   keywords: [
     '田甜',
     '扬州大学',
     '化学学院',
-    '庞欢课题组',
+    '田甜课题组',
     '科研实验室',
     '环糊精',
     '钙钛矿',
@@ -171,7 +171,7 @@ export function generatePublicationMetadata(publication: {
 
   return generateSEOMetadata({
     title: publication.title,
-    description: publication.abstract || publication.description || '田甜科研小组发表的学术论文',
+    description: publication.abstract || publication.description || '田甜课题组发表的学术论文',
     keywords: [
       ...(publication.tags || []),
       ...(publication.authors || []),

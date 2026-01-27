@@ -17,13 +17,13 @@ export async function generateMetadata({ params }) {
 
   return generateSEOMetadata({
     title: activity.title || '组内活动',
-    description: activity.description || '田甜科研小组组内活动详情',
+    description: activity.description || '田甜课题组组内活动详情',
     keywords: ['组内活动', '学术研讨会', '安全培训', '组会', ...(activity.tags || [])].filter(Boolean),
     image: activity.avatar,
     path: `/activities/${activity.id}`,
     type: 'article',
     publishedTime: activity.date,
-    authors: ['田甜科研小组'],
+    authors: ['田甜课题组'],
   });
 }
 

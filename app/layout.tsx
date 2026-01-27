@@ -24,13 +24,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: '田甜科研小组 | 扬州大学化学学院',
-    template: '%s | 田甜科研小组'
+    default: '田甜课题组 | 扬州大学化学学院',
+    template: '%s | 田甜课题组'
   },
-  description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-  keywords: ['田甜', '扬州大学', '化学学院', '庞欢课题组', '科研实验室', '环糊精', '钙钛矿', '太阳能电池', '发光材料', '教授', 'Angew', 'NC', 'Wiley', 'Advanced Materials', 'Advanced Functional Materials', 'ACS Nano', 'ACS Energy Letters', '科研团队', '学术研究'],
+  description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+  keywords: ['田甜', '扬州大学', '化学学院', '田甜课题组', '科研实验室', '环糊精', '钙钛矿', '太阳能电池', '发光材料', '教授', 'Angew', 'NC', 'Wiley', 'Advanced Materials', 'Advanced Functional Materials', 'ACS Nano', 'ACS Energy Letters', '科研团队', '学术研究'],
   authors: [{ name: '田甜' }],
-  creator: '田甜科研小组',
+  creator: '田甜课题组',
   publisher: '扬州大学化学学院',
   robots: {
     index: true,
@@ -48,22 +48,22 @@ export const metadata: Metadata = {
     locale: 'zh_CN',
     alternateLocale: ['en_US'],
     url: SITE_URL,
-    siteName: '田甜科研小组',
-    title: '田甜科研小组 | 扬州大学化学学院',
-    description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+    siteName: '田甜课题组',
+    title: '田甜课题组 | 扬州大学化学学院',
+    description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: '田甜科研小组',
+        alt: '田甜课题组',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '田甜科研小组 | 扬州大学化学学院',
-    description: '扬州大学化学学院庞欢课题组-田甜科研小组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
+    title: '田甜课题组 | 扬州大学化学学院',
+    description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
     images: ['/og-image.jpg'],
   },
   alternates: {
@@ -85,6 +85,7 @@ export default async function RootLayout({
     <html
       lang={locale}
       className="text-foreground bg-background motion-safe:scroll-smooth 2xl:text-[20px] font-sans"
+      suppressHydrationWarning
     >
       <head>
         <meta charSet="utf-8" />

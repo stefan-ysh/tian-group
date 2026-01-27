@@ -6,7 +6,7 @@ import { BreadcrumbSchema } from '~/components/seo/JsonLd';
 
 export const metadata: Metadata = generateSEOMetadata({
   title: '组内成员',
-  description: '田甜科研小组成员介绍，包括博士后、博士研究生、硕士研究生及其他团队成员。',
+  description: '田甜课题组人员介绍，包括博士后、博士研究生、硕士研究生及其他团队成员。',
   keywords: ['组内成员', '科研团队', '博士后', '博士研究生', '硕士研究生', '导师团队'],
   path: '/members',
   type: 'website',

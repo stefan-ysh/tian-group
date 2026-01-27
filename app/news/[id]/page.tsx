@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     console.error('Error generating metadata for news item:', error);
     return generateSEOMetadata({
       title: '新闻详情',
-      description: '田甜科研小组新闻详情页面。',
+      description: '田甜课题组新闻详情页面。',
       path: `/news/${params.id}`,
     });
   }

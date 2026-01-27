@@ -83,7 +83,7 @@ export default function MembersPageClient() {
   return (
     <section className="mx-auto max-w-5xl">
       {/* 对SEO友好的隐藏标题 */}
-      <h1 className="sr-only">田甜科研小组组内成员</h1>
+      <h1 className="sr-only">田甜课题组组内成员</h1>
 
       {error ? (
         <MembersError />

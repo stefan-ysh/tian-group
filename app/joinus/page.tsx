@@ -8,7 +8,7 @@ import { generateSEOMetadata } from '~/lib/seo';
 export const metadata: Metadata = generateSEOMetadata({
   title: '加入我们',
   description:
-    '加入田甜科研小组，我们欢迎有志于从事钙钛矿太阳能电池、有机非线性光学材料、发光材料等领域研究的博士后和研究生。',
+    '加入田甜课题组，我们欢迎有志于从事钙钛矿太阳能电池、有机非线性光学材料、发光材料等领域研究的博士后和研究生。',
   keywords: ['加入我们', '招聘', '博士后', '研究生', '人才招募', '科研团队', '扬州大学', '化学学院'],
   path: '/joinus',
   type: 'website',

@@ -40,7 +40,7 @@ export function MembersClient({ members }: MembersClientProps) {
   return (
     <section className="mx-auto max-w-5xl">
       {/* 对SEO友好的隐藏标题 */}
-      <h1 className="sr-only">田甜科研小组组内成员</h1>
+      <h1 className="sr-only">田甜课题组内成员</h1>
       
       <div className="grid grid-cols-1 gap-4 p-5 pt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {sortedMembers.map(({ slug, name, avatar, position }) => (

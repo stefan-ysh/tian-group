@@ -11,11 +11,12 @@
 ### 1. **根布局 Metadata 增强** (`app/layout.tsx`)
 
 #### 新增功能：
+
 - ✅ **metadataBase**: 设置为 `https://tiantian.group`，确保所有相对URL正确解析
-- ✅ **title.template**: 动态标题模板 `%s | 田甜科研小组`
+- ✅ **title.template**: 动态标题模板 `%s | 田甜课题组`
 - ✅ **keywords**: 数组格式，更符合现代SEO最佳实践
 - ✅ **authors & creator**: 明确标注内容作者和创建者
-- ✅ **robots配置**: 
+- ✅ **robots配置**:
   - index: true
   - follow: true
   - googleBot专项配置（max-video-preview, max-image-preview, max-snippet）
@@ -26,17 +27,19 @@
   - siteName, images等完整信息
 - ✅ **Twitter Card**: summary_large_image卡片支持
 - ✅ **verification**: Google Search Console验证预留（需填入实际验证码）
-- ✅ **alternates**: 
+- ✅ **alternates**:
   - canonical URL
   - 多语言支持（zh-CN, en-US）
 
 ### 2. **Publications详情页 Metadata** (`app/(publications)/publications/[slug]/page.jsx`)
 
 #### 修复的问题：
+
 - ❌ **之前**: 使用`fetch('/api/publications/${slug}')`导致build时URL解析失败
 - ✅ **现在**: 直接使用`findPublicationsByName(slug)`从服务器端获取数据
 
 #### 新增SEO优化：
+
 - ✅ **动态title**: 使用论文真实标题
 - ✅ **description**: 优先使用abstract，fallback到description
 - ✅ **keywords**: 包含论文标题、作者、标签
@@ -55,16 +58,18 @@
 #### 创建的Schema类型：
 
 ##### ✅ OrganizationSchema（组织机构）
+
 ```json
 {
   "@type": "ResearchOrganization",
-  "name": "田甜科研小组",
+  "name": "田甜课题组",
   "parentOrganization": "扬州大学",
   "department": "化学学院"
 }
 ```
 
 ##### ✅ WebSiteSchema（网站）
+
 ```json
 {
   "@type": "WebSite",
@@ -75,6 +80,7 @@
 ```
 
 ##### ✅ ScholarlyArticleSchema（学术文章）
+
 ```json
 {
   "@type": "ScholarlyArticle",
@@ -87,6 +93,7 @@
 ```
 
 ##### ✅ PersonSchema（人物）
+
 ```json
 {
   "@type": "Person",
@@ -98,6 +105,7 @@
 ```
 
 ##### ✅ BreadcrumbSchema（面包屑导航）
+
 ```json
 {
   "@type": "BreadcrumbList",
@@ -106,6 +114,7 @@
 ```
 
 #### 集成位置：
+
 - ✅ `app/layout.tsx`: 全局添加OrganizationSchema和WebSiteSchema
 - 🔄 待集成: Publication详情页、Member详情页
 
@@ -114,15 +123,17 @@
 #### 优化内容：
 
 ##### ✅ 智能优先级分配
-| 页面类型 | Priority | Changefreq | 说明 |
-|---------|----------|-----------|------|
-| 首页 (/, /zh, /en) | 1.0 | daily | 最高优先级 |
-| 主导航页 (/publications, /members等) | 0.9 | weekly | 高优先级 |
-| 论文详情 (/publications/*) | 0.8 | monthly | 中高优先级 |
-| 成员/新闻详情 | 0.7 | monthly | 中等优先级 |
-| 其他页面 | 0.6 | yearly | 一般优先级 |
+
+| 页面类型                             | Priority | Changefreq | 说明       |
+| ------------------------------------ | -------- | ---------- | ---------- |
+| 首页 (/, /zh, /en)                   | 1.0      | daily      | 最高优先级 |
+| 主导航页 (/publications, /members等) | 0.9      | weekly     | 高优先级   |
+| 论文详情 (/publications/\*)          | 0.8      | monthly    | 中高优先级 |
+| 成员/新闻详情                        | 0.7      | monthly    | 中等优先级 |
+| 其他页面                             | 0.6      | yearly     | 一般优先级 |
 
 ##### ✅ 多语言支持
+
 - 每个URL都包含`alternateRefs`
 - 支持zh-CN, en-US和x-default
 - 示例：
@@ -136,6 +147,7 @@
   ```
 
 ##### ✅ Robots.txt 增强
+
 ```txt
 User-agent: *
 Allow: /
@@ -147,6 +159,7 @@ Sitemap: https://tiantian.group/sitemap.xml
 ```
 
 ##### ✅ 自动lastmod
+
 - 每次build自动更新lastmod时间戳
 - 帮助搜索引擎识别内容更新
 
@@ -155,7 +168,9 @@ Sitemap: https://tiantian.group/sitemap.xml
 #### 提供的工具函数：
 
 ##### ✅ `generateSEOMetadata(options)`
+
 统一生成完整metadata，包含：
+
 - Title template
 - Description
 - Keywords
@@ -166,18 +181,23 @@ Sitemap: https://tiantian.group/sitemap.xml
 - Robots
 
 ##### ✅ `generatePublicationMetadata(publication)`
+
 专门为论文详情页生成metadata
 
 ##### ✅ `generateMemberMetadata(member)`
+
 专门为成员详情页生成metadata
 
 ##### ✅ `generateNewsMetadata(news)`
+
 专门为新闻详情页生成metadata
 
 ##### ✅ `getCanonicalUrl(path, locale)`
+
 生成规范化URL
 
 ##### ✅ `generateBreadcrumbs(items)`
+
 生成面包屑导航数据
 
 ---
@@ -185,6 +205,7 @@ Sitemap: https://tiantian.group/sitemap.xml
 ## 🎯 SEO 最佳实践已应用
 
 ### ✅ Technical SEO
+
 - [x] 正确的HTML语义化结构
 - [x] 移动端响应式设计（viewport meta）
 - [x] HTTPS (metadataBase使用https)
@@ -192,6 +213,7 @@ Sitemap: https://tiantian.group/sitemap.xml
 - [x] 规范化URL（canonical links）
 
 ### ✅ On-Page SEO
+
 - [x] 独特的页面标题（每页不同）
 - [x] 描述性meta description
 - [x] 关键词优化（keywords array）
@@ -199,12 +221,14 @@ Sitemap: https://tiantian.group/sitemap.xml
 - [x] 图片优化（alt属性, Open Graph images）
 
 ### ✅ Content SEO
+
 - [x] 高质量原创内容（学术论文）
 - [x] 清晰的内容层次结构
 - [x] 内部链接策略（面包屑）
 - [x] 多语言支持（zh/en）
 
 ### ✅ International SEO
+
 - [x] hreflang标签
 - [x] 多语言sitemap
 - [x] locale配置
@@ -215,6 +239,7 @@ Sitemap: https://tiantian.group/sitemap.xml
 ## 📊 Build结果
 
 ### ✅ 构建成功
+
 ```
 ✓ Compiled successfully
 ✓ Linting and checking validity of types
@@ -225,11 +250,13 @@ Sitemap: https://tiantian.group/sitemap.xml
 ```
 
 ### ✅ 生成的页面
+
 - **SSG页面**: 2个成员页 + 14个论文详情页 + 23个新闻页 = 39个静态页面
 - **动态路由**: Publications, Members, News, Activities
 - **API路由**: 正常工作
 
 ### ✅ Sitemap生成
+
 ```
 ✅ [next-sitemap] Generation completed
 Sitemap: https://tiantian.group/sitemap.xml
@@ -242,18 +269,22 @@ Sitemap: https://tiantian.group/sitemap.xml
 ### 建议补充：
 
 1. **Google Search Console验证**
+
    - 位置: `app/layout.tsx` line 75
    - 需要: 替换 `'your-google-verification-code'` 为实际验证码
 
 2. **Open Graph图片**
+
    - 创建: `/public/og-image.jpg` (1200x630)
    - 内容: 网站logo + 标题 + 简介
 
 3. **Favicon完善**
+
    - 添加: apple-touch-icon, favicon-32x32, favicon-16x16
    - 格式: PNG + SVG
 
 4. **Schema集成到详情页**
+
    - Publications详情页添加 `<ScholarlyArticleSchema>`
    - Members详情页添加 `<PersonSchema>`
    - 列表页添加 `<BreadcrumbSchema>`
@@ -268,26 +299,31 @@ Sitemap: https://tiantian.group/sitemap.xml
 ## 🚀 如何验证SEO效果
 
 ### 1. Google Search Console
+
 - 提交sitemap: `https://tiantian.group/sitemap.xml`
 - 监控索引状态
 - 查看搜索表现
 
 ### 2. 结构化数据测试
+
 - 工具: https://search.google.com/test/rich-results
 - 测试页面: 首页、论文详情页、成员页
 
 ### 3. PageSpeed Insights
+
 - 工具: https://pagespeed.web.dev/
 - 检查Core Web Vitals
 - 移动端性能评分
 
 ### 4. Lighthouse审计
+
 ```bash
 # Chrome DevTools > Lighthouse
 # 选择: SEO + Performance + Accessibility + Best Practices
 ```
 
 ### 5. Open Graph预览
+
 - Facebook: https://developers.facebook.com/tools/debug/
 - Twitter: https://cards-dev.twitter.com/validator
 - LinkedIn: https://www.linkedin.com/post-inspector/
@@ -328,15 +364,15 @@ export function PublicationClientPage({ publication }) {
 
 ## 🎓 SEO关键指标目标
 
-| 指标 | 当前状态 | 目标 |
-|-----|---------|------|
-| Google索引页面 | 待提交 | 100% |
-| Core Web Vitals LCP | 良好 | <2.5s |
-| Core Web Vitals FID | 良好 | <100ms |
-| Core Web Vitals CLS | 良好 | <0.1 |
-| Mobile Usability | 100% | 100% |
-| Structured Data | 已实现 | 无错误 |
-| 页面加载速度 | 优秀 | >90分 |
+| 指标                | 当前状态 | 目标   |
+| ------------------- | -------- | ------ |
+| Google索引页面      | 待提交   | 100%   |
+| Core Web Vitals LCP | 良好     | <2.5s  |
+| Core Web Vitals FID | 良好     | <100ms |
+| Core Web Vitals CLS | 良好     | <0.1   |
+| Mobile Usability    | 100%     | 100%   |
+| Structured Data     | 已实现   | 无错误 |
+| 页面加载速度        | 优秀     | >90分  |
 
 ---
 
