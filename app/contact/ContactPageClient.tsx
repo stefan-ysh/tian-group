@@ -1,6 +1,6 @@
 'use client';
 
-import { Mail, MapPin, School, Globe, Users } from 'lucide-react';
+import { Mail, MapPin, School, Globe, Users, Copy, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import getConfig from 'next/config';
@@ -33,11 +33,18 @@ export default function ContactPageClient() {
   const [mapInstance, setMapInstance] = useState<any>(null);
   const [mapError, setMapError] = useState<string | null>(null);
   const [scriptStatus, setScriptStatus] = useState<string>('loading');
+  const [copied, setCopied] = useState(false);
 
   // 扬州大学的经纬度坐标
   const position = {
     lng: 119.423332,
     lat: 32.398812,
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText('tiant91@yzu.edu.cn');
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   // 初始化地图
@@ -61,7 +68,7 @@ export default function ContactPageClient() {
         zoom: 15,
         center: [position.lng, position.lat],
         viewMode: '2D',
-        mapStyle: isDark ? 'amap://styles/dark' : 'amap://styles/normal',
+        mapStyle: isDark ? 'amap://styles/blue' : 'amap://styles/normal',
       });
 
       // 添加标记
@@ -206,7 +213,7 @@ export default function ContactPageClient() {
   // 当主题更改时，更新地图样式
   useEffect(() => {
     if (mapInstance) {
-      mapInstance.setMapStyle(isDark ? 'amap://styles/dark' : 'amap://styles/normal');
+      mapInstance.setMapStyle(isDark ? 'amap://styles/blue' : 'amap://styles/normal');
     }
   }, [isDark, mapInstance]);
 
@@ -254,9 +261,18 @@ export default function ContactPageClient() {
               <Mail className="w-7 h-7 text-primary" />
             </div>
             <h3 className="font-bold text-xl mb-3 text-primary">{common('Email')}</h3>
-            <a href="mailto:tiant91@yzu.edu.cn" className="text-foreground/90 hover:text-primary transition-colors">
-              tiant91@yzu.edu.cn
-            </a>
+            <div className="flex items-center gap-2">
+              <a href="mailto:tiant91@yzu.edu.cn" className="text-foreground/90 hover:text-primary transition-colors">
+                tiant91@yzu.edu.cn
+              </a>
+              <button 
+                onClick={copyEmail}
+                className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                title={copied ? "Copied" : "Copy Email"}
+              >
+                {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />} 
+              </button>
+            </div>
           </div>
 
           {/* Address */}
