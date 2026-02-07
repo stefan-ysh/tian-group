@@ -216,6 +216,7 @@ export const PublicationItem = ({
           height={200}
           placeholder="blur"
           blurDataURL={placeholderImage}
+          sizes="(max-width: 768px) 80vw, 200px"
           className="w-full h-11/12 mx-auto md:w-[200px] md:h-[200px] p-0 !object-contain"
         />
       </div>

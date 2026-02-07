@@ -90,13 +90,6 @@ export function NewsTimeline({
   const locale = useLocale();
   const [activeFilter, setActiveFilter] = useState<NewsType | 'all'>('all');
   
-  // 调试日志
-  console.log('NewsTimeline: ', { 
-    newsLength: news.length, 
-    initialDisplayCount, 
-    totalNewsCount 
-  });
-  
   // 每个标签页维护自己的显示数量
   const [displayCounts, setDisplayCounts] = useState<Record<string, number>>({
     all: initialDisplayCount,
@@ -358,6 +351,7 @@ export function NewsTimeline({
                             alt={`${item.title} - ${locale === 'zh' ? '配图' : 'Featured Image'}`}
                             fill
                             className="object-cover"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 560px, 560px"
                             loading="lazy"
                           />
                         </div>

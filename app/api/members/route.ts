@@ -22,7 +22,6 @@ export async function GET(request: Request) {
                      .find(row => row.startsWith('NEXT_LOCALE='))
                      ?.split('=')[1]) || 'zh';
     
-    console.log(`API: Fetching members data (locale: ${locale})`);
     const members = await findLatestMembers({ locale });
     
     if (!members || !Array.isArray(members)) {
@@ -32,8 +31,6 @@ export async function GET(request: Request) {
         { status: 500 }
       );
     }
-    
-    console.log(`API: Found ${members.length} members`);
     
     // Sort by order property
     const sortedMembers = members.sort((a: Member, b: Member) => (a.order - b.order));

@@ -38,6 +38,7 @@ export const MemberItem = ({ name, slug, avatar, position, joined_year, leave_ye
               placeholder='blur'
               blurDataURL={placeholderImage}
               loading='lazy'
+              sizes="(max-width: 768px) 112px, 128px"
               className="w-full h-full object-cover rounded-full"
             />
           </div>

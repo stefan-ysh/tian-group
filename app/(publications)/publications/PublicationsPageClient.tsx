@@ -1,25 +1,26 @@
 'use client';
 
 import { PublicationsClient, Publication } from '~/components/client/PublicationsClient';
-import { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useEffect, useRef, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { PublicationsGridSkeleton, PublicationsTimelineSkeleton } from '../../components/ui/SkeletonLoader';
 import FadeIn from '~/components/atoms/FadeIn';
 
 export type TimelineView = 'grid' | 'timeline';
 
-export function PublicationsPageClient() {
+interface PublicationsPageClientProps {
+  initialPublications?: Publication[];
+}
+
+export function PublicationsPageClient({ initialPublications = [] }: PublicationsPageClientProps) {
   const t = useTranslations('Common');
-  const [publications, setPublications] = useState<Publication[]>([]);
-  const [loading, setLoading] = useState(true);
+  const locale = useLocale();
+  const hasInitialData = initialPublications.length > 0;
+  const [publications, setPublications] = useState<Publication[]>(initialPublications);
+  const [loading, setLoading] = useState(!hasInitialData);
   const [error, setError] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'timeline'>('grid');
-  const [mounted, setMounted] = useState(false);
-
-  // 添加组件挂载状态，避免初始渲染闪烁
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const firstRender = useRef(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -51,22 +52,27 @@ export function PublicationsPageClient() {
           setError(true);
         }
       } finally {
-        // 添加小延迟，确保骨架屏有足够时间显示，避免闪烁
-        setTimeout(() => {
-          if (isMounted) {
-            setLoading(false);
-          }
-        }, 300);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
     
+    if (firstRender.current) {
+      firstRender.current = false;
+      if (!hasInitialData) {
+        fetchPublications();
+      }
+      return;
+    }
+
     fetchPublications();
     
     // 清理函数
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [hasInitialData, locale]);
 
   // 监听子组件的视图模式变化
   const handleViewModeChange = (mode: 'grid' | 'timeline') => {
@@ -79,11 +85,6 @@ export function PublicationsPageClient() {
       <PublicationsGridSkeleton /> : 
       <PublicationsTimelineSkeleton />;
   };
-
-  // 如果组件还没挂载，提前返回null避免闪烁
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <section className="mx-auto max-w-6xl py-0 sm:py-16 lg:py-20 px-6 min-h-[70vh]">

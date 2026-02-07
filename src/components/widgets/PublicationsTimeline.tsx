@@ -78,6 +78,7 @@ export function PublicationsTimeline({
                             alt={publication.title}
                             width={180}
                             height={180}
+                            sizes="(max-width: 768px) 100vw, 180px"
                             className="object-contain max-h-[180px] transition-all duration-300 group-hover:scale-105 !w-full"
                           />
                         </Link>

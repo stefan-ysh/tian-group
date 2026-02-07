@@ -5,6 +5,7 @@ import { generateMemberMetadata, generateSEOMetadata } from '~/lib/seo';
 import { BreadcrumbSchema, PersonSchema } from '~/components/seo/JsonLd';
 
 export const dynamicParams = false;
+export const revalidate = 3600;
 
 export async function generateMetadata({ params }) {
   try {
@@ -51,9 +52,11 @@ export async function generateStaticParams() {
 }
 
 // 服务器组件不需要使用useParams和useState等客户端hooks
-export default function Page({ params }) {
+export default async function Page({ params }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
   const decodedSlug = decodeURIComponent(params.slug);
+  const member = await findMembersByName(decodedSlug);
+  const initialMember = member || null;
 
   return (
     <>
@@ -64,8 +67,18 @@ export default function Page({ params }) {
           { name: decodedSlug, url: `${siteUrl}/members/${encodeURIComponent(decodedSlug)}` },
         ]}
       />
-      <ServerMemberJsonLd slug={decodedSlug} />
-      <MemberClientPage slug={params.slug} />
+      {member ? (
+        <PersonSchema
+          member={{
+            ...member,
+            slug: decodedSlug,
+            image: member.avatar || member.image,
+          }}
+        />
+      ) : (
+        <ServerMemberJsonLd slug={decodedSlug} />
+      )}
+      <MemberClientPage slug={params.slug} initialMember={initialMember} />
     </>
   );
 }

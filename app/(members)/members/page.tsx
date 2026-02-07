@@ -3,6 +3,8 @@ import type { Metadata } from 'next';
 import MembersPageClient from './MembersPageClient';
 import { generateSEOMetadata } from '~/lib/seo';
 import { BreadcrumbSchema } from '~/components/seo/JsonLd';
+import { getLocale } from 'next-intl/server';
+import { findLatestMembers } from '~/utils/members';
 
 export const metadata: Metadata = generateSEOMetadata({
   title: '组内成员',
@@ -12,12 +14,17 @@ export const metadata: Metadata = generateSEOMetadata({
   type: 'website',
 });
 
-export default function Page() {
+export default async function Page() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
+  const locale = await getLocale();
+  const members = await findLatestMembers({ locale });
+  const sortedMembers = (members || []).filter(Boolean).sort((a: { order?: number }, b: { order?: number }) => {
+    return (a.order || 0) - (b.order || 0);
+  });
   return (
     <>
       <BreadcrumbSchema items={[{ name: '首页', url: siteUrl }, { name: '组内成员', url: `${siteUrl}/members` }]} />
-      <MembersPageClient />
+      <MembersPageClient initialMembers={sortedMembers} />
     </>
   );
 }

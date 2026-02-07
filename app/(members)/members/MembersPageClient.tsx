@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MemberItem } from '~/components/widgets/MemberItem';
 import FadeIn from '~/components/atoms/FadeIn';
 import NextImage from 'next/image';
@@ -39,15 +39,22 @@ interface Member {
   description?: string;
   joined_year?: string;
   leave_year?: string;
+  order?: number;
 }
 
-export default function MembersPageClient() {
-  const [members, setMembers] = useState<Member[]>([]);
-  const [loading, setLoading] = useState(true);
+interface MembersPageClientProps {
+  initialMembers?: Member[];
+}
+
+export default function MembersPageClient({ initialMembers = [] }: MembersPageClientProps) {
+  const hasInitialData = initialMembers.length > 0;
+  const [members, setMembers] = useState<Member[]>(initialMembers);
+  const [loading, setLoading] = useState(!hasInitialData);
   const [error, setError] = useState(false);
   const locale = useLocale();
   const t = useTranslations('Member.ListPage');
   const tPosition = useTranslations('Member.Position');
+  const firstRender = useRef(true);
 
   useEffect(() => {
     async function loadMembers() {
@@ -76,8 +83,16 @@ export default function MembersPageClient() {
       }
     }
 
+    if (firstRender.current) {
+      firstRender.current = false;
+      if (!hasInitialData) {
+        loadMembers();
+      }
+      return;
+    }
+
     loadMembers();
-  }, [locale]);
+  }, [locale, hasInitialData]);
 
   // 渲染内容，无论是否加载中都显示页面框架
   return (
@@ -109,6 +124,7 @@ export default function MembersPageClient() {
                         height={224} 
                         src={mentor.avatar} 
                         alt={mentor.name} 
+                        sizes="224px"
                         className="w-full h-full object-cover" 
                       />
                    </div>

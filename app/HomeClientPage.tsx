@@ -30,6 +30,7 @@ export default function HomeClientPage() {
                         className="w-[240px] h-[240px] object-cover"
                         width={240}
                         height={240}
+                        sizes="240px"
                         alt={t('AvatarAlt')}
                         priority
                       />
@@ -39,7 +40,7 @@ export default function HomeClientPage() {
                   <div className="w-full">
                     <FadeIn direction="up" delay={0.3}>
                       <div className="flex flex-col items-center md:items-start mb-4">
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{t('Name')}</h2>
+                        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{t('Name')}</h1>
                         <p className="text-primary font-semibold mt-1 text-lg">{t('Title')}</p>
                       </div>
                     </FadeIn>

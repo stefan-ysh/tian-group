@@ -25,8 +25,6 @@ export async function GET(
       .find(row => row.startsWith('NEXT_LOCALE='))
       ?.split('=')[1]) || 'zh';
     
-    console.log(`API: Fetching member with slug: ${slug} (locale: ${locale})`);
-    
     const member = await findMembersByName(slug, locale) as Member;
     
     if (!member) {
@@ -36,8 +34,6 @@ export async function GET(
         { status: 404 }
       );
     }
-    
-    console.log(`API: Successfully found member: ${member.name || slug}`);
     
     return NextResponse.json({ member });
   } catch (error) {

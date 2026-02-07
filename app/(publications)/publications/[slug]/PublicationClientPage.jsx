@@ -3,7 +3,7 @@
 import md from 'markdown-it';
 import katex from 'katex';
 import tm from 'markdown-it-texmath';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ScholarlyArticleSchema } from '~/components/seo/JsonLd';
 
 // 错误展示组件
@@ -18,10 +18,12 @@ function PublicationError() {
   );
 }
 
-export function PublicationClientPage({ slug }) {
-  const [publication, setPublication] = useState(null);
-  const [loading, setLoading] = useState(true);
+export function PublicationClientPage({ slug, initialPublication = null }) {
+  const hasInitialData = !!initialPublication;
+  const [publication, setPublication] = useState(initialPublication);
+  const [loading, setLoading] = useState(!hasInitialData);
   const [error, setError] = useState(false);
+  const firstRender = useRef(true);
 
   useEffect(() => {
     async function fetchPublication() {
@@ -53,8 +55,16 @@ export function PublicationClientPage({ slug }) {
       }
     }
     
+    if (firstRender.current) {
+      firstRender.current = false;
+      if (!hasInitialData) {
+        fetchPublication();
+      }
+      return;
+    }
+
     fetchPublication();
-  }, [slug]);
+  }, [slug, hasInitialData]);
   
   if (error) {
     return <PublicationError />;

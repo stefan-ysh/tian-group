@@ -3,6 +3,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
+import { cache } from 'react';
 import { 
   BaseContentItem, 
   NewsItem, 
@@ -319,7 +320,7 @@ export async function loadEvents(locale: string = 'zh'): Promise<Event[]> {
 /**
  * 将所有内容类型转换为新闻项
  */
-export async function loadAllAsNewsItems(locale: string = 'zh'): Promise<NewsItem[]> {
+async function loadAllAsNewsItemsInternal(locale: string = 'zh'): Promise<NewsItem[]> {
   // 加载所有内容类型
   const publications = await loadPublications(locale);
   const awards = await loadAwards(locale);
@@ -386,6 +387,8 @@ export async function loadAllAsNewsItems(locale: string = 'zh'): Promise<NewsIte
   // 合并所有新闻项
   return [...publicationNews, ...awardNews, ...announcementNews, ...eventNews];
 }
+
+export const loadAllAsNewsItems = cache(loadAllAsNewsItemsInternal);
 
 /**
  * 获取不同类型新闻的数量

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
+import { cache } from 'react';
 
 const BLOG_DIR = join(process.cwd(), 'src/content/publications');
 
@@ -23,10 +24,12 @@ const load = () => {
 let _publications;
 
 /** */
-export const fetchPublications = async (locale = 'zh') => {
+const fetchPublicationsInternal = async (locale = 'zh') => {
   const publications = await load();
   return publications.map((pub) => localizePublication(pub, locale));
 };
+
+export const fetchPublications = cache(fetchPublicationsInternal);
 
 /** */
 const localizePublication = (pub, locale) => {

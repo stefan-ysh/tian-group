@@ -2,7 +2,7 @@
 
 import md from 'markdown-it';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 
 // 错误展示组件
@@ -18,12 +18,14 @@ function MemberError() {
   );
 }
 
-export function MemberClientPage({ slug }) {
-  const [member, setMember] = useState(null);
-  const [loading, setLoading] = useState(true);
+export function MemberClientPage({ slug, initialMember = null }) {
+  const hasInitialData = !!initialMember;
+  const [member, setMember] = useState(initialMember);
+  const [loading, setLoading] = useState(!hasInitialData);
   const [error, setError] = useState(false);
   const t = useTranslations('Member.Detail');
   const locale = useLocale();
+  const firstRender = useRef(true);
 
   useEffect(() => {
     async function fetchMember() {
@@ -54,8 +56,16 @@ export function MemberClientPage({ slug }) {
       }
     }
     
+    if (firstRender.current) {
+      firstRender.current = false;
+      if (!hasInitialData) {
+        fetchMember();
+      }
+      return;
+    }
+
     fetchMember();
-  }, [slug, locale]);
+  }, [slug, locale, hasInitialData]);
   
   if (error) {
     return <MemberError />;

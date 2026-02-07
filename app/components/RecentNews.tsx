@@ -65,6 +65,7 @@ export function RecentNews({ news }: RecentNewsProps) {
                       alt={item.title}
                       fill
                       className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                   </div>
                 )}

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import { join } from 'path';
+import { cache } from 'react';
 
 const BLOG_DIR = join(process.cwd(), 'src/content/members');
 
@@ -20,10 +21,12 @@ const load = () => {
 };
 
 /** */
-export const fetchMembers = async (locale = 'zh') => {
+const fetchMembersInternal = async (locale = 'zh') => {
   const members = await load();
   return members.map(member => localizeMember(member, locale));
 };
+
+export const fetchMembers = cache(fetchMembersInternal);
 
 /** */
 const localizeMember = (member, locale) => {

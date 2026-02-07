@@ -4,6 +4,7 @@ import { generatePublicationMetadata, generateSEOMetadata } from '~/lib/seo';
 import { BreadcrumbSchema, ScholarlyArticleSchema } from '~/components/seo/JsonLd';
 
 export const dynamicParams = false;
+export const revalidate = 3600;
 
 // 生成页面元数据 - 修复build时URL错误
 export async function generateMetadata({ params }) {
@@ -49,9 +50,11 @@ export async function generateStaticParams() {
 }
 
 // 服务器组件不需要使用useParams和useState等客户端hooks
-export default function Page({ params }) {
+export default async function Page({ params }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
   const slug = decodeURIComponent(params.slug);
+  const publication = await findPublicationsByName(slug);
+  const initialPublication = publication || null;
 
   // Fetch on server for JSON-LD (SEO), UI stays client-side.
   return (
@@ -63,8 +66,12 @@ export default function Page({ params }) {
           { name: slug, url: `${siteUrl}/publications/${encodeURIComponent(slug)}` },
         ]}
       />
-      <ServerPublicationJsonLd slug={slug} />
-      <PublicationClientPage slug={params.slug} />
+      {publication ? (
+        <ScholarlyArticleSchema publication={{ ...publication, slug }} />
+      ) : (
+        <ServerPublicationJsonLd slug={slug} />
+      )}
+      <PublicationClientPage slug={params.slug} initialPublication={initialPublication} />
     </>
   );
 }

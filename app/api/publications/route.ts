@@ -26,15 +26,12 @@ export async function GET(request: NextRequest) {
     const cookieStore = await cookies();
     const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
 
-    console.log(`API: Fetching publications data for locale: ${locale}`);
     const publications = await findLatestPublications({ locale });
 
     if (!publications || !Array.isArray(publications)) {
       console.error('API: Publications data is not an array or is empty', publications);
       return NextResponse.json({ error: 'Invalid publications data format' }, { status: 500 });
     }
-
-    console.log(`API: Found ${publications.length} publications`);
 
     // 按照发布日期排序并创建安全副本
     const safePublications = [...publications]

@@ -2,7 +2,6 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from '~/components/atoms/Providers';
 import { OrganizationSchema, WebSiteSchema } from '~/components/seo/JsonLd';
-// import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';

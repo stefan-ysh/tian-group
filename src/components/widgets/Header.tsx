@@ -3,33 +3,23 @@
 import { useState } from 'react';
 import ToggleTheme from '~/components/atoms/ToggleTheme';
 import ToggleLanguage from '~/components/atoms/ToggleLanguage';
-import Logo from '~/components/atoms/Logo';
 import { headerData } from '~/shared/data/global.data';
 import { usePathname, Link as IntlLink } from '~/i18n/routing';
 import {
   Navbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
-  NavbarMenuItem,
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button
+  NavbarMenuItem
 } from "@heroui/react";
-import { useTranslations, useLocale } from 'next-intl';
-import { Grid, Clock, ChevronDown } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 const Header = () => {
   const { links, actions, isSticky, showToggleTheme, showRssFeed, position } = headerData;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
-  const locale = useLocale();
   const t = useTranslations('Header.NavMenu');
-  const p = useTranslations('Publications');
 
   return (
     <Navbar 
@@ -53,7 +43,8 @@ const Header = () => {
                 <IntlLink 
                   href={href || '/'}
                   prefetch={true}
-                  className="cursor-pointer hover:border-b-2 hover:border-primary-500 transition-all duration-200"
+                  className="cursor-pointer hover:border-b-2 hover:border-primary-500 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 rounded-sm"
+                  aria-current={isCurrentPage ? 'page' : undefined}
                   style={{
                     borderBottom: isCurrentPage ? '2px solid #333' : '',
                   }}
@@ -88,7 +79,8 @@ const Header = () => {
                 <IntlLink
                   href={href || '/'}
                   prefetch={true}
-                  className="cursor-pointer hover:border-b-2 hover:border-primary-500 text-primary-400 transition-all duration-200"
+                  className="cursor-pointer hover:border-b-2 hover:border-primary-500 text-primary-400 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 rounded-sm"
+                  aria-current={isCurrentPage ? 'page' : undefined}
                   style={{
                     borderBottom: isCurrentPage ? '2px solid #333' : '',
                   }}
