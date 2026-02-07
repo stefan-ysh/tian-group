@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@heroui/react';
 import { ChevronDown } from 'lucide-react';
@@ -17,7 +17,7 @@ const NewsTimeline = dynamic(
   }
 );
 // 定义计数类型
-interface NewsCounts {
+export interface NewsCounts {
   all: number;
   publication?: number;
   award?: number;
@@ -27,16 +27,29 @@ interface NewsCounts {
   [key: string]: number | undefined;
 }
 
-export function NewsClient() {
-  const [news, setNews] = useState<NewsItem[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [currentLimit, setCurrentLimit] = useState(10); // 替换page为limit
-  const [hasMore, setHasMore] = useState(true);
-  const [newsCounts, setNewsCounts] = useState<NewsCounts>({ all: 0 });
-  const [totalNewsItems, setTotalNewsItems] = useState(0);
+interface NewsClientProps {
+  initialNews?: NewsItem[];
+  initialTotal?: number;
+  initialCounts?: NewsCounts;
+}
+
+export function NewsClient({ initialNews = [], initialTotal, initialCounts }: NewsClientProps) {
+  const hasInitialData = initialNews.length > 0;
+  const initialLimit = hasInitialData ? initialNews.length : 10;
+  const [news, setNews] = useState<NewsItem[]>(initialNews);
+  const [loading, setLoading] = useState(!hasInitialData);
+  const [currentLimit, setCurrentLimit] = useState(initialLimit); // 替换page为limit
+  const [hasMore, setHasMore] = useState(
+    hasInitialData ? initialNews.length < (initialTotal ?? initialNews.length) : true
+  );
+  const [newsCounts, setNewsCounts] = useState<NewsCounts>(
+    initialCounts ?? { all: initialTotal ?? initialNews.length }
+  );
+  const [totalNewsItems, setTotalNewsItems] = useState(initialTotal ?? initialNews.length);
   const ITEMS_INCREASE = 4; // 每次点击增加4个项目
   const t = useTranslations('News');
   const locale = useLocale();
+  const firstRender = useRef(true);
 
   // 获取各类型新闻数量
   const fetchNewsCounts = useCallback(async () => {
@@ -71,9 +84,22 @@ export function NewsClient() {
   }, []);
 
   useEffect(() => {
-    fetchNews(currentLimit);
+    if (firstRender.current) {
+      firstRender.current = false;
+      if (!hasInitialData) {
+        fetchNews(currentLimit);
+        fetchNewsCounts();
+      }
+      return;
+    }
+
+    // 语言切换时重新获取数据
+    setLoading(true);
+    const resetLimit = 10;
+    setCurrentLimit(resetLimit);
+    fetchNews(resetLimit);
     fetchNewsCounts();
-  }, [locale, currentLimit, fetchNews, fetchNewsCounts]);
+  }, [locale, fetchNews, fetchNewsCounts, hasInitialData]);
 
   const handleLoadMore = () => {
     const newLimit = currentLimit + ITEMS_INCREASE;

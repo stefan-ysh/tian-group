@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { getMessages, getLocale } from 'next-intl/server';
-import { useTranslations } from 'next-intl';
+import { getMessages, getLocale, getTranslations } from 'next-intl/server';
 
 import NewsPageClient from './NewsPageClient';
 import { generateSEOMetadata } from '~/lib/seo';
 import { BreadcrumbSchema } from '~/components/seo/JsonLd';
+import { loadAllAsNewsItems } from '~/utils/contentLoader';
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -19,10 +19,23 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function Page() {
-  const t = useTranslations('News');
-  const common = useTranslations('Common');
+export default async function Page() {
+  const t = await getTranslations('News');
+  const common = await getTranslations('Common');
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
+  const locale = await getLocale();
+  const allNews = await loadAllAsNewsItems(locale);
+  const sortedNews = allNews.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const initialLimit = 10;
+  const initialNews = sortedNews.slice(0, initialLimit);
+  const counts = sortedNews.reduce(
+    (acc, item) => {
+      acc.all += 1;
+      acc[item.type] = (acc[item.type] || 0) + 1;
+      return acc;
+    },
+    { all: 0 } as Record<string, number>
+  );
   
   return (
     <>
@@ -30,7 +43,7 @@ export default function Page() {
         { name: common('Home'), url: siteUrl }, 
         { name: t('title'), url: `${siteUrl}/news` }
       ]} />
-      <NewsPageClient />
+      <NewsPageClient initialNews={initialNews} initialTotal={sortedNews.length} initialCounts={counts} />
     </>
   );
 }
