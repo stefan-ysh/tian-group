@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { getMessages, getLocale, getTranslations } from 'next-intl/server';
 
 import NewsPageClient from './NewsPageClient';
+import type { NewsCounts } from './NewsClient';
 import { generateSEOMetadata } from '~/lib/seo';
 import { BreadcrumbSchema } from '~/components/seo/JsonLd';
 import { loadAllAsNewsItems } from '~/utils/contentLoader';
@@ -34,7 +35,7 @@ export default async function Page() {
       acc[item.type] = (acc[item.type] || 0) + 1;
       return acc;
     },
-    { all: 0 } as Record<string, number>
+    { all: 0 } as NewsCounts
   );
   
   return (

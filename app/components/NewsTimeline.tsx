@@ -37,7 +37,7 @@ export interface NewsItem {
   id: string;
   title: string;
   date: string;  // ISO string
-  publishDate: string;
+  publishDate?: string;
   summary: string;
   type: NewsType;
   imageUrl?: string;
