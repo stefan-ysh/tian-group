@@ -52,7 +52,7 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
         
         {/* Image */}
         {newsItem.imageUrl && (
-          <div className="relative h-64 md:h-96 w-full mb-8 rounded-md overflow-hidden">
+          <div className="relative h-56 md:h-72 w-full mb-8 rounded-md overflow-hidden">
             <NextImage
               src={newsItem.imageUrl}
               alt={newsItem.title}

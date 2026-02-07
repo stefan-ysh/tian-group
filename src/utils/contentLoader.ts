@@ -259,9 +259,15 @@ export async function loadAwards(locale: string = 'zh'): Promise<Award[]> {
 export async function loadAnnouncements(locale: string = 'zh'): Promise<Announcement[]> {
   return loadContentFromFiles<Announcement>('announcements', (frontmatter, id, loc, content) => {
     const isEn = loc === 'en';
+    const baseTitle = frontmatter.title;
+    const localizedTitle = (isEn && frontmatter.title_en) ? frontmatter.title_en : baseTitle;
+
+    if (!localizedTitle) {
+      return null;
+    }
     const ann = {
       id: `announcement-${id}`,
-      title: (isEn && frontmatter.title_en) ? frontmatter.title_en : (frontmatter.title || 'Untitled Announcement'),
+      title: localizedTitle,
       date: parseDate(frontmatter.date),
       summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
       imageUrl: frontmatter.image || undefined,

@@ -4,6 +4,7 @@ import { PublicationsClient, Publication } from '~/components/client/Publication
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { PublicationsGridSkeleton, PublicationsTimelineSkeleton } from '../../components/ui/SkeletonLoader';
+import FadeIn from '~/components/atoms/FadeIn';
 
 export type TimelineView = 'grid' | 'timeline';
 
@@ -97,11 +98,13 @@ export function PublicationsPageClient() {
         // 骨架屏集中在这里显示
         getSkeletonLoader()
       ) : (
-        <PublicationsClient 
-          publications={publications} 
-          onViewModeChange={handleViewModeChange}
-          initialViewMode={viewMode}
-        />
+        <FadeIn direction="up" duration={0.6}>
+          <PublicationsClient 
+            publications={publications} 
+            onViewModeChange={handleViewModeChange}
+            initialViewMode={viewMode}
+          />
+        </FadeIn>
       )}
     </section>
   );

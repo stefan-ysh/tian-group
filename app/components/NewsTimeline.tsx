@@ -352,7 +352,7 @@ export function NewsTimeline({
                       
                       {/* 图片（如果有） */}
                       {item.imageUrl && (
-                        <div className={`relative w-full mb-3 rounded-md overflow-hidde ${item.aspect ? `aspect-${item.aspect}` : ''}`}>
+                        <div className="relative w-full max-w-[560px] mx-auto mb-3 rounded-md overflow-hidden h-40 sm:h-48 md:h-56">
                           <NextImage
                             src={item.imageUrl}
                             alt={`${item.title} - ${locale === 'zh' ? '配图' : 'Featured Image'}`}

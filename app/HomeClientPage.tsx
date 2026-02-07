@@ -4,201 +4,104 @@ import { Card, CardBody } from '@heroui/react';
 import { Award, BookOpen, Mail, School, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import NextImage from 'next/image';
-import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-
-// 动态导入 framer-motion，减少初始包大小
-const MotionComponent = dynamic(
-  () => import('~/components/atoms/MotionWrapper').then((mod) => mod.default),
-  {
-    ssr: true,
-    loading: () => <div className="opacity-0"></div>,
-  },
-);
+import React from 'react';
+import FadeIn from '~/components/atoms/FadeIn';
 
 export default function HomeClientPage() {
   const t = useTranslations('HomePage');
 
-  // 检测用户的减弱动画偏好
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (event: MediaQueryListEvent) => setPrefersReducedMotion(event.matches);
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
-
-  // 根据用户偏好设置动画属性
-  const animationProps = prefersReducedMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 20 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.5 },
-      };
-
   return (
     <div className="flex flex-col">
       <div className="flex-grow flex flex-col justify-center items-center p-0 md:px-5 md:py-12">
-        <MotionComponent {...animationProps}>
+        <FadeIn delay={0.1} duration={0.6} direction="up" className="w-full">
           <Card
             isBlurred
-            className="border-none bg-gray-50 dark:bg-gray-700/50 max-w-[900px] mx-auto"
-            shadow="md"
+            className="border-none bg-gray-50/50 dark:bg-gray-800/50 max-w-[900px] mx-auto backdrop-blur-md"
+            shadow="lg"
           >
             <CardBody className="p-6 md:p-8">
               <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8 items-start">
                 {/* 左侧个人信息 */}
-                <MotionComponent
-                  className="md:col-span-5 flex flex-col items-center md:items-start gap-5"
-                  {...(prefersReducedMotion
-                    ? {}
-                    : {
-                        initial: { opacity: 0, x: -20 },
-                        animate: { opacity: 1, x: 0 },
-                        transition: { duration: 0.6, delay: 0.2 },
-                      })}
-                >
-                  <MotionComponent
-                    className="relative rounded-lg overflow-hidden shadow-lg border-2 border-primary/10"
-                    {...(prefersReducedMotion
-                      ? {}
-                      : {
-                          whileHover: { scale: 1.05 },
-                          transition: { type: 'spring', stiffness: 300 },
-                        })}
-                  >
-                    <NextImage
-                      src="/images/avatar/tiantian.jpg"
-                      className="w-[220px] h-[220px] object-cover"
-                      width={220}
-                      height={220}
-                      alt={t('AvatarAlt')}
-                      priority
-                    />
-                  </MotionComponent>
+                <div className="md:col-span-5 flex flex-col items-center md:items-start gap-5">
+                  <FadeIn direction="left" delay={0.2} duration={0.6}>
+                    <div className="relative rounded-2xl overflow-hidden shadow-xl border-4 border-white dark:border-gray-700 transition-transform hover:scale-[1.02] duration-300">
+                      <NextImage
+                        src="/images/avatar/tiantian.jpg"
+                        className="w-[240px] h-[240px] object-cover"
+                        width={240}
+                        height={240}
+                        alt={t('AvatarAlt')}
+                        priority
+                      />
+                    </div>
+                  </FadeIn>
 
                   <div className="w-full">
-                    <MotionComponent
-                      className="flex flex-col items-center md:items-start mb-3"
-                      {...(prefersReducedMotion
-                        ? {}
-                        : {
-                            initial: { opacity: 0 },
-                            animate: { opacity: 1 },
-                            transition: { duration: 0.5, delay: 0.4 },
-                          })}
-                    >
-                      <h2 className="text-2xl font-bold text-foreground">{t('Name')}</h2>
-                      <p className="text-foreground/70 font-medium mt-1">{t('Title')}</p>
-                    </MotionComponent>
+                    <FadeIn direction="up" delay={0.3}>
+                      <div className="flex flex-col items-center md:items-start mb-4">
+                        <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 tracking-tight">{t('Name')}</h2>
+                        <p className="text-primary font-semibold mt-1 text-lg">{t('Title')}</p>
+                      </div>
+                    </FadeIn>
 
-                    <MotionComponent
-                      className="flex flex-col gap-2.5 text-sm mt-4"
-                      {...(prefersReducedMotion
-                        ? {}
-                        : {
-                            initial: { opacity: 0 },
-                            animate: { opacity: 1 },
-                            transition: { duration: 0.5, delay: 0.6 },
-                          })}
-                    >
-                      <MotionComponent
-                        className="flex items-center gap-2.5"
-                        {...(prefersReducedMotion ? {} : { whileHover: { x: 5, color: 'var(--color-primary)' } })}
-                      >
-                        <Mail className="text-primary" size={18} />
-                        <a href="mailto:tiant91@yzu.edu.cn" className="hover:text-primary transition-colors">
+                    <FadeIn direction="up" delay={0.4} className="flex flex-col gap-3 text-sm md:text-base">
+                      <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+                        <Mail className="text-primary shrink-0 group-hover:scale-110 transition-transform" size={20} />
+                        <a href="mailto:tiant91@yzu.edu.cn" className="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors font-medium">
                           tiant91@yzu.edu.cn
                         </a>
-                      </MotionComponent>
-                      <MotionComponent
-                        className="flex items-center gap-2.5"
-                        {...(prefersReducedMotion ? {} : { whileHover: { x: 5, color: 'var(--color-primary)' } })}
-                      >
-                        <School className="text-primary shrink-0" size={18} />
-                        <span>{t('Address')}</span>
-                      </MotionComponent>
-                    </MotionComponent>
+                      </div>
+                      <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700/50 transition-colors group">
+                        <School className="text-primary shrink-0 group-hover:scale-110 transition-transform" size={20} />
+                        <span className="text-gray-600 dark:text-gray-300 font-medium">{t('Address')}</span>
+                      </div>
+                    </FadeIn>
                   </div>
-                </MotionComponent>
+                </div>
 
                 {/* 右侧研究组介绍 */}
-                <MotionComponent
-                  className="md:col-span-7 flex flex-col gap-5"
-                  {...(prefersReducedMotion
-                    ? {}
-                    : {
-                        initial: { opacity: 0, x: 20 },
-                        animate: { opacity: 1, x: 0 },
-                        transition: { duration: 0.6, delay: 0 },
-                      })}
-                >
+                <div className="md:col-span-7 flex flex-col gap-6">
                   {/* 研究方向部分 */}
-                  <MotionComponent
-                    {...(prefersReducedMotion
-                      ? {}
-                      : {
-                          initial: { opacity: 0, y: 10 },
-                          animate: { opacity: 1, y: 0 },
-                          transition: { duration: 0.5, delay: 0 },
-                          whileHover: { scale: 1.02 },
-                        })}
-                  >
-                    <h3 className="text-lg font-semibold flex items-center gap-2 mb-2 text-primary">
-                      <BookOpen size={18} />
-                      <span>{t('researchDirection')}</span>
-                    </h3>
-                    <p className="text-foreground/80 leading-relaxed text-sm md:text-base">
-                      {t('researchDirectionContent')}
-                    </p>
-                  </MotionComponent>
+                  <FadeIn direction="right" delay={0.2} className="group">
+                    <div className="bg-white/50 dark:bg-gray-900/50 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-primary/20 transition-colors">
+                      <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-primary">
+                        <BookOpen size={20} className="text-secondary" />
+                        <span>{t('researchDirection')}</span>
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {t('researchDirectionContent')}
+                      </p>
+                    </div>
+                  </FadeIn>
 
                   {/* 研究团队部分 */}
-                  <MotionComponent
-                    {...(prefersReducedMotion
-                      ? {}
-                      : {
-                          initial: { opacity: 0, y: 10 },
-                          animate: { opacity: 1, y: 0 },
-                          transition: { duration: 0.5, delay: 0 },
-                          whileHover: { scale: 1.02 },
-                        })}
-                  >
-                    <h3 className="text-lg font-semibold flex items-center gap-2 mb-2 text-primary">
-                      <Users size={18} />
-                      <span>{t('researchTeam')}</span>
-                    </h3>
-                    <p className="text-foreground/80 leading-relaxed text-sm md:text-base">{t('researchTeamContent')}</p>
-                  </MotionComponent>
+                  <FadeIn direction="right" delay={0.3} className="group">
+                    <div className="bg-white/50 dark:bg-gray-900/50 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-primary/20 transition-colors">
+                      <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-primary">
+                        <Users size={20} className="text-secondary" />
+                        <span>{t('researchTeam')}</span>
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{t('researchTeamContent')}</p>
+                    </div>
+                  </FadeIn>
 
                   {/* 研究成果部分 */}
-                  <MotionComponent
-                    {...(prefersReducedMotion
-                      ? {}
-                      : {
-                          initial: { opacity: 0, y: 10 },
-                          animate: { opacity: 1, y: 0 },
-                          transition: { duration: 0.5, delay: 0 },
-                          whileHover: { scale: 1.02 },
-                        })}
-                  >
-                    <h3 className="text-lg font-semibold flex items-center gap-2 mb-2 text-primary">
-                      <Award size={18} />
-                      <span>{t('researchAchievements')}</span>
-                    </h3>
-                    <p className="text-foreground/80 leading-relaxed text-sm md:text-base">
-                      {t('researchAchievementsContent')}
-                    </p>
-                  </MotionComponent>
-                </MotionComponent>
+                  <FadeIn direction="right" delay={0.4} className="group">
+                    <div className="bg-white/50 dark:bg-gray-900/50 p-5 rounded-xl border border-gray-100 dark:border-gray-700 hover:border-primary/20 transition-colors">
+                      <h3 className="text-lg font-bold flex items-center gap-2 mb-3 text-primary">
+                        <Award size={20} className="text-secondary" />
+                        <span>{t('researchAchievements')}</span>
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {t('researchAchievementsContent')}
+                      </p>
+                    </div>
+                  </FadeIn>
+                </div>
               </div>
             </CardBody>
           </Card>
-        </MotionComponent>
+        </FadeIn>
       </div>
     </div>
   );

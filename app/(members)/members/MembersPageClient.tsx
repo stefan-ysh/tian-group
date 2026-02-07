@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { MemberItem } from '~/components/widgets/MemberItem';
+import FadeIn from '~/components/atoms/FadeIn';
 import NextImage from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
@@ -93,92 +94,98 @@ export default function MembersPageClient() {
         <div className="flex flex-col gap-12 py-10">
           {/* 导师介绍 */}
           {members.filter(m => m.slug === 'tiantian').map(mentor => (
-            <div key={mentor.slug} className="flex flex-col gap-6">
-              <h2 className="text-xl font-bold border-l-4 border-purple-800 pl-3 text-purple-900 dark:text-purple-300">
-                {t('mentorTitle')}
-              </h2>
-              <Link 
-                href={`/members/${mentor.slug}`}
-                className="flex flex-col md:flex-row gap-8 items-center bg-white dark:bg-gray-800/50 p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-md hover:border-purple-200 dark:hover:border-purple-900/50 transition-all duration-300 group cursor-pointer"
-              >
-                 <div className="w-48 h-48 md:w-56 md:h-56 shrink-0 rounded-full border-[4px] border-orange-400 overflow-hidden shadow-md group-hover:scale-[1.02] transition-transform duration-500">
-                    <NextImage 
-                      width={224} 
-                      height={224} 
-                      src={mentor.avatar} 
-                      alt={mentor.name} 
-                      className="w-full h-full object-cover" 
-                    />
-                 </div>
-                 <div className="flex flex-col gap-4 text-left flex-1">
-                    <div className="flex flex-wrap items-baseline gap-3 pb-4 border-b border-gray-100 dark:border-gray-700">
-                       <h3 className="text-3xl font-extrabold text-purple-900 dark:text-purple-300 tracking-tight group-hover:text-purple-700 dark:group-hover:text-purple-200 transition-colors">
-                         {mentor.name}
-                       </h3>
-                       <span className="text-xl text-slate-500 dark:text-slate-400 font-medium tracking-tight">
-                         {tPosition(mentor.position)}
-                       </span>
-                    </div>
-                    
-                    <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-base md:text-lg">
-                      <ul className="space-y-3">
-                        <li className="flex items-start gap-2">
-                          <span className="text-amber-500 mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint1')}</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-amber-500 mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint2')}</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-amber-500 mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint3')}</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-amber-500 mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint4')}</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-amber-500 mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint5')}</span>
-                        </li>
-                      </ul>
-                    </div>
-                 </div>
-              </Link>
-            </div>
+            <FadeIn key={mentor.slug} direction="up" duration={0.6}>
+              <div className="flex flex-col gap-6">
+                <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">
+                  {t('mentorTitle')}
+                </h2>
+                <Link 
+                  href={`/members/${mentor.slug}`}
+                  className="flex flex-col md:flex-row gap-8 items-center bg-white dark:bg-gray-800/50 p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:border-primary/30 transition-all duration-300 group cursor-pointer"
+                >
+                   <div className="w-48 h-48 md:w-56 md:h-56 shrink-0 rounded-full border-[4px] border-white dark:border-gray-600 shadow-xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 ring-2 ring-primary/10">
+                      <NextImage 
+                        width={224} 
+                        height={224} 
+                        src={mentor.avatar} 
+                        alt={mentor.name} 
+                        className="w-full h-full object-cover" 
+                      />
+                   </div>
+                   <div className="flex flex-col gap-4 text-left flex-1">
+                      <div className="flex flex-wrap items-baseline gap-3 pb-4 border-b border-gray-100 dark:border-gray-700">
+                         <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight group-hover:text-primary transition-colors">
+                           {mentor.name}
+                         </h3>
+                         <span className="text-xl text-primary font-medium tracking-tight">
+                           {tPosition(mentor.position)}
+                         </span>
+                      </div>
+                      
+                      <div className="text-gray-600 dark:text-gray-300 leading-relaxed text-base md:text-lg">
+                        <ul className="space-y-3">
+                          <li className="flex items-start gap-2">
+                            <span className="text-secondary mt-1.5 shrink-0">•</span>
+                            <span>{t('mentorPoint1')}</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-secondary mt-1.5 shrink-0">•</span>
+                            <span>{t('mentorPoint2')}</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-secondary mt-1.5 shrink-0">•</span>
+                            <span>{t('mentorPoint3')}</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-secondary mt-1.5 shrink-0">•</span>
+                            <span>{t('mentorPoint4')}</span>
+                          </li>
+                          <li className="flex items-start gap-2">
+                            <span className="text-secondary mt-1.5 shrink-0">•</span>
+                            <span>{t('mentorPoint5')}</span>
+                          </li>
+                        </ul>
+                      </div>
+                   </div>
+                </Link>
+              </div>
+            </FadeIn>
           ))}
 
           {/* 当前组员 */}
           {members.filter(m => m.slug !== 'tiantian' && !m.leave_year).length > 0 && (
-            <div className="flex flex-col gap-6">
-               <h2 className="text-xl font-bold border-l-4 border-purple-800 pl-3 text-purple-900 dark:text-purple-300">
-                  {t('studentsTitle')}
-               </h2>
-               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
-                 {members
-                   .filter(m => m.slug !== 'tiantian' && !m.leave_year)
-                   .map((student) => (
-                     <MemberItem key={student.slug} {...student} />
-                   ))}
-               </div>
-            </div>
+            <FadeIn direction="up" delay={0.2}>
+              <div className="flex flex-col gap-6">
+                 <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">
+                    {t('studentsTitle')}
+                 </h2>
+                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
+                   {members
+                     .filter(m => m.slug !== 'tiantian' && !m.leave_year)
+                     .map((student) => (
+                       <MemberItem key={student.slug} {...student} />
+                     ))}
+                 </div>
+              </div>
+            </FadeIn>
           )}
 
           {/* 往届人员 */}
           {members.filter(m => m.slug !== 'tiantian' && m.leave_year).length > 0 && (
-            <div className="flex flex-col gap-6">
-               <h2 className="text-xl font-bold border-l-4 border-purple-800 pl-3 text-purple-900 dark:text-purple-300">
-                  {t('alumniTitle')}
-               </h2>
-               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12 opacity-60">
-                 {members
-                   .filter(m => m.slug !== 'tiantian' && m.leave_year)
-                   .map((student) => (
-                     <MemberItem key={student.slug} {...student} showAvatar={false} />
-                   ))}
-               </div>
-            </div>
+            <FadeIn direction="up" delay={0.4}>
+              <div className="flex flex-col gap-6">
+                 <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">
+                    {t('alumniTitle')}
+                 </h2>
+                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12 opacity-80 hover:opacity-100 transition-opacity">
+                   {members
+                     .filter(m => m.slug !== 'tiantian' && m.leave_year)
+                     .map((student) => (
+                       <MemberItem key={student.slug} {...student} showAvatar={false} />
+                     ))}
+                 </div>
+              </div>
+            </FadeIn>
           )}
         </div>
       )}
