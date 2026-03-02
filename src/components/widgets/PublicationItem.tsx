@@ -44,7 +44,6 @@ export const PublicationItem = ({
   journal,
   journalShort,
 }: PublicationItemProps) => {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   const locale = useLocale()
   const t = useTranslations('Publications.list')
   const tCommon = useTranslations('Common')
@@ -223,29 +222,30 @@ export const PublicationItem = ({
       <div className="w-full md:w-11/12 flex flex-col justify-between">
         <h2 className="text-md font-semibold ">{t(`${title}.title`)}</h2>
         <div className="flex items-center gap-3 flex-wrap my-4 sm:my-1">
-          {author.map((author, index) =>
-            isMobile ? (
-              <span className="text-xs" key={index}>
+          {author.map((author, index) => (
+            <React.Fragment key={index}>
+              <span className="text-xs sm:hidden">
                 {author}
               </span>
-            ) : (
-              <Tooltip content={author} key={index}>
-                <div className="leading-4 text-center opacity-60 hover:opacity-100" key={index}>
-                  <Avatar color="primary" className="w-4 h-4 border border-primary p-1 hover:border-2">
-                    <AvatarImage src="link" alt={author} />
-                    <AvatarFallback>
-                      <span className="text-[8px]">
-                        {author
-                          .split(' ')
-                          .map((name) => name[0])
-                          .join('')}
-                      </span>
-                    </AvatarFallback>
-                  </Avatar>
-                </div>
-              </Tooltip>
-            ),
-          )}
+              <div className="hidden sm:block">
+                <Tooltip content={author}>
+                  <div className="leading-4 text-center opacity-60 hover:opacity-100">
+                    <Avatar color="primary" className="w-4 h-4 border border-primary p-1 hover:border-2">
+                      <AvatarImage src="link" alt={author} />
+                      <AvatarFallback>
+                        <span className="text-[8px]">
+                          {author
+                            .split(' ')
+                            .map((name) => name[0])
+                            .join('')}
+                        </span>
+                      </AvatarFallback>
+                    </Avatar>
+                  </div>
+                </Tooltip>
+              </div>
+            </React.Fragment>
+          ))}
         </div>
         {/* publish date */}
         <div className="flex items-center justify-between pr-1">

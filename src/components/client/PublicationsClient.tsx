@@ -93,7 +93,7 @@ export function PublicationsClient({
           <Button
             startContent={<Grid size={18} />}
             color={viewMode === 'grid' ? 'primary' : 'default'}
-            className={`"w-full md:w-auto border-b-1 border-gray-900 ${viewMode === 'grid' ? '' : 'bg-primary'}"`}
+            className={`w-full md:w-auto border-b-1 border-gray-900 ${viewMode === 'grid' ? '' : 'bg-primary'}`}
             onPress={() => handleViewModeChange('grid')}
           >
             {t('gridView')}
@@ -101,7 +101,7 @@ export function PublicationsClient({
           <Button
             startContent={<Clock size={18} />}
             color={viewMode === 'timeline' ? 'primary' : 'default'}
-            className={`"w-full md:w-auto border-b-1 border-gray-900 ${viewMode === 'timeline' ? '' : 'bg-primary'}"`}
+            className={`w-full md:w-auto border-b-1 border-gray-900 ${viewMode === 'timeline' ? '' : 'bg-primary'}`}
             onPress={() => handleViewModeChange('timeline')}
           >
             {t('timelineView')}
