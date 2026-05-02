@@ -20,10 +20,9 @@ module.exports = {
         disallow: ['/api/', '/_next/', '/blank/'],
       },
     ],
-    // additionalSitemaps: [
-    //   `${SITE.origin}/sitemap.xml`,
-    // ],
+    additionalSitemaps: [`${SITE.origin}/sitemap.xml`],
   },
+  exclude: ['/api/*', '/blank/*'],
   // 页面优先级配置
   transform: async (config, path) => {
     let priority = 0.7;
@@ -34,20 +33,19 @@ module.exports = {
       priority = 1.0;
       changefreq = 'daily';
     }
-    // 主要导航页面 - 高优先级，每周更新
-    else if (['/publications', '/members', '/research', '/news', '/activities'].some(p => path.includes(p))) {
-      priority = 0.9;
-      changefreq = 'weekly';
-    }
-    // 论文详情页 - 中等优先级，月度更新
+    // 详情页 - 中等优先级，月度更新
     else if (path.includes('/publications/')) {
       priority = 0.8;
       changefreq = 'monthly';
     }
-    // 成员页面 - 中等优先级
-    else if (path.includes('/members/') || path.includes('/news/')) {
+    else if (path.includes('/members/') || path.includes('/news/') || path.includes('/activities/')) {
       priority = 0.7;
       changefreq = 'monthly';
+    }
+    // 主要导航页面 - 高优先级，每周更新
+    else if (['/publications', '/members', '/research', '/news', '/activities', '/joinus', '/contact'].some(p => path === p)) {
+      priority = 0.9;
+      changefreq = 'weekly';
     }
     // 其他页面
     else {
@@ -55,12 +53,15 @@ module.exports = {
       changefreq = 'yearly';
     }
 
+    if (path.startsWith('/api/')) {
+      return null;
+    }
+
     return {
       loc: path,
       changefreq,
       priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-      alternateRefs: [],
     };
   },
 };

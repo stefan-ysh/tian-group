@@ -5,7 +5,7 @@
     "Keywords": "田甜, 扬州大学, 化学与材料学院, 田甜课题组, 新能源蓄光薄膜, 光电晶体材料, 半导体纳米发光材料, 光电器件, 钙钛矿, 发光材料, 产业化应用, 李文广, 杨梅芳, 科研团队, 学术研究",
     "Creator": "田甜课题组",
     "Publisher": "扬州大学化学与材料学院",
-    "Keywords_Array": ["田甜", "扬州大学", "化学学院", "田甜课题组", "科研实验室", "环糊精", "钙钛矿", "太阳能电池", "发光材料", "教授"],
+    "Keywords_Array": ["田甜", "扬州大学", "化学与材料学院", "田甜课题组", "科研实验室", "环糊精", "钙钛矿", "太阳能电池", "发光材料", "教授"],
     "Publications": {
       "Title": "成果及论文",
       "Description": "田甜课题组发表的学术论文与研究成果，涵盖环糊精、钙钛矿、太阳能电池、发光材料等方向，包含期刊信息、作者、摘要与标签等。",
@@ -53,9 +53,9 @@
     "Name": "田甜",
     "Title": "教授",
     "School": "扬州大学",
-    "College": "化学化工学院",
-    "AvatarAlt": "扬州大学 化学学院 教授 田甜",
-    "Address": "江苏省扬州市四望亭路180号 扬州大学化学学院",
+    "College": "化学与材料学院",
+    "AvatarAlt": "扬州大学 化学与材料学院 教授 田甜",
+    "Address": "江苏省扬州市四望亭路180号 扬州大学化学与材料学院",
     "researchDirection": "研究方向",
     "researchDirectionContent": "田甜教授的研究小组专注于设计和合成创新的功能材料，用于能源存储、催化和环境修复。我们的工作涵盖新型电池材料、高效催化剂和环境友好型吸附剂的开发，致力于解决当前能源和环境挑战。",
     "researchTeam": "研究团队",
@@ -106,7 +106,7 @@
       "mentorTitle": "导师介绍",
       "studentsTitle": "当前组员",
       "alumniTitle": "往届人员",
-      "mentorPoint1": "现为扬州大学，化学化工学院 特聘教授",
+      "mentorPoint1": "现为扬州大学化学与材料学院特聘教授",
       "mentorPoint2": "近年来一直从事光电纳米材料制备和器件研发领域的研究工作",
       "mentorPoint3": "目前以第一/通讯作者在Nature Communications、Nature Sustainability、Angewandte Chemie–International Edition等期刊上发表论文10余篇",
       "mentorPoint4": "主持国家青年基金等科研项目5项",
@@ -208,9 +208,9 @@
   },
   "metadata": {
     "title": "田甜研究组",
-    "description": "扬州大学 化学学院 田甜教授研究组官方网站",
+    "description": "扬州大学 化学与材料学院 田甜教授研究组官方网站",
     "contactTitle": "联系我们 | 田甜研究组",
-    "contactDescription": "联系田甜研究组，位于扬州大学瘦西湖校区化学化工学院，欢迎交流合作和加入我们的研究团队。"
+    "contactDescription": "联系田甜研究组，位于扬州大学瘦西湖校区化学与材料学院，欢迎交流合作和加入我们的研究团队。"
   },
   "ResearchHighlights": {
     "title": "研究亮点",

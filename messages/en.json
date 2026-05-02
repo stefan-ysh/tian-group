@@ -5,7 +5,7 @@
     "Keywords": "Tian Tian, Yangzhou University, School of Chemistry and Materials, Tian Group, energy-storage luminescent films, photoelectric crystal materials, semiconductor nanoluminescent materials, optoelectronic devices, perovskites, luminescent materials, industrial application, Wen-Guang Li, Meifang Yang, research team, academic research",
     "Creator": "Tian Group",
     "Publisher": "School of Chemistry and Materials, Yangzhou University",
-    "Keywords_Array": ["Tian Tian", "Yangzhou University", "College of Chemistry", "Tian Group", "Research Laboratory", "Cyclodextrin", "Perovskite", "Solar Cells", "Luminescent Materials", "Professor"],
+    "Keywords_Array": ["Tian Tian", "Yangzhou University", "School of Chemistry and Materials", "Tian Group", "Research Laboratory", "Cyclodextrin", "Perovskite", "Solar Cells", "Luminescent Materials", "Professor"],
     "Publications": {
       "Title": "Publications & Achievements",
       "Description": "Academic papers and research results published by the Tian Group, covering cyclodextrins, perovskites, solar cells, luminescent materials, etc., including journal info, authors, abstracts and tags.",
@@ -52,9 +52,9 @@
   "HomePage": {
     "Name": "Tian Tian",
     "Title": "Professor",
-    "AvatarAlt": "Professor Tian Tian, College of Chemistry, Yangzhou University",
+    "AvatarAlt": "Professor Tian Tian, School of Chemistry and Materials, Yangzhou University",
     "School": "Yangzhou University",
-    "College": "School of Chemistry",
+    "College": "School of Chemistry and Materials",
     "Address": "180 Siwangting Road, Yangzhou, Jiangsu",
     "researchDirection": "Research Directions",
     "researchDirectionContent": "Professor Tian's research group focuses on designing and synthesizing innovative functional materials for energy storage, catalysis, and environmental remediation. Our work covers the development of novel battery materials, efficient catalysts, and environmentally friendly adsorbents, addressing current energy and environmental challenges.",
@@ -106,7 +106,7 @@
       "mentorTitle": "Mentor Introduction",
       "studentsTitle": "Current Team Members",
       "alumniTitle": "Alumni",
-      "mentorPoint1": "Distinguished Professor, School of Chemistry and Chemical Engineering, Yangzhou University",
+      "mentorPoint1": "Distinguished Professor, School of Chemistry and Materials, Yangzhou University",
       "mentorPoint2": "Focuses on photoelectric nanomaterials and device research and development",
       "mentorPoint3": "Published 10+ papers as first/corresponding author in journals like Nature Communications, Nature Sustainability, Angewandte Chemie, etc.",
       "mentorPoint4": "Principal Investigator of 5 research projects including National Youth Science Foundation",
@@ -208,9 +208,9 @@
   },
   "metadata": {
     "title": "Tian Research Group",
-    "description": "Official website of Professor Tian Tian's Research Group, School of Chemistry, Yangzhou University",
+    "description": "Official website of Professor Tian Tian's Research Group, School of Chemistry and Materials, Yangzhou University",
     "contactTitle": "Contact Us | Tian Research Group",
-    "contactDescription": "Contact Tian Research Group, located at the School of Chemistry, Yangzhou University. We welcome collaboration and those interested in joining our research team."
+    "contactDescription": "Contact Tian Research Group, located at the School of Chemistry and Materials, Yangzhou University. We welcome collaboration and those interested in joining our research team."
   },
   "ResearchHighlights": {
     "title": "Research Highlights",

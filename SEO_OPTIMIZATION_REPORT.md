@@ -64,7 +64,7 @@
   "@type": "ResearchOrganization",
   "name": "田甜课题组",
   "parentOrganization": "扬州大学",
-  "department": "化学学院"
+  "department": "化学与材料学院"
 }
 ```
 
@@ -99,7 +99,7 @@
   "@type": "Person",
   "affiliation": {
     "@type": "Organization",
-    "name": "扬州大学化学学院"
+    "name": "扬州大学化学与材料学院"
   }
 }
 ```
@@ -385,6 +385,6 @@ export function PublicationClientPage({ publication }) {
 
 ---
 
-**优化完成日期**: 2025年11月5日  
-**优化负责人**: GitHub Copilot  
+**优化完成日期**: 2025年11月5日
+**优化负责人**: GitHub Copilot
 **项目状态**: ✅ 生产就绪

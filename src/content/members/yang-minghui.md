@@ -18,8 +18,8 @@ title: 杨明慧
 title_en: Minghui Yang
 ---
 
-现为中国扬州大学材料与化学工程学院杨梅芳老师2025级新生。主要研究方向为静电纺丝功能材料。
+现为扬州大学化学与材料学院杨梅芳老师2025级新生。主要研究方向为静电纺丝功能材料。
 
 ---EN---
 
-Minghui Yang is currently a 2025-level newcomer at the School of Materials and Chemical Engineering, Yangzhou University, China, under the supervision of Mr. Meifang Yang. Her main research direction is electrospinning functional materials.
+Minghui Yang is currently a 2025-level newcomer at the School of Chemistry and Materials, Yangzhou University, under the supervision of Mr. Meifang Yang. Her main research direction is electrospinning functional materials.

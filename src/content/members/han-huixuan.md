@@ -17,8 +17,8 @@ title: 韩慧萱
 title_en: Huixuan Han
 ---
 
-现为中国扬州大学化学化工学院田甜老师2024级研究生。主要研究方向为柔性发光纤维薄膜。
+现为扬州大学化学与材料学院田甜老师2024级研究生。主要研究方向为柔性发光纤维薄膜。
 
 ---EN---
 
-Huixuan Han is currently a 2024-level graduate student of Professor Tian Tian at the School of Chemistry and Chemical Engineering, Yangzhou University, China. Her main research direction is flexible luminescent fiber films.
+Huixuan Han is currently a 2024-level graduate student of Professor Tian Tian at the School of Chemistry and Materials, Yangzhou University. Her main research direction is flexible luminescent fiber films.
