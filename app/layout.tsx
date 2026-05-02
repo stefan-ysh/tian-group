@@ -81,7 +81,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang={locale}
-      className="text-foreground bg-background motion-safe:scroll-smooth 2xl:text-[20px] font-sans"
+      className="font-sans text-foreground bg-background motion-safe:scroll-smooth 2xl:text-[20px]"
       suppressHydrationWarning
     >
       <head>
@@ -94,7 +94,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"
         ></script>
       </head>
-      <body className="tracking-tight antialiased">
+      <body className="antialiased">
         <OrganizationSchema />
         <WebSiteSchema />
         <Providers>

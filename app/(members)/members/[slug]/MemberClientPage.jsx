@@ -3,8 +3,11 @@
 import md from 'markdown-it';
 import Image from 'next/image';
 import Link from 'next/link';
+import { CalendarDays, ChevronDown, ChevronUp, Microscope, UserRound, UsersRound } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+
+const COLLAPSED_ADVISED_STUDENTS_COUNT = 5;
 
 // 错误展示组件
 function MemberError() {
@@ -12,9 +15,21 @@ function MemberError() {
   return (
     <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
       <h2 className="text-xl font-bold mb-2">{t('loadError')}</h2>
-      <p className="text-gray-600 dark:text-gray-400 mb-4">
-        {t('tryAgain')}
-      </p>
+      <p className="text-gray-600 dark:text-gray-400 mb-4">{t('tryAgain')}</p>
+    </div>
+  );
+}
+
+function DetailRow({ icon: Icon, label, children }) {
+  return (
+    <div className="grid gap-2 border-b border-gray-200/70 pb-4 last:border-b-0 last:pb-0 dark:border-gray-700/70 sm:grid-cols-[150px_1fr] sm:gap-5 items-start">
+      <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-amber-600">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-100 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300">
+          <Icon className="h-4 w-4" aria-hidden="true" />
+        </span>
+        <span>{label}</span>
+      </div>
+      <div className="flex min-h-8 items-center text-gray-700 dark:text-gray-300">{children}</div>
     </div>
   );
 }
@@ -25,8 +40,6 @@ export function MemberClientPage({ slug, initialMember = null }) {
   const [loading, setLoading] = useState(!hasInitialData);
   const [error, setError] = useState(false);
   const [showAllAdvisedStudents, setShowAllAdvisedStudents] = useState(false);
-  const [hasHiddenAdvisedStudents, setHasHiddenAdvisedStudents] = useState(false);
-  const advisedStudentsRowRef = useRef(null);
   const t = useTranslations('Member.Detail');
   const locale = useLocale();
   const firstRender = useRef(true);
@@ -72,149 +85,138 @@ export function MemberClientPage({ slug, initialMember = null }) {
   }, [slug, locale, hasInitialData]);
 
   const advisedStudents = member?.advisedStudents || [];
-
-  useEffect(() => {
-    const row = advisedStudentsRowRef.current;
-    if (!row || showAllAdvisedStudents) return;
-
-    const updateOverflow = () => {
-      setHasHiddenAdvisedStudents(row.scrollHeight > row.clientHeight + 2);
-    };
-
-    updateOverflow();
-    window.addEventListener('resize', updateOverflow);
-    return () => window.removeEventListener('resize', updateOverflow);
-  }, [advisedStudents.length, showAllAdvisedStudents]);
+  const hasMoreAdvisedStudents = advisedStudents.length > COLLAPSED_ADVISED_STUDENTS_COUNT;
+  const visibleAdvisedStudents = showAllAdvisedStudents
+    ? advisedStudents
+    : advisedStudents.slice(0, COLLAPSED_ADVISED_STUDENTS_COUNT);
 
   if (error) {
     return <MemberError />;
   }
 
   return (
-    <section className="mx-auto max-w-5xl py-8 sm:py-16 lg:py-20 px-6">
+    <section className="mx-auto max-w-6xl px-6 py-8 sm:py-16 lg:py-20">
       <article className={loading ? 'opacity-60 transition-opacity duration-300' : 'transition-opacity duration-300'}>
         {loading ? (
           // 加载中的骨架屏
           <div className="animate-pulse">
-            <header className="text-center">
-              <div className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 h-8 bg-primary/10 rounded w-48"></div>
-              <div className="h-64 md:h-96 max-w-3xl mx-auto mt-4 mb-6 bg-primary/10 rounded-md"></div>
-            </header>
-            <div className="mx-auto max-w-3xl px-6 space-y-4">
-              <div className="h-5 bg-primary/10 rounded w-full"></div>
-              <div className="h-5 bg-primary/10 rounded w-full"></div>
-              <div className="h-5 bg-primary/10 rounded w-3/4"></div>
-              <div className="h-5 bg-primary/10 rounded w-full"></div>
-              <div className="h-5 bg-primary/10 rounded w-5/6"></div>
+            <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[340px_minmax(0,1fr)]">
+              <div className="h-[420px] rounded-2xl bg-primary/10"></div>
+              <div className="space-y-5 rounded-2xl border border-gray-100 bg-primary/5 px-6 py-6 dark:border-gray-700">
+                <div className="h-8 rounded bg-primary/10"></div>
+                <div className="h-8 rounded bg-primary/10"></div>
+                <div className="h-8 w-3/4 rounded bg-primary/10"></div>
+              </div>
             </div>
           </div>
         ) : member ? (
           // 实际内容
           <>
-            <header className={member.avatar || member.image ? 'text-center' : ''}>
-              <div className="leading-tighter font-heading mx-auto mb-2 max-w-3xl px-4 text-2xl font-bold tracking-tighter sm:px-6 md:text-3xl text-purple-900 dark:text-purple-300">
-                {t('greeting', { name: member.name })}
-              </div>
+            <div className="mx-auto grid max-w-5xl items-start gap-2 lg:grid-cols-[340px_minmax(0,1fr)]">
               {member.avatar || member.image ? (
-                <Image
-                  src={member.avatar || member.image}
-                  className="mx-auto mt-8 mb-6 max-w-[280px] sm:max-w-[320px] bg-gray-400 dark:bg-slate-700 rounded-xl shadow-lg border-4 border-white dark:border-gray-800"
-                  sizes="(max-width: 768px) 280px, 320px"
-                  alt={member.description || member.name}
-                  loading="eager"
-                  priority
-                  width={400}
-                  height={500}
-                />
+                <figure className="mx-auto w-full max-w-[320px] overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-900 lg:mx-0">
+                  <Image
+                    src={member.avatar || member.image}
+                    className="aspect-[4/5] w-full bg-gray-100 object-cover dark:bg-slate-800"
+                    sizes="(max-width: 1024px) 320px, 340px"
+                    alt={member.description || member.name}
+                    loading="eager"
+                    priority
+                    width={400}
+                    height={500}
+                  />
+                </figure>
               ) : (
-                <div className="mx-auto max-w-3xl px-4 sm:px-6">
-                  <div className="border-t dark:border-slate-700" />
-                </div>
+                <div className="hidden border-t dark:border-slate-700 lg:block" />
               )}
-            </header>
 
-            <div className="mx-auto max-w-3xl px-6 py-6 bg-gray-50/50 dark:bg-gray-800/30 rounded-2xl border border-gray-100 dark:border-gray-700 flex flex-col gap-4">
-              {member.joined_year && (
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                  <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('joinYear')}</span>
-                  <span className="text-gray-700 dark:text-gray-300">{t('yearSuffix', { year: member.joined_year })}</span>
-                </div>
-              )}
-              {member.leave_year && (
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                  <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('leaveYear')}</span>
-                  <span className="text-gray-700 dark:text-gray-300">{member.leave_year}</span>
-                </div>
-              )}
-              {member.research_areas && (
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                   <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('researchArea')}</span>
-                   <span className="text-gray-700 dark:text-gray-300">{member.research_areas}</span>
-                </div>
-              )}
-              {member.advisorName && (
-                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
-                   <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('advisor')}</span>
-                   {member.advisorSlug ? (
-                    <Link href={`/members/${member.advisorSlug}`} className="text-primary-600 transition-colors hover:text-primary-700">
-                      {member.advisorName}
-                    </Link>
-                   ) : (
-                    <span className="text-gray-700 dark:text-gray-300">{member.advisorName}</span>
-                   )}
-                </div>
-              )}
-              {/* {member.email && (
+              <div className="flex flex-col gap-5 rounded-2xl border border-gray-200/80 bg-gradient-to-br from-white via-amber-50/35 to-gray-50 px-5 py-6 shadow-sm dark:border-gray-700 dark:from-gray-900/80 dark:via-gray-800/70 dark:to-gray-900 sm:px-6 justify-around h-full">
+                {member.joined_year && (
+                  <DetailRow icon={CalendarDays} label={t('joinYear')}>
+                    <span>{t('yearSuffix', { year: member.joined_year })}</span>
+                  </DetailRow>
+                )}
+                {member.leave_year && (
+                  <DetailRow icon={CalendarDays} label={t('leaveYear')}>
+                    <span>{member.leave_year}</span>
+                  </DetailRow>
+                )}
+                {member.research_areas && (
+                  <DetailRow icon={Microscope} label={t('researchArea')}>
+                    <span>{member.research_areas}</span>
+                  </DetailRow>
+                )}
+                {member.advisorName && (
+                  <DetailRow icon={UserRound} label={t('advisor')}>
+                    {member.advisorSlug ? (
+                      <Link
+                        href={`/members/${member.advisorSlug}`}
+                        className="font-medium text-primary-600 transition-colors hover:text-primary-700"
+                      >
+                        {member.advisorName}
+                      </Link>
+                    ) : (
+                      <span>{member.advisorName}</span>
+                    )}
+                  </DetailRow>
+                )}
+                {/* {member.email && (
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                    <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('email')}</span>
                    <a href={`mailto:${member.email}`} className="text-primary-600 hover:text-primary-700 transition-colors">{member.email}</a>
                 </div>
               )} */}
-              {advisedStudents.length > 0 && (
-                <div className="flex flex-col gap-3">
-                   <div className="flex items-center justify-between gap-3">
-                    <span className="text-sm font-bold text-amber-600 uppercase tracking-wider">{t('advisedStudents')}</span>
-                    <span className="text-xs text-gray-500 dark:text-gray-400">{advisedStudents.length}</span>
-                   </div>
-                   <div
-                    ref={advisedStudentsRowRef}
-                    className={`flex flex-wrap gap-x-2 gap-y-3 ${showAllAdvisedStudents ? '' : 'max-h-[102px] overflow-hidden sm:max-h-[116px]'}`}
-                   >
-                    {advisedStudents.map((student) => (
-                      <Link
-                        key={student.slug}
-                        href={`/members/${student.slug}`}
-                        title={student.name}
-                        className="group flex w-16 shrink-0 flex-col items-center gap-1.5 rounded-xl border border-gray-200 bg-white/60 p-1.5 text-center transition hover:border-amber-300 hover:bg-amber-50/70 dark:border-gray-700 dark:bg-gray-800/40 dark:hover:border-amber-500/70 dark:hover:bg-gray-800 sm:w-20 sm:gap-2 sm:p-2"
-                      >
-                        {student.avatar && (
-                          <Image
-                            src={student.avatar}
-                            alt={student.name}
-                            width={56}
-                            height={56}
-                            className="h-12 w-12 rounded-full object-cover ring-1 ring-gray-200 dark:ring-gray-700 sm:h-14 sm:w-14"
-                          />
-                        )}
-                        <span className="line-clamp-1 w-full text-[11px] font-medium text-gray-700 group-hover:text-amber-700 dark:text-gray-300 sm:text-xs">
-                          {student.name}
-                        </span>
-                      </Link>
-                    ))}
-                   </div>
-                   {(hasHiddenAdvisedStudents || showAllAdvisedStudents) && (
-                    <button
-                      type="button"
-                      onClick={() => setShowAllAdvisedStudents((value) => !value)}
-                      className="w-fit rounded-full border border-gray-200 px-4 py-1.5 text-xs font-medium text-gray-600 transition hover:border-amber-300 hover:text-amber-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-amber-500/70"
-                    >
-                      {showAllAdvisedStudents
-                        ? locale === 'zh' ? '收起' : 'Show less'
-                        : locale === 'zh' ? '查看更多' : 'Show more'}
-                    </button>
-                   )}
-                </div>
-              )}
+                {advisedStudents.length > 0 && (
+                  <DetailRow icon={UsersRound} label={t('advisedStudents')}>
+                    <div className="flex w-full flex-col gap-4">
+                      <div className="flex flex-wrap gap-3">
+                        {visibleAdvisedStudents.map((student) => (
+                          <Link
+                            key={student.slug}
+                            href={`/members/${student.slug}`}
+                            title={student.name}
+                            className="group flex w-20 shrink-0 flex-col items-center gap-2 rounded-xl p-2 text-center  transition hover:-translate-y-0.5 hover:bg-amber-50/80 hover:shadow-[0_12px_28px_rgba(180,83,9,0.12)]  dark:hover:bg-gray-800 border-none"
+                          >
+                            {student.avatar && (
+                              <Image
+                                src={student.avatar}
+                                alt={student.name}
+                                width={56}
+                                height={56}
+                                className="h-14 w-14 rounded-full object-cover ring-1 ring-gray-200 transition group-hover:ring-amber-300 dark:ring-gray-700 dark:group-hover:ring-amber-500/70"
+                              />
+                            )}
+                            <span className="line-clamp-1 w-full text-xs font-medium text-gray-700 group-hover:text-amber-700 dark:text-gray-300">
+                              {student.name}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                      {hasMoreAdvisedStudents && (
+                        <button
+                          type="button"
+                          onClick={() => setShowAllAdvisedStudents((value) => !value)}
+                          className="inline-flex w-fit items-center gap-1.5 rounded-full border border-amber-200 bg-white/70 px-4 py-2 text-xs font-semibold text-amber-700 transition hover:border-amber-300 hover:bg-amber-50 dark:border-amber-500/30 dark:bg-gray-900/40 dark:text-amber-300 dark:hover:border-amber-400/60"
+                        >
+                          {showAllAdvisedStudents ? (
+                            <>
+                              {locale === 'zh' ? '收起' : 'Show less'}
+                              <ChevronUp className="h-3.5 w-3.5" aria-hidden="true" />
+                            </>
+                          ) : (
+                            <>
+                              {locale === 'zh'
+                                ? `查看全部 ${advisedStudents.length} 人`
+                                : `Show all ${advisedStudents.length}`}
+                              <ChevronDown className="h-3.5 w-3.5" aria-hidden="true" />
+                            </>
+                          )}
+                        </button>
+                      )}
+                    </div>
+                  </DetailRow>
+                )}
+              </div>
             </div>
 
             <div
