@@ -164,12 +164,12 @@ export function MemberClientPage({ slug, initialMember = null }) {
                    )}
                 </div>
               )}
-              {member.email && (
+              {/* {member.email && (
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                    <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('email')}</span>
                    <a href={`mailto:${member.email}`} className="text-primary-600 hover:text-primary-700 transition-colors">{member.email}</a>
                 </div>
-              )}
+              )} */}
               {advisedStudents.length > 0 && (
                 <div className="flex flex-col gap-3">
                    <div className="flex items-center justify-between gap-3">
