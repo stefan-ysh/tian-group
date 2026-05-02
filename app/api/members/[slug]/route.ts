@@ -37,7 +37,9 @@ export async function GET(
     
     const members = await findLatestMembers({ locale }) as Member[];
     const advisor = member.advisor ? members.find((item) => item.slug === member.advisor) : null;
-    const advisedStudents = members.filter((item) => item.advisor === member.slug);
+    const advisedStudents = members
+      .filter((item) => item.advisor === member.slug)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
 
     return NextResponse.json({
       member: {
@@ -47,7 +49,7 @@ export async function GET(
         advisedStudents: advisedStudents.map((student) => ({
           slug: student.slug,
           name: student.name,
-          avatar: student.avatar,
+          avatar: student.avatar || student.image || '',
         })),
       },
     });

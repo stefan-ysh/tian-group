@@ -1,6 +1,6 @@
-import { findLatestMembers } from '~/utils/members';
+import { getLocale } from 'next-intl/server';
+import { findLatestMembers, findMembersByName } from '~/utils/members';
 import { MemberClientPage } from './MemberClientPage';
-import { findMembersByName } from '~/utils/members';
 import { generateMemberMetadata, generateSEOMetadata } from '~/lib/seo';
 import { BreadcrumbSchema, PersonSchema } from '~/components/seo/JsonLd';
 
@@ -51,12 +51,35 @@ export async function generateStaticParams() {
   }
 }
 
+async function enrichMemberRelations(member, locale) {
+  if (!member) return null;
+
+  const members = await findLatestMembers({ locale });
+  const advisor = member.advisor ? members.find((item) => item.slug === member.advisor) : null;
+  const advisedStudents = members
+    .filter((item) => item.advisor === member.slug)
+    .sort((a, b) => (a.order || 0) - (b.order || 0))
+    .map((item) => ({
+      slug: item.slug,
+      name: item.name,
+      avatar: item.avatar || item.image || '',
+    }));
+
+  return {
+    ...member,
+    advisorName: advisor?.name || '',
+    advisorSlug: advisor?.slug || '',
+    advisedStudents,
+  };
+}
+
 // 服务器组件不需要使用useParams和useState等客户端hooks
 export default async function Page({ params }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
+  const locale = await getLocale();
   const decodedSlug = decodeURIComponent(params.slug);
-  const member = await findMembersByName(decodedSlug);
-  const initialMember = member || null;
+  const member = await findMembersByName(decodedSlug, locale);
+  const initialMember = await enrichMemberRelations(member, locale);
 
   return (
     <>
