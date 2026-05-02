@@ -9,6 +9,7 @@ name_en: Shoushun Wang
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 高温压电薄膜复合材料
 research_areas_en: High-temperature piezoelectric thin film composite materials
 tags:

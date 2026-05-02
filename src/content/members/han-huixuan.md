@@ -8,6 +8,7 @@ name_en: Huixuan Han
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 柔性发光纤维薄膜
 research_areas_en: Flexible luminescent fiber films
 tags:

@@ -9,6 +9,7 @@ name_en: Jiaxin Li
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 静电纺丝功能材料
 research_areas_en: Electrospinning functional materials
 tags:

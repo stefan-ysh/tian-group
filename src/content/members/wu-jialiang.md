@@ -8,6 +8,7 @@ name_en: Jialiang Wu
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 化学
 research_areas_en: Chemistry
 tags:

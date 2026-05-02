@@ -9,6 +9,7 @@ name_en: Fangnan Shen
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 3D打印的超长余辉发光材料
 research_areas_en: 3D printed ultra-long afterglow luminescent materials
 tags:

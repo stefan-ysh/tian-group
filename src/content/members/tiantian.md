@@ -3,13 +3,13 @@ name: '田甜'
 name_en: 'Tian Tian'
 title: 'Professor'
 title_en: 'Professor'
-description: '扬州大学化学化工学院特聘教授；扬州宇元新材有限公司（官网 https://www.cosmorigin.com）首席技术官（CTO）。研究方向：光电纳米材料与器件研发。'
-description_en: 'Distinguished Professor at the School of Chemistry and Chemical Engineering, Yangzhou University; Chief Technology Officer (CTO) of Yangzhou Yuyuan New Material Co., Ltd.'
+description: '田甜，博士毕业于上海理工大学/丹麦科技大学联合培养，中山大学博士后，现为扬州大学特聘教授。2025 年入选江苏省“科技副总”及“青年托举人才”计划，担任扬州宇元新材有限公司与扬州旭元新材有限公司总经理兼首席技术官（CTO）。长期致力于新能源蓄光薄膜材料的研发与产业化应用。'
+description_en: 'Dr. Tian Tian received her Ph.D. through joint training at University of Shanghai for Science and Technology and Technical University of Denmark, and completed postdoctoral research at Sun Yat-sen University. She is currently a Distinguished Professor at Yangzhou University. In 2025, she was selected for the Jiangsu Science and Technology Vice-General Manager program and Young Talent Support Program, and serves as General Manager and CTO of Yangzhou Yuyuan New Materials Co., Ltd. and Yangzhou Xuyuan New Materials Co., Ltd.'
 avatar: '/images/avatar/tiantian.jpg'
 position: 'Professor'
 position_en: 'Professor'
-research_areas: '光电纳米材料与器件研发'
-research_areas_en: 'Research and development of photoelectric nanomaterials and devices'
+research_areas: '新能源蓄光薄膜材料研发与产业化应用'
+research_areas_en: 'Research, development, and industrial application of energy-storage luminescent film materials'
 order: 1
 tags: [markdown, member]
 ---

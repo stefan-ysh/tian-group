@@ -9,6 +9,7 @@ name_en: Minghui Yang
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: yang-meifang
 research_areas: 静电纺丝功能材料
 research_areas_en: Electrospinning functional materials
 tags:

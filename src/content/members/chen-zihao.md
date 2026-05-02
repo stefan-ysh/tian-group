@@ -9,6 +9,7 @@ name_en: Zihao Chen
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 柔性大面积的长余辉非线性光学膜
 research_areas_en: Flexible large-area long-afterglow nonlinear optical films
 tags:

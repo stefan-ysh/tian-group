@@ -8,6 +8,7 @@ name_en: Yicheng Yuan
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 高性能钙钛矿发光材料
 research_areas_en: High-performance perovskite luminescent materials
 tags:

@@ -9,6 +9,7 @@ name_en: Jing Liang
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 钙钛矿柔性发光材料
 research_areas_en: Perovskite flexible light-emitting materials
 tags:

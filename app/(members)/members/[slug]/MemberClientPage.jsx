@@ -2,6 +2,7 @@
 
 import md from 'markdown-it';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 
@@ -23,6 +24,9 @@ export function MemberClientPage({ slug, initialMember = null }) {
   const [member, setMember] = useState(initialMember);
   const [loading, setLoading] = useState(!hasInitialData);
   const [error, setError] = useState(false);
+  const [showAllAdvisedStudents, setShowAllAdvisedStudents] = useState(false);
+  const [hasHiddenAdvisedStudents, setHasHiddenAdvisedStudents] = useState(false);
+  const advisedStudentsRowRef = useRef(null);
   const t = useTranslations('Member.Detail');
   const locale = useLocale();
   const firstRender = useRef(true);
@@ -30,23 +34,23 @@ export function MemberClientPage({ slug, initialMember = null }) {
   useEffect(() => {
     async function fetchMember() {
       if (!slug) return;
-      
+
       try {
         setLoading(true);
         setError(false);
-        
+
         const response = await fetch(`/api/members/${slug}?locale=${locale}`);
-        
+
         if (!response.ok) {
           throw new Error(`Member fetch failed: ${response.status}`);
         }
-        
+
         const data = await response.json();
-        
+
         if (!data || !data.member) {
           throw new Error('Invalid member data');
         }
-        
+
         setMember(data.member);
       } catch (error) {
         console.error('Error fetching member:', error);
@@ -55,7 +59,7 @@ export function MemberClientPage({ slug, initialMember = null }) {
         setLoading(false);
       }
     }
-    
+
     if (firstRender.current) {
       firstRender.current = false;
       if (!hasInitialData) {
@@ -66,7 +70,22 @@ export function MemberClientPage({ slug, initialMember = null }) {
 
     fetchMember();
   }, [slug, locale, hasInitialData]);
-  
+
+  const advisedStudents = member?.advisedStudents || [];
+
+  useEffect(() => {
+    const row = advisedStudentsRowRef.current;
+    if (!row || showAllAdvisedStudents) return;
+
+    const updateOverflow = () => {
+      setHasHiddenAdvisedStudents(row.scrollHeight > row.clientHeight + 2);
+    };
+
+    updateOverflow();
+    window.addEventListener('resize', updateOverflow);
+    return () => window.removeEventListener('resize', updateOverflow);
+  }, [advisedStudents.length, showAllAdvisedStudents]);
+
   if (error) {
     return <MemberError />;
   }
@@ -133,10 +152,67 @@ export function MemberClientPage({ slug, initialMember = null }) {
                    <span className="text-gray-700 dark:text-gray-300">{member.research_areas}</span>
                 </div>
               )}
+              {member.advisorName && (
+                <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
+                   <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('advisor')}</span>
+                   {member.advisorSlug ? (
+                    <Link href={`/members/${member.advisorSlug}`} className="text-primary-600 transition-colors hover:text-primary-700">
+                      {member.advisorName}
+                    </Link>
+                   ) : (
+                    <span className="text-gray-700 dark:text-gray-300">{member.advisorName}</span>
+                   )}
+                </div>
+              )}
               {member.email && (
                 <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4">
                    <span className="text-sm font-bold text-amber-600 uppercase tracking-wider min-w-[100px]">{t('email')}</span>
                    <a href={`mailto:${member.email}`} className="text-primary-600 hover:text-primary-700 transition-colors">{member.email}</a>
+                </div>
+              )}
+              {advisedStudents.length > 0 && (
+                <div className="flex flex-col gap-3">
+                   <div className="flex items-center justify-between gap-3">
+                    <span className="text-sm font-bold text-amber-600 uppercase tracking-wider">{t('advisedStudents')}</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400">{advisedStudents.length}</span>
+                   </div>
+                   <div
+                    ref={advisedStudentsRowRef}
+                    className={`flex flex-wrap gap-x-2 gap-y-3 ${showAllAdvisedStudents ? '' : 'max-h-[102px] overflow-hidden sm:max-h-[116px]'}`}
+                   >
+                    {advisedStudents.map((student) => (
+                      <Link
+                        key={student.slug}
+                        href={`/members/${student.slug}`}
+                        title={student.name}
+                        className="group flex w-16 shrink-0 flex-col items-center gap-1.5 rounded-xl border border-gray-200 bg-white/60 p-1.5 text-center transition hover:border-amber-300 hover:bg-amber-50/70 dark:border-gray-700 dark:bg-gray-800/40 dark:hover:border-amber-500/70 dark:hover:bg-gray-800 sm:w-20 sm:gap-2 sm:p-2"
+                      >
+                        {student.avatar && (
+                          <Image
+                            src={student.avatar}
+                            alt={student.name}
+                            width={56}
+                            height={56}
+                            className="h-12 w-12 rounded-full object-cover ring-1 ring-gray-200 dark:ring-gray-700 sm:h-14 sm:w-14"
+                          />
+                        )}
+                        <span className="line-clamp-1 w-full text-[11px] font-medium text-gray-700 group-hover:text-amber-700 dark:text-gray-300 sm:text-xs">
+                          {student.name}
+                        </span>
+                      </Link>
+                    ))}
+                   </div>
+                   {(hasHiddenAdvisedStudents || showAllAdvisedStudents) && (
+                    <button
+                      type="button"
+                      onClick={() => setShowAllAdvisedStudents((value) => !value)}
+                      className="w-fit rounded-full border border-gray-200 px-4 py-1.5 text-xs font-medium text-gray-600 transition hover:border-amber-300 hover:text-amber-700 dark:border-gray-700 dark:text-gray-300 dark:hover:border-amber-500/70"
+                    >
+                      {showAllAdvisedStudents
+                        ? locale === 'zh' ? '收起' : 'Show less'
+                        : locale === 'zh' ? '查看更多' : 'Show more'}
+                    </button>
+                   )}
                 </div>
               )}
             </div>
@@ -159,4 +235,4 @@ export function MemberClientPage({ slug, initialMember = null }) {
       </article>
     </section>
   );
-} 
+}

@@ -9,6 +9,7 @@ name_en: Yuansheng Jiang
 order: 10
 position: PhD Student
 position_en: PhD Student
+advisor: tiantian
 research_areas: 静电纺丝发光纤维的制作及其应用
 research_areas_en: Fabrication and application of electrospun luminescent fibers
 tags:

@@ -10,6 +10,7 @@ interface MemberItemProps {
   slug: string;
   avatar: string;
   position: string;
+  advisorName?: string;
   joined_year?: string;
   leave_year?: string;
   showAvatar?: boolean;
@@ -17,7 +18,7 @@ interface MemberItemProps {
 
 const placeholderImage = 'https://placehold.co/200x200';
 
-export const MemberItem = ({ name, slug, avatar, position, joined_year, leave_year, showAvatar = true }: MemberItemProps) => {
+export const MemberItem = ({ name, slug, avatar, position, advisorName, joined_year, leave_year, showAvatar = true }: MemberItemProps) => {
   const router = useRouter();
   const t = useTranslations('Member.Position');
   const locale = useLocale();
@@ -52,6 +53,11 @@ export const MemberItem = ({ name, slug, avatar, position, joined_year, leave_ye
             <span className="text-sm text-gray-500 font-medium text-center">
               {t(position)}
             </span>
+            {advisorName && (
+              <span className="text-xs text-gray-400 mt-0.5 text-center">
+                {t('Advisor')}: {advisorName}
+              </span>
+            )}
             {leave_year && (
               <span className="text-xs text-gray-400 mt-0.5">
                 {joined_year ? `${joined_year} - ${leave_year}` : leave_year}

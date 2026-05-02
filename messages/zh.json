@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "Title": "田甜课题组 | 扬州大学化学学院",
-    "Description": "扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。",
-    "Keywords": "田甜, 扬州大学, 化学学院, 田甜课题组, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 发光材料, 教授, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano, ACS Energy Letters, 科研团队, 学术研究",
+    "Title": "田甜课题组 | 扬州大学化学与材料学院",
+    "Description": "扬州大学田甜课题组面向新能源蓄光薄膜、光电晶体材料、半导体纳米发光材料与光电器件应用开展研究，推动功能材料研发与产业化转化。",
+    "Keywords": "田甜, 扬州大学, 化学与材料学院, 田甜课题组, 新能源蓄光薄膜, 光电晶体材料, 半导体纳米发光材料, 光电器件, 钙钛矿, 发光材料, 产业化应用, 李文广, 杨梅芳, 科研团队, 学术研究",
     "Creator": "田甜课题组",
-    "Publisher": "扬州大学化学学院",
+    "Publisher": "扬州大学化学与材料学院",
     "Keywords_Array": ["田甜", "扬州大学", "化学学院", "田甜课题组", "科研实验室", "环糊精", "钙钛矿", "太阳能电池", "发光材料", "教授"],
     "Publications": {
       "Title": "成果及论文",
@@ -78,8 +78,10 @@
   "Member": {
     "Position": {
       "Professor": "教授",
+      "Associate Professor": "副教授",
       "Graduate": "研究生",
       "Lecturer": "讲师",
+      "Advisor": "指导老师",
       "Postdoctoral": "博士后",
       "Doctoral": "博士",
       "Master Student": "硕士研究生",
@@ -93,6 +95,8 @@
       "leaveYear": "离组时间",
       "yearSuffix": "{year} 级",
       "researchArea": "研究方向",
+      "advisor": "指导老师",
+      "advisedStudents": "指导学生",
       "email": "邮箱地址",
       "loadError": "数据加载失败",
       "tryAgain": "无法获取成员数据，请稍后再试"

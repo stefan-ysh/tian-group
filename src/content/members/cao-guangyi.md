@@ -9,6 +9,7 @@ name_en: Guangyi Cao
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: yang-meifang
 research_areas: 新型半导体纳米材料的液相合成，以及高性能钙钛矿光电材料与器件的稳定性和生物相容性研究
 research_areas_en: Liquid-phase synthesis of novel semiconductor nanomaterials, and stability and biocompatibility of high-performance perovskite optoelectronic materials and devices
 tags:

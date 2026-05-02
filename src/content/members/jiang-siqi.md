@@ -9,6 +9,7 @@ name_en: Siqi Jiang
 order: 10
 position: Master Student
 position_en: Master Student
+advisor: tiantian
 research_areas: 生物基吸水热蒸发薄膜材料
 research_areas_en: Bio-based water-absorbing photothermal evaporation film materials
 tags:

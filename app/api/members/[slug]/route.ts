@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { findMembersByName } from '../../../../src/utils/members';
+import { findLatestMembers, findMembersByName } from '../../../../src/utils/members';
 
 interface Member {
   slug: string;
@@ -35,7 +35,22 @@ export async function GET(
       );
     }
     
-    return NextResponse.json({ member });
+    const members = await findLatestMembers({ locale }) as Member[];
+    const advisor = member.advisor ? members.find((item) => item.slug === member.advisor) : null;
+    const advisedStudents = members.filter((item) => item.advisor === member.slug);
+
+    return NextResponse.json({
+      member: {
+        ...member,
+        advisorSlug: advisor?.slug,
+        advisorName: advisor?.name,
+        advisedStudents: advisedStudents.map((student) => ({
+          slug: student.slug,
+          name: student.name,
+          avatar: student.avatar,
+        })),
+      },
+    });
   } catch (error) {
     console.error('API: Error fetching member data:', error);
     return NextResponse.json(

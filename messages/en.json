@@ -1,10 +1,10 @@
 {
   "Metadata": {
-    "Title": "Tian Group | College of Chemistry, Yangzhou University",
-    "Description": "Tian Group at the College of Chemistry, Yangzhou University, focuses on cyclodextrins, perovskites, solar cells, and luminescent materials research. Results published in Angew, NC, Wiley, Advanced Materials, etc.",
-    "Keywords": "Tian Tian, Yangzhou University, College of Chemistry, Tian Group, Research Laboratory, Cyclodextrin, Perovskite, Solar Cells, Luminescent Materials, Professor, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano, ACS Energy Letters, Research Team, Academic Research",
+    "Title": "Tian Group | School of Chemistry and Materials, Yangzhou University",
+    "Description": "The Tian Group at Yangzhou University focuses on energy-storage luminescent films, photoelectric crystal materials, semiconductor nanoluminescent materials, and optoelectronic device applications, advancing functional materials research and industrial translation.",
+    "Keywords": "Tian Tian, Yangzhou University, School of Chemistry and Materials, Tian Group, energy-storage luminescent films, photoelectric crystal materials, semiconductor nanoluminescent materials, optoelectronic devices, perovskites, luminescent materials, industrial application, Wen-Guang Li, Meifang Yang, research team, academic research",
     "Creator": "Tian Group",
-    "Publisher": "College of Chemistry, Yangzhou University",
+    "Publisher": "School of Chemistry and Materials, Yangzhou University",
     "Keywords_Array": ["Tian Tian", "Yangzhou University", "College of Chemistry", "Tian Group", "Research Laboratory", "Cyclodextrin", "Perovskite", "Solar Cells", "Luminescent Materials", "Professor"],
     "Publications": {
       "Title": "Publications & Achievements",
@@ -78,8 +78,10 @@
   "Member": {
     "Position": {
       "Professor": "Professor",
+      "Associate Professor": "Associate Professor",
       "Graduate": "Graduate",
       "Lecturer": "Lecturer",
+      "Advisor": "Advisor",
       "Postdoctoral": "Postdoctoral",
       "Doctoral": "Doctoral",
       "Master Student": "Master Student",
@@ -93,6 +95,8 @@
       "leaveYear": "Leave Year",
       "yearSuffix": "Class of {year}",
       "researchArea": "Research Direction",
+      "advisor": "Advisor",
+      "advisedStudents": "Advised Students",
       "email": "Email Address",
       "loadError": "Data Loading Failed",
       "tryAgain": "Unable to get member data, please try again later"
