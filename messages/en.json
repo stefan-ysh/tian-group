@@ -340,6 +340,7 @@
   "News": {
     "title": "News",
     "allNews": "All News",
+    "filterTabs": "News Category Filter",
     "loading": "Loading...",
     "publications": "Publications",
     "awards": "Awards",

@@ -7,7 +7,10 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   try {
     const cookieStore = await cookies();
-    const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
+    const url = new URL(request.url);
+    
+    // 优先从查询参数获取 locale，回退到 cookie
+    const locale = url.searchParams.get('locale') || cookieStore.get('NEXT_LOCALE')?.value || 'zh';
 
     // 获取所有新闻类型的数量
     const counts = await getNewsCounts(locale);

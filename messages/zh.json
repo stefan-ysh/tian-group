@@ -340,6 +340,7 @@
   "News": {
     "title": "新闻动态",
     "allNews": "全部新闻",
+    "filterTabs": "新闻分类筛选",
     "loading": "加载中...",
     "publications": "论文发表",
     "awards": "荣誉奖项",

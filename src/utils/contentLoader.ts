@@ -190,17 +190,36 @@ function localizeItem<T>(item: any, frontmatter: any, locale: string, content: s
  * 加载出版物数据
  */
 export async function loadPublications(locale: string = 'zh'): Promise<Publication[]> {
+  // 加载中文翻译数据以获取论文的中文标题和摘要
+  let zhTranslations: Record<string, { title: string; desc: string }> = {};
+  if (locale === 'zh') {
+    try {
+      const messagesPath = join(process.cwd(), 'messages/zh.json');
+      const messagesContent = fs.readFileSync(messagesPath, 'utf-8');
+      const messages = JSON.parse(messagesContent);
+      zhTranslations = messages?.Publications?.list || {};
+    } catch (error) {
+      console.error('Error loading zh.json translations for publications:', error);
+    }
+  }
+
   return loadContentFromFiles<Publication>('publications', (frontmatter, id, loc, content) => {
     const date = parseDate(frontmatter.publishDate);
     const isEn = loc === 'en';
+    const englishTitle = frontmatter.title || 'Untitled Publication';
+    
+    // 中文 locale 时，从翻译文件获取中文标题和摘要
+    const zhEntry = zhTranslations[englishTitle];
     
     const pub = {
       id: `publication-${id}`,
-      title: (isEn && frontmatter.title_en) ? frontmatter.title_en : (frontmatter.title || 'Untitled Publication'),
+      title: isEn ? ((frontmatter.title_en) || englishTitle) : (zhEntry?.title || englishTitle),
       date: date,
       publishDate: frontmatter.publishDate || date,
       year: new Date(date).getFullYear(),
-      summary: (isEn && frontmatter.description_en) ? frontmatter.description_en : (frontmatter.description || ''),
+      summary: isEn 
+        ? ((frontmatter.description_en) || (frontmatter.description || '')) 
+        : (zhEntry?.desc || frontmatter.description || ''),
       imageUrl: frontmatter.image || 'https://i.imgur.com/FRQ93Lm.jpg',
       tags: (isEn && frontmatter.tags_en) ? frontmatter.tags_en : (frontmatter.tags || ['Research', 'Publication']),
       link: frontmatter.link || '',

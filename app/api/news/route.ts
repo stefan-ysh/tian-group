@@ -8,10 +8,12 @@ export const revalidate = 1800;
 export async function GET(request: NextRequest) {
   try {
     const cookieStore = await cookies();
-    const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
-
+    
     // 获取查询参数
     const url = new URL(request.url);
+    
+    // 优先从查询参数获取 locale，回退到 cookie
+    const locale = url.searchParams.get('locale') || cookieStore.get('NEXT_LOCALE')?.value || 'zh';
     const count = url.searchParams.get('count');
     const page = url.searchParams.get('page');
     const limit = url.searchParams.get('limit');

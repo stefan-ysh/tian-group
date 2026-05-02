@@ -5,7 +5,7 @@ import { Card, CardBody, Button, Chip } from '@heroui/react';
 import { Calendar, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import NextImage from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { NewsItem, getTypeIcon, getTypeColor } from './NewsTimeline';
 
 interface RecentNewsProps {
@@ -14,11 +14,12 @@ interface RecentNewsProps {
 
 export function RecentNews({ news }: RecentNewsProps) {
   const t = useTranslations('News');
+  const locale = useLocale();
   
   // Format date
-  const formatDate = (dateStr: string): string => {
+  const formatDateStr = (dateStr: string): string => {
     const date = new Date(dateStr);
-    return date.toLocaleDateString('zh-CN', {
+    return date.toLocaleDateString(locale === 'en' ? 'en-US' : 'zh-CN', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'
@@ -53,7 +54,7 @@ export function RecentNews({ news }: RecentNewsProps) {
                   
                   <div className="flex items-center gap-1">
                     <Calendar className="text-primary" size={14} />
-                    <span className="text-xs text-foreground/70">{formatDate(item.date)}</span>
+                    <span className="text-xs text-foreground/70">{formatDateStr(item.date)}</span>
                   </div>
                 </div>
                 

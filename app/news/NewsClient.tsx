@@ -54,19 +54,19 @@ export function NewsClient({ initialNews = [], initialTotal, initialCounts }: Ne
   // 获取各类型新闻数量
   const fetchNewsCounts = useCallback(async () => {
     try {
-      const response = await fetch(`/api/news/count`);
+      const response = await fetch(`/api/news/count?locale=${locale}`);
       if (!response.ok) throw new Error('Failed to fetch news counts');
       const data = await response.json();
       setNewsCounts(data);
     } catch (error) {
       console.error('Error fetching news counts:', error);
     }
-  }, []);
+  }, [locale]);
 
   const fetchNews = useCallback(async (limit: number) => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/news?page=1&limit=${limit}`);
+      const response = await fetch(`/api/news?page=1&limit=${limit}&locale=${locale}`);
       if (!response.ok) throw new Error('Failed to fetch news');
       const data = await response.json();
       
@@ -81,7 +81,7 @@ export function NewsClient({ initialNews = [], initialTotal, initialCounts }: Ne
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [locale]);
 
   useEffect(() => {
     if (firstRender.current) {
