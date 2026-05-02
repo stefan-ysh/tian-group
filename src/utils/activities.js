@@ -24,8 +24,8 @@ const mockActivities = [
     avatar: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1000',
     position: 'Office',
     date: '2024-04-15',
-    location: '化学学院三楼会议室',
-    location_en: 'Room 301, College of Chemistry',
+    location: '化学与材料学院三楼会议室',
+    location_en: 'Room 301, School of Chemistry and Materials',
     tags: ['meeting', 'academic'],
     content: `
 ## 研讨会内容
@@ -153,7 +153,7 @@ const mockActivities = [
     avatar: 'https://images.unsplash.com/photo-1529448005898-b19fc13465b7?q=80&w=1000',
     position: 'Office',
     date: '2024-03-20',
-    location: '化学学院会议室A103',
+    location: '化学与材料学院会议室A103',
     tags: ['meeting', 'academic'],
     content: `
 ## 会议内容
@@ -243,11 +243,11 @@ const load = async (locale = 'zh') => {
     );
 
     const localizedActivities = activities.map(a => localizeActivity(a, locale));
-    
+
     // 缓存结果
     _activities[locale] = localizedActivities;
     _cacheTime[locale] = Date.now();
-    
+
     return localizedActivities;
   } catch (error) {
     console.error('Error loading activities:', error);

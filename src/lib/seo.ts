@@ -10,11 +10,11 @@ const SITE_CONFIG = {
   nameEn: 'Tian Tian Research Group',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group',
   description:
-    '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+    '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
   keywords: [
     '田甜',
     '扬州大学',
-    '化学学院',
+    '化学与材料学院',
     '田甜课题组',
     '科研实验室',
     '环糊精',
@@ -31,7 +31,7 @@ const SITE_CONFIG = {
     'ACS Energy Letters',
   ],
   ogImage: '/og-image.jpg',
-  publisher: '扬州大学化学学院',
+  publisher: '扬州大学化学与材料学院',
 } as const;
 
 function normalizePath(path: string) {
@@ -81,14 +81,14 @@ export function generateSEOMetadata({
   locale,
   noindex = false,
 }: GenerateMetadataOptions = {}): Metadata {
-  const pageTitle = title 
-    ? `${title} | ${SITE_CONFIG.name}` 
+  const pageTitle = title
+    ? `${title} | ${SITE_CONFIG.name}`
     : SITE_CONFIG.name;
-  
+
   const cleanPath = normalizePath(path);
   const url = `${SITE_CONFIG.url}${cleanPath}`;
   const imageUrl = toAbsoluteUrl(image);
-  
+
   const allKeywords = Array.from(new Set([...SITE_CONFIG.keywords, ...keywords]));
   const ogLocale = toOpenGraphLocale(locale);
 
@@ -196,8 +196,8 @@ export function generateMemberMetadata(member: {
   image?: string;
   slug: string;
 }): Metadata {
-  const title = member.position 
-    ? `${member.name} - ${member.position}` 
+  const title = member.position
+    ? `${member.name} - ${member.position}`
     : member.name;
 
   return generateSEOMetadata({
@@ -205,7 +205,7 @@ export function generateMemberMetadata(member: {
     description: member.description || `${member.name}的个人资料`,
     keywords: [member.name, member.position || '', '团队成员', '研究人员'],
     image: member.image,
-    path: `/members/${member.slug}`,
+    path: `/members/${encodeURIComponent(member.slug)}`,
   });
 }
 

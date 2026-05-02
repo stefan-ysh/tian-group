@@ -18,8 +18,8 @@ title: 陈振阳
 title_en: Zhenyang Chen
 ---
 
-现为中国扬州大学材料与化工学院田甜老师2024级学生。主要研究方向为静电纺丝功能材料
+现为扬州大学化学与材料学院田甜老师2024级学生。主要研究方向为静电纺丝功能材料
 
 ---EN---
 
-Zhenyang Chen is currently a 2024-level student of Professor Tian Tian at the School of Materials and Chemical Engineering, Yangzhou University, China. His main research direction is electrospinning functional materials.
+Zhenyang Chen is currently a 2024-level student of Professor Tian Tian at the School of Chemistry and Materials, Yangzhou University. His main research direction is electrospinning functional materials.

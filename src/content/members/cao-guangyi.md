@@ -18,8 +18,8 @@ title: 曹光燚
 title_en: Guangyi Cao
 ---
 
-现为中国扬州大学化学化工学院杨梅芳老师2023级研究生。主要研究方向为新型半导体纳米材料的液相合成，以及高性能钙钛矿光电材料与器件的稳定性和生物相容性研究。
+现为扬州大学化学与材料学院杨梅芳老师2023级研究生。主要研究方向为新型半导体纳米材料的液相合成，以及高性能钙钛矿光电材料与器件的稳定性和生物相容性研究。
 
 ---EN---
 
-Guangyi Cao is currently a 2023-level graduate student of Mr. Meifang Yang at the School of Chemistry and Chemical Engineering, Yangzhou University, China. Her main research directions are the liquid-phase synthesis of novel semiconductor nanomaterials, and the research on the stability and biocompatibility of high-performance perovskite optoelectronic materials and devices.
+Guangyi Cao is currently a 2023-level graduate student of Mr. Meifang Yang at the School of Chemistry and Materials, Yangzhou University. Her main research directions are the liquid-phase synthesis of novel semiconductor nanomaterials, and the research on the stability and biocompatibility of high-performance perovskite optoelectronic materials and devices.

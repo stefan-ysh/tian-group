@@ -3,8 +3,8 @@ name: '田甜'
 name_en: 'Tian Tian'
 title: 'Professor'
 title_en: 'Professor'
-description: '田甜，博士毕业于上海理工大学/丹麦科技大学联合培养，中山大学博士后，现为扬州大学特聘教授。2025 年入选江苏省“科技副总”及“青年托举人才”计划，担任扬州宇元新材有限公司与扬州旭元新材有限公司总经理兼首席技术官（CTO）。长期致力于新能源蓄光薄膜材料的研发与产业化应用。'
-description_en: 'Dr. Tian Tian received her Ph.D. through joint training at University of Shanghai for Science and Technology and Technical University of Denmark, and completed postdoctoral research at Sun Yat-sen University. She is currently a Distinguished Professor at Yangzhou University. In 2025, she was selected for the Jiangsu Science and Technology Vice-General Manager program and Young Talent Support Program, and serves as General Manager and CTO of Yangzhou Yuyuan New Materials Co., Ltd. and Yangzhou Xuyuan New Materials Co., Ltd.'
+description: '田甜，博士毕业于上海理工大学/丹麦科技大学联合培养，中山大学博士后，现为扬州大学化学与材料学院特聘教授。2025 年入选江苏省“科技副总”及“青年托举人才”计划，担任扬州宇元新材有限公司与扬州旭元新材有限公司总经理兼首席技术官（CTO）。长期致力于新能源蓄光薄膜材料的研发与产业化应用。'
+description_en: 'Dr. Tian Tian received her Ph.D. through joint training at University of Shanghai for Science and Technology and Technical University of Denmark, and completed postdoctoral research at Sun Yat-sen University. She is currently a Distinguished Professor at the School of Chemistry and Materials, Yangzhou University. In 2025, she was selected for the Jiangsu Science and Technology Vice-General Manager program and Young Talent Support Program, and serves as General Manager and CTO of Yangzhou Yuyuan New Materials Co., Ltd. and Yangzhou Xuyuan New Materials Co., Ltd.'
 avatar: '/images/avatar/tiantian.jpg'
 position: 'Professor'
 position_en: 'Professor'
@@ -18,11 +18,11 @@ tags: [markdown, member]
 
 我是田甜，2017年至2020年期间，我有幸参与了上海理工大学与丹麦技术大学联合培养博士项目，前往丹麦进行深造。这段国际学习经历给了我宝贵的机会，让我接触到了化学、材料科学等多学科领域的前沿知识与技术。在四年的留学期间，我专注于光电纳米材料的基础理论研究，系统学习了材料合成方法、表征技术和器件设计原理，积累了丰富的实验经验和理论知识。
 
-2021年至2023年，我在中山大学化学学院开展博士后研究工作。中山大学浓厚的学术氛围让我得以与众多优秀同行交流合作，进一步深化了我在化学领域的专业素养。在这里，我主要研究光电纳米材料在复杂体系中的应用，通过一系列实验项目，解决了多个关键科学问题，为光电纳米材料的实际应用开辟了新路径。
+2021年至2023年，我在中山大学化学与材料学院开展博士后研究工作。中山大学浓厚的学术氛围让我得以与众多优秀同行交流合作，进一步深化了我在化学领域的专业素养。在这里，我主要研究光电纳米材料在复杂体系中的应用，通过一系列实验项目，解决了多个关键科学问题，为光电纳米材料的实际应用开辟了新路径。
 
 ## 当前工作与研究方向
 
-目前，我担任扬州大学化学化工学院特聘教授，同时担任扬州宇元新材有限公司（官网 https://www.cosmorigin.com）首席技术官（CTO）。在教学方面，我秉持严谨治学的态度，精心设计课程内容，将我在科研实践中积累的经验和前沿知识融入课堂，希望能激发学生们的学习兴趣和创新思维；在科研领域，我继续专注于光电纳米材料制备和器件研发这一前沿领域。
+目前，我担任扬州大学化学与材料学院特聘教授，同时担任扬州宇元新材有限公司（官网 https://www.cosmorigin.com）首席技术官（CTO）。在教学方面，我秉持严谨治学的态度，精心设计课程内容，将我在科研实践中积累的经验和前沿知识融入课堂，希望能激发学生们的学习兴趣和创新思维；在科研领域，我继续专注于光电纳米材料制备和器件研发这一前沿领域。
 
 我的研究团队主要围绕光电纳米材料的合成方法创新、性能精准调控以及器件高效集成等方向开展工作。我们积极探索新型合成路线，开发具有独特结构与优异性能的光电纳米材料；研究材料微观结构与宏观性能的构效关系；通过精确控制材料的尺寸、形貌和组成，实现对光电纳米材料性能的精准调控。在器件集成环节，我们攻克了材料与电极接触、器件稳定性等技术难题，研制出一系列高性能的光电纳米器件原型。我们的研究成果有望在能源转换、环境监测、生物传感等领域实现应用，产生实际价值。
 
@@ -50,7 +50,7 @@ From 2021 to 2023, I carried out postdoctoral research at the School of Chemistr
 
 ## Current Work and Research Interests
 
-Currently, I serve as a Distinguished Professor at the School of Chemistry and Chemical Engineering, Yangzhou University, and as the Chief Technology Officer (CTO) of Yangzhou Yuyuan New Material Co., Ltd. (official website https://www.cosmorigin.com). In terms of teaching, I uphold a rigorous academic attitude, carefully design course content, and integrate the experience and cutting-edge knowledge I have accumulated in scientific research practice into the classroom, hoping to stimulate students' interest in learning and innovative thinking; in the field of scientific research, I continue to focus on the cutting-edge field of photoelectric nanomaterial preparation and device research and development.
+Currently, I serve as a Distinguished Professor at the School of Chemistry and Materials, Yangzhou University, and as the Chief Technology Officer (CTO) of Yangzhou Yuyuan New Material Co., Ltd. (official website https://www.cosmorigin.com). In terms of teaching, I uphold a rigorous academic attitude, carefully design course content, and integrate the experience and cutting-edge knowledge I have accumulated in scientific research practice into the classroom, hoping to stimulate students' interest in learning and innovative thinking; in the field of scientific research, I continue to focus on the cutting-edge field of photoelectric nanomaterial preparation and device research and development.
 
 My research team mainly focuses on innovations in synthesis methods, precise performance control and efficient device integration of photoelectric nanomaterials. We actively explore new synthesis routes and develop photoelectric nanomaterials with unique structures and excellent properties; study the structure-property relationship of material microstructure and macro performance; achieve precise control of photoelectric nanomaterial properties through precise control of the size, morphology and composition of materials. In the device integration link, we have overcome technical problems such as the contact between materials and electrodes and device stability, and developed a series of high-performance photoelectric nanomaterial device prototypes. Our research results are expected to be applied in energy conversion, environmental monitoring, biosensing and other fields, generating practical value.
 

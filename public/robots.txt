@@ -5,8 +5,8 @@ Disallow: /api/
 Disallow: /_next/
 Disallow: /blank/
 
+# Sitemap
+Sitemap: https://tiantian.group/sitemap.xml
+
 # Host
 Host: https://tiantian.group/
-
-# Sitemaps
-Sitemap: https://tiantian.group/sitemap.xml

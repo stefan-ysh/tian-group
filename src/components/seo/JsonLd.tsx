@@ -28,8 +28,14 @@ export function OrganizationSchema() {
     name: '田甜课题组',
     alternateName: 'Tian Tian Research Group',
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
-    description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
+    logo: `${SITE_URL}/og-image.jpg`,
+    description: '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
+    sameAs: ['https://www.yzu.edu.cn/'],
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'research inquiries',
+      availableLanguage: ['zh-CN', 'en'],
+    },
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'CN',
@@ -43,7 +49,7 @@ export function OrganizationSchema() {
     },
     department: {
       '@type': 'Organization',
-      name: '化学学院',
+      name: '化学与材料学院',
     },
     member: {
       '@type': 'Person',
@@ -71,12 +77,20 @@ export function ScholarlyArticleSchema({ publication }: { publication: any }) {
       '@type': 'Organization',
       name: publication.journal || '田甜课题组',
     },
+    isPartOf: publication.journal
+      ? {
+          '@type': 'Periodical',
+          name: publication.journal,
+        }
+      : undefined,
     keywords: publication.tags?.join(', '),
     url: `${SITE_URL}/publications/${encodeURIComponent(publication.slug || publication.title)}`,
   };
 
   if (publication.doi) {
     schema['@id'] = `https://doi.org/${publication.doi}`;
+    schema.identifier = `doi:${publication.doi}`;
+    schema.sameAs = `https://doi.org/${publication.doi}`;
   }
 
   if (publication.image) {
@@ -111,10 +125,18 @@ export function PersonSchema({ member }: { member: any }) {
     jobTitle: member.position,
     affiliation: {
       '@type': 'Organization',
-      name: '扬州大学化学学院',
+      name: '扬州大学化学与材料学院',
+      url: 'https://www.yzu.edu.cn/',
     },
+    worksFor: {
+      '@type': 'Organization',
+      name: '田甜课题组',
+      url: SITE_URL,
+    },
+    alumniOf: '扬州大学',
+    knowsAbout: member.research || member.tags,
     description: member.description,
-    url: `${SITE_URL}/members/${member.slug}`,
+    url: `${SITE_URL}/members/${encodeURIComponent(member.slug)}`,
   };
 
   if (member.email) {
@@ -136,18 +158,10 @@ export function WebSiteSchema() {
     name: '田甜课题组',
     alternateName: 'Tian Tian Research Group',
     url: SITE_URL,
-    description: '扬州大学化学学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
+    description: '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
     publisher: {
       '@type': 'ResearchOrganization',
       name: '田甜课题组',
-    },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
     },
   };
 

@@ -17,8 +17,8 @@ title: 袁一程
 title_en: Yicheng Yuan
 ---
 
-现为中国扬州大学化学化工学院田甜教授的研究生。主要研究方向为高性能钙钛矿发光材料领域。
+现为扬州大学化学与材料学院田甜教授的研究生。主要研究方向为高性能钙钛矿发光材料领域。
 
 ---EN---
 
-Yicheng Yuan is a graduate student of Professor Tian Tian at the School of Chemistry and Chemical Engineering, Yangzhou University, China. His main research direction is high-performance perovskite luminescent materials.
+Yicheng Yuan is a graduate student of Professor Tian Tian at the School of Chemistry and Materials, Yangzhou University. His main research direction is high-performance perovskite luminescent materials.

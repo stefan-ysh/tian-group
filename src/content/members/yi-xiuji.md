@@ -18,8 +18,8 @@ title: 仪修佶
 title_en: Xiuji Yi
 ---
 
-现为中国扬州大学化学化工学院李文广老师2024级研究生。主要研究方向为钙钛矿柔性发光材料。
+现为扬州大学化学与材料学院李文广老师2024级研究生。主要研究方向为钙钛矿柔性发光材料。
 
 ---EN---
 
-Xiuji Yi is currently a 2024-level graduate student of Mr. Wen-Guang Li at the School of Chemistry and Chemical Engineering, Yangzhou University, China. His main research direction is perovskite flexible light-emitting materials.
+Xiuji Yi is currently a 2024-level graduate student of Mr. Wen-Guang Li at the School of Chemistry and Materials, Yangzhou University. His main research direction is perovskite flexible light-emitting materials.

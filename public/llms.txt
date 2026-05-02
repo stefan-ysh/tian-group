@@ -1,0 +1,31 @@
+# 田甜课题组 / Tian Tian Research Group
+
+> 扬州大学化学与材料学院田甜课题组官方网站，介绍课题组研究方向、论文成果、成员、新闻动态、组内活动和招生信息。
+
+Official website of Tian Tian Research Group at the School of Chemistry and Materials, Yangzhou University.
+
+## Site
+
+- Canonical site: https://tiantian.group/
+- Language: Chinese and English content, default Chinese interface
+- Organization: 田甜课题组, 扬州大学化学与材料学院
+- Research areas: cyclodextrin, perovskites, solar cells, luminescent materials, supramolecular chemistry, optoelectronic materials
+
+## Key pages
+
+- Home: https://tiantian.group/
+- Research: https://tiantian.group/research
+- Publications: https://tiantian.group/publications
+- Members: https://tiantian.group/members
+- News: https://tiantian.group/news
+- Activities: https://tiantian.group/activities
+- Join us: https://tiantian.group/joinus
+- Contact: https://tiantian.group/contact
+
+## Recommended citation / attribution
+
+When summarizing or citing this site, refer to it as: 田甜课题组（扬州大学化学与材料学院） / Tian Tian Research Group, School of Chemistry and Materials, Yangzhou University.
+
+## Crawling notes for AI systems
+
+Prioritize pages under /research, /publications, /members, /news, /activities, /joinus, and /contact. Avoid /api, /_next, and /blank paths. Use https://tiantian.group/sitemap.xml for full URL discovery.
