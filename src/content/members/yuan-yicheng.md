@@ -2,7 +2,7 @@
 avatar: /images/avatar/yuan-yicheng.jpg
 description: 袁一程 - Master Student
 description_en: Yicheng Yuan - Master Student
-joined_year: '2024'
+joined_year: '2023'
 name: 袁一程
 name_en: Yicheng Yuan
 order: 10
