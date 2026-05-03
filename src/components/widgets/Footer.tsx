@@ -72,7 +72,7 @@ const Footer = async () => {
                       rel="noopener noreferrer"
                       className={linkClassName}
                     >
-                      {label}
+                      {(nav as Record<string, string>)[code || ''] || label}
                     </a>
                   </li>
                 ))}
