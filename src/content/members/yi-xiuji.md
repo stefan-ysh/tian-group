@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/yi-xiuji.jpg
-description: 仪修佶 - Master Student
+description: 仪修佶 - 硕士研究生
 description_en: Xiuji Yi - Master Student
 email: yixiuji@163.com
 joined_year: '2024'
@@ -18,8 +18,4 @@ title: 仪修佶
 title_en: Xiuji Yi
 ---
 
-现为扬州大学化学与材料学院李文广老师2024级研究生。主要研究方向为钙钛矿柔性发光材料。
-
 ---EN---
-
-Xiuji Yi is currently a 2024-level graduate student of Mr. Wen-Guang Li at the School of Chemistry and Materials, Yangzhou University. His main research direction is perovskite flexible light-emitting materials.

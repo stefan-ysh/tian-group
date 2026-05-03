@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/zhang-lei.jpg
-description: 张蕾 - Master Student
+description: 张蕾 - 硕士研究生
 description_en: Lei Zhang - Master Student
 email: 2727445638@qq.com
 joined_year: '2023'
@@ -18,12 +18,5 @@ title: 张蕾
 title_en: Lei Zhang
 ---
 
-现为扬州大学化学与材料学院田甜老师2023级研究生。主要研究方向为光电纳米材料的制备与器件，以及静电纺丝功能材料的研究。
 
 ---EN---
-
-Lei Zhang is currently a 2023-level graduate student of Professor Tian Tian at the School of Chemistry and Materials, Yangzhou University. Her main research directions are the preparation and devices of photoelectric nanomaterials, as well as the research of electrospinning functional materials.
-
-```
-
-```

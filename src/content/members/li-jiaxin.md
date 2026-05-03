@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/li-jiaxin.jpg
-description: 李嘉欣 - Master Student
+description: 李嘉欣 - 硕士研究生
 description_en: Jiaxin Li - Master Student
 email: 2864746075@qq.com
 joined_year: '2024'
@@ -18,8 +18,5 @@ title: 李嘉欣
 title_en: Jiaxin Li
 ---
 
-现为扬州大学化学与材料学院田甜老师2024级研究生。主要研究方向为静电纺丝功能材料。
 
 ---EN---
-
-Jiaxin Li is currently a 2024-level graduate student of Professor Tian Tian at the School of Chemistry and Materials, Yangzhou University. Her main research direction is electrospinning functional materials.

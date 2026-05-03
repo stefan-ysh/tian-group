@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/chen-zihao.jpg
-description: 陈子豪 - Master Student
+description: 陈子豪 - 硕士研究生
 description_en: Zihao Chen - Master Student
 email: mx120240462@stu.yzu.edu.cn
 joined_year: '2024'

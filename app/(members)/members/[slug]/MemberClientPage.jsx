@@ -41,6 +41,7 @@ export function MemberClientPage({ slug, initialMember = null }) {
   const [error, setError] = useState(false);
   const [showAllAdvisedStudents, setShowAllAdvisedStudents] = useState(false);
   const t = useTranslations('Member.Detail');
+  const tPosition = useTranslations('Member.Position');
   const locale = useLocale();
   const firstRender = useRef(true);
 
@@ -89,6 +90,8 @@ export function MemberClientPage({ slug, initialMember = null }) {
   const visibleAdvisedStudents = showAllAdvisedStudents
     ? advisedStudents
     : advisedStudents.slice(0, COLLAPSED_ADVISED_STUDENTS_COUNT);
+  const studentPositions = ['Graduate', 'Doctoral', 'Master Student', 'PhD Student'];
+  const isStudent = studentPositions.includes(member?.position) || studentPositions.includes(member?.position_en);
 
   if (error) {
     return <MemberError />;
@@ -103,6 +106,7 @@ export function MemberClientPage({ slug, initialMember = null }) {
             <div className="mx-auto grid max-w-5xl gap-8 lg:grid-cols-[340px_minmax(0,1fr)]">
               <div className="h-[420px] rounded-2xl bg-primary/10"></div>
               <div className="space-y-5 rounded-2xl border border-gray-100 bg-primary/5 px-6 py-6 dark:border-gray-700">
+                <div className="h-10 w-1/3 rounded bg-primary/10"></div>
                 <div className="h-8 rounded bg-primary/10"></div>
                 <div className="h-8 rounded bg-primary/10"></div>
                 <div className="h-8 w-3/4 rounded bg-primary/10"></div>
@@ -131,6 +135,16 @@ export function MemberClientPage({ slug, initialMember = null }) {
               )}
 
               <div className="flex flex-col gap-5 rounded-2xl border border-gray-200/80 bg-gradient-to-br from-white via-amber-50/35 to-gray-50 px-5 py-6 shadow-sm dark:border-gray-700 dark:from-gray-900/80 dark:via-gray-800/70 dark:to-gray-900 sm:px-6 justify-around h-full">
+                <div className="border-b border-gray-200/70 pb-4 dark:border-gray-700/70">
+                  <h1 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">
+                    <span>{member.name}</span>
+                    {isStudent && member.position && (
+                      <span className="text-base font-semibold text-amber-600 dark:text-amber-300 sm:text-lg">
+                        {tPosition(member.position)}
+                      </span>
+                    )}
+                  </h1>
+                </div>
                 {member.joined_year && (
                   <DetailRow icon={CalendarDays} label={t('joinYear')}>
                     <span>{t('yearSuffix', { year: member.joined_year })}</span>
@@ -219,14 +233,16 @@ export function MemberClientPage({ slug, initialMember = null }) {
               </div>
             </div>
 
-            <div
-              className="prose-md prose-headings:font-heading prose-headings:leading-tighter container prose prose-lg mx-auto mt-12 max-w-3xl px-6 prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-primary-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-slate-300 dark:prose-a:text-primary-400 sm:px-6 lg:prose-xl leading-relaxed"
-              dangerouslySetInnerHTML={{
-                __html: md({
-                  html: true,
-                }).render(member.content || ''),
-              }}
-            />
+            {member.content && (
+              <div
+                className="prose-md prose-headings:font-heading prose-headings:leading-tighter container prose prose-lg mx-auto mt-12 max-w-3xl px-6 prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-primary-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-slate-300 dark:prose-a:text-primary-400 sm:px-6 lg:prose-xl leading-relaxed"
+                dangerouslySetInnerHTML={{
+                  __html: md({
+                    html: true,
+                  }).render(member.content),
+                }}
+              />
+            )}
           </>
         ) : (
           // 空状态

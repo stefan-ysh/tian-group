@@ -5,6 +5,59 @@ import { cache } from 'react';
 
 const BLOG_DIR = join(process.cwd(), 'src/content/members');
 
+const STUDENT_POSITIONS = new Set(['Graduate', 'Doctoral', 'Master Student', 'PhD Student']);
+
+const POSITION_LABELS = {
+  zh: {
+    Graduate: '研究生',
+    Doctoral: '博士',
+    'Master Student': '硕士研究生',
+    'PhD Student': '博士研究生',
+  },
+  en: {
+    Graduate: 'Graduate',
+    Doctoral: 'Doctoral',
+    'Master Student': 'Master Student',
+    'PhD Student': 'PhD Student',
+  },
+};
+
+const normalizeText = (text = '') =>
+  String(text)
+    .replace(/<[^>]*>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/[\s。．.，,、:：;；!！?？\-—–_]/g, '')
+    .toLowerCase();
+
+const isStudent = (member) => STUDENT_POSITIONS.has(member?.position) || STUDENT_POSITIONS.has(member?.position_en);
+
+const getPositionLabel = (member, locale) => {
+  const position = locale === 'en' && member.position_en ? member.position_en : member.position;
+  return POSITION_LABELS[locale]?.[position] || position;
+};
+
+const withEducationInDescription = (member, description, locale) => {
+  if (!isStudent(member) || !description) return description;
+
+  const rawPosition = locale === 'en' && member.position_en ? member.position_en : member.position;
+  const positionLabel = getPositionLabel(member, locale);
+  if (!positionLabel || normalizeText(description).includes(normalizeText(positionLabel))) {
+    return description;
+  }
+
+  if (rawPosition && normalizeText(description).includes(normalizeText(rawPosition))) {
+    return description.replace(rawPosition, positionLabel);
+  }
+
+  return `${description} - ${positionLabel}`;
+};
+
+const removeDuplicateContent = (content, descriptions = []) => {
+  if (!content) return content;
+  const normalizedContent = normalizeText(content);
+  return descriptions.some((description) => description && normalizedContent === normalizeText(description)) ? '' : content;
+};
+
 const load = () => {
   const files = fs.readdirSync(BLOG_DIR);
 
@@ -39,14 +92,18 @@ const localizeMember = (member, locale) => {
     ? (contentParts[1] || contentParts[0]) 
     : contentParts[0];
 
+  const rawDescription = (isEn && member.description_en) ? member.description_en : member.description;
+  const description = withEducationInDescription(member, rawDescription, locale);
+  const content = removeDuplicateContent(localizedContent.trim(), [rawDescription, description]);
+
   return {
     ...member,
     name: (isEn && member.name_en) ? member.name_en : member.name,
     position: (isEn && member.position_en) ? member.position_en : member.position,
     research_areas: (isEn && member.research_areas_en) ? member.research_areas_en : member.research_areas,
     title: (isEn && member.title_en) ? member.title_en : member.title,
-    description: (isEn && member.description_en) ? member.description_en : member.description,
-    content: localizedContent.trim(),
+    description,
+    content,
   };
 };
 

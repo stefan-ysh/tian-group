@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/han-huixuan.jpg
-description: 韩慧萱 - Master Student
+description: 韩慧萱 - 硕士研究生
 description_en: Huixuan Han - Master Student
 joined_year: '2024'
 name: 韩慧萱

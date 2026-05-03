@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/jiang-siqi.jpg
-description: 姜思琪 - Master Student
+description: 姜思琪 - 硕士研究生
 description_en: Siqi Jiang - Master Student
 email: MZ120250689@stu.yzu.edu.cn
 joined_year: '2025'

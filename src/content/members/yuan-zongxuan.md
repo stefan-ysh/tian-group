@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/yuan-zongxuan.jpg
-description: 袁宗轩 - Master Student
+description: 袁宗轩 - 硕士研究生
 description_en: Zongxuan Yuan - Master Student
 joined_year: '2024'
 name: 袁宗轩
@@ -17,8 +17,5 @@ title: 袁宗轩
 title_en: Zongxuan Yuan
 ---
 
-现为扬州大学化学与材料学院田甜老师2024级研究生。主要研究方向为柔性发光纤维薄膜。
 
 ---EN---
-
-Zongxuan Yuan is currently a 2024-level graduate student of Professor Tian Tian at the School of Chemistry and Materials, Yangzhou University. His main research direction is flexible luminescent fiber films.

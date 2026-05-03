@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/yang-minghui.jpg
-description: 杨明慧 - Master Student
+description: 杨明慧 - 硕士研究生
 description_en: Minghui Yang - Master Student
 email: ymh1235@163.com
 joined_year: '2025'
@@ -18,8 +18,4 @@ title: 杨明慧
 title_en: Minghui Yang
 ---
 
-现为扬州大学化学与材料学院杨梅芳老师2025级新生。主要研究方向为静电纺丝功能材料。
-
 ---EN---
-
-Minghui Yang is currently a 2025-level newcomer at the School of Chemistry and Materials, Yangzhou University, under the supervision of Mr. Meifang Yang. Her main research direction is electrospinning functional materials.
