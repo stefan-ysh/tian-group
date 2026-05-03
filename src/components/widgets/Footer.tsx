@@ -1,6 +1,7 @@
 import { getMessages } from 'next-intl/server';
 import { footerData } from '~/shared/data/global.data';
 import { Link } from '~/i18n/routing';
+import { IconCompass, IconLink } from '@tabler/icons-react';
 import Logo from '~/components/atoms/Logo';
 
 const Footer = async () => {
@@ -43,7 +44,8 @@ const Footer = async () => {
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:col-span-7 xl:col-span-6 lg:gap-12">
           {/* 页面导航 */}
           <nav aria-label={(common as Record<string, string>).footerNav || 'Footer navigation'}>
-            <h3 className="mb-5 border-b border-slate-200 pb-3 text-sm font-semibold text-slate-900 dark:border-white/10 dark:text-white">
+            <h3 className="mb-5 flex items-center gap-2 border-b border-slate-200 pb-3 text-sm font-semibold text-slate-900 dark:border-white/10 dark:text-white">
+              <IconCompass className="h-4 w-4 text-primary dark:text-teal-400" />
               {(common as Record<string, string>).footerNav || '页面导航'}
             </h3>
             <ul className="grid grid-cols-2 gap-x-4 gap-y-3">
@@ -60,7 +62,8 @@ const Footer = async () => {
           {/* 友情链接 */}
           {extLinks.length > 0 && (
             <div>
-              <h3 className="mb-5 border-b border-slate-200 pb-3 text-sm font-semibold text-slate-900 dark:border-white/10 dark:text-white">
+              <h3 className="mb-5 flex items-center gap-2 border-b border-slate-200 pb-3 text-sm font-semibold text-slate-900 dark:border-white/10 dark:text-white">
+                <IconLink className="h-4 w-4 text-primary dark:text-teal-400" />
                 {(common as Record<string, string>).friendlyLinks || '友情链接'}
               </h3>
               <ul className="grid gap-y-3">
