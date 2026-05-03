@@ -15,7 +15,7 @@ title: 李文广
 title_en: Wen-Guang Li
 ---
 
-博士毕业于中山大学，2020-2024 年在中山大学从事博士后研究，现为扬州大学化学与材料学院副教授、硕士生导师。2025 年入选江苏省“科技副总”以及扬州市“绿扬金凤计划”优秀博士，担任[扬州宇元新材有限公司](https://www.cosmorigin.com)与扬州旭元新材有限公司CTO。
+博士毕业于中山大学，2020-2024 年在中山大学从事博士后研究，现为扬州大学化学与材料学院副教授、硕士生导师。2025 年入选江苏省“科技副总”以及扬州市“绿扬金凤计划”优秀博士，担任<a href="https://www.cosmorigin.com" target="_blank">扬州宇元新材有限公司</a>与扬州旭元新材有限公司CTO。
 
 李文广长期围绕光电晶体材料的创新合成与光电器件应用开展研究，关注晶体材料的可控制备、结构调控、光电性质优化及其在功能器件中的应用。研究工作注重从材料组成、晶体结构和界面特性出发，建立材料结构与光电性能之间的关联，为高性能光电器件的设计与制备提供材料基础。
 
@@ -23,7 +23,7 @@ title_en: Wen-Guang Li
 
 ---EN---
 
-He received his Ph.D. from Sun Yat-sen University and worked as a postdoctoral researcher there from 2020 to 2024. He is currently an Associate Professor and master’s supervisor at the School of Chemistry and Materials, Yangzhou University. In 2025, he was selected for the Jiangsu Science and Technology Vice-General Manager program and the Yangzhou Lvyang Jinfeng Program for outstanding doctoral talents, and serves as CTO of [Yangzhou Yuanyuan New Materials Co., Ltd.](https://www.cosmorigin.com) and Yangzhou Xuyuan New Materials Co., Ltd.
+He received his Ph.D. from Sun Yat-sen University and worked as a postdoctoral researcher there from 2020 to 2024. He is currently an Associate Professor and master’s supervisor at the School of Chemistry and Materials, Yangzhou University. In 2025, he was selected for the Jiangsu Science and Technology Vice-General Manager program and the Yangzhou Lvyang Jinfeng Program for outstanding doctoral talents, and serves as CTO of <a href="https://www.cosmorigin.com" target="_blank">Yangzhou Yuanyuan New Materials Co., Ltd.</a> and Yangzhou Xuyuan New Materials Co., Ltd.
 
 His research focuses on the innovative synthesis of photoelectric crystal materials and their applications in optoelectronic devices. He is particularly interested in controllable crystal growth, structural regulation, optimization of optoelectronic properties, and the integration of functional materials into device platforms. His work aims to clarify the relationships among material composition, crystal structure, interface characteristics, and device performance.
 

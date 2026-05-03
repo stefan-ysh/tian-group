@@ -17,7 +17,7 @@ title_en: Meifang Yang
 
 博士毕业于中山大学，现为扬州大学化学与材料学院讲师、硕士生导师。主要从事新型半导体纳米材料的制备以及高性能光电材料与器件的研究工作。
 
-2025年入选江苏省“科技副总”以及扬州市“绿扬金凤计划”优秀博士，[扬州宇元新材有限公司](https://www.cosmorigin.com)与扬州旭元新材有限公司总监。 
+2025年入选江苏省“科技副总”以及扬州市“绿扬金凤计划”优秀博士，<a href="https://www.cosmorigin.com" target="_blank">扬州宇元新材有限公司</a>与扬州旭元新材有限公司总监。 
 目前在Nat. Sustain., Nat. Commun., Angew. Chem. Int. Ed.等期刊上发表SCI收录论文 **40** 余篇，现主持国家自然科学基金和江苏省自然科学基金项目 **2** 项。
 
 她的研究关注半导体纳米发光材料的组成设计、形貌调控、发光性能优化与稳定性提升，致力于探索材料结构与光学性质之间的内在关系。通过材料合成、表征分析和器件构筑相结合，推动新型纳米发光材料在显示、照明、传感及相关光电器件中的应用研究。
@@ -28,7 +28,7 @@ title_en: Meifang Yang
 
 Ph.D. graduated from Sun Yat-sen University, currently a lecturer and master's supervisor at the School of Chemistry and Materials at Yangzhou University. Mainly engaged in the preparation of new semiconductor nanomaterials and the research of high-performance optoelectronic materials and devices.
 
-Selected as a "Science and Technology Deputy General Manager" of Jiangsu Province and an outstanding doctoral candidate in the "Green Yangyang Phoenix Plan" of Yangzhou City in 2025, and the director of [Yangzhou Yuanyuan New Materials Co., Ltd.](https://www.cosmorigin.com) and Yangzhou Xuyuan New Materials Co., Ltd.
+Selected as a "Science and Technology Deputy General Manager" of Jiangsu Province and an outstanding doctoral candidate in the "Green Yangyang Phoenix Plan" of Yangzhou City in 2025, and the director of <a href="https://www.cosmorigin.com" target="_blank">Yangzhou Yuanyuan New Materials Co., Ltd.</a> and Yangzhou Xuyuan New Materials Co., Ltd.
 
 Currently, has published over **40** SCI-indexed papers in journals such as Nat. Sustain., Nat. Commun., and Angew. Chem. Int. Ed., and is currently in charge of **2** National Natural Science Foundation of China and Jiangsu Province Natural Science Foundation projects.
 

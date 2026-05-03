@@ -22,7 +22,7 @@ tags: [markdown, member]
 
 ### 当前工作与研究方向  
 
-现任**扬州大学化学与材料学院特聘教授**、**[扬州宇元新材有限公司](https://www.cosmorigin.com/) 首席技术官（CTO）**。 2025年入选江苏省“科技副总”及“青年托举人才”计划。
+现任**扬州大学化学与材料学院特聘教授**、**<a href="https://www.cosmorigin.com" target="_blank">扬州宇元新材有限公司</a>首席技术官（CTO）**。 2025年入选江苏省“科技副总”及“青年托举人才”计划。
 
 - **教学层面**：秉持“**严谨治学+实践赋能**”理念，将科研经验与前沿知识融入课堂，激发学生学习兴趣与创新思维；注重“**团队协作+国际视野**”培养，创造小组攻关场景，引导学生关注全球前沿、提升国际交流能力。  
 
@@ -59,7 +59,7 @@ tags: [markdown, member]
 
 ### Current Work and Research Directions
 
-Currently serving as a **Distinguished Professor** at the **School of Chemistry and Materials Science, Yangzhou University** and the **Chief Technology Officer (CTO)** of **[Yangzhou Cosmorigin New Materials Co., Ltd.](https://www.cosmorigin.com/)**. Selected in 2025 for the Jiangsu Province "Science and Technology Deputy General Manager" and "Youth Lift Talent" programs.
+Currently serving as a **Distinguished Professor** at the **School of Chemistry and Materials Science, Yangzhou University** and the **Chief Technology Officer (CTO)** of **<a href="https://www.cosmorigin.com" target="_blank">Yangzhou Cosmorigin New Materials Co., Ltd.</a>**. Selected in 2025 for the Jiangsu Province "Science and Technology Deputy General Manager" and "Youth Lift Talent" programs.
 
 - **Teaching Aspect**: Adhering to the concept of "rigorous scholarship + practical empowerment", integrating research experience and cutting-edge knowledge into the classroom to stimulate students' interest in learning and innovative thinking; emphasizing the cultivation of "team collaboration + international perspective", creating group problem-solving scenarios, and guiding students to focus on global frontiers and enhance their international communication skills.
 
