@@ -29,8 +29,8 @@ export default function HomeClientPage() {
   ];
 
   const metrics = [
-    { value: '10+', label: t('statsPublications') },
-    { value: '5', label: t('statsProjects') },
+    { value: '30+', label: t('statsPublications') },
+    { value: '7', label: t('statsProjects') },
     { value: '3', label: t('statsFields') },
   ];
   const mentorHighlights = [1, 2, 3, 4, 5].map((item) => tMentor(`mentorPoint${item}`));
