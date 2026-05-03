@@ -156,7 +156,7 @@ export default function HomeClientPage() {
             <div className="grid content-start items-stretch gap-4 md:grid-cols-3">
               {researchCards.map(({ icon: Icon, title, content }, index) => (
                 <FadeIn key={title} direction="up" delay={0.15 + index * 0.08} className="flex">
-                  <article className="research-card flex h-full flex-col">
+                  <article className="research-card flex h-full flex-col w-full">
                     <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-teal-300/10 dark:text-teal-200">
                       <Icon aria-hidden size={20} />
                     </div>

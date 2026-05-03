@@ -131,6 +131,23 @@ export const footerData: FooterProps = {
       code: 'contact',
     },
   ],
+  externalLinks: [
+    {
+      label: '扬州大学',
+      href: 'https://www.yzu.edu.cn',
+      code: 'yzu',
+    },
+    {
+      label: '扬州大学化学与材料学院',
+      href: 'https://hxhg.yzu.edu.cn/',
+      code: 'chem',
+    },
+    {
+      label: '扬州宇元新材有限公司',
+      href: 'https://www.cosmorigin.com',
+      code: 'cosmorigin',
+    },
+  ],
   columns: [
     // {
     //   title: 'Product',
