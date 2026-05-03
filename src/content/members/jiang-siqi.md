@@ -18,8 +18,5 @@ title: 姜思琪
 title_en: Siqi Jiang
 ---
 
-现为扬州大学化学与材料学院2025级硕士研究生。主要研究方向为生物基吸水热蒸发薄膜材料。
 
 ---EN---
-
-Siqi Jiang is currently a 2025-level master student at the School of Chemistry and Materials, Yangzhou University. Her main research direction is bio-based water-absorbing photothermal evaporation film materials.
