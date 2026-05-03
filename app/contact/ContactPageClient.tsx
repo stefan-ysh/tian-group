@@ -95,13 +95,13 @@ export default function ContactPageClient() {
       centerButtonContent.className = 'center-button';
       centerButtonContent.innerHTML = `
         <div style="
-          padding: 8px; 
-          background-color: white; 
-          border-radius: 2px; 
-          box-shadow: 0 2px 6px rgba(0,0,0,.3); 
-          cursor: pointer; 
-          margin-top: 8px; 
-          text-align: center; 
+          padding: 8px;
+          background-color: white;
+          border-radius: 2px;
+          box-shadow: 0 2px 6px rgba(0,0,0,.3);
+          cursor: pointer;
+          margin-top: 8px;
+          text-align: center;
           font-size: 12px;
           display: flex;
           align-items: center;
@@ -265,12 +265,12 @@ export default function ContactPageClient() {
               <a href="mailto:tiant91@yzu.edu.cn" className="text-foreground/90 hover:text-primary transition-colors">
                 tiant91@yzu.edu.cn
               </a>
-              <button 
+              <button
                 onClick={copyEmail}
                 className="p-1.5 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
                 title={copied ? "Copied" : "Copy Email"}
               >
-                {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />} 
+                {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
           </div>

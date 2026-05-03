@@ -228,7 +228,7 @@ export function ResearchSkeletonLoader() {
 export function DetailPageSkeletonLoader() {
   return (
     <div className="w-full py-8">
-      <div className="animate-pulse max-w-4xl mx-auto">
+      <div className="animate-pulse max-w-6xl mx-auto">
         {/* 面包屑导航骨架 */}
         <div className="flex items-center gap-2 mb-8">
           <div className="h-4 w-12 bg-primary/10 rounded"></div>

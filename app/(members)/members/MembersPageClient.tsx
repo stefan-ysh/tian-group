@@ -21,12 +21,10 @@ function MembersError() {
 // 成员项骨架屏
 function MemberItemSkeleton() {
   return (
-    <div
-      className="mx-auto flex flex-col items-center animate-pulse"
-    >
-        <div className="w-28 h-28 rounded-full bg-primary/10 mb-3"></div>
-        <div className="h-6 w-20 bg-primary/10 rounded mb-1"></div>
-        <div className="h-4 w-16 bg-primary/5 rounded"></div>
+    <div className="mx-auto flex flex-col items-center animate-pulse">
+      <div className="w-28 h-28 rounded-full bg-primary/10 mb-3"></div>
+      <div className="h-6 w-20 bg-primary/10 rounded mb-1"></div>
+      <div className="h-4 w-16 bg-primary/5 rounded"></div>
     </div>
   );
 }
@@ -98,6 +96,7 @@ export default function MembersPageClient({ initialMembers = [] }: MembersPageCl
 
   const facultySlugs = ['tiantian', 'li-wenguang', 'yang-meifang'];
   const memberBySlug = new Map(members.map((member) => [member.slug, member]));
+  const mentorHighlights = [1, 2, 3, 4, 5].map((item) => t(`mentorPoint${item}`));
   const withAdvisorName = (member: Member) => ({
     ...member,
     advisorName: member.advisor ? memberBySlug.get(member.advisor)?.name : undefined,
@@ -112,78 +111,68 @@ export default function MembersPageClient({ initialMembers = [] }: MembersPageCl
         <MembersError />
       ) : loading ? (
         <div className="grid grid-cols-2 gap-8 pt-10 md:grid-cols-4 lg:grid-cols-5">
-           {Array(8).fill(0).map((_, index) => <MemberItemSkeleton key={`skeleton-${index}`} />)}
+          {Array(8)
+            .fill(0)
+            .map((_, index) => (
+              <MemberItemSkeleton key={`skeleton-${index}`} />
+            ))}
         </div>
       ) : (
         <div className="flex flex-col gap-12 py-10">
           {/* 导师介绍 */}
-          {members.filter(m => m.slug === 'tiantian').map(mentor => (
-            <div className="flex flex-col gap-6" key={mentor.slug}>
-              <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">
-                {t('mentorTitle')}
-              </h2>
-              <Link 
-                href={`/members/${mentor.slug}`}
-                className="flex flex-col md:flex-row gap-8 items-center bg-white dark:bg-gray-800/50 p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:border-primary/30 transition-all duration-300 group cursor-pointer"
-              >
+          {members
+            .filter((m) => m.slug === 'tiantian')
+            .map((mentor) => (
+              <div className="flex flex-col gap-6" key={mentor.slug}>
+                <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">{t('mentorTitle')}</h2>
+                <Link
+                  href={`/members/${mentor.slug}`}
+                  className="flex flex-col md:flex-row gap-8 items-center bg-white dark:bg-gray-800/50 p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:border-primary/30 transition-all duration-300 group cursor-pointer"
+                >
                   <div className="w-48 h-48 md:w-56 md:h-56 shrink-0 rounded-full border-[4px] border-white dark:border-gray-600 shadow-xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 ring-2 ring-primary/10">
-                    <NextImage 
-                      width={224} 
-                      height={224} 
-                      src={mentor.avatar} 
-                      alt={mentor.name} 
+                    <NextImage
+                      width={224}
+                      height={224}
+                      src={mentor.avatar}
+                      alt={mentor.name}
                       sizes="224px"
-                      className="w-full h-full object-cover" 
+                      className="w-full h-full object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-4 text-left flex-1">
                     <div className="flex flex-wrap items-baseline gap-3 pb-4 border-b border-gray-100 dark:border-gray-700">
-                        <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight group-hover:text-primary transition-colors">
-                          {mentor.name}
-                        </h3>
-                        <span className="text-xl text-primary font-medium tracking-tight">
-                          {tPosition(mentor.position)}
-                        </span>
+                      <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight group-hover:text-primary transition-colors">
+                        {mentor.name}
+                      </h3>
+                      <span className="text-xl text-primary font-medium tracking-tight">
+                        {tPosition(mentor.position)}
+                      </span>
                     </div>
-                    
-                    <div className="text-gray-600 dark:text-gray-300 leading-relaxed text-base md:text-lg">
-                      <ul className="space-y-3">
-                        <li className="flex items-start gap-2">
-                          <span className="text-secondary mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint1')}</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-secondary mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint2')}</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-secondary mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint3')}</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-secondary mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint4')}</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <span className="text-secondary mt-1.5 shrink-0">•</span>
-                          <span>{t('mentorPoint5')}</span>
-                        </li>
+
+                    <div className="text-base leading-relaxed text-gray-600 dark:text-gray-300 md:text-lg">
+                      <ul className="grid gap-3">
+                        {mentorHighlights.map((highlight) => (
+                          <li key={highlight} className="flex items-start gap-3">
+                            <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-secondary dark:bg-teal-300" />
+                            <span>{highlight}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
-              </Link>
-            </div>
-          ))}
+                </Link>
+              </div>
+            ))}
 
           {/* 教师团队 */}
-          {members.filter(m => facultySlugs.includes(m.slug) && m.slug !== 'tiantian').length > 0 && (
+          {members.filter((m) => facultySlugs.includes(m.slug) && m.slug !== 'tiantian').length > 0 && (
             <div className="flex flex-col gap-6">
               <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">
                 {locale === 'zh' ? '教师团队' : 'Faculty'}
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
                 {members
-                  .filter(m => facultySlugs.includes(m.slug) && m.slug !== 'tiantian')
+                  .filter((m) => facultySlugs.includes(m.slug) && m.slug !== 'tiantian')
                   .map((faculty) => (
                     <MemberItem key={faculty.slug} {...faculty} />
                   ))}
@@ -192,35 +181,31 @@ export default function MembersPageClient({ initialMembers = [] }: MembersPageCl
           )}
 
           {/* 当前组员 */}
-          {members.filter(m => !facultySlugs.includes(m.slug) && !m.leave_year).length > 0 && (
+          {members.filter((m) => !facultySlugs.includes(m.slug) && !m.leave_year).length > 0 && (
             <div className="flex flex-col gap-6">
-                <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">
-                  {t('studentsTitle')}
-                </h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
-                  {members
-                    .filter(m => !facultySlugs.includes(m.slug) && !m.leave_year)
-                    .map((student) => (
-                      <MemberItem key={student.slug} {...withAdvisorName(student)} />
-                    ))}
-                </div>
+              <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">{t('studentsTitle')}</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
+                {members
+                  .filter((m) => !facultySlugs.includes(m.slug) && !m.leave_year)
+                  .map((student) => (
+                    <MemberItem key={student.slug} {...withAdvisorName(student)} />
+                  ))}
+              </div>
             </div>
           )}
 
           {/* 往届人员 */}
-          {members.filter(m => !facultySlugs.includes(m.slug) && m.leave_year).length > 0 && (
+          {members.filter((m) => !facultySlugs.includes(m.slug) && m.leave_year).length > 0 && (
             <FadeIn direction="up" delay={0.4}>
               <div className="flex flex-col gap-6">
-                 <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">
-                    {t('alumniTitle')}
-                 </h2>
-                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12 opacity-80 hover:opacity-100 transition-opacity">
-                   {members
-                     .filter(m => !facultySlugs.includes(m.slug) && m.leave_year)
-                     .map((student) => (
-                       <MemberItem key={student.slug} {...withAdvisorName(student)} showAvatar={false} />
-                     ))}
-                 </div>
+                <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">{t('alumniTitle')}</h2>
+                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12 opacity-80 hover:opacity-100 transition-opacity">
+                  {members
+                    .filter((m) => !facultySlugs.includes(m.slug) && m.leave_year)
+                    .map((student) => (
+                      <MemberItem key={student.slug} {...withAdvisorName(student)} showAvatar={false} />
+                    ))}
+                </div>
               </div>
             </FadeIn>
           )}

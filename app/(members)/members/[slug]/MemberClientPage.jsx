@@ -98,7 +98,7 @@ export function MemberClientPage({ slug, initialMember = null }) {
   }
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-8 sm:py-16 lg:py-20">
+    <section className="w-full mx-auto max-w-6xl px-6 py-8 sm:py-16 lg:py-20">
       <article className={loading ? 'opacity-60 transition-opacity duration-300' : 'transition-opacity duration-300'}>
         {loading ? (
           // 加载中的骨架屏
@@ -235,7 +235,7 @@ export function MemberClientPage({ slug, initialMember = null }) {
 
             {member.content && (
               <div
-                className="prose-md prose-headings:font-heading prose-headings:leading-tighter container prose prose-lg mx-auto mt-12 max-w-3xl px-6 prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-primary-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-slate-300 dark:prose-a:text-primary-400 sm:px-6 lg:prose-xl leading-relaxed"
+                className="prose-md prose-headings:font-heading prose-headings:leading-tighter container mx-auto prose-lg  mt-12 px-6 prose-headings:font-bold prose-headings:tracking-tighter prose-a:text-primary-600 prose-img:rounded-md prose-img:shadow-lg dark:prose-invert dark:prose-headings:text-slate-300 dark:prose-a:text-primary-400 sm:px-6 lg:prose-xl leading-relaxed"
                 dangerouslySetInnerHTML={{
                   __html: md({
                     html: true,

@@ -1,6 +1,6 @@
 export default function Loading() {
   return (
-    <section className="mx-auto max-w-5xl p-0 md:py-12 md:px-6">
+    <section className="mx-auto w-2/3 p-0 md:py-12 md:px-6">
       <div className="py-12 text-center">
         <div className="animate-pulse flex flex-col items-center">
           <div className="h-8 w-48 bg-gray-50 dark:bg-gray-700/50 rounded mb-8"></div>
