@@ -14,13 +14,20 @@ export const metadata: Metadata = generateSEOMetadata({
   type: 'website',
 });
 
+type SortableMember = { joined_year?: string; order?: number };
+
+function compareByJoinedYear(a: SortableMember, b: SortableMember) {
+  const aYear = Number(a.joined_year) || Number.MAX_SAFE_INTEGER;
+  const bYear = Number(b.joined_year) || Number.MAX_SAFE_INTEGER;
+
+  return aYear - bYear || (a.order || 0) - (b.order || 0);
+}
+
 export default async function Page() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
   const locale = await getLocale();
   const members = await findLatestMembers({ locale });
-  const sortedMembers = (members || []).filter(Boolean).sort((a: { order?: number }, b: { order?: number }) => {
-    return (a.order || 0) - (b.order || 0);
-  });
+  const sortedMembers = (members || []).filter(Boolean).sort(compareByJoinedYear);
   return (
     <>
       <BreadcrumbSchema items={[{ name: '首页', url: siteUrl }, { name: '组内成员', url: `${siteUrl}/members` }]} />

@@ -32,8 +32,12 @@ export async function GET(request: Request) {
       );
     }
     
-    // Sort by order property
-    const sortedMembers = members.sort((a: Member, b: Member) => (a.order - b.order));
+    const sortedMembers = members.sort((a: Member, b: Member) => {
+      const aYear = Number(a.joined_year) || Number.MAX_SAFE_INTEGER;
+      const bYear = Number(b.joined_year) || Number.MAX_SAFE_INTEGER;
+
+      return aYear - bYear || (a.order || 0) - (b.order || 0);
+    });
     
     return NextResponse.json(
       { 
