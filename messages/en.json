@@ -5,11 +5,31 @@
     "Keywords": "Tian Tian, Yangzhou University, School of Chemistry and Materials, Tian Group, energy-storage luminescent films, photoelectric crystal materials, semiconductor nanoluminescent materials, optoelectronic devices, perovskites, luminescent materials, industrial application, Wen-Guang Li, Meifang Yang, research team, academic research",
     "Creator": "Tian Group",
     "Publisher": "School of Chemistry and Materials, Yangzhou University",
-    "Keywords_Array": ["Tian Tian", "Yangzhou University", "School of Chemistry and Materials", "Tian Group", "Research Laboratory", "Cyclodextrin", "Perovskite", "Solar Cells", "Luminescent Materials", "Professor"],
+    "Keywords_Array": [
+      "Tian Tian",
+      "Yangzhou University",
+      "School of Chemistry and Materials",
+      "Tian Group",
+      "Research Laboratory",
+      "Cyclodextrin",
+      "Perovskite",
+      "Solar Cells",
+      "Luminescent Materials",
+      "Professor"
+    ],
     "Publications": {
       "Title": "Publications & Achievements",
       "Description": "Academic papers and research results published by the Tian Group, covering cyclodextrins, perovskites, solar cells, luminescent materials, etc., including journal info, authors, abstracts and tags.",
-      "Keywords": ["Research Results", "Publications", "Academic Papers", "Journal Papers", "Perovskite", "Solar Cells", "Luminescent Materials", "Cyclodextrin"]
+      "Keywords": [
+        "Research Results",
+        "Publications",
+        "Academic Papers",
+        "Journal Papers",
+        "Perovskite",
+        "Solar Cells",
+        "Luminescent Materials",
+        "Cyclodextrin"
+      ]
     },
     "Activities": {
       "Title": "Group Activities",
@@ -34,7 +54,12 @@
     "LoadingFailed": "Data loading failed",
     "LoadingFailedDesc": "Failed to fetch data, please try again later",
     "MissingMapApiKey": "Please set NEXT_PUBLIC_MAP_API in .env.local file.",
-    "MapLoadError": "Failed to load map"
+    "MapLoadError": "Failed to load map",
+    "skipToContent": "Skip to content",
+    "groupName": "Tian Group",
+    "footerTagline": "Functional materials and optoelectronic devices",
+    "footerDescription": "Based at the School of Chemistry and Materials, Yangzhou University, the group studies perovskite optoelectronics, organic nonlinear optical materials, and multifunctional luminescent systems.",
+    "footerNav": "Footer navigation"
   },
   "HomePage": {
     "Name": "Tian Tian",
@@ -42,13 +67,27 @@
     "AvatarAlt": "Professor Tian Tian, School of Chemistry and Materials, Yangzhou University",
     "School": "Yangzhou University",
     "College": "School of Chemistry and Materials",
+    "eyebrow": "School of Chemistry and Materials, Yangzhou University",
+    "heroTitle": "Functional materials for sustainable optoelectronic applications",
+    "heroLead": "The Tian Group studies perovskite photovoltaics, nonlinear optical materials, and luminescent films through molecular design, interface regulation, and device validation.",
+    "primaryCta": "Explore research",
+    "secondaryCta": "View publications",
+    "HeroImageAlt": "Representative image for perovskite and luminescent materials research",
+    "imageKicker": "Materials lab",
+    "imageCaption": "From molecular structure to flexible devices, we study how performance emerges.",
+    "statsPublications": "selected papers",
+    "statsProjects": "research projects",
+    "statsFields": "research tracks",
     "Address": "180 Siwangting Road, Yangzhou, Jiangsu",
-    "researchDirection": "Research Directions",
-    "researchDirectionContent": "Professor Tian's research group focuses on designing and synthesizing innovative functional materials for energy storage, catalysis, and environmental remediation. Our work covers the development of novel battery materials, efficient catalysts, and environmentally friendly adsorbents, addressing current energy and environmental challenges.",
+    "researchDirection": "Research directions",
+    "researchDirectionContent": "We focus on perovskite photovoltaics, organic nonlinear optical materials, luminescent systems, and spectroscopy-driven interface regulation.",
     "researchTeam": "Research Team",
-    "researchTeamContent": "Our team comprises passionate postdoctoral researchers, doctoral students, and master's students from diverse academic backgrounds, all dedicated to scientific exploration and technological innovation. The group's multidisciplinary background and international perspective provide unique insights for addressing complex scientific problems.",
+    "researchTeamContent": "The group includes faculty, postdoctoral researchers, doctoral students, and master's students working across materials chemistry and optoelectronic devices.",
     "researchAchievements": "Research Achievements",
-    "researchAchievementsContent": "We have published a series of research papers in important international academic journals, including Nature Communications, and Advanced Materials. Our research has received funding from the National Natural Science Foundation of China, Jiangsu Provincial Key R&D Program, and other sources, and we have established collaborative relationships with numerous research institutions both within China and internationally."
+    "researchAchievementsContent": "Recent work has appeared in leading journals including Nature Communications, Nature Sustainability, and Angewandte Chemie, supported by national research programs.",
+    "joinTitle": "Students and researchers interested in functional materials are welcome",
+    "joinLead": "We welcome graduate students and postdoctoral researchers with backgrounds in materials, chemistry, physics, optoelectronics, or related fields.",
+    "joinCta": "Join the group"
   },
   "Header": {
     "NavMenu": {
@@ -73,8 +112,7 @@
       "Doctoral": "Doctoral",
       "Master Student": "Master Student",
       "PhD Student": "PhD Student",
-      "Member": "Member",
-      "Alumnus": "Alumni"
+      "Member": "Member"
     },
     "Detail": {
       "greeting": "👋 Hi there, I'm {name}",
@@ -93,10 +131,10 @@
       "studentsTitle": "Current Team Members",
       "alumniTitle": "Alumni",
       "mentorPoint1": "Distinguished Professor, School of Chemistry and Materials, Yangzhou University",
-      "mentorPoint2": "Focuses on photoelectric nanomaterials and device research and development",
-      "mentorPoint3": "Published 10+ papers as first/corresponding author in journals like Nature Communications, Nature Sustainability, Angewandte Chemie, etc.",
-      "mentorPoint4": "Principal Investigator of 5 research projects including National Youth Science Foundation",
-      "mentorPoint5": "Chief Technology Officer (CTO) of Yangzhou Yuyuan New Material Co., Ltd."
+      "mentorPoint2": "Works on photoelectric nanomaterial synthesis, property regulation, and device development",
+      "mentorPoint3": "Published 10+ representative papers as first or corresponding author in Nature Communications, Nature Sustainability, Angewandte Chemie International Edition, and related journals",
+      "mentorPoint4": "Principal investigator for 5 research projects, including National Youth Science Foundation funding",
+      "mentorPoint5": "Chief Technology Officer (CTO), Yangzhou Yuyuan New Materials Co., Ltd."
     }
   },
   "Research": {

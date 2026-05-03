@@ -5,7 +5,18 @@
     "Keywords": "田甜, 扬州大学, 化学与材料学院, 田甜课题组, 新能源蓄光薄膜, 光电晶体材料, 半导体纳米发光材料, 光电器件, 钙钛矿, 发光材料, 产业化应用, 李文广, 杨梅芳, 科研团队, 学术研究",
     "Creator": "田甜课题组",
     "Publisher": "扬州大学化学与材料学院",
-    "Keywords_Array": ["田甜", "扬州大学", "化学与材料学院", "田甜课题组", "科研实验室", "环糊精", "钙钛矿", "太阳能电池", "发光材料", "教授"],
+    "Keywords_Array": [
+      "田甜",
+      "扬州大学",
+      "化学与材料学院",
+      "田甜课题组",
+      "科研实验室",
+      "环糊精",
+      "钙钛矿",
+      "太阳能电池",
+      "发光材料",
+      "教授"
+    ],
     "Publications": {
       "Title": "成果及论文",
       "Description": "田甜课题组发表的学术论文与研究成果，涵盖环糊精、钙钛矿、太阳能电池、发光材料等方向，包含期刊信息、作者、摘要与标签等。",
@@ -34,7 +45,12 @@
     "LoadingFailed": "数据加载失败",
     "LoadingFailedDesc": "无法获取数据，请稍后再试",
     "MissingMapApiKey": "请在 .env.local 文件中设置 NEXT_PUBLIC_MAP_API。",
-    "MapLoadError": "地图加载失败"
+    "MapLoadError": "地图加载失败",
+    "skipToContent": "跳到正文",
+    "groupName": "田甜课题组",
+    "footerTagline": "功能材料与光电器件研究",
+    "footerDescription": "立足扬州大学化学与材料学院，聚焦钙钛矿光电材料、有机非线性光学材料和多功能发光体系。",
+    "footerNav": "页脚导航"
   },
   "HomePage": {
     "Name": "田甜",
@@ -42,13 +58,27 @@
     "School": "扬州大学",
     "College": "化学与材料学院",
     "AvatarAlt": "扬州大学 化学与材料学院 教授 田甜",
+    "eyebrow": "扬州大学化学与材料学院",
+    "heroTitle": "面向可持续光电应用的新型功能材料研究",
+    "heroLead": "田甜课题组围绕钙钛矿光伏、非线性光学材料与发光薄膜开展分子设计、界面调控和器件验证，连接基础研究与可转化应用。",
+    "primaryCta": "查看研究方向",
+    "secondaryCta": "浏览发表论文",
+    "HeroImageAlt": "课题组代表性钙钛矿与发光材料研究图像",
+    "imageKicker": "Materials lab",
+    "imageCaption": "从分子结构到柔性器件，追踪材料性能的形成机制。",
+    "statsPublications": "代表性论文",
+    "statsProjects": "科研项目",
+    "statsFields": "研究主线",
     "Address": "江苏省扬州市四望亭路180号 扬州大学化学与材料学院",
     "researchDirection": "研究方向",
-    "researchDirectionContent": "田甜教授的研究小组专注于设计和合成创新的功能材料，用于能源存储、催化和环境修复。我们的工作涵盖新型电池材料、高效催化剂和环境友好型吸附剂的开发，致力于解决当前能源和环境挑战。",
+    "researchDirectionContent": "聚焦钙钛矿光伏、有机非线性光学材料、多功能发光体系和光谱表征驱动的界面调控。",
     "researchTeam": "研究团队",
-    "researchTeamContent": "我们的团队由一群充满热情的博士后、博士生和硕士生组成，他们来自不同的专业背景，共同致力于科学探索和技术创新。研究组具有多样化的学科背景和国际视野，为解决复杂的科学问题提供了独特视角。",
+    "researchTeamContent": "团队由教师、博士后、博士生和硕士生组成，覆盖材料化学、光电器件与光谱分析等方向。",
     "researchAchievements": "研究成果",
-    "researchAchievementsContent": "我们在国内外重要学术期刊上发表了一系列研究论文，包括《自然通讯》、《先进材料》等。研究成果获得了国家自然科学基金、江苏省重点研发计划等多项资助，并与多家国内外研究机构建立了合作关系。"
+    "researchAchievementsContent": "近年来在 Nature Communications、Nature Sustainability、Angewandte Chemie 等期刊发表论文，并承担国家级科研项目。",
+    "joinTitle": "欢迎对功能材料和光电器件感兴趣的同学加入",
+    "joinLead": "我们长期招收具有材料、化学、物理、光电或相关背景的研究生与博士后，鼓励把清晰问题、扎实实验和真实应用放在同一张桌上。",
+    "joinCta": "了解加入方式"
   },
   "Header": {
     "NavMenu": {
@@ -73,8 +103,7 @@
       "Doctoral": "博士",
       "Master Student": "硕士研究生",
       "PhD Student": "博士研究生",
-      "Member": "组员",
-      "Alumnus": "往届人员"
+      "Member": "组员"
     },
     "Detail": {
       "greeting": "👋 你好，我是 {name}",
@@ -92,11 +121,11 @@
       "mentorTitle": "导师介绍",
       "studentsTitle": "当前组员",
       "alumniTitle": "往届人员",
-      "mentorPoint1": "现为扬州大学化学与材料学院特聘教授",
-      "mentorPoint2": "近年来一直从事光电纳米材料制备和器件研发领域的研究工作",
-      "mentorPoint3": "目前以第一/通讯作者在Nature Communications、Nature Sustainability、Angewandte Chemie–International Edition等期刊上发表论文10余篇",
-      "mentorPoint4": "主持国家青年基金等科研项目5项",
-      "mentorPoint5": "扬州宇元新材有限公司 首席技术官 (CTO)"
+      "mentorPoint1": "扬州大学化学与材料学院特聘教授",
+      "mentorPoint2": "长期从事光电纳米材料制备、性能调控与器件研发",
+      "mentorPoint3": "以第一/通讯作者在 Nature Communications、Nature Sustainability、Angewandte Chemie International Edition 等期刊发表代表性论文 10 余篇",
+      "mentorPoint4": "主持国家青年基金等科研项目 5 项",
+      "mentorPoint5": "扬州宇元新材有限公司首席技术官（CTO）"
     }
   },
   "Research": {
