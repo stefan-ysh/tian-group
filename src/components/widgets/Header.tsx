@@ -85,7 +85,6 @@ const Header = () => {
                 aria-current={isCurrentPage ? 'page' : undefined}
                 aria-label={t(code)}
               >
-                <NavIcon aria-hidden className="h-4 w-4 shrink-0" />
                 <span className="whitespace-nowrap">{t(code)}</span>
               </IntlLink>
             );
