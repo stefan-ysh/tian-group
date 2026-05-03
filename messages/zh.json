@@ -80,7 +80,6 @@
       "greeting": "👋 你好，我是 {name}",
       "joinYear": "入组时间",
       "leaveYear": "离组时间",
-      "yearSuffix": "{year} 级",
       "researchArea": "研究方向",
       "advisor": "指导老师",
       "advisedStudents": "指导学生",

@@ -147,7 +147,7 @@ export function MemberClientPage({ slug, initialMember = null }) {
                 </div>
                 {member.joined_year && (
                   <DetailRow icon={CalendarDays} label={t('joinYear')}>
-                    <span>{t('yearSuffix', { year: member.joined_year })}</span>
+                    <span>{member.joined_year}</span>
                   </DetailRow>
                 )}
                 {member.leave_year && (
