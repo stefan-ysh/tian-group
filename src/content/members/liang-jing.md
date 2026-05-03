@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/liang-jing.jpg
-description: 梁晶 - 硕士研究生
+description: 梁晶 - Master Student
 description_en: Jing Liang - Master Student
 email: mz120250677@stu.yzu.edu.cn
 joined_year: '2025'

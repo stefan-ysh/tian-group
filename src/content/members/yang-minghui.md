@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/yang-minghui.jpg
-description: 杨明慧 - 硕士研究生
+description: 杨明慧 - Master Student
 description_en: Minghui Yang - Master Student
 email: ymh1235@163.com
 joined_year: '2025'

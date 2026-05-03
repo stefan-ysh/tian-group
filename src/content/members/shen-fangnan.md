@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/shen-fangnan.jpg
-description: 沈方楠 - 硕士研究生
+description: 沈方楠 - Master Student
 description_en: Fangnan Shen - Master Student
 email: mz120250705@stu.yzu.edu.cn
 joined_year: '2025'

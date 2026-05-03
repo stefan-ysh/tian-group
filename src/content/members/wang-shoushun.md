@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/wang-shoushun.jpg
-description: 汪守顺 - 硕士研究生
+description: 汪守顺 - Master Student
 description_en: Shoushun Wang - Master Student
 email: mx120250469@stu.yzu.edu.cn
 joined_year: '2025'

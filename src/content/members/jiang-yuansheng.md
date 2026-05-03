@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/jiang-yuansheng.jpg
-description: 姜远胜 - 博士研究生
+description: 姜远胜 - Master Student
 description_en: Yuansheng Jiang - PhD Student
 email: jyuansheng1999@163.com
 joined_year: '2021'

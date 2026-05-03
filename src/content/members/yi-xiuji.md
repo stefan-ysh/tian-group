@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/yi-xiuji.jpg
-description: 仪修佶 - 硕士研究生
+description: 仪修佶 - Master Student
 description_en: Xiuji Yi - Master Student
 email: yixiuji@163.com
 joined_year: '2024'

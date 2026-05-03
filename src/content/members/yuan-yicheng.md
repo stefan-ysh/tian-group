@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/yuan-yicheng.jpg
-description: 袁一程 - 硕士研究生
+description: 袁一程 - Master Student
 description_en: Yicheng Yuan - Master Student
 joined_year: '2024'
 name: 袁一程

@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/wu-jialiang.jpg
-description: 武家亮 - 硕士研究生
+description: 武家亮 - Master Student
 description_en: Jialiang Wu - Master Student
 joined_year: '2025'
 name: 武家亮

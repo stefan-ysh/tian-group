@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/yuan-zongxuan.jpg
-description: 袁宗轩 - 硕士研究生
+description: 袁宗轩 - Master Student
 description_en: Zongxuan Yuan - Master Student
 joined_year: '2024'
 name: 袁宗轩

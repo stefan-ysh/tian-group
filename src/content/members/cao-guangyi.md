@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/cao-guangyi.jpg
-description: 曹光燚 - 硕士研究生
+description: 曹光燚 - Master Student
 description_en: Guangyi Cao - Master Student
 email: mz120230766@stu.yzu.edu.cn
 joined_year: '2023'

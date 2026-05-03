@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/li-jiaxin.jpg
-description: 李嘉欣 - 硕士研究生
+description: 李嘉欣 - Master Student
 description_en: Jiaxin Li - Master Student
 email: 2864746075@qq.com
 joined_year: '2024'

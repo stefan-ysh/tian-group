@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/zhang-lei.jpg
-description: 张蕾 - 硕士研究生
+description: 张蕾 - Master Student
 description_en: Lei Zhang - Master Student
 email: 2727445638@qq.com
 joined_year: '2023'

@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/chen-zhenyang.jpg
-description: 陈振阳 - 硕士研究生
+description: 陈振阳 - Master Student
 description_en: Zhenyang Chen - Master Student
 email: 1511861834@qq.com
 joined_year: '2024'

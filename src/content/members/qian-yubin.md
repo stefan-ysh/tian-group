@@ -1,6 +1,6 @@
 ---
 avatar: /images/avatar/qian-yubin.jpg
-description: 钱宇斌 - 硕士研究生
+description: 钱宇斌 - Master Student
 description_en: Yubin Qian - Master Student
 email: mx120250456@stu.yzu.edu.cn
 joined_year: '2025'
