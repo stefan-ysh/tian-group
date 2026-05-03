@@ -9,15 +9,15 @@ export default function Template({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <motion.main
+    <motion.div
       data-scroll
-      className="mb-auto p-4"
+      className="flex flex-1 flex-col p-4"
       initial="hidden"
       animate="enter"
       variants={variants}
       transition={{ duration: 0.6, ease: 'backOut' }}
     >
       {children}
-    </motion.main>
+    </motion.div>
   );
 }

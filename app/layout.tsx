@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Providers from '~/components/atoms/Providers';
 import { OrganizationSchema, WebSiteSchema } from '~/components/seo/JsonLd';
+import Footer from '~/components/widgets/Footer';
 import Header from '~/components/widgets/Header';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
@@ -31,8 +32,16 @@ export async function generateMetadata(): Promise<Metadata> {
     description: t.Description,
     keywords: t.Keywords.split(',').map((s: string) => s.trim()),
     authors: [{ name: t.Creator }],
+    applicationName: t.Creator,
     creator: t.Creator,
     publisher: t.Publisher,
+    category: 'academic research',
+    referrer: 'strict-origin-when-cross-origin',
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
     robots: {
       index: true,
       follow: true,
@@ -69,6 +78,10 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     alternates: {
       canonical: SITE_URL,
+      languages: {
+        'zh-CN': SITE_URL,
+        'en-US': SITE_URL,
+      },
     },
   };
 }
@@ -88,22 +101,28 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <script
-          defer
+        <meta name="theme-color" content="#0F2C59" />
+        <Script
           src="https://umami.tiantian.group/script.js"
           data-website-id="d8ae1e2a-17a7-4566-8bfa-dcb8c1ee8f8e"
-        ></script>
+          strategy="afterInteractive"
+        />
       </head>
-      <body className="antialiased">
+      <body className="flex min-h-dvh flex-col overflow-x-hidden antialiased">
+        <a href="#main-content" className="skip-link">
+          {common.skipToContent || 'Skip to content'}
+        </a>
         <OrganizationSchema />
         <WebSiteSchema />
         <Providers>
           <NextIntlClientProvider messages={messages}>
             <Header />
-            {children}
+            <main id="main-content" className="flex flex-1 flex-col">
+              {children}
+            </main>
+            <Footer />
             <Analytics />
             <SpeedInsights />
-            {/* <Footer /> */}
           </NextIntlClientProvider>
         </Providers>
         <a

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { IconSun, IconMoon } from '@tabler/icons-react';
-import { Button } from "@heroui/react";
+import { Button } from '@heroui/react';
 import { useTheme } from 'next-themes';
 
 const ToggleTheme = () => {
@@ -19,7 +19,7 @@ const ToggleTheme = () => {
 
   const handleOnClick = useCallback(() => {
     let newTheme;
-    if(theme !== 'system') {
+    if (theme !== 'system') {
       newTheme = theme === 'dark' ? 'light' : 'dark';
     } else {
       newTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'light' : 'dark';
@@ -30,12 +30,17 @@ const ToggleTheme = () => {
   return (
     <>
       {mounted ? (
-        <Button onPress={handleOnClick} size="sm" isIconOnly aria-label="Toggle dark mode" variant="light">
+        <Button
+          onPress={handleOnClick}
+          size="sm"
+          isIconOnly
+          aria-label="Toggle dark mode"
+          variant="light"
+          className="h-10 w-10 min-w-10 shrink-0"
+        >
           {theme === 'light' ? <IconSun size={16} /> : <IconMoon size={16} />}
         </Button>
-      ) : (
-        null
-      )}
+      ) : null}
     </>
   );
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import { setUserLocale } from '~/services/locale';
-import { Button } from "@heroui/react";
+import { Button } from '@heroui/react';
 import { useLocale } from 'next-intl';
 import { useTransition, useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -14,9 +14,9 @@ const ToggleLanguage = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-  
+
   const router = useRouter();
-  
+
   const handleOnClick = () => {
     startTransition(async () => {
       await setUserLocale(locale === 'en' ? 'zh' : 'en');
@@ -27,14 +27,15 @@ const ToggleLanguage = () => {
   return (
     <>
       {mounted ? (
-        <Button 
-          onPress={handleOnClick} 
-          size="sm" 
-          isIconOnly 
-          aria-label={`Switch to ${locale === 'en' ? 'Chinese' : 'English'}`} 
+        <Button
+          onPress={handleOnClick}
+          size="sm"
+          isIconOnly
+          aria-label={`Switch to ${locale === 'en' ? 'Chinese' : 'English'}`}
           variant="light"
+          className="h-10 w-10 min-w-10 shrink-0"
         >
-          {locale === 'en' ? ' EN' : '中'}
+          {locale === 'en' ? 'EN' : '中'}
         </Button>
       ) : null}
     </>

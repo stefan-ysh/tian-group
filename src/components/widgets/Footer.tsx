@@ -1,73 +1,56 @@
+import { getMessages } from 'next-intl/server';
 import { footerData } from '~/shared/data/global.data';
+import { Link } from '~/i18n/routing';
+import Logo from '~/components/atoms/Logo';
 
-const Footer = () => {
-  const { title, links, columns, socials, footNote } = footerData;
+const Footer = async () => {
+  const { links, footNote } = footerData;
+  const footerLinks = links ?? [];
+  const messages = await getMessages();
+  const nav = (messages as any).Header?.NavMenu || {};
+  const common = (messages as any).Common || {};
 
   return (
-    <footer className="relative border-t border-gray-200 dark:border-slate-800">
-      <div className="dark:bg-dark pointer-events-none absolute inset-0"></div>
-      <div className="relative mx-auto max-w-7xl px-4 dark:text-slate-300 sm:px-6">
-        <div className="grid grid-cols-12 gap-4 gap-y-8 py-8 sm:gap-8 md:py-12">
-          <div className="col-span-12 lg:col-span-4">
-            <div className="mb-2">
-              <a className="inline-block text-xl font-bold" href="/">
-                {title}
-              </a>
-            </div>
-            {/* <div className="text-muted text-sm">
-              <ul className="mb-4 flex pr-2 rtl:pr-0 rtl:pl-2 md:order-1 md:mb-0">
-                {links &&
-                  links.map(({ label, href }, index) => (
-                    <li key={`item-link-${index}`}>
-                      <a
-                        className="duration-150 ease-in-out placeholder:transition hover:text-gray-700 hover:underline dark:text-gray-400"
-                        aria-label={label}
-                        href={href}
-                      >
-                        {label}
-                      </a>
-                      {links.length - 1 !== index && <span className="mr-1 rtl:mr-0 rtl:ml-1"> · </span>}
-                    </li>
-                  ))}
-              </ul>
-            </div> */}
-          </div>
-          {/* {columns.map(({ title, links }, index) => (
-            <div key={`item-column-${index}`} className="col-span-6 md:col-span-3 lg:col-span-2">
-              <div className="mb-2 font-medium dark:text-gray-300">{title}</div>
-              <ul className="text-sm">
-                {links &&
-                  links.map(({ label, href }, index2) => (
-                    <li key={`item-column-link-${index2}`} className="mb-2">
-                      <a
-                        className="text-muted transition duration-150 ease-in-out hover:text-gray-700 hover:underline dark:text-gray-400"
-                        aria-label={label}
-                        href={href}
-                      >
-                        {label}
-                      </a>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ))} */}
+    <footer className="mt-auto border-t border-slate-200 bg-white/[0.76] dark:border-white/10 dark:bg-slate-950/80">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 lg:grid-cols-[1fr_auto] lg:items-end">
+        <div>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-3 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2"
+            aria-label={nav.home || 'Home'}
+          >
+            <Logo
+              title={common.groupName || 'Tian Group'}
+              subtitle={common.footerTagline || 'Functional materials and optoelectronic devices'}
+              textClassName="[&>span:first-child]:text-base [&>span:last-child]:text-sm"
+            />
+          </Link>
+          <p className="mt-5 max-w-xl text-sm leading-7 text-slate-600 dark:text-slate-300">
+            {common.footerDescription ||
+              'A research group at the School of Chemistry and Materials, Yangzhou University.'}
+          </p>
         </div>
-        {/* <div className="py-6 md:flex md:items-center md:justify-between md:py-8">
-          <ul className="mb-4 flex md:order-1 md:ml-4 rtl:md:ml-0 rtl:md:mr-4 md:mb-0">
-            {socials.map(({ label, icon: Icon, href }, index) => (
-              <li key={`item-social-${index}`}>
-                <a
-                  className="text-muted inline-flex items-center rounded-lg p-2.5 text-sm hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-700"
-                  aria-label={label}
-                  href={href}
-                >
-                  {Icon && <Icon className="h-5 w-5" />}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div> */}
+
+        <nav
+          aria-label={common.footerNav || 'Footer navigation'}
+          className="flex flex-wrap gap-x-4 gap-y-3 lg:justify-end"
+        >
+          {footerLinks.map(({ href, code, label }) => (
+            <Link
+              key={href || code}
+              href={(href || '/') as any}
+              className="rounded-md text-sm font-medium text-slate-600 transition hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 dark:text-slate-300 dark:hover:text-teal-200"
+            >
+              {nav[code || ''] || label}
+            </Link>
+          ))}
+        </nav>
+      </div>
+      <div className="mx-auto flex max-w-7xl items-center justify-between border-t border-slate-200 px-4 py-4 text-sm text-slate-500 sm:px-6 dark:border-white/10 dark:text-slate-400">
         {footNote}
+        <a href="mailto:tiant91@yzu.edu.cn" className="transition hover:text-primary dark:hover:text-teal-200">
+          tiant91@yzu.edu.cn
+        </a>
       </div>
     </footer>
   );
