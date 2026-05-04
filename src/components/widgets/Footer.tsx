@@ -17,7 +17,7 @@ const Footer = async () => {
 
   return (
     <footer className="mt-auto border-t border-slate-200 bg-white/[0.76] dark:border-white/10 dark:bg-slate-950/80">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-12 lg:gap-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-5 sm:px-6 lg:grid-cols-12 lg:gap-8">
         {/* 左侧：Logo + 简介 */}
         <div className="lg:col-span-5 xl:col-span-6">
           <Link
