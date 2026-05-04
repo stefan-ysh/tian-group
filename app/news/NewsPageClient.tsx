@@ -13,7 +13,7 @@ interface NewsPageClientProps {
 export default function NewsPageClient({ initialNews, initialTotal, initialCounts }: NewsPageClientProps) {
   const t = useTranslations('News');
   return (
-    <section className="mx-auto max-w-5xl p-0 md:py-12 md:px-6">
+    <section className="w-full mx-auto max-w-5xl p-0 md:py-12 md:px-6">
       <div className="text-center mb-1">
         <h1 className="sr-only">{t('title')}</h1>
       </div>

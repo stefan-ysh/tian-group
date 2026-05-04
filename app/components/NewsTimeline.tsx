@@ -214,7 +214,7 @@ export function NewsTimeline({
             className="w-full"
             variant="underlined"
             classNames={{
-              tabList: "gap-6",
+              tabList: "gap-1",
               cursor: "bg-primary",
               tab: "max-w-fit px-2 h-10 data-[selected=true]:text-primary"
             }}
@@ -274,33 +274,29 @@ export function NewsTimeline({
 
         {/* 没有找到新闻时的提示 */}
         {filteredNews.length === 0 && (
-          <div className="py-12 text-center text-foreground/60">
-            <Newspaper size={40} className="mx-auto mb-4 opacity-50" />
-            <p>{t('noNewsFound')}</p>
+          <div className="w-full">
+            <Card fullWidth className="w-full border border-primary/10 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:shadow-md transition-shadow">
+              <CardBody className="p-12 flex flex-col items-center justify-center text-foreground/60">
+                <Newspaper size={40} className="mb-4 opacity-50" />
+                <p>{t('noNewsFound')}</p>
+              </CardBody>
+            </Card>
           </div>
         )}
 
         {/* 新闻时间线 */}
-        <div className="relative">
-          {/* 垂直时间线 */}
-          <div className="absolute left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/20 rounded-full md:left-8"></div>
-
-          <div className="space-y-6">
+        <div className="relative w-full">
+          <div className="space-y-6 w-full">
             {visibleNews.map((item, index) => (
               <article
                 key={item.id}
-                className="relative flex items-start pl-10 md:pl-16"
+                className="relative flex items-start w-full"
                 aria-labelledby={`news-title-${item.id}`}
               >
-                {/* 时间线上的点 */}
-                <div
-                  className="absolute left-2 md:left-8 top-2 w-5 h-5 rounded-full bg-primary ring-2 ring-white dark:ring-gray-800 shadow-md transform -translate-x-1/2 z-10"
-                  aria-hidden="true"
-                ></div>
-
+             
                 {/* 内容卡片 */}
-                <div className="w-full">
-                  <Card className="border border-primary/10 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                <div className="w-full flex-1">
+                  <Card fullWidth className="w-full border border-primary/10 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-700/50 rounded-xl">
                     <CardBody className="p-4 md:p-5">
                       {/* 有图片时：左图右文布局 */}
                       {item.imageUrl ? (
