@@ -1,4 +1,18 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://tiantian.group/</loc>
+    <lastmod>2026-05-02T07:38:41.901Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tiantian.group/research</loc>
+    <lastmod>2026-05-02T07:38:41.901Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://tiantian.group/publications</loc>
     <lastmod>2026-05-02T07:38:41.901Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -150,6 +164,18 @@
   </url>
   <url>
     <loc>https://tiantian.group/members/zhang-lei</loc>
+    <lastmod>2026-05-02T07:38:41.901Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tiantian.group/activities/group-meeting-2024-spring</loc>
+    <lastmod>2026-05-02T07:38:41.901Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tiantian.group/activities/group-meeting</loc>
     <lastmod>2026-05-02T07:38:41.901Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
