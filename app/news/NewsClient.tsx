@@ -14,7 +14,7 @@ const NewsTimeline = dynamic(
   {
     loading: () => <NewsSkeletonLoader />,
     ssr: true,
-  }
+  },
 );
 // 定义计数类型
 export interface NewsCounts {
@@ -40,10 +40,10 @@ export function NewsClient({ initialNews = [], initialTotal, initialCounts }: Ne
   const [loading, setLoading] = useState(!hasInitialData);
   const [currentLimit, setCurrentLimit] = useState(initialLimit); // 替换page为limit
   const [hasMore, setHasMore] = useState(
-    hasInitialData ? initialNews.length < (initialTotal ?? initialNews.length) : true
+    hasInitialData ? initialNews.length < (initialTotal ?? initialNews.length) : true,
   );
   const [newsCounts, setNewsCounts] = useState<NewsCounts>(
-    initialCounts ?? { all: initialTotal ?? initialNews.length }
+    initialCounts ?? { all: initialTotal ?? initialNews.length },
   );
   const [totalNewsItems, setTotalNewsItems] = useState(initialTotal ?? initialNews.length);
   const ITEMS_INCREASE = 4; // 每次点击增加4个项目
@@ -63,31 +63,34 @@ export function NewsClient({ initialNews = [], initialTotal, initialCounts }: Ne
     }
   }, [locale]);
 
-  const fetchNews = useCallback(async (limit: number) => {
-    try {
-      setLoading(true);
-      const response = await fetch(`/api/news?page=1&limit=${limit}&locale=${locale}`);
-      if (!response.ok) throw new Error('Failed to fetch news');
-      const data = await response.json();
-      
-      const newsItems = data.items || data;
-      const total = data.total || newsItems.length;
-      
-      setTotalNewsItems(total);
-      setNews(newsItems);
-      setHasMore(newsItems.length < total);
-    } catch (error) {
-      console.error('Error fetching news:', error);
-    } finally {
-      setLoading(false);
-    }
-  }, [locale]);
+  const fetchNews = useCallback(
+    async (limit: number) => {
+      try {
+        setLoading(true);
+        const response = await fetch(`/api/news?page=1&limit=${limit}&locale=${locale}`);
+        if (!response.ok) throw new Error('Failed to fetch news');
+        const data = await response.json();
+
+        const newsItems = data.items || data;
+        const total = data.total || newsItems.length;
+
+        setTotalNewsItems(total);
+        setNews(newsItems);
+        setHasMore(newsItems.length < total);
+      } catch (error) {
+        console.error('Error fetching news:', error);
+      } finally {
+        setLoading(false);
+      }
+    },
+    [locale],
+  );
 
   useEffect(() => {
     if (firstRender.current) {
       firstRender.current = false;
       if (!hasInitialData) {
-        fetchNews(currentLimit);
+        fetchNews(initialLimit);
         fetchNewsCounts();
       }
       return;
@@ -99,7 +102,7 @@ export function NewsClient({ initialNews = [], initialTotal, initialCounts }: Ne
     setCurrentLimit(resetLimit);
     fetchNews(resetLimit);
     fetchNewsCounts();
-  }, [locale, fetchNews, fetchNewsCounts, hasInitialData]);
+  }, [locale, fetchNews, fetchNewsCounts, hasInitialData, initialLimit]);
 
   const handleLoadMore = () => {
     const newLimit = currentLimit + ITEMS_INCREASE;
@@ -113,17 +116,17 @@ export function NewsClient({ initialNews = [], initialTotal, initialCounts }: Ne
 
   return (
     <div className="w-full" role="region" aria-label={t('title')}>
-      <NewsTimeline 
-        news={news} 
+      <NewsTimeline
+        news={news}
         initialDisplayCount={news.length}
         showLoadMoreButton={false}
         totalNewsCount={totalNewsItems}
         typeCounts={{
           ...newsCounts,
-          all: totalNewsItems
+          all: totalNewsItems,
         }}
       />
-      
+
       {hasMore && (
         <div className="mt-8 mb-12 text-center">
           <Button
@@ -133,7 +136,7 @@ export function NewsClient({ initialNews = [], initialTotal, initialCounts }: Ne
             onClick={handleLoadMore}
             endContent={<ChevronDown size={16} aria-hidden="true" />}
             isLoading={loading}
-            aria-label={loading ? (t('loading') || 'Loading...') : t('loadMore')}
+            aria-label={loading ? t('loading') || 'Loading...' : t('loadMore')}
           >
             {t('loadMore')}
             {/* ({news.length}/{totalNewsItems}) */}
@@ -142,4 +145,4 @@ export function NewsClient({ initialNews = [], initialTotal, initialCounts }: Ne
       )}
     </div>
   );
-} 
+}

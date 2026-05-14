@@ -2,6 +2,7 @@ import { findPublicationsByName, findLatestPublications } from '~/utils/publicat
 import { PublicationClientPage } from './PublicationClientPage';
 import { generatePublicationMetadata, generateSEOMetadata } from '~/lib/seo';
 import { BreadcrumbSchema, ScholarlyArticleSchema } from '~/components/seo/JsonLd';
+import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;
 export const revalidate = 3600;
@@ -54,7 +55,10 @@ export default async function Page({ params }) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tiantian.group';
   const slug = decodeURIComponent(params.slug);
   const publication = await findPublicationsByName(slug);
-  const initialPublication = publication || null;
+
+  if (!publication) {
+    notFound();
+  }
 
   // Fetch on server for JSON-LD (SEO), UI stays client-side.
   return (
@@ -66,18 +70,8 @@ export default async function Page({ params }) {
           { name: slug, url: `${siteUrl}/publications/${encodeURIComponent(slug)}` },
         ]}
       />
-      {publication ? (
-        <ScholarlyArticleSchema publication={{ ...publication, slug }} />
-      ) : (
-        <ServerPublicationJsonLd slug={slug} />
-      )}
-      <PublicationClientPage slug={params.slug} initialPublication={initialPublication} />
+      <ScholarlyArticleSchema publication={{ ...publication, slug }} />
+      <PublicationClientPage slug={params.slug} initialPublication={publication} />
     </>
   );
-}
-
-async function ServerPublicationJsonLd({ slug }) {
-  const publication = await findPublicationsByName(slug);
-  if (!publication) return null;
-  return <ScholarlyArticleSchema publication={{ ...publication, slug }} />;
 }

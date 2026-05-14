@@ -3,6 +3,7 @@ import { findLatestMembers, findMembersByName } from '~/utils/members';
 import { MemberClientPage } from './MemberClientPage';
 import { generateMemberMetadata, generateSEOMetadata } from '~/lib/seo';
 import { BreadcrumbSchema, PersonSchema } from '~/components/seo/JsonLd';
+import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;
 export const revalidate = 3600;
@@ -79,6 +80,11 @@ export default async function Page({ params }) {
   const locale = await getLocale();
   const decodedSlug = decodeURIComponent(params.slug);
   const member = await findMembersByName(decodedSlug, locale);
+
+  if (!member) {
+    notFound();
+  }
+
   const initialMember = await enrichMemberRelations(member, locale);
 
   return (
@@ -90,32 +96,14 @@ export default async function Page({ params }) {
           { name: decodedSlug, url: `${siteUrl}/members/${encodeURIComponent(decodedSlug)}` },
         ]}
       />
-      {member ? (
-        <PersonSchema
-          member={{
-            ...member,
-            slug: decodedSlug,
-            image: member.avatar || member.image,
-          }}
-        />
-      ) : (
-        <ServerMemberJsonLd slug={decodedSlug} />
-      )}
+      <PersonSchema
+        member={{
+          ...member,
+          slug: decodedSlug,
+          image: member.avatar || member.image,
+        }}
+      />
       <MemberClientPage slug={params.slug} initialMember={initialMember} />
     </>
-  );
-}
-
-async function ServerMemberJsonLd({ slug }) {
-  const member = await findMembersByName(slug);
-  if (!member) return null;
-  return (
-    <PersonSchema
-      member={{
-        ...member,
-        slug,
-        image: member.avatar || member.image,
-      }}
-    />
   );
 }

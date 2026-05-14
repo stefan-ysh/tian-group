@@ -4,6 +4,7 @@ import ActivityDetailClientPage from './ActivityDetailClientPage';
 import { generateSEOMetadata } from '~/lib/seo';
 import { findActivitiesByName, findLatestActivities } from '~/utils/activities';
 import { BreadcrumbSchema, EventSchema } from '~/components/seo/JsonLd';
+import { notFound } from 'next/navigation';
 
 export async function generateMetadata({ params }) {
   const cookieStore = await cookies();
@@ -50,6 +51,11 @@ export default async function Page({ params }) {
   const cookieStore = await cookies();
   const locale = cookieStore.get('NEXT_LOCALE')?.value || 'zh';
   const activity = await findActivitiesByName(params.id, locale);
+
+  if (!activity) {
+    notFound();
+  }
+
   const t = await getTranslations({ locale, namespace: 'Header.NavMenu' });
   const commonT = await getTranslations({ locale, namespace: 'Common' });
   
@@ -62,10 +68,10 @@ export default async function Page({ params }) {
         items={[
           { name: commonT('Home'), url: siteUrl },
           { name: t('activities'), url: `${siteUrl}/activities` },
-          { name: activity?.title || params.id, url },
+          { name: activity.title, url },
         ]}
       />
-      {activity ? <EventSchema activity={activity} /> : null}
+      <EventSchema activity={activity} />
       <ActivityDetailClientPage id={params.id} />
     </>
   );
