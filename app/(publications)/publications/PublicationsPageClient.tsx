@@ -23,24 +23,24 @@ export function PublicationsPageClient({ initialPublications = [] }: Publication
 
   useEffect(() => {
     let isMounted = true;
-    
+
     async function fetchPublications() {
       try {
         setLoading(true);
         setError(false);
-        
+
         const response = await fetch('/api/publications');
-        
+
         if (!response.ok) {
           throw new Error('Failed to fetch publications');
         }
-        
+
         const data = await response.json();
-        
+
         if (!data || !data.publications || !Array.isArray(data.publications)) {
           throw new Error('Invalid data format');
         }
-        
+
         // 避免组件卸载后的状态更新
         if (isMounted) {
           setPublications(data.publications);
@@ -56,7 +56,7 @@ export function PublicationsPageClient({ initialPublications = [] }: Publication
         }
       }
     }
-    
+
     if (firstRender.current) {
       firstRender.current = false;
       if (!hasInitialData) {
@@ -66,7 +66,7 @@ export function PublicationsPageClient({ initialPublications = [] }: Publication
     }
 
     fetchPublications();
-    
+
     // 清理函数
     return () => {
       isMounted = false;
@@ -80,13 +80,13 @@ export function PublicationsPageClient({ initialPublications = [] }: Publication
 
   // 根据当前视图模式选择适当的骨架屏
   const getSkeletonLoader = () => {
-    return viewMode === 'grid' ? 
-      <PublicationsGridSkeleton /> : 
+    return viewMode === 'grid' ?
+      <PublicationsGridSkeleton /> :
       <PublicationsTimelineSkeleton />;
   };
 
   return (
-    <section className="mx-auto max-w-6xl py-0 sm:py-16 lg:py-20 px-6 min-h-[70vh]">
+    <section className="mx-auto max-w-5xl py-0 sm:py-16 lg:py-20 px-6 min-h-[70vh]">
       {error ? (
         <div className="flex flex-col items-center justify-center py-12 px-4 text-center">
           <h2 className="text-xl font-bold mb-2">{t('LoadingFailed')}</h2>
@@ -98,12 +98,12 @@ export function PublicationsPageClient({ initialPublications = [] }: Publication
         // 骨架屏集中在这里显示
         getSkeletonLoader()
       ) : (
-        <PublicationsClient 
-          publications={publications} 
+        <PublicationsClient
+          publications={publications}
           onViewModeChange={handleViewModeChange}
           initialViewMode={viewMode}
         />
       )}
     </section>
   );
-} 
+}

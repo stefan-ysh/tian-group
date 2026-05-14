@@ -1,6 +1,6 @@
 'use client';
 
-import { Award, BookOpen, FlaskConical, Mail, MapPin, Microscope, MoveRight, Sparkles, Users } from 'lucide-react';
+import { Award, BookOpen, FlaskConical, Mail, MapPin, Microscope, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import NextImage from 'next/image';
 import React from 'react';
@@ -37,15 +37,15 @@ export default function HomeClientPage() {
 
   return (
     <div className="site-shell">
-      <section className="relative overflow-hidden px-4 py-5 sm:px-6 md:py-5 lg:px-8">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(43,124,133,0.16),transparent_30%),radial-gradient(circle_at_84%_12%,rgba(15,44,89,0.14),transparent_28%)] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(45,212,191,0.12),transparent_30%),radial-gradient(circle_at_84%_12%,rgba(96,165,250,0.10),transparent_28%)]" />
+      <section className="relative overflow-hidden border-b border-slate-200/70 px-4 py-8 sm:px-6 md:py-10 lg:px-8 dark:border-white/10">
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(15,44,89,0.055)_1px,transparent_1px),linear-gradient(rgba(15,44,89,0.045)_1px,transparent_1px)] bg-[length:72px_72px] opacity-70 dark:opacity-30" />
         <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <FadeIn delay={0.1} duration={0.6} direction="up" className="max-w-3xl">
-            <div className="mb-5 inline-flex items-center gap-2 rounded-md border border-primary/15 bg-white/70 px-3 py-2 text-sm font-semibold text-primary shadow-sm backdrop-blur dark:border-white/10 dark:bg-white/5 dark:text-teal-200">
-              <Sparkles aria-hidden size={16} />
+            <div className="academic-kicker mb-5 inline-flex items-center gap-2 border-l-2 border-secondary/70 bg-white/70 px-3 py-2 shadow-sm backdrop-blur dark:bg-white/5">
+              <FlaskConical aria-hidden size={16} />
               <span>{t('eyebrow')}</span>
             </div>
-            <h1 className="font-serif text-4xl font-semibold leading-[1.08] text-slate-950 text-balance sm:text-5xl lg:text-6xl dark:text-white">
+            <h1 className="max-w-3xl font-serif text-4xl font-semibold leading-[1.08] text-slate-950 text-balance sm:text-5xl lg:text-6xl dark:text-white">
               {t('heroTitle')}
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-700 text-pretty dark:text-slate-300">
@@ -69,26 +69,28 @@ export default function HomeClientPage() {
 
           <FadeIn direction="left" delay={0.2} duration={0.6}>
             <div className="relative mx-auto max-w-xl lg:mr-0">
-              <div className="absolute -left-4 top-8 h-28 w-28 rounded-full border border-primary/20" />
-              <div className="relative overflow-hidden rounded-[1.25rem] bg-slate-950 shadow-[0_30px_80px_rgba(15,44,89,0.22)]">
+              <div className="relative overflow-hidden rounded-lg bg-slate-950 shadow-[0_28px_70px_rgba(15,44,89,0.2)] ring-1 ring-slate-200/70 dark:ring-white/10">
                 <NextImage
                   src="/images/p14.webp"
                   width={900}
                   height={620}
                   sizes="(min-width: 1024px) 42vw, 92vw"
                   priority
-                  className="h-[340px] w-full object-cover opacity-90 sm:h-[420px]"
+                  className="h-[340px] w-full object-cover opacity-92 sm:h-[420px]"
                   alt={t('HeroImageAlt')}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/[0.82] via-slate-950/[0.18] to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5 text-white sm:p-7">
-                  <p className="text-sm font-semibold uppercase tracking-[0.16em] text-teal-200">{t('imageKicker')}</p>
+                  <p className="text-sm font-semibold uppercase tracking-[0.08em] text-teal-200">{t('imageKicker')}</p>
                   <p className="mt-2 max-w-md text-xl font-semibold leading-snug">{t('imageCaption')}</p>
                 </div>
               </div>
-              <div className="absolute -bottom-6 right-4 grid w-[min(92%,420px)] grid-cols-3 overflow-hidden rounded-xl border border-white/70 bg-white/90 shadow-[0_18px_45px_rgba(15,44,89,0.16)] backdrop-blur dark:border-white/10 dark:bg-slate-900/[0.88]">
+              <div className="absolute -bottom-6 right-4 grid w-[min(92%,420px)] grid-cols-3 overflow-hidden rounded-lg border border-white/70 bg-white/92 shadow-[0_18px_45px_rgba(15,44,89,0.15)] backdrop-blur dark:border-white/10 dark:bg-slate-900/[0.88]">
                 {metrics.map((metric) => (
-                  <div key={metric.label} className="px-4 py-4 text-center">
+                  <div
+                    key={metric.label}
+                    className="border-r border-slate-200/80 px-4 py-4 text-center last:border-r-0 dark:border-white/10"
+                  >
                     <div className="font-mono text-2xl font-semibold text-primary dark:text-teal-200">
                       {metric.value}
                     </div>
@@ -112,7 +114,7 @@ export default function HomeClientPage() {
                 <div className="flex items-center justify-center md:justify-start">
                   <NextImage
                     src="/images/avatar/tiantian.jpg"
-                    className="w-full h-full rounded-2xl object-cover shadow-lg ring-1 ring-slate-200 md:h-full md:w-full md:rounded-none md:rounded-l-[calc(1rem-1px)] md:shadow-none md:ring-0 dark:ring-white/10"
+                    className="h-full w-full rounded-lg object-cover shadow-lg ring-1 ring-slate-200 md:h-full md:w-full md:rounded-none md:rounded-l-[calc(0.5rem-1px)] md:shadow-none md:ring-0 dark:ring-white/10"
                     width={480}
                     height={480}
                     sizes="(min-width: 768px) 240px, 176px"
@@ -156,12 +158,14 @@ export default function HomeClientPage() {
             <div className="grid content-start items-stretch gap-4 md:grid-cols-3">
               {researchCards.map(({ icon: Icon, title, content }, index) => (
                 <FadeIn key={title} direction="up" delay={0.15 + index * 0.08} className="flex">
-                  <article className="research-card flex h-full flex-col w-full">
-                    <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary dark:bg-teal-300/10 dark:text-teal-200">
+                  <article className="research-card flex h-full w-full flex-col">
+                    <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-md bg-primary/10 text-primary dark:bg-teal-300/10 dark:text-teal-200">
                       <Icon aria-hidden size={20} />
                     </div>
                     <h3 className="text-xl font-semibold text-slate-950 dark:text-white">{title}</h3>
-                    <p className="mt-4 flex-1 text-sm leading-7 text-slate-600 text-pretty dark:text-slate-300">{content}</p>
+                    <p className="mt-4 flex-1 text-sm leading-7 text-slate-600 text-pretty dark:text-slate-300">
+                      {content}
+                    </p>
                   </article>
                 </FadeIn>
               ))}
@@ -169,9 +173,9 @@ export default function HomeClientPage() {
           </div>
 
           <FadeIn delay={0.25} direction="up">
-            <div className="mt-8 grid gap-4 rounded-2xl border border-slate-200 bg-white/70 p-4 shadow-sm backdrop-blur md:grid-cols-[1fr_auto] md:items-center md:p-6 dark:border-white/10 dark:bg-white/[0.04]">
+            <div className="academic-callout mt-8 grid gap-4 p-4 shadow-sm backdrop-blur md:grid-cols-[1fr_auto] md:items-center md:p-6">
               <div className="flex items-start gap-4">
-                <div className="hidden h-12 w-12 items-center justify-center rounded-xl bg-secondary/10 text-secondary sm:flex">
+                <div className="hidden h-12 w-12 items-center justify-center rounded-md bg-secondary/10 text-secondary sm:flex">
                   <FlaskConical aria-hidden size={23} />
                 </div>
                 <div>

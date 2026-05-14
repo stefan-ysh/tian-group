@@ -15,12 +15,8 @@ const Headline = ({ header, containerClass, titleClass, subtitleClass }: Headlin
             containerClass,
           )}
         >
-          {tagline && (
-            <p className="text-base font-semibold uppercase tracking-wide text-primary-600 dark:text-primary-200">
-              {tagline}
-            </p>
-          )}
-          {title && <h2 className={twMerge(`font-heading mb-4 font-bold tracking-tight`, titleClass)}>{title}</h2>}
+          {tagline && <p className="academic-kicker">{tagline}</p>}
+          {title && <h2 className={twMerge(`font-serif mb-4 font-semibold tracking-normal`, titleClass)}>{title}</h2>}
           {subtitle && (
             <p
               className={twMerge(

@@ -1,15 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useEffect } from 'react';
-import {
-  Card,
-  CardBody,
-  Chip,
-  Tab,
-  Tabs,
-  Button,
-  Divider
-} from "@heroui/react";
+import { Card, CardBody, Chip, Tab, Tabs, Button, Divider } from '@heroui/react';
 import {
   Calendar,
   Newspaper,
@@ -23,7 +15,7 @@ import {
   BookOpen,
   FileDigit,
   AlignLeft,
-  ScrollText
+  ScrollText,
 } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import NextImage from 'next/image';
@@ -36,7 +28,7 @@ export type NewsType = 'publication' | 'award' | 'event' | 'media' | 'announceme
 export interface NewsItem {
   id: string;
   title: string;
-  date: string;  // ISO string
+  date: string; // ISO string
   publishDate?: string;
   summary: string;
   type: NewsType;
@@ -84,7 +76,7 @@ export function NewsTimeline({
   onLoadMore,
   isLoading = false,
   totalNewsCount,
-  typeCounts
+  typeCounts,
 }: NewsTimelineProps) {
   const t = useTranslations('News');
   const locale = useLocale();
@@ -97,28 +89,26 @@ export function NewsTimeline({
     award: initialDisplayCount,
     event: initialDisplayCount,
     media: initialDisplayCount,
-    announcement: initialDisplayCount
+    announcement: initialDisplayCount,
   });
 
   // 确保displayCounts始终保持最新
   useEffect(() => {
     if (initialDisplayCount > 0) {
-      setDisplayCounts(prevCounts => ({
+      setDisplayCounts((prevCounts) => ({
         ...prevCounts,
         all: Math.max(prevCounts.all, initialDisplayCount),
         publication: Math.max(prevCounts.publication || 0, initialDisplayCount),
         award: Math.max(prevCounts.award || 0, initialDisplayCount),
         media: Math.max(prevCounts.media || 0, initialDisplayCount),
-        announcement: Math.max(prevCounts.announcement || 0, initialDisplayCount)
+        announcement: Math.max(prevCounts.announcement || 0, initialDisplayCount),
       }));
     }
   }, [initialDisplayCount]);
 
   // 按日期排序（最新的在前面）
   const sortedNews = useMemo(() => {
-    return [...news].sort((a, b) =>
-      new Date(b.date).getTime() - new Date(a.date).getTime()
-    );
+    return [...news].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }, [news]);
 
   // 过滤新闻
@@ -126,7 +116,7 @@ export function NewsTimeline({
     if (activeFilter === 'all') {
       return sortedNews;
     }
-    return sortedNews.filter(item => item.type === activeFilter);
+    return sortedNews.filter((item) => item.type === activeFilter);
   }, [sortedNews, activeFilter]);
 
   // 当前显示的新闻
@@ -140,9 +130,9 @@ export function NewsTimeline({
 
   // 处理内部加载更多 - 只增加当前活动标签页的显示数量
   const handleInternalLoadMore = () => {
-    setDisplayCounts(prevCounts => ({
+    setDisplayCounts((prevCounts) => ({
       ...prevCounts,
-      [activeFilter]: prevCounts[activeFilter] + 3
+      [activeFilter]: prevCounts[activeFilter] + 3,
     }));
   };
 
@@ -153,9 +143,9 @@ export function NewsTimeline({
 
     // 如果当前标签页没有显示过，则设置初始显示数量
     if (displayCounts[activeFilter] === undefined) {
-      setDisplayCounts(prevCounts => ({
+      setDisplayCounts((prevCounts) => ({
         ...prevCounts,
-        [activeFilter]: initialDisplayCount
+        [activeFilter]: initialDisplayCount,
       }));
     }
   }, [activeFilter, displayCounts, initialDisplayCount, onLoadMore]);
@@ -173,7 +163,7 @@ export function NewsTimeline({
 
     // 计算每种类型的数量
     const typeMap: Record<string, number> = {};
-    news.forEach(item => {
+    news.forEach((item) => {
       if (!typeMap[item.type]) {
         typeMap[item.type] = 0;
       }
@@ -198,7 +188,7 @@ export function NewsTimeline({
   };
 
   return (
-    <div className="w-full  rounded-2xl p-0 md:p-8 pt-0" role="region" aria-label={t('title')}>
+    <div className="w-full p-0 pt-0 md:p-8" role="region" aria-label={t('title')}>
       <div className="container mx-auto px-0">
         {/* <div className="flex items-center gap-2 mb-8">
           <Newspaper className="text-primary" size={24} />
@@ -206,7 +196,7 @@ export function NewsTimeline({
         </div> */}
 
         {/* 过滤选项卡 */}
-        <div className="mb-8">
+        <div className="mb-8 border-b border-slate-200/80 pb-2 dark:border-white/10">
           <Tabs
             aria-label={t('title') + ' - ' + t('filterTabs')}
             selectedKey={activeFilter}
@@ -214,9 +204,9 @@ export function NewsTimeline({
             className="w-full"
             variant="underlined"
             classNames={{
-              tabList: "gap-1",
-              cursor: "bg-primary",
-              tab: "max-w-fit px-2 h-10 data-[selected=true]:text-primary"
+              tabList: 'gap-1',
+              cursor: 'bg-primary',
+              tab: 'max-w-fit px-2 h-10 data-[selected=true]:text-primary',
             }}
           >
             <Tab
@@ -275,7 +265,7 @@ export function NewsTimeline({
         {/* 没有找到新闻时的提示 */}
         {filteredNews.length === 0 && (
           <div className="w-full">
-            <Card fullWidth className="w-full border border-primary/10 bg-gray-50 dark:bg-gray-700/50 rounded-xl hover:shadow-md transition-shadow">
+            <Card fullWidth className="news-card w-full">
               <CardBody className="p-12 flex flex-col items-center justify-center text-foreground/60">
                 <Newspaper size={40} className="mb-4 opacity-50" />
                 <p>{t('noNewsFound')}</p>
@@ -293,16 +283,15 @@ export function NewsTimeline({
                 className="relative flex items-start w-full"
                 aria-labelledby={`news-title-${item.id}`}
               >
-             
                 {/* 内容卡片 */}
                 <div className="w-full flex-1">
-                  <Card fullWidth className="w-full border border-primary/10 hover:shadow-md transition-shadow bg-gray-50 dark:bg-gray-700/50 rounded-xl">
+                  <Card fullWidth className="news-card w-full">
                     <CardBody className="p-4 md:p-5">
                       {/* 有图片时：左图右文布局 */}
                       {item.imageUrl ? (
                         <div className="flex flex-col sm:flex-row gap-4">
                           {/* 左侧图片 */}
-                          <div className="relative flex-shrink-0 w-full sm:w-36 md:w-44 h-40 sm:h-auto sm:min-h-[140px] rounded-lg overflow-hidden">
+                          <div className="academic-figure relative h-40 w-full flex-shrink-0 sm:h-auto sm:min-h-[140px] sm:w-36 md:w-44">
                             <NextImage
                               src={item.imageUrl}
                               alt={`${item.title} - ${locale === 'zh' ? '配图' : 'Featured Image'}`}
@@ -328,17 +317,17 @@ export function NewsTimeline({
 
                               <div className="flex items-center gap-1">
                                 <Calendar className="text-primary" size={14} aria-hidden="true" />
-                                <time
-                                  className="text-xs text-foreground/70"
-                                  dateTime={item.publishDate || item.date}
-                                >
+                                <time className="text-xs text-foreground/70" dateTime={item.publishDate || item.date}>
                                   {formatDate(item.publishDate || item.date, 'short', locale)}
                                 </time>
                               </div>
                             </div>
 
                             {/* 标题 */}
-                            <h3 className="text-base md:text-lg font-semibold mb-2 line-clamp-2" id={`news-title-${item.id}`}>
+                            <h3
+                              className="mb-2 line-clamp-2 font-serif text-base font-semibold leading-snug md:text-lg"
+                              id={`news-title-${item.id}`}
+                            >
                               {item.title}
                             </h3>
 
@@ -348,7 +337,7 @@ export function NewsTimeline({
                                 <div className="flex items-start gap-2">
                                   <Users size={14} className="text-primary flex-shrink-0 mt-0.5" />
                                   <div className="flex-1 text-xs text-foreground/70 line-clamp-1">
-                                    {item.authors.map(a => a.name).join(' • ')}
+                                    {item.authors.map((a) => a.name).join(' • ')}
                                   </div>
                                 </div>
                               </div>
@@ -358,7 +347,7 @@ export function NewsTimeline({
                             {item.publication && (
                               <div className="flex items-start gap-2 mb-2">
                                 <BookOpen size={14} className="text-primary flex-shrink-0 mt-0.5" />
-                                <div className="flex-1 text-xs text-gray-600 dark:text-gray-300 italic line-clamp-1">
+                                <div className="flex-1 text-xs italic text-gray-600 line-clamp-1 dark:text-gray-300">
                                   <span className="font-medium">{item.publication.journal}</span>
                                   {item.publication.volume && <span>, {item.publication.volume}</span>}
                                   {item.publication.issue && <span>({item.publication.issue})</span>}
@@ -379,7 +368,7 @@ export function NewsTimeline({
                                     href={item.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="text-primary text-sm hover:underline flex items-center gap-1"
+                                    className="academic-link flex items-center gap-1 text-sm"
                                     aria-label={`${item.type === 'publication' ? t('readPaper') : t('readMore')}: ${item.title}`}
                                   >
                                     {item.type === 'publication' ? t('readPaper') : t('readMore')}
@@ -388,7 +377,7 @@ export function NewsTimeline({
                                 ) : (
                                   <Link
                                     href={getDetailLink(item)}
-                                    className="text-primary text-sm hover:underline flex items-center gap-1"
+                                    className="academic-link flex items-center gap-1 text-sm"
                                     aria-label={`${t('details')}: ${item.title}`}
                                   >
                                     {t('details')}
@@ -415,17 +404,17 @@ export function NewsTimeline({
 
                             <div className="flex items-center gap-1">
                               <Calendar className="text-primary" size={14} aria-hidden="true" />
-                              <time
-                                className="text-xs text-foreground/70"
-                                dateTime={item.publishDate || item.date}
-                              >
+                              <time className="text-xs text-foreground/70" dateTime={item.publishDate || item.date}>
                                 {formatDate(item.publishDate || item.date, 'short', locale)}
                               </time>
                             </div>
                           </div>
 
                           {/* 标题 */}
-                          <h3 className="text-lg font-semibold mb-2" id={`news-title-${item.id}`}>
+                          <h3
+                            className="mb-2 font-serif text-lg font-semibold leading-snug"
+                            id={`news-title-${item.id}`}
+                          >
                             {item.title}
                           </h3>
 
@@ -438,12 +427,8 @@ export function NewsTimeline({
                                   <div className="flex flex-wrap text-sm font-medium">
                                     {item.authors.map((author, idx) => (
                                       <React.Fragment key={author.id}>
-                                        <span className="mr-1 text-foreground/80">
-                                          {author.name}
-                                        </span>
-                                        {idx < item.authors!.length - 1 && (
-                                          <span className="mr-1 text-primary">•</span>
-                                        )}
+                                        <span className="mr-1 text-foreground/80">{author.name}</span>
+                                        {idx < item.authors!.length - 1 && <span className="mr-1 text-primary">•</span>}
                                       </React.Fragment>
                                     ))}
                                   </div>
@@ -467,9 +452,7 @@ export function NewsTimeline({
                           {/* 摘要 */}
                           <div className="flex items-start gap-2 mb-4">
                             <ScrollText size={16} className="text-primary flex-shrink-0 mt-1" />
-                            <div className="flex-1 text-sm leading-relaxed text-foreground/80">
-                              {item.summary}
-                            </div>
+                            <div className="flex-1 text-sm leading-relaxed text-foreground/80">{item.summary}</div>
                           </div>
 
                           {/* 详细链接 */}
@@ -480,7 +463,7 @@ export function NewsTimeline({
                                   href={item.link}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-primary text-sm hover:underline flex items-center gap-1"
+                                  className="academic-link flex items-center gap-1 text-sm"
                                   aria-label={`${item.type === 'publication' ? t('readPaper') : t('readMore')}: ${item.title}`}
                                 >
                                   {item.type === 'publication' ? t('readPaper') : t('readMore')}
@@ -489,7 +472,7 @@ export function NewsTimeline({
                               ) : (
                                 <Link
                                   href={getDetailLink(item)}
-                                  className="text-primary text-sm hover:underline flex items-center gap-1"
+                                  className="academic-link flex items-center gap-1 text-sm"
                                   aria-label={`${t('details')}: ${item.title}`}
                                 >
                                   {t('details')}
@@ -518,7 +501,7 @@ export function NewsTimeline({
               onClick={handleLoadMore}
               endContent={<ChevronDown size={16} aria-hidden="true" />}
               isLoading={isLoading}
-              aria-label={isLoading ? (t('loading') || 'Loading...') : t('loadMore')}
+              aria-label={isLoading ? t('loading') || 'Loading...' : t('loadMore')}
             >
               {t('loadMore')}
             </Button>
@@ -548,20 +531,20 @@ export function getTypeIcon(type: NewsType) {
 }
 
 // Get news type color - export function to be used in news detail page
-export function getTypeColor(type: NewsType): "primary" | "secondary" | "success" | "warning" | "danger" {
+export function getTypeColor(type: NewsType): 'primary' | 'secondary' | 'success' | 'warning' | 'danger' {
   switch (type) {
     case 'publication':
-      return "primary";
+      return 'primary';
     case 'award':
-      return "secondary";
+      return 'secondary';
     case 'event':
-      return "success";
+      return 'success';
     case 'media':
-      return "warning";
+      return 'warning';
     case 'announcement':
-      return "danger";
+      return 'danger';
     default:
-      return "primary";
+      return 'primary';
   }
 }
 

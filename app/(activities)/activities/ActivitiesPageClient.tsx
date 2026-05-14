@@ -48,7 +48,7 @@ export default function ActivitiesPageClient() {
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-4">
         <p className="text-xl text-center text-red-500 font-medium tracking-tight">加载活动数据失败，请稍后重试</p>
-        <button 
+        <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-purple-900 text-white rounded-lg hover:bg-purple-800 transition-colors"
         >
@@ -59,7 +59,7 @@ export default function ActivitiesPageClient() {
   }
 
   return (
-    <section className="mx-auto max-w-5xl px-4 md:py-12 md:px-6">
+    <section className="w-full mx-auto max-w-5xl px-4 md:py-12 md:px-6">
       <header className="text-center mb-8">
         <h1 className="text-3xl font-bold text-purple-900 dark:text-purple-300 sr-only">
           {t('activities')}

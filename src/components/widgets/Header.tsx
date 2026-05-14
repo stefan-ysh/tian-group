@@ -41,11 +41,11 @@ const Header = () => {
   const tHomePage = useTranslations('HomePage');
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/70 bg-white/[0.82] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/[0.76]">
+    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/[0.88] backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/[0.82]">
       <nav className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-3 sm:px-4 lg:px-6" aria-label="Primary">
         <button
           type="button"
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-700 transition hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 dark:text-slate-200 dark:hover:text-teal-200 xl:hidden"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-slate-700 transition hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 dark:text-slate-200 dark:hover:text-teal-200 xl:hidden"
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={isMenuOpen}
           onClick={() => setIsMenuOpen((value) => !value)}
@@ -59,28 +59,22 @@ const Header = () => {
           aria-label={t('home')}
           onClick={() => setIsMenuOpen(false)}
         >
-          <Logo
-            textClassName="hidden 2xl:block"
-            subtitle={tHomePage('School')}
-            title={tMetadata('Creator')}
-          />
+          <Logo textClassName="hidden 2xl:block" subtitle={tHomePage('School')} title={tMetadata('Creator')} />
         </IntlLink>
 
         <div className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 xl:flex 2xl:gap-1">
           {links.map(({ href, code }) => {
             const isCurrentPage = pathname === href;
-            const NavIcon = navIcons[code] || FileText;
-
             return (
               <IntlLink
                 key={code}
                 href={href || '/'}
                 prefetch={true}
                 title={t(code)}
-                className={`inline-flex h-10 items-center justify-center gap-1.5 rounded-md px-2 text-xs font-medium transition duration-200 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 dark:hover:bg-white/10 dark:hover:text-teal-200 2xl:gap-2 2xl:px-3 2xl:text-sm ${
+                className={`inline-flex h-10 items-center justify-center gap-1.5 rounded-sm border-b-2 px-2 text-xs font-medium transition duration-200 hover:border-primary/30 hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 dark:hover:bg-white/10 dark:hover:text-teal-200 2xl:gap-2 2xl:px-3 2xl:text-sm ${
                   isCurrentPage
-                    ? 'bg-primary/10 text-primary dark:bg-teal-300/10 dark:text-teal-200'
-                    : 'text-slate-600 dark:text-slate-300'
+                    ? 'border-primary bg-primary/5 text-primary dark:border-teal-200 dark:bg-teal-300/10 dark:text-teal-200'
+                    : 'border-transparent text-slate-600 dark:text-slate-300'
                 }`}
                 aria-current={isCurrentPage ? 'page' : undefined}
                 aria-label={t(code)}
@@ -109,7 +103,7 @@ const Header = () => {
                   key={code}
                   href={href || '/'}
                   prefetch={true}
-                  className={`flex items-center gap-3 rounded-lg px-3 py-3 text-base font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 ${
+                  className={`flex items-center gap-3 rounded-md px-3 py-3 text-base font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 ${
                     isCurrentPage
                       ? 'bg-primary/10 text-primary dark:bg-teal-300/10 dark:text-teal-200'
                       : 'text-slate-700 hover:bg-primary/10 hover:text-primary dark:text-slate-200 dark:hover:text-teal-200'

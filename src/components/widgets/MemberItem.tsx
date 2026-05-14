@@ -1,9 +1,8 @@
 'use client';
 import React from 'react';
-import { Card } from '@heroui/react';
 import { useRouter } from 'next/navigation';
 import NextImage from 'next/image';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 interface MemberItemProps {
   name: string;
@@ -18,41 +17,51 @@ interface MemberItemProps {
 
 const placeholderImage = 'https://placehold.co/200x200';
 
-export const MemberItem = ({ name, slug, avatar, position, advisorName, joined_year, leave_year, showAvatar = true }: MemberItemProps) => {
+export const MemberItem = ({
+  name,
+  slug,
+  avatar,
+  position,
+  advisorName,
+  joined_year,
+  leave_year,
+  showAvatar = true,
+}: MemberItemProps) => {
   const router = useRouter();
   const t = useTranslations('Member.Position');
-  const locale = useLocale();
 
   return (
     <div key={slug} className="group flex flex-col items-center">
-      <div 
+      <div
         onClick={() => router.push(`/members/${slug}`)}
         className="cursor-pointer flex flex-col items-center gap-3 w-full"
       >
         {showAvatar && (
-          <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full border-[3px] border-orange-500 p-0.5 hover:scale-105 transition-transform duration-300 bg-white shadow-sm">
+          <div className="relative h-28 w-28 rounded-md border border-slate-200 bg-white p-1 shadow-sm transition-transform duration-300 hover:scale-[1.02] md:h-32 md:w-32 dark:border-white/10 dark:bg-slate-900">
             <NextImage
               width={200}
               height={200}
               alt={name}
               src={`${avatar}`}
-              placeholder='blur'
+              placeholder="blur"
               blurDataURL={placeholderImage}
-              loading='lazy'
+              loading="lazy"
               sizes="(max-width: 768px) 112px, 128px"
-              className="w-full h-full object-cover rounded-full"
+              className="h-full w-full rounded-[0.25rem] object-cover"
             />
           </div>
         )}
-        
-        <div className={`flex flex-col items-center ${showAvatar ? 'gap-1' : 'gap-0 pb-2 border-b border-gray-100 dark:border-gray-800 w-full hover:bg-gray-50/50 dark:hover:bg-gray-800/50 rounded-lg p-2 transition-colors'}`}>
-          <h2 className={`${showAvatar ? 'text-lg font-bold text-purple-900 dark:text-purple-300' : 'text-base font-semibold text-gray-700 dark:text-gray-400'} group-hover:text-amber-600 transition-colors`}>
+
+        <div
+          className={`flex flex-col items-center ${showAvatar ? 'gap-1' : 'gap-0 pb-2 border-b border-gray-100 dark:border-gray-800 w-full hover:bg-gray-50/50 dark:hover:bg-gray-800/50 rounded-md p-2 transition-colors'}`}
+        >
+          <h2
+            className={`${showAvatar ? 'text-lg font-semibold text-slate-950 dark:text-white' : 'text-base font-semibold text-gray-700 dark:text-gray-400'} transition-colors group-hover:text-primary`}
+          >
             {name}
           </h2>
           <div className="flex flex-col items-center">
-            <span className="text-sm text-gray-500 font-medium text-center">
-              {t(position)}
-            </span>
+            <span className="text-sm text-gray-500 font-medium text-center">{t(position)}</span>
             {advisorName && (
               <span className="text-xs text-gray-400 mt-0.5 text-center">
                 {t('Advisor')}: {advisorName}

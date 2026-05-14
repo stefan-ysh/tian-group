@@ -4,8 +4,8 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { Button, ButtonGroup } from '@heroui/react';
 import { PublicationItem } from '~/components/widgets/PublicationItem';
 import { PublicationsTimeline } from '~/components/widgets/PublicationsTimeline';
-import { Grid, Clock, Book } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { Grid, Clock } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 
 // 定义Publication类型
 export interface Publication {
@@ -27,12 +27,13 @@ interface PublicationsClientProps {
   onViewModeChange?: (mode: 'grid' | 'timeline') => void;
 }
 
-export function PublicationsClient({ 
-  publications, 
+export function PublicationsClient({
+  publications,
   initialViewMode = 'grid',
-  onViewModeChange 
+  onViewModeChange,
 }: PublicationsClientProps) {
   const t = useTranslations('Publications');
+  const locale = useLocale();
   const [viewMode, setViewMode] = useState<'grid' | 'timeline'>(initialViewMode);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [displayCount, setDisplayCount] = useState(6); // 控制显示的出版物数量
@@ -45,25 +46,25 @@ export function PublicationsClient({
       isMounted.current = false;
     };
   }, []);
-  
+
   // 加载更多数据处理函数
   const handleLoadMore = useCallback(() => {
     setIsLoadingMore(true);
-    
+
     // 模拟网络请求延迟
     setTimeout(() => {
       if (isMounted.current) {
-        setDisplayCount(prev => prev + 5); // 每次增加5个
+        setDisplayCount((prev) => prev + 5); // 每次增加5个
         setIsLoadingMore(false);
       }
     }, 800);
   }, []);
-  
+
   // 视图切换处理函数，并通知父组件
   const handleViewModeChange = (mode: 'grid' | 'timeline') => {
     if (mode === viewMode) return;
     setViewMode(mode);
-    
+
     // 通知父组件视图模式已更改
     if (onViewModeChange) {
       onViewModeChange(mode);
@@ -72,28 +73,37 @@ export function PublicationsClient({
 
   // 提前计算要显示的出版物数量
   const visiblePublications = publications.slice(0, displayCount);
-  
+
   // 检查是否还有更多出版物可以加载
   const hasMorePublications = displayCount < publications.length;
 
   // 同步外部视图模式变化
   useEffect(() => {
-    if (initialViewMode !== viewMode) {
-      setViewMode(initialViewMode);
-    }
+    setViewMode((currentMode) => (initialViewMode !== currentMode ? initialViewMode : currentMode));
   }, [initialViewMode]);
 
   return (
     <div className="w-full">
-      <div className="flex flex-col md:flex-row justify-between items-start mb-8">
-        <div className="flex items-center gap-2 mb-4 md:mb-0">
-          <h1 className="sr-only">{t('title')}</h1>
+      <div className="mb-8 flex flex-col items-start justify-between gap-4 border-b border-slate-200/80 pb-5 md:flex-row dark:border-white/10">
+        <div className="max-w-2xl">
+          <p className="academic-kicker">{locale === 'zh' ? 'Research Output' : 'Research Output'}</p>
+          <h1 className="mt-2 font-serif text-3xl font-semibold text-slate-950 dark:text-white md:text-4xl">
+            {t('title')}
+          </h1>
+          <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
+            {locale === 'zh'
+              ? `${publications.length} 篇代表性论文，按研究主题与发表时间持续整理。`
+              : `${publications.length} representative papers, organized by topic and publication date.`}
+          </p>
         </div>
-        <ButtonGroup variant="flat" className="w-full md:w-auto">
+        <ButtonGroup
+          variant="flat"
+          className="w-full rounded-md border border-slate-200 bg-white/72 p-1 shadow-sm md:w-auto dark:border-white/10 dark:bg-white/[0.04]"
+        >
           <Button
             startContent={<Grid size={18} />}
             color={viewMode === 'grid' ? 'primary' : 'default'}
-            className={`w-full md:w-auto border-b-1 border-gray-900 ${viewMode === 'grid' ? '' : 'bg-primary'}`}
+            className={`w-full rounded md:w-auto ${viewMode === 'grid' ? '' : 'bg-transparent text-slate-700 dark:text-slate-200'}`}
             onPress={() => handleViewModeChange('grid')}
           >
             {t('gridView')}
@@ -101,7 +111,7 @@ export function PublicationsClient({
           <Button
             startContent={<Clock size={18} />}
             color={viewMode === 'timeline' ? 'primary' : 'default'}
-            className={`w-full md:w-auto border-b-1 border-gray-900 ${viewMode === 'timeline' ? '' : 'bg-primary'}`}
+            className={`w-full rounded md:w-auto ${viewMode === 'timeline' ? '' : 'bg-transparent text-slate-700 dark:text-slate-200'}`}
             onPress={() => handleViewModeChange('timeline')}
           >
             {t('timelineView')}
@@ -113,7 +123,7 @@ export function PublicationsClient({
       <div className="min-h-[500px]">
         {viewMode === 'grid' ? (
           // 网格视图
-          <div className="grid grid-cols-1 gap-6 py-4 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-5 py-4 md:grid-cols-2">
             {visiblePublications.map((publication) => (
               <PublicationItem
                 key={publication.slug}
@@ -130,11 +140,9 @@ export function PublicationsClient({
           </div>
         ) : (
           // 时间线视图
-          <PublicationsTimeline 
-            publications={visiblePublications} 
-          />
+          <PublicationsTimeline publications={visiblePublications} />
         )}
-        
+
         {/* 统一的加载更多按钮，不论视图类型 */}
         {hasMorePublications && (
           <div className="flex justify-center mt-8">

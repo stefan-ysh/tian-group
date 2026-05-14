@@ -1,9 +1,9 @@
 'use client';
 import { Calendar, Book } from 'lucide-react';
-import { Card } from "@heroui/react";
+import { Card } from '@heroui/react';
 import React from 'react';
-import { Avatar, AvatarFallback, AvatarImage } from '~/components/ui/avatar';
-import { Tooltip } from "@heroui/tooltip";
+import { Avatar, AvatarFallback } from '~/components/ui/avatar';
+import { Tooltip } from '@heroui/tooltip';
 import NextImage from 'next/image';
 import { formatDate } from '~/utils/utils';
 import { useLocale, useTranslations } from 'next-intl';
@@ -32,21 +32,21 @@ export const PublicationItem = ({
   journal,
   journalShort,
 }: PublicationItemProps) => {
-  const locale = useLocale()
-  const t = useTranslations('Publications.list')
+  const locale = useLocale();
+  const t = useTranslations('Publications.list');
   return (
     <Card
       key={slug}
-      className="flex flex-col md:flex-row overflow-hidden rounded-xl drop-shadow hover:drop-shadow-none transition-all duration-500 p-5 md:p-2 gap-5 bg-gray-50 dark:bg-gray-700/50"
+      className="publication-card flex flex-col gap-5 overflow-hidden p-5 transition-all duration-300 md:flex-row md:p-2"
     >
       <div
         onClick={() => {
           // 本地预览，涉及版权
           // router.push(`/publications/${slug}`);
           // 新窗口预览
-          window.open(link, '_blank')
+          window.open(link, '_blank');
         }}
-        className="w-4/5 md:w-3/5 flex flex-col md:flex-row mx-auto md:m-auto items-center justify-center cursor-pointer"
+        className="mx-auto flex w-4/5 cursor-pointer flex-col items-center justify-center md:m-auto md:w-3/5 md:flex-row"
       >
         <NextImage
           alt={title}
@@ -56,22 +56,21 @@ export const PublicationItem = ({
           placeholder="blur"
           blurDataURL={placeholderImage}
           sizes="(max-width: 768px) 80vw, 200px"
-          className="w-full h-11/12 mx-auto md:w-[200px] md:h-[200px] p-0 !object-contain"
+          className="mx-auto h-11/12 w-full p-0 !object-contain md:h-[200px] md:w-[200px]"
         />
       </div>
-      <div className="w-full md:w-11/12 flex flex-col justify-between">
-        <h2 className="text-md font-semibold ">{t(`${title}.title`)}</h2>
+      <div className="flex w-full flex-col justify-between md:w-11/12">
+        <h2 className="font-serif text-base font-semibold leading-snug text-slate-950 dark:text-white">
+          {t(`${title}.title`)}
+        </h2>
         <div className="flex items-center gap-3 flex-wrap my-4 sm:my-1">
           {author.map((author, index) => (
             <React.Fragment key={index}>
-              <span className="text-xs sm:hidden">
-                {author}
-              </span>
+              <span className="text-xs sm:hidden">{author}</span>
               <div className="hidden sm:block">
                 <Tooltip content={author}>
-                  <div className="leading-4 text-center opacity-60 hover:opacity-100">
-                    <Avatar color="primary" className="w-4 h-4 border border-primary p-1 hover:border-2">
-                      <AvatarImage src="link" alt={author} />
+                  <div className="text-center leading-4 opacity-70 hover:opacity-100">
+                    <Avatar color="primary" className="h-4 w-4 border border-primary/50 p-1 hover:border-primary">
                       <AvatarFallback>
                         <span className="text-[8px]">
                           {author
@@ -88,15 +87,15 @@ export const PublicationItem = ({
           ))}
         </div>
         {/* publish date */}
-        <div className="flex items-center justify-between pr-1">
-          <div className="flex items-center gap-1">
+        <div className="flex items-center justify-between gap-4 border-t border-slate-200/70 pr-1 pt-3 text-slate-600 dark:border-white/10 dark:text-slate-300">
+          <div className="flex min-w-0 items-center gap-1">
             <Book size={16} />
-            <span className="text-xs hidden sm:block">{journal}</span>
-            <span className="text-xs block sm:hidden" title={journal}>
+            <span className="hidden truncate text-xs sm:block">{journal}</span>
+            <span className="block text-xs sm:hidden" title={journal}>
               {journalShort}
             </span>
           </div>
-          <div className="flex items-center gap-1 space-x-2">
+          <div className="flex shrink-0 items-center gap-1 space-x-2">
             <Calendar size={16} />
             <span className="text-xs">{formatDate(publishDate, 'short', locale)}</span>
           </div>

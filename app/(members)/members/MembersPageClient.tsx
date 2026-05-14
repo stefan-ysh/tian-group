@@ -124,12 +124,12 @@ export default function MembersPageClient({ initialMembers = [] }: MembersPageCl
             .filter((m) => m.slug === 'tiantian')
             .map((mentor) => (
               <div className="flex flex-col gap-6" key={mentor.slug}>
-                <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">{t('mentorTitle')}</h2>
+                <h2 className="academic-section-title text-xl">{t('mentorTitle')}</h2>
                 <Link
                   href={`/members/${mentor.slug}`}
-                  className="flex flex-col md:flex-row gap-8 items-center bg-white dark:bg-gray-800/50 p-6 md:p-10 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 hover:shadow-lg hover:border-primary/30 transition-all duration-300 group cursor-pointer"
+                  className="academic-panel group flex cursor-pointer flex-col items-center gap-8 p-6 pl-7 transition-all duration-300 md:flex-row md:p-10 md:pl-12"
                 >
-                  <div className="w-48 h-48 md:w-56 md:h-56 shrink-0 rounded-full border-[4px] border-white dark:border-gray-600 shadow-xl overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 ring-2 ring-primary/10">
+                  <div className="h-48 w-48 shrink-0 overflow-hidden rounded-md border border-slate-200 bg-white shadow-xl ring-1 ring-primary/10 transition-transform duration-500 group-hover:scale-[1.01] md:h-56 md:w-56 dark:border-white/10 dark:bg-slate-900">
                     <NextImage
                       width={224}
                       height={224}
@@ -140,11 +140,11 @@ export default function MembersPageClient({ initialMembers = [] }: MembersPageCl
                     />
                   </div>
                   <div className="flex flex-col gap-4 text-left flex-1">
-                    <div className="flex flex-wrap items-baseline gap-3 pb-4 border-b border-gray-100 dark:border-gray-700">
-                      <h3 className="text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight group-hover:text-primary transition-colors">
+                    <div className="flex flex-wrap items-baseline gap-3 border-b border-gray-100 pb-4 dark:border-gray-700">
+                      <h3 className="font-serif text-3xl font-semibold tracking-normal text-gray-900 transition-colors group-hover:text-primary dark:text-white">
                         {mentor.name}
                       </h3>
-                      <span className="text-xl text-primary font-medium tracking-tight">
+                      <span className="text-xl font-medium tracking-normal text-primary">
                         {tPosition(mentor.position)}
                       </span>
                     </div>
@@ -167,9 +167,7 @@ export default function MembersPageClient({ initialMembers = [] }: MembersPageCl
           {/* 教师团队 */}
           {members.filter((m) => facultySlugs.includes(m.slug) && m.slug !== 'tiantian').length > 0 && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">
-                {locale === 'zh' ? '教师团队' : 'Faculty'}
-              </h2>
+              <h2 className="academic-section-title text-xl">{locale === 'zh' ? '教师团队' : 'Faculty'}</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
                 {members
                   .filter((m) => facultySlugs.includes(m.slug) && m.slug !== 'tiantian')
@@ -183,7 +181,7 @@ export default function MembersPageClient({ initialMembers = [] }: MembersPageCl
           {/* 当前组员 */}
           {members.filter((m) => !facultySlugs.includes(m.slug) && !m.leave_year).length > 0 && (
             <div className="flex flex-col gap-6">
-              <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">{t('studentsTitle')}</h2>
+              <h2 className="academic-section-title text-xl">{t('studentsTitle')}</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12">
                 {members
                   .filter((m) => !facultySlugs.includes(m.slug) && !m.leave_year)
@@ -198,7 +196,7 @@ export default function MembersPageClient({ initialMembers = [] }: MembersPageCl
           {members.filter((m) => !facultySlugs.includes(m.slug) && m.leave_year).length > 0 && (
             <FadeIn direction="up" delay={0.4}>
               <div className="flex flex-col gap-6">
-                <h2 className="text-xl font-bold border-l-4 border-primary pl-3 text-primary">{t('alumniTitle')}</h2>
+                <h2 className="academic-section-title text-xl">{t('alumniTitle')}</h2>
                 <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 md:gap-y-12 opacity-80 hover:opacity-100 transition-opacity">
                   {members
                     .filter((m) => !facultySlugs.includes(m.slug) && m.leave_year)

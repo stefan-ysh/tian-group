@@ -15,52 +15,47 @@ interface RecentNewsProps {
 export function RecentNews({ news }: RecentNewsProps) {
   const t = useTranslations('News');
   const locale = useLocale();
-  
+
   // Format date
   const formatDateStr = (dateStr: string): string => {
     const date = new Date(dateStr);
     return date.toLocaleDateString(locale === 'en' ? 'en-US' : 'zh-CN', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
     });
   };
-  
+
   return (
-    <div className="w-full py-16 bg-background">
+    <div className="w-full bg-background py-16">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl font-bold">{t('title')}</h2>
-          <Link href="/news" className="text-primary hover:underline flex items-center gap-1">
+          <h2 className="font-serif text-2xl font-semibold">{t('title')}</h2>
+          <Link href="/news" className="academic-link flex items-center gap-1 text-sm">
             {t('viewAll')}
             <ArrowRight size={16} />
           </Link>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {news.map((item) => (
-            <Card key={item.id} className="border border-primary/10 hover:shadow-md transition-shadow">
+            <Card key={item.id} className="news-card">
               <CardBody className="p-4">
                 {/* News type and date */}
                 <div className="flex justify-between items-center mb-3">
-                  <Chip 
-                    variant="flat" 
-                    color={getTypeColor(item.type)} 
-                    size="sm"
-                    startContent={getTypeIcon(item.type)}
-                  >
+                  <Chip variant="flat" color={getTypeColor(item.type)} size="sm" startContent={getTypeIcon(item.type)}>
                     {t(`types.${item.type}`)}
                   </Chip>
-                  
+
                   <div className="flex items-center gap-1">
                     <Calendar className="text-primary" size={14} />
                     <span className="text-xs text-foreground/70">{formatDateStr(item.date)}</span>
                   </div>
                 </div>
-                
+
                 {/* Image */}
                 {item.imageUrl && (
-                  <div className="relative h-40 w-full mb-3 rounded-md overflow-hidden">
+                  <div className="academic-figure relative mb-3 h-40 w-full">
                     <NextImage
                       src={item.imageUrl}
                       alt={item.title}
@@ -70,25 +65,20 @@ export function RecentNews({ news }: RecentNewsProps) {
                     />
                   </div>
                 )}
-                
+
                 {/* Title */}
-                <h3 className="text-lg font-semibold mb-2 line-clamp-2">
+                <h3 className="mb-2 line-clamp-2 font-serif text-lg font-semibold leading-snug">
                   <Link href={`/news/${item.id}`} className="hover:text-primary transition-colors">
                     {item.title}
                   </Link>
                 </h3>
-                
+
                 {/* Summary */}
-                <p className="text-sm text-foreground/80 mb-4 line-clamp-3">
-                  {item.summary}
-                </p>
-                
+                <p className="text-sm text-foreground/80 mb-4 line-clamp-3">{item.summary}</p>
+
                 {/* Read more */}
                 <div className="mt-auto">
-                  <Link 
-                    href={`/news/${item.id}`}
-                    className="text-primary text-sm hover:underline flex items-center gap-1"
-                  >
+                  <Link href={`/news/${item.id}`} className="academic-link flex items-center gap-1 text-sm">
                     {t('readMore')}
                     <ArrowRight size={14} />
                   </Link>
@@ -97,16 +87,11 @@ export function RecentNews({ news }: RecentNewsProps) {
             </Card>
           ))}
         </div>
-        
+
         {/* View all button */}
         <div className="mt-8 text-center">
           <Link href="/news">
-            <Button 
-              color="primary" 
-              variant="flat"
-              className="px-6" 
-              endContent={<ArrowRight size={16} />}
-            >
+            <Button color="primary" variant="flat" className="px-6" endContent={<ArrowRight size={16} />}>
               {t('viewAll')}
             </Button>
           </Link>
@@ -114,4 +99,4 @@ export function RecentNews({ news }: RecentNewsProps) {
       </div>
     </div>
   );
-} 
+}

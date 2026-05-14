@@ -25,9 +25,7 @@ interface PublicationsTimelineProps {
   publications: PublicationItem[];
 }
 
-export function PublicationsTimeline({
-  publications,
-}: PublicationsTimelineProps) {
+export function PublicationsTimeline({ publications }: PublicationsTimelineProps) {
   const t = useTranslations('Publications');
   const locale = useLocale();
 
@@ -54,7 +52,7 @@ export function PublicationsTimeline({
               <div key={publication.slug} className="relative">
                 {/* Date marker */}
                 <div className="flex items-center mb-4">
-                  <div className="bg-primary text-white p-2 w-full rounded-md text-sm font-medium flex items-center gap-1">
+                  <div className="flex w-full items-center gap-2 border-l-2 border-secondary bg-white/72 p-2 text-sm font-semibold text-primary shadow-sm dark:bg-white/[0.04] dark:text-teal-200">
                     <Calendar size={14} />
                     <span className="whitespace-nowrap">{formatDate(publication.publishDate, 'short', locale)}</span>
                   </div>
@@ -62,11 +60,11 @@ export function PublicationsTimeline({
                 </div>
 
                 {/* Publication card */}
-                <Card className="overflow-hidden w-full ml-3 bg-gray-50 dark:bg-gray-700/50">
+                <Card className="publication-card ml-3 w-full overflow-hidden">
                   <CardBody className="p-0">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
                       {/* Publication image */}
-                      <div className="md:col-span-3 p-4 flex items-center justify-center bg-gray-50 dark:bg-gray-700/50">
+                      <div className="flex items-center justify-center border-b border-slate-200/70 bg-slate-50/80 p-4 md:col-span-3 md:border-b-0 md:border-r dark:border-white/10 dark:bg-white/[0.03]">
                         <Link
                           href={publication.link}
                           target="_blank"
@@ -87,12 +85,12 @@ export function PublicationsTimeline({
                       {/* Publication details */}
                       <div className="md:col-span-9 p-4 flex flex-col justify-between">
                         <div>
-                          <h3 className="text-lg font-semibold mb-2">
+                          <h3 className="mb-2 font-serif text-lg font-semibold leading-snug">
                             <Link
                               href={publication.link}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="hover:text-primary transition-colors duration-300 flex items-start gap-1"
+                              className="flex items-start gap-1 transition-colors duration-300 hover:text-primary"
                             >
                               {t.rich(`list.${publication.title}.title`) || publication.title}
                             </Link>
@@ -108,13 +106,13 @@ export function PublicationsTimeline({
                           </div>
 
                           {/* Description */}
-                          <p className="text-xs text-foreground/70 ">
+                          <p className="text-sm leading-6 text-foreground/72">
                             {t.rich(`list.${publication.title}.desc`) || publication.description}
                           </p>
                         </div>
 
                         {/* Journal and date */}
-                        <div className="mt-4 flex items-center justify-between text-xs text-foreground/60">
+                        <div className="mt-4 flex items-center justify-between gap-4 border-t border-slate-200/70 pt-3 text-xs text-foreground/60 dark:border-white/10">
                           <div className="flex items-center gap-1">
                             <Book size={14} />
                             <span>{publication.journal}</span>
@@ -123,7 +121,7 @@ export function PublicationsTimeline({
                             href={publication.link}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-primary hover:underline flex items-center gap-1"
+                            className="academic-link flex items-center gap-1 text-xs"
                           >
                             {t('readMore')}
                             <ExternalLink size={12} />
@@ -137,10 +135,10 @@ export function PublicationsTimeline({
                 {/* Vertical timeline line */}
                 {index < sortedPublications.length - 1 && (
                   <div
-                    className="absolute left-0 top-14 bottom-0 w-[1px] bg-primary"
+                    className="absolute left-0 top-14 bottom-0 w-[1px] bg-secondary/60"
                     style={{ height: 'calc(100% + 2rem)' }}
                   >
-                    <span className="absolute left-0 top-14 bottom-0 w-[1px] bg-primary"></span>
+                    <span className="absolute left-0 top-14 bottom-0 w-[1px] bg-secondary/60"></span>
                   </div>
                 )}
               </div>
