@@ -3,10 +3,13 @@ import { Metadata } from 'next';
 // Default static metadata for the website
 export const metadata: Metadata = {
   title: '田甜课题组 | 扬州大学化学与材料学院',
-  description: '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
-  keywords: '田甜, 扬州大学, 化学与材料学院, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 发光材料, 教授, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano, ACS Energy Letters',
+  description:
+    '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+  keywords:
+    '田甜, 田甜教授, 扬州大学田甜, 扬州大学, 化学与材料学院, 科研实验室, 环糊精, 钙钛矿, 太阳能电池, 发光材料, 教授, Angew, NC, Wiley, Advanced Materials, Advanced Functional Materials, ACS Nano, ACS Energy Letters',
   openGraph: {
     title: '田甜课题组 | 扬州大学化学与材料学院',
-    description: '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
+    description:
+      '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
   },
 };

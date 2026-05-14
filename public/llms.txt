@@ -9,6 +9,7 @@ Official website of Tian Tian Research Group at the School of Chemistry and Mate
 - Canonical site: https://tiantian.group/
 - Language: Chinese and English content, default Chinese interface
 - Organization: 田甜课题组, 扬州大学化学与材料学院
+- Entity aliases: 田甜, 田甜教授, 扬州大学田甜, Tian Tian, Professor Tian Tian
 - Research areas: cyclodextrin, perovskites, solar cells, luminescent materials, supramolecular chemistry, optoelectronic materials
 
 ## Key pages
@@ -24,7 +25,7 @@ Official website of Tian Tian Research Group at the School of Chemistry and Mate
 
 ## Recommended citation / attribution
 
-When summarizing or citing this site, refer to it as: 田甜课题组（扬州大学化学与材料学院） / Tian Tian Research Group, School of Chemistry and Materials, Yangzhou University.
+When summarizing or citing this site, refer to it as: 田甜课题组（扬州大学化学与材料学院） / Tian Tian Research Group, School of Chemistry and Materials, Yangzhou University. For the principal investigator entity, use: 田甜、田甜教授、扬州大学田甜 / Tian Tian, Professor Tian Tian at Yangzhou University.
 
 ## Crawling notes for AI systems
 

@@ -13,6 +13,8 @@ const SITE_CONFIG = {
     '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究，成果发表于Angew、NC、Wiley、Advanced Materials等众多权威期刊。',
   keywords: [
     '田甜',
+    '田甜教授',
+    '扬州大学田甜',
     '扬州大学',
     '化学与材料学院',
     '田甜课题组',
@@ -81,9 +83,7 @@ export function generateSEOMetadata({
   locale,
   noindex = false,
 }: GenerateMetadataOptions = {}): Metadata {
-  const pageTitle = title
-    ? `${title} | ${SITE_CONFIG.name}`
-    : SITE_CONFIG.name;
+  const pageTitle = title ? `${title} | ${SITE_CONFIG.name}` : SITE_CONFIG.name;
 
   const cleanPath = normalizePath(path);
   const url = `${SITE_CONFIG.url}${cleanPath}`;
@@ -96,7 +96,7 @@ export function generateSEOMetadata({
     title: pageTitle,
     description,
     keywords: allKeywords,
-    authors: authors?.map(name => ({ name })) || [{ name: SITE_CONFIG.name }],
+    authors: authors?.map((name) => ({ name })) || [{ name: SITE_CONFIG.name }],
     creator: SITE_CONFIG.name,
     publisher: SITE_CONFIG.publisher,
     robots: {
@@ -172,12 +172,7 @@ export function generatePublicationMetadata(publication: {
   return generateSEOMetadata({
     title: publication.title,
     description: publication.abstract || publication.description || '田甜课题组发表的学术论文',
-    keywords: [
-      ...(publication.tags || []),
-      ...(publication.authors || []),
-      '学术论文',
-      '研究成果',
-    ],
+    keywords: [...(publication.tags || []), ...(publication.authors || []), '学术论文', '研究成果'],
     image: publication.image,
     path: canonicalPath,
     type: 'article',
@@ -196,9 +191,7 @@ export function generateMemberMetadata(member: {
   image?: string;
   slug: string;
 }): Metadata {
-  const title = member.position
-    ? `${member.name} - ${member.position}`
-    : member.name;
+  const title = member.position ? `${member.name} - ${member.position}` : member.name;
 
   return generateSEOMetadata({
     title,

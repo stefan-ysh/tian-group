@@ -12,12 +12,7 @@ interface JsonLdProps {
 }
 
 export function JsonLd({ data }: JsonLdProps) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  );
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
 
 // 组织机构 Schema
@@ -26,7 +21,7 @@ export function OrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'ResearchOrganization',
     name: '田甜课题组',
-    alternateName: 'Tian Tian Research Group',
+    alternateName: ['Tian Tian Research Group', '田甜教授', '扬州大学田甜'],
     url: SITE_URL,
     logo: `${SITE_URL}/og-image.jpg`,
     description: '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
@@ -54,6 +49,7 @@ export function OrganizationSchema() {
     member: {
       '@type': 'Person',
       name: '田甜',
+      alternateName: ['田甜教授', '扬州大学田甜', 'Tian Tian', 'Professor Tian Tian'],
       jobTitle: '教授',
     },
   };
@@ -122,6 +118,9 @@ export function PersonSchema({ member }: { member: any }) {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: member.name,
+    ...(member.name === '田甜'
+      ? { alternateName: ['田甜教授', '扬州大学田甜', 'Tian Tian', 'Professor Tian Tian'] }
+      : {}),
     jobTitle: member.position,
     affiliation: {
       '@type': 'Organization',
@@ -156,7 +155,7 @@ export function WebSiteSchema() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: '田甜课题组',
-    alternateName: 'Tian Tian Research Group',
+    alternateName: ['Tian Tian Research Group', '田甜教授', '扬州大学田甜'],
     url: SITE_URL,
     description: '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
     publisher: {
