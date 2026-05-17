@@ -135,7 +135,7 @@ export function NewsDetailContent({ newsItem }: NewsDetailContentProps) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
             >
-              {newsItem.type === 'publication' ? t('readPaper') : (locale === 'en' ? 'View Online' : '查看详情')}
+              {newsItem.type === 'publication' ? t('readPaper') : t('viewOnline')}
               <ExternalLink size={16} />
             </Link>
           </div>

@@ -49,6 +49,7 @@
     "MissingMapApiKey": "请在 .env.local 文件中设置 NEXT_PUBLIC_MAP_API。",
     "MapLoadError": "地图加载失败",
     "skipToContent": "跳到正文",
+    "viewDetails": "查看详情",
     "groupName": "田甜课题组",
     "footerTagline": "功能材料与光电器件研究",
     "footerDescription": "立足扬州大学化学与材料学院，聚焦钙钛矿光电材料、有机非线性光学材料和多功能发光体系。",
@@ -239,6 +240,11 @@
     "readMore": "阅读详情",
     "viewAllResearch": "查看所有研究项目"
   },
+  "Activities": {
+    "loadError": "加载活动数据失败，请稍后重试",
+    "retry": "刷新重试",
+    "empty": "暂无相关活动记录"
+  },
   "TeamMembers": {
     "title": "研究团队",
     "description": "我们的团队由来自不同专业背景的研究人员组成，包括教授、博士后研究员、博士生和硕士生。我们拥有多元化的研究兴趣和专业技能，共同致力于科学创新和技术突破。",
@@ -274,6 +280,7 @@
     "citations": "引用次数",
     "loadMore": "加载更多",
     "readMore": "阅读全文",
+    "summary": "{count} 篇代表性论文，按研究主题与发表时间持续整理。",
     "viewOptions": "查看选项",
     "gridView": "网格视图",
     "timelineView": "时间线视图",
@@ -373,6 +380,7 @@
     "readMore": "阅读全文",
     "readPaper": "阅读论文",
     "details": "查看详情",
+    "viewOnline": "在线查看",
     "viewAll": "查看全部新闻",
     "types": {
       "publication": "论文发表",

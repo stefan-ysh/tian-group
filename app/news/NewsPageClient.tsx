@@ -17,7 +17,6 @@ export default function NewsPageClient({ initialNews, initialTotal, initialCount
   return (
     <section className="w-full mx-auto max-w-5xl p-0 md:py-12 md:px-6">
       <div className="mb-8 border-b border-slate-200/80 pb-5 dark:border-white/10">
-        <p className="academic-kicker">Lab Updates</p>
         <h1 className="mt-2 font-serif text-3xl font-semibold text-slate-950 dark:text-white md:text-4xl">
           {t('title')}
         </h1>

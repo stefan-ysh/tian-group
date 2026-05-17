@@ -86,14 +86,11 @@ export function PublicationsClient({
     <div className="w-full">
       <div className="mb-8 flex flex-col items-start justify-between gap-4 border-b border-slate-200/80 pb-5 md:flex-row dark:border-white/10">
         <div className="max-w-2xl">
-          <p className="academic-kicker">{locale === 'zh' ? 'Research Output' : 'Research Output'}</p>
           <h1 className="mt-2 font-serif text-3xl font-semibold text-slate-950 dark:text-white md:text-4xl">
             {t('title')}
           </h1>
           <p className="mt-3 text-sm leading-6 text-slate-600 dark:text-slate-300">
-            {locale === 'zh'
-              ? `${publications.length} 篇代表性论文，按研究主题与发表时间持续整理。`
-              : `${publications.length} representative papers, organized by topic and publication date.`}
+            {t('summary', { count: publications.length })}
           </p>
         </div>
         <ButtonGroup

@@ -20,6 +20,7 @@ interface Activity {
 export default function ActivitiesPageClient() {
   const { activities = [], isLoading, isError } = useActivities();
   const t = useTranslations('Header.NavMenu');
+  const tActivities = useTranslations('Activities');
   const locale = useLocale();
 
   // 按日期排序活动（最新的在前）
@@ -47,12 +48,12 @@ export default function ActivitiesPageClient() {
   if (isError) {
     return (
       <div className="flex flex-col items-center justify-center h-64 gap-4">
-        <p className="text-xl text-center text-red-500 font-medium tracking-tight">加载活动数据失败，请稍后重试</p>
+        <p className="text-xl text-center text-red-500 font-medium tracking-tight">{tActivities('loadError')}</p>
         <button
           onClick={() => window.location.reload()}
           className="px-4 py-2 bg-purple-900 text-white rounded-lg hover:bg-purple-800 transition-colors"
         >
-          刷新重试
+          {tActivities('retry')}
         </button>
       </div>
     );
@@ -101,7 +102,7 @@ export default function ActivitiesPageClient() {
           ))
         ) : (
           <div className="text-center py-20">
-             <p className="text-gray-500 text-lg italic">暂无相关活动记录</p>
+             <p className="text-gray-500 text-lg italic">{tActivities('empty')}</p>
           </div>
         )}
       </div>

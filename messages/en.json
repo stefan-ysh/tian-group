@@ -56,6 +56,7 @@
     "MissingMapApiKey": "Please set NEXT_PUBLIC_MAP_API in .env.local file.",
     "MapLoadError": "Failed to load map",
     "skipToContent": "Skip to content",
+    "viewDetails": "View details",
     "groupName": "Tian Group",
     "footerTagline": "Functional materials and optoelectronic devices",
     "footerDescription": "Based at the School of Chemistry and Materials, Yangzhou University, the group studies perovskite optoelectronics, organic nonlinear optical materials, and multifunctional luminescent systems.",
@@ -246,6 +247,11 @@
     "readMore": "Read More",
     "viewAllResearch": "View All Research Projects"
   },
+  "Activities": {
+    "loadError": "Failed to load activities. Please try again later.",
+    "retry": "Refresh and retry",
+    "empty": "No activity records yet"
+  },
   "TeamMembers": {
     "title": "Research Team",
     "description": "Our team consists of researchers from diverse professional backgrounds, including professors, postdoctoral researchers, doctoral students, and master's students. We possess a wide range of research interests and professional skills, collectively dedicated to scientific innovation and technological breakthroughs.",
@@ -281,6 +287,7 @@
     "citations": "Citations",
     "loadMore": "Load More",
     "readMore": "Read More",
+    "summary": "{count} representative papers, organized by topic and publication date.",
     "viewOptions": "View Options",
     "gridView": "Grid View",
     "timelineView": "Timeline View",
@@ -380,6 +387,7 @@
     "readMore": "Read More",
     "readPaper": "Read Paper",
     "details": "View Details",
+    "viewOnline": "View Online",
     "viewAll": "View All News",
     "types": {
       "publication": "Publication",
