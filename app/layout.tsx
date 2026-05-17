@@ -101,6 +101,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs summary" />
+        <link rel="alternate" type="application/json" href="/geo.json" title="GEO entity summary" />
         <meta name="theme-color" content="#0F2C59" />
         <Script
           src="https://umami.tiantian.group/script.js"

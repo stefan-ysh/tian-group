@@ -20,14 +20,19 @@ export function OrganizationSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ResearchOrganization',
+    '@id': `${SITE_URL}/#organization`,
     name: '田甜课题组',
-    alternateName: ['Tian Tian Research Group', '田甜教授', '扬州大学田甜'],
+    alternateName: ['Tian Tian Research Group', '田甜教授课题组', '扬州大学田甜课题组'],
     url: SITE_URL,
     logo: `${SITE_URL}/og-image.jpg`,
+    image: `${SITE_URL}/og-image.jpg`,
     description: '扬州大学化学与材料学院田甜课题组，专注环糊精、钙钛矿、太阳能电池、发光材料研究',
+    email: 'tiant91@yzu.edu.cn',
+    inLanguage: ['zh-CN', 'en'],
     sameAs: ['https://www.yzu.edu.cn/'],
     contactPoint: {
       '@type': 'ContactPoint',
+      email: 'tiant91@yzu.edu.cn',
       contactType: 'research inquiries',
       availableLanguage: ['zh-CN', 'en'],
     },
@@ -36,6 +41,16 @@ export function OrganizationSchema() {
       addressCountry: 'CN',
       addressRegion: '江苏省',
       addressLocality: '扬州市',
+      streetAddress: '扬州大学化学与材料学院',
+    },
+    location: {
+      '@type': 'Place',
+      name: '扬州大学化学与材料学院',
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 32.398812,
+        longitude: 119.423332,
+      },
     },
     parentOrganization: {
       '@type': 'CollegeOrUniversity',
@@ -45,6 +60,7 @@ export function OrganizationSchema() {
     department: {
       '@type': 'Organization',
       name: '化学与材料学院',
+      alternateName: 'School of Chemistry and Materials',
     },
     member: {
       '@type': 'Person',
@@ -52,6 +68,21 @@ export function OrganizationSchema() {
       alternateName: ['田甜教授', '扬州大学田甜', 'Tian Tian', 'Professor Tian Tian'],
       jobTitle: '教授',
     },
+    knowsAbout: [
+      '环糊精',
+      '钙钛矿',
+      '太阳能电池',
+      '发光材料',
+      '超分子化学',
+      '光电功能材料',
+      'cyclodextrin',
+      'perovskites',
+      'solar cells',
+      'luminescent materials',
+      'supramolecular chemistry',
+      'optoelectronic materials',
+    ],
+    mainEntityOfPage: `${SITE_URL}/geo.json`,
   };
 
   return <JsonLd data={schema} />;
@@ -154,6 +185,7 @@ export function WebSiteSchema() {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
     name: '田甜课题组',
     alternateName: ['Tian Tian Research Group', '田甜教授', '扬州大学田甜'],
     url: SITE_URL,
@@ -161,7 +193,22 @@ export function WebSiteSchema() {
     publisher: {
       '@type': 'ResearchOrganization',
       name: '田甜课题组',
+      '@id': `${SITE_URL}/#organization`,
     },
+    mainEntity: {
+      '@id': `${SITE_URL}/#organization`,
+    },
+    hasPart: [
+      `${SITE_URL}/research`,
+      `${SITE_URL}/publications`,
+      `${SITE_URL}/members`,
+      `${SITE_URL}/news`,
+      `${SITE_URL}/activities`,
+      `${SITE_URL}/joinus`,
+      `${SITE_URL}/contact`,
+      `${SITE_URL}/llms.txt`,
+      `${SITE_URL}/geo.json`,
+    ],
   };
 
   return <JsonLd data={schema} />;
