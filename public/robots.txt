@@ -1,6 +1,8 @@
 # *
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Allow: /geo.json
 Disallow: /api/
 Disallow: /_next/
 Disallow: /blank/
@@ -10,3 +12,7 @@ Host: https://tiantian.group/
 
 # Sitemaps
 Sitemap: https://tiantian.group/sitemap.xml
+
+# AI / GEO discovery
+# llms.txt: https://tiantian.group/llms.txt
+# GEO summary: https://tiantian.group/geo.json

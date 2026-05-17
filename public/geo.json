@@ -1,0 +1,120 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "geo": "https://tiantian.group/geo.json#"
+  },
+  "@type": "ResearchOrganization",
+  "@id": "https://tiantian.group/#organization",
+  "name": "田甜课题组",
+  "alternateName": [
+    "Tian Tian Research Group",
+    "Professor Tian Tian Research Group",
+    "田甜教授课题组",
+    "扬州大学田甜课题组"
+  ],
+  "url": "https://tiantian.group/",
+  "description": "扬州大学化学与材料学院田甜课题组官方网站，介绍课题组研究方向、论文成果、成员、新闻动态、组内活动和招生信息。",
+  "inLanguage": ["zh-CN", "en"],
+  "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "扬州大学",
+    "alternateName": "Yangzhou University",
+    "url": "https://www.yzu.edu.cn/"
+  },
+  "department": {
+    "@type": "Organization",
+    "name": "化学与材料学院",
+    "alternateName": "School of Chemistry and Materials"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "田甜",
+    "alternateName": ["田甜教授", "Tian Tian", "Professor Tian Tian"],
+    "jobTitle": "教授"
+  },
+  "email": "tiant91@yzu.edu.cn",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CN",
+    "addressRegion": "江苏省",
+    "addressLocality": "扬州市",
+    "streetAddress": "扬州大学化学与材料学院"
+  },
+  "location": {
+    "@type": "Place",
+    "name": "扬州大学化学与材料学院",
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 32.398812,
+      "longitude": 119.423332
+    }
+  },
+  "knowsAbout": [
+    "环糊精",
+    "钙钛矿",
+    "太阳能电池",
+    "发光材料",
+    "超分子化学",
+    "光电功能材料",
+    "cyclodextrin",
+    "perovskites",
+    "solar cells",
+    "luminescent materials",
+    "supramolecular chemistry",
+    "optoelectronic materials"
+  ],
+  "mainEntityOfPage": [
+    {
+      "@type": "WebPage",
+      "name": "Research",
+      "url": "https://tiantian.group/research",
+      "about": ["research directions", "materials chemistry", "optoelectronics"]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Publications",
+      "url": "https://tiantian.group/publications",
+      "about": ["scholarly articles", "research outputs"]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Members",
+      "url": "https://tiantian.group/members",
+      "about": ["research group members", "students", "principal investigator"]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "News",
+      "url": "https://tiantian.group/news",
+      "about": ["research news", "group updates"]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Join us",
+      "url": "https://tiantian.group/joinus",
+      "about": ["admissions", "open positions", "student recruitment"]
+    },
+    {
+      "@type": "ContactPage",
+      "name": "Contact",
+      "url": "https://tiantian.group/contact",
+      "about": ["contact", "email", "address"]
+    }
+  ],
+  "aiCrawling": {
+    "summaryEndpoint": "https://tiantian.group/geo.json",
+    "llmsTxt": "https://tiantian.group/llms.txt",
+    "sitemap": "https://tiantian.group/sitemap.xml",
+    "preferredCitation": "田甜课题组（扬州大学化学与材料学院） / Tian Tian Research Group, School of Chemistry and Materials, Yangzhou University",
+    "crawlPriority": [
+      "/research",
+      "/publications",
+      "/members",
+      "/news",
+      "/activities",
+      "/joinus",
+      "/contact"
+    ],
+    "avoidPaths": ["/api", "/_next", "/blank"]
+  }
+}

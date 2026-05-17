@@ -16,11 +16,13 @@ module.exports = {
     policies: [
       {
         userAgent: '*',
-        allow: '/',
+        allow: ['/', '/llms.txt', '/geo.json'],
         disallow: ['/api/', '/_next/', '/blank/'],
       },
     ],
     additionalSitemaps: [`${SITE.origin}/sitemap.xml`],
+    transformRobotsTxt: async (_config, robotsTxt) =>
+      `${robotsTxt}\n# AI / GEO discovery\n# llms.txt: ${SITE.origin}/llms.txt\n# GEO summary: ${SITE.origin}/geo.json\n`,
   },
   exclude: ['/api/*', '/blank/*'],
   // 页面优先级配置

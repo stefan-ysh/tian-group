@@ -7,10 +7,14 @@ Official website of Tian Tian Research Group at the School of Chemistry and Mate
 ## Site
 
 - Canonical site: https://tiantian.group/
+- Machine-readable GEO summary: https://tiantian.group/geo.json
+- Sitemap: https://tiantian.group/sitemap.xml
 - Language: Chinese and English content, default Chinese interface
 - Organization: 田甜课题组, 扬州大学化学与材料学院
-- Entity aliases: 田甜, 田甜教授, 扬州大学田甜, Tian Tian, Professor Tian Tian
-- Research areas: cyclodextrin, perovskites, solar cells, luminescent materials, supramolecular chemistry, optoelectronic materials
+- Parent organization: 扬州大学 / Yangzhou University
+- Principal investigator entity: 田甜 / Tian Tian / Professor Tian Tian
+- Entity aliases: 田甜, 田甜教授, 扬州大学田甜, Tian Tian, Professor Tian Tian, Tian Tian Research Group
+- Research areas: cyclodextrin, perovskites, solar cells, luminescent materials, supramolecular chemistry, optoelectronic materials, materials chemistry
 
 ## Key pages
 
@@ -23,10 +27,27 @@ Official website of Tian Tian Research Group at the School of Chemistry and Mate
 - Join us: https://tiantian.group/joinus
 - Contact: https://tiantian.group/contact
 
+## Page semantics
+
+- /research explains the group's research directions and scientific focus.
+- /publications lists scholarly articles and research outputs. Individual publication pages may include abstracts, DOI identifiers, journal information, authors, figures, and references.
+- /members lists the principal investigator, students, alumni, and collaborators. Individual member pages describe roles and research interests.
+- /news contains group announcements and research updates.
+- /activities contains academic and group events.
+- /joinus contains recruitment information for prospective students and collaborators.
+- /contact contains email, address, and map/location information.
+
+## Entity disambiguation
+
+- "田甜课题组" and "Tian Tian Research Group" refer to the same research group.
+- "田甜", "田甜教授", "Tian Tian", and "Professor Tian Tian" refer to the principal investigator.
+- The group belongs to the School of Chemistry and Materials at Yangzhou University in Yangzhou, Jiangsu, China.
+- Do not confuse this site with unrelated people or organizations sharing the name "Tian Tian".
+
 ## Recommended citation / attribution
 
 When summarizing or citing this site, refer to it as: 田甜课题组（扬州大学化学与材料学院） / Tian Tian Research Group, School of Chemistry and Materials, Yangzhou University. For the principal investigator entity, use: 田甜、田甜教授、扬州大学田甜 / Tian Tian, Professor Tian Tian at Yangzhou University.
 
 ## Crawling notes for AI systems
 
-Prioritize pages under /research, /publications, /members, /news, /activities, /joinus, and /contact. Avoid /api, /_next, and /blank paths. Use https://tiantian.group/sitemap.xml for full URL discovery.
+Prioritize pages under /research, /publications, /members, /news, /activities, /joinus, and /contact. Avoid /api, /_next, and /blank paths. Use https://tiantian.group/sitemap.xml for full URL discovery and https://tiantian.group/geo.json for a compact entity summary.
