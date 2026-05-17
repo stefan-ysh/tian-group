@@ -71,7 +71,7 @@ export default function HomeClientPage() {
             <div className="relative mx-auto max-w-xl lg:mr-0">
               <div className="relative overflow-hidden rounded-lg bg-slate-950 shadow-[0_28px_70px_rgba(15,44,89,0.2)] ring-1 ring-slate-200/70 dark:ring-white/10">
                 <NextImage
-                  src="/images/p14.webp"
+                  src="/images/p14.png"
                   width={900}
                   height={620}
                   sizes="(min-width: 1024px) 42vw, 92vw"
