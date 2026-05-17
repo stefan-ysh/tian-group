@@ -1,10 +1,11 @@
 'use client';
-import { Calendar, Book } from 'lucide-react';
+import { Book, Calendar, ExternalLink } from 'lucide-react';
 import { Card } from '@heroui/react';
 import React from 'react';
 import { Avatar, AvatarFallback } from '~/components/ui/avatar';
 import { Tooltip } from '@heroui/tooltip';
 import NextImage from 'next/image';
+import Link from 'next/link';
 import { formatDate } from '~/utils/utils';
 import { useLocale, useTranslations } from 'next-intl';
 
@@ -34,19 +35,17 @@ export const PublicationItem = ({
 }: PublicationItemProps) => {
   const locale = useLocale();
   const t = useTranslations('Publications.list');
+  const tPublications = useTranslations('Publications');
   return (
     <Card
       key={slug}
       className="publication-card flex flex-col gap-5 overflow-hidden p-5 transition-all duration-300 md:flex-row md:p-2"
     >
-      <div
-        onClick={() => {
-          // 本地预览，涉及版权
-          // router.push(`/publications/${slug}`);
-          // 新窗口预览
-          window.open(link, '_blank');
-        }}
-        className="mx-auto flex w-4/5 cursor-pointer flex-col items-center justify-center md:m-auto md:w-3/5 md:flex-row"
+      <Link
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mx-auto flex w-4/5 flex-col items-center justify-center md:m-auto md:w-3/5 md:flex-row"
       >
         <NextImage
           alt={title}
@@ -58,7 +57,7 @@ export const PublicationItem = ({
           sizes="(max-width: 768px) 80vw, 200px"
           className="mx-auto h-11/12 w-full p-0 !object-contain md:h-[200px] md:w-[200px]"
         />
-      </div>
+      </Link>
       <div className="flex w-full flex-col justify-between md:w-11/12">
         <h2 className="font-serif text-base font-semibold leading-snug text-slate-950 dark:text-white">
           {t(`${title}.title`)}
@@ -100,6 +99,15 @@ export const PublicationItem = ({
             <span className="text-xs">{formatDate(publishDate, 'short', locale)}</span>
           </div>
         </div>
+        <Link
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="academic-link mt-3 inline-flex w-fit items-center gap-1 text-xs font-semibold"
+        >
+          {tPublications('readMore')}
+          <ExternalLink size={12} />
+        </Link>
       </div>
     </Card>
   );

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import { useRouter } from 'next/navigation';
 import NextImage from 'next/image';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
 interface MemberItemProps {
@@ -27,15 +27,11 @@ export const MemberItem = ({
   leave_year,
   showAvatar = true,
 }: MemberItemProps) => {
-  const router = useRouter();
   const t = useTranslations('Member.Position');
 
   return (
     <div key={slug} className="group flex flex-col items-center">
-      <div
-        onClick={() => router.push(`/members/${slug}`)}
-        className="cursor-pointer flex flex-col items-center gap-3 w-full"
-      >
+      <Link href={`/members/${slug}`} className="flex w-full flex-col items-center gap-3">
         {showAvatar && (
           <div className="relative h-28 w-28 rounded-md border border-slate-200 bg-white p-1 shadow-sm transition-transform duration-300 hover:scale-[1.02] md:h-32 md:w-32 dark:border-white/10 dark:bg-slate-900">
             <NextImage
@@ -74,7 +70,7 @@ export const MemberItem = ({
             )}
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
